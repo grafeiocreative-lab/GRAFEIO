@@ -648,106 +648,8 @@ footer{
     <p class="reveal">Ne prodajamo paketov. Gradimo to, kar ima smisel za vas, od spletne strani do email zaporedja, ki dela namesto vas.</p>
   </div>
 
-  <div class="services-grid">
-    <div class="service-card reveal">
-      <div class="service-num">01</div>
-      <div class="service-icon">
-        <div class="si" style="background:var(--terra)"></div>
-        <div class="si" style="background:var(--terra);opacity:0.5"></div>
-        <div class="si" style="background:var(--terra);opacity:0.25"></div>
-      </div>
-      <h3 class="service-name">Spletna stran</h3>
-      <p class="service-desc">Hitra, jasna, profesionalna. Odraža vas in prepriča novo stranko v 3 sekundah. Vključuje kontaktni obrazec, lokacijo in storitve.</p>
-      <span class="service-tag">Osnova vsega</span>
-    </div>
-
-    <div class="service-card reveal reveal-delay-1">
-      <div class="service-num">02</div>
-      <div class="service-icon">
-        <div class="si" style="background:var(--slate)"></div>
-        <div class="si" style="background:var(--slate);opacity:0.5"></div>
-        <div class="si" style="background:var(--slate);opacity:0.25"></div>
-      </div>
-      <h3 class="service-name">Email marketing</h3>
-      <p class="service-desc">Opomniki za termine, sezonske akcije, novosti. Vaše stranke ostanejo v stiku, brez vašega vsakodnevnega napora.</p>
-      <span class="service-tag">Zvestoba strank</span>
-    </div>
-
-    <div class="service-card reveal reveal-delay-2">
-      <div class="service-num">03</div>
-      <div class="service-icon">
-        <div class="si" style="background:var(--sage)"></div>
-        <div class="si" style="background:var(--sage);opacity:0.5"></div>
-        <div class="si" style="background:var(--sage);opacity:0.25"></div>
-      </div>
-      <h3 class="service-name">Besedila in vsebina</h3>
-      <p class="service-desc">Besedila, ki govorijo vašim strankam, ne v strokovnem žargonu, ampak v njihovem jeziku.</p>
-      <span class="service-tag">Vaš glas online</span>
-    </div>
-
-    <div class="service-card reveal reveal-delay-1">
-      <div class="service-num">04</div>
-      <div class="service-icon">
-        <div class="si" style="background:var(--terra)"></div>
-        <div class="si" style="background:var(--slate)"></div>
-        <div class="si" style="background:var(--sage)"></div>
-      </div>
-      <h3 class="service-name">Poslovni procesi</h3>
-      <p class="service-desc">Narišemo, kako vaše podjetje dejansko deluje. Naročanje, sprejemi, opomniki, sledenje strankam. Jasni procesi pomenijo manj kaosa.</p>
-      <span class="service-tag">Red v ozadju</span>
-    </div>
-
-    <div class="service-card reveal reveal-delay-2">
-      <div class="service-num">05</div>
-      <div class="service-icon">
-        <div class="si" style="background:var(--slate);opacity:0.4"></div>
-        <div class="si" style="background:var(--slate);opacity:0.7"></div>
-        <div class="si" style="background:var(--slate)"></div>
-      </div>
-      <h3 class="service-name">Orodja, ki rešujejo težave</h3>
-      <p class="service-desc">Kalkulator za dopust, evidenca ur, obrazec za naročanje, cenik z avtomatskim izračunom. Majhna orodja, ki jih stranka ali zaposleni uporablja vsak dan, jim prihranijo ure na teden.</p>
-      <span class="service-tag">Praktične rešitve</span>
-    </div>
-
-    <!--
-    SKRITO – vklopiti, ko bo prepared:
-
-    <div class="service-card reveal reveal-delay-1">
-      <div class="service-num">XX</div>
-      <div class="service-icon">
-        <div class="si" style="background:var(--terra)"></div>
-        <div class="si" style="background:var(--slate)"></div>
-        <div class="si" style="background:var(--sage)"></div>
-      </div>
-      <h3 class="service-name">Vizuali in fotografija</h3>
-      <p class="service-desc">Profesionalni vizuali za splet in socialna omrežja. Vaša ordinacija, salon ali studio, prikazana v najboljši luči.</p>
-      <span class="service-tag">Prvo zaupanje</span>
-    </div>
-
-    <div class="service-card reveal reveal-delay-2">
-      <div class="service-num">XX</div>
-      <div class="service-icon">
-        <div class="si" style="background:var(--slate);opacity:0.3"></div>
-        <div class="si" style="background:var(--slate);opacity:0.6"></div>
-        <div class="si" style="background:var(--slate)"></div>
-      </div>
-      <h3 class="service-name">Video predstavitev</h3>
-      <p class="service-desc">Kratki video posnetki, ki pokažejo, kdo ste. Stranka, ki vas vidi, vam zaupa hitreje kot tista, ki prebere sto besed.</p>
-      <span class="service-tag">Osebnostnost</span>
-    </div>
-    -->
-
-    <div class="service-card reveal reveal-delay-3">
-      <div class="service-num">06</div>
-      <div class="service-icon">
-        <div class="si" style="background:var(--sage)"></div>
-        <div class="si" style="background:var(--terra)"></div>
-        <div class="si" style="background:var(--slate)"></div>
-      </div>
-      <h3 class="service-name">AI za vaše podjetje</h3>
-      <p class="service-desc">Chatbot za spletno stran, avtomatski odgovori na pogosta vprašanja, orodje za rezervacije. AI postane vaš nočni asistent.</p>
-      <span class="service-tag">Prihodnost, danes</span>
-    </div>
+  <div id="services-grid" class="services-grid">
+    <!-- Vsebina se naloži iz _data/vsebina.json -->
   </div>
 </section>
 
@@ -907,7 +809,7 @@ footer{
     Pišite nam. Odgovorimo v 24 urah in skupaj ugotovimo, ali je Grafeio pravi partner za vas.
   </p>
 
-  <a href="mailto:grafeio.creative@gmail.com" class="contact-email-link reveal">
+  <a id="kontakt-email-link" href="mailto:grafeio.creative@gmail.com" class="contact-email-link reveal">
     grafeio.creative@gmail.com
   </a>
 
@@ -932,13 +834,63 @@ footer{
   <div class="footer-right">
     <span style="letter-spacing:0.05em">Gradnik odličnosti.</span>
     &nbsp;·&nbsp;
-    <a href="mailto:grafeio.creative@gmail.com" style="color:inherit;text-decoration:none">grafeio.creative@gmail.com</a>
+    <a id="kontakt-email-footer" href="mailto:grafeio.creative@gmail.com" style="color:inherit;text-decoration:none">grafeio.creative@gmail.com</a>
     &nbsp;·&nbsp;
     <span>© 2026 Grafeio</span>
   </div>
 </footer>
 
 <script>
+// ── VSEBINA IZ CMS ──────────────────────────────────────────────
+const IKONE = {
+  'terra':   ['var(--terra)',           'rgba(196,82,26,0.5)',    'rgba(196,82,26,0.25)'],
+  'slate':   ['var(--slate)',           'rgba(74,123,165,0.5)',   'rgba(74,123,165,0.25)'],
+  'sage':    ['var(--sage)',            'rgba(106,153,112,0.5)', 'rgba(106,153,112,0.25)'],
+  'mix-tss': ['var(--terra)',           'var(--slate)',            'var(--sage)'],
+  'mix-sss': ['rgba(74,123,165,0.4)', 'rgba(74,123,165,0.7)',   'var(--slate)'],
+  'mix-sts': ['var(--sage)',            'var(--terra)',            'var(--slate)']
+};
+const DELAYS = ['', 'reveal-delay-1', 'reveal-delay-2', 'reveal-delay-1', 'reveal-delay-2', 'reveal-delay-3'];
+
+fetch('/_data/vsebina.json')
+  .then(r => r.json())
+  .then(d => {
+    // Email — posodobi oba elementa
+    const email = d.kontakt_email || '';
+    ['kontakt-email-link', 'kontakt-email-footer'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) { el.href = 'mailto:' + email; el.textContent = email; }
+    });
+
+    // Storitve — ustvari kartice dinamično
+    const grid = document.getElementById('services-grid');
+    if (grid && d.storitve) {
+      grid.innerHTML = '';
+      d.storitve.forEach((s, i) => {
+        const barve = IKONE[s.barva] || IKONE['terra'];
+        const num   = String(i + 1).padStart(2, '0');
+        const card  = document.createElement('div');
+        card.className = 'service-card reveal ' + (DELAYS[i] || '');
+        card.innerHTML =
+          '<div class="service-num">' + num + '</div>' +
+          '<div class="service-icon">' +
+            '<div class="si" style="background:' + barve[0] + '"></div>' +
+            '<div class="si" style="background:' + barve[1] + '"></div>' +
+            '<div class="si" style="background:' + barve[2] + '"></div>' +
+          '</div>' +
+          '<h3 class="service-name">' + s.naziv + '</h3>' +
+          '<p class="service-desc">' + s.opis + '</p>' +
+          '<span class="service-tag">' + s.tag + '</span>';
+        grid.appendChild(card);
+        observer.observe(card);
+      });
+    }
+  })
+  .catch(() => {
+    console.warn('Grafeio: _data/vsebina.json ni dostopen lokalno. Na Netlify bo deloval.');
+  });
+
+// ── NAV, REVEAL, SMOOTH SCROLL ──────────────────────────────────
 const nav = document.getElementById('mainNav');
 window.addEventListener('scroll', () => {
   nav.classList.toggle('scrolled', window.scrollY > 40);

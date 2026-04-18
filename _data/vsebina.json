@@ -1,0 +1,41 @@
+{
+  "kontakt_email": "grafeio.creative@gmail.com",
+  "storitve": [
+    {
+      "naziv": "Spletna stran",
+      "opis": "Hitra, jasna, profesionalna. Odraža vas in prepriča novo stranko v 3 sekundah. Vključuje kontaktni obrazec, lokacijo in storitve.",
+      "tag": "Osnova vsega",
+      "barva": "terra"
+    },
+    {
+      "naziv": "Email marketing",
+      "opis": "Opomniki za termine, sezonske akcije, novosti. Vaše stranke ostanejo v stiku, brez vašega vsakodnevnega napora.",
+      "tag": "Zvestoba strank",
+      "barva": "slate"
+    },
+    {
+      "naziv": "Besedila in vsebina",
+      "opis": "Besedila, ki govorijo vašim strankam, ne v strokovnem žargonu, ampak v njihovem jeziku.",
+      "tag": "Vaš glas online",
+      "barva": "sage"
+    },
+    {
+      "naziv": "Poslovni procesi",
+      "opis": "Narišemo, kako vaše podjetje dejansko deluje. Naročanje, sprejemi, opomniki, sledenje strankam. Jasni procesi pomenijo manj kaosa.",
+      "tag": "Red v ozadju",
+      "barva": "mix-tss"
+    },
+    {
+      "naziv": "Orodja, ki rešujejo težave",
+      "opis": "Kalkulator za dopust, evidenca ur, obrazec za naročanje, cenik z avtomatskim izračunom. Majhna orodja, ki jih stranka ali zaposleni uporablja vsak dan, jim prihranijo ure na teden.",
+      "tag": "Praktične rešitve",
+      "barva": "mix-sss"
+    },
+    {
+      "naziv": "AI za vaše podjetje",
+      "opis": "Chatbot za spletno stran, avtomatski odgovori na pogosta vprašanja, orodje za rezervacije. AI postane vaš nočni asistent.",
+      "tag": "Prihodnost, danes",
+      "barva": "mix-sts"
+    }
+  ]
+}

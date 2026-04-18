@@ -1,0 +1,54 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "slike"
+public_folder: "/slike"
+
+locale: "sl"
+
+collections:
+  - name: "vsebina"
+    label: "Vsebina strani"
+    files:
+
+      - name: "splosno"
+        label: "Email in storitve"
+        file: "_data/vsebina.json"
+        format: json
+        fields:
+
+          - label: "Kontaktni email"
+            name: "kontakt_email"
+            widget: "string"
+            hint: "Prikaže se v sekciji Kontakt, v nogi strani in kot rezerva pri napaki obrazca."
+
+          - label: "Storitve"
+            name: "storitve"
+            widget: "list"
+            label_singular: "Storitev"
+            max: 6
+            min: 1
+            fields:
+              - label: "Naziv storitve"
+                name: "naziv"
+                widget: "string"
+              - label: "Opis"
+                name: "opis"
+                widget: "text"
+                hint: "2–3 stavki. Piši v jeziku stranke, ne v žargonu."
+              - label: "Oznaka (tag)"
+                name: "tag"
+                widget: "string"
+                hint: "Kratka etiketa pod opisom, npr. 'Osnova vsega'"
+              - label: "Barva ikone"
+                name: "barva"
+                widget: "select"
+                hint: "Trije kvadratki nad naslovom storitve"
+                options:
+                  - { label: "Terrakota (enobarvna)", value: "terra" }
+                  - { label: "Skrilavec (enobarvna)", value: "slate" }
+                  - { label: "Šavje (enobarvna)", value: "sage" }
+                  - { label: "Mešano: terrakota + skrilavec + šavje", value: "mix-tss" }
+                  - { label: "Skrilavec narašče", value: "mix-sss" }
+                  - { label: "Mešano: šavje + terrakota + skrilavec", value: "mix-sts" }
