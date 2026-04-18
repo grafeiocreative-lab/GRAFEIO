@@ -982,7 +982,7 @@ async function submitForm() {
 
   try {
     // FORMSPREE: zamenjajte YOUR_FORM_ID z ID-jem iz formspree.io (brezplačna registracija)
-    const res = await fetch('https://formspree.io/f/YOUR_FORM_ID', {
+    const res = await fetch('https://formspree.io/f/xwvaogvw', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
       body: JSON.stringify({ ime: name, email, dejavnost: type, sporocilo: msg })
