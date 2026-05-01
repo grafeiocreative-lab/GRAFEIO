@@ -526,7 +526,7 @@ if(grid){
       '<p class="service-desc">'+s.opis+'</p>'+
       '<span class="service-tag">'+s.tag+'</span>';
     grid.appendChild(card);
-    observer.observe(card);
+    setTimeout(()=>observer.observe(card),0);
   });
 }
 
