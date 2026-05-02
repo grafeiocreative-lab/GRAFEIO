@@ -644,58 +644,143 @@ function downloadWord(){
   const {lines,subtotal}=buildLines();
   const discAmt=Math.round(subtotal*S.disc/100);
   const total=subtotal-discAmt;
+  const ddv=Math.round(total*0.22);
+  const skupajDDV=total+ddv;
   const strankaIme=getStrankaIme();
   const dejavnost=getDejavnost();
+  const ponNum='PON-'+new Date().getFullYear()+'-001';
 
-  let tableRows='';
-  lines.forEach(l=>{
-    tableRows+=`<tr><td style="padding:6px 12px;border-bottom:0.5px solid #E0E0E0;">${l.name}</td><td style="padding:6px 12px;border-bottom:0.5px solid #E0E0E0;text-align:right;">${l.disp}</td></tr>`;
-  });
-  if(S.disc>0&&subtotal>0){
-    tableRows+=`<tr><td style="padding:6px 12px;color:#6A9970;">Popust ${S.disc} %</td><td style="padding:6px 12px;text-align:right;color:#6A9970;">− €${fmt(discAmt)}</td></tr>`;
+  // Build item rows (8 slots)
+  let itemRows='';
+  for(let i=0;i<8;i++){
+    const item=lines[i];
+    const bg=i%2===0?'#FFFFFF':'#F5F5F3';
+    itemRows+=`<tr style="background:${bg}">
+      <td style="padding:5px 8px;text-align:center;color:#888;border-bottom:0.5px solid #E0E0E0;border-left:0.5px solid #E0E0E0;">${i+1}</td>
+      <td style="padding:5px 8px;border-bottom:0.5px solid #E0E0E0;">${item?item.name:''}</td>
+      <td style="padding:5px 8px;text-align:center;border-bottom:0.5px solid #E0E0E0;">1</td>
+      <td style="padding:5px 8px;text-align:right;border-bottom:0.5px solid #E0E0E0;">${item?'€'+item.price.toLocaleString('sl-SI'):''}</td>
+      <td style="padding:5px 8px;text-align:right;border-bottom:0.5px solid #E0E0E0;border-right:0.5px solid #E0E0E0;">${item?'€'+item.price.toLocaleString('sl-SI'):''}</td>
+    </tr>`;
   }
 
+  let discRow='';
+  if(S.disc>0) discRow=`<tr><td colspan="4" style="padding:6px 12px;text-align:right;background:#F5F5F3;color:#6A9970;">Popust ${S.disc} %</td><td style="padding:6px 12px;text-align:right;background:#F5F5F3;color:#6A9970;">− €${discAmt.toLocaleString('sl-SI')}</td></tr>`;
+
+  let retainerRow='';
+  if(S.retainer>0) retainerRow=`<p style="font-size:11px;color:#555;margin:8px 0 0 0;">Mesečno vzdrževanje (retainer <strong>${S.retainerName}</strong>): <strong>€${S.retainer} / mesec</strong></p>`;
+
   const html=`<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">
-<head><meta charset="UTF-8"><style>
-body{font-family:Arial,sans-serif;color:#111111;margin:40px;}
-h1{font-size:28px;font-weight:300;letter-spacing:2px;margin-bottom:4px;}
-.sub{font-size:12px;color:#888;letter-spacing:1px;margin-bottom:32px;}
-.terra{color:#C4521A;}
-table{width:100%;border-collapse:collapse;margin-bottom:24px;}
-.total-row td{padding:12px;font-size:20px;border-top:2px solid #111;}
-.footer-note{font-size:11px;color:#888;margin-top:32px;border-top:0.5px solid #E0E0E0;padding-top:16px;line-height:1.8;}
-.logo{font-size:36px;margin-bottom:0;}
-.logoword{font-size:12px;letter-spacing:6px;font-weight:300;}
+<head><meta charset="UTF-8">
+<style>
+body{font-family:Arial,sans-serif;color:#111111;margin:0;padding:0;}
+table{border-collapse:collapse;width:100%;}
+td,th{font-family:Arial,sans-serif;}
 </style>
 </head>
 <body>
-<p class="logo">g<span class="logoword"> RAFEIO</span></p>
-<p style="font-size:9px;color:#888;letter-spacing:2px;margin-bottom:40px;">GRADNIK ODLIČNOSTI</p>
-<table style="margin-bottom:8px;"><tr>
-  <td style="width:50%;"><strong style="font-size:13px;letter-spacing:1px;text-transform:uppercase;color:#888;">Ponudba za</strong><br><span style="font-size:18px;">${strankaIme}</span>${dejavnost?'<br><span style="font-size:12px;color:#888;">'+dejavnost+'</span>':''}</td>
-  <td style="width:50%;text-align:right;vertical-align:top;"><span style="font-size:12px;color:#888;">${todayStr()}</span><br><span style="font-size:11px;color:#888;">Veljavnost: 30 dni</span></td>
-</tr></table>
-<table style="border-top:3px solid #C4521A;">
-  <tr style="background:#F8F7F5;"><th style="padding:8px 12px;text-align:left;font-size:10px;letter-spacing:2px;color:#888;font-weight:400;text-transform:uppercase;">Postavka</th><th style="padding:8px 12px;text-align:right;font-size:10px;letter-spacing:2px;color:#888;font-weight:400;text-transform:uppercase;">Cena (brez DDV)</th></tr>
-  ${tableRows}
-  <tr class="total-row"><td><strong>SKUPAJ enkratno</strong></td><td style="text-align:right;color:#C4521A;"><strong>€${fmt(total)}</strong></td></tr>
+<table style="margin-bottom:0;">
+  <tr>
+    <td style="background:#111111;padding:14px 20px;width:60%;">
+      <span style="font-size:26px;color:white;font-weight:400;">g</span><span style="font-size:13px;color:white;letter-spacing:6px;font-weight:300;"> RAFEIO</span>
+    </td>
+    <td style="background:#111111;padding:14px 20px;text-align:right;vertical-align:bottom;">
+      <span style="font-size:8px;color:#555;letter-spacing:2px;">GRADNIK ODLIČNOSTI</span>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" style="background:#C4521A;padding:9px 20px;">
+      <span style="font-size:14px;color:white;letter-spacing:2px;">PONUDBA</span>
+    </td>
+  </tr>
 </table>
-${S.retainer>0?'<p style="font-size:13px;color:#555;margin-bottom:24px;">Mesečno vzdrževanje (retainer <strong>'+S.retainerName+'</strong>): <strong>€'+S.retainer+' / mesec</strong></p>':''}
-<div class="footer-note">
-Predujem: 50 % ob potrditvi naročila · 50 % pred izročitvijo<br>
-Slike niso vključene. Koda je last naročnika.<br>
-Uvodni sestanek je vključen. Vsak nadaljnji sestanek ali klic nad 30 min: €35/ura.<br>
-GRAFEIO · grafeio.si · info@grafeio.si
+
+<table style="margin:0;">
+  <tr>
+    <td style="background:#F5F5F3;padding:5px 20px;width:50%;border-bottom:0.5px solid #E0E0E0;">
+      <span style="font-size:9px;color:#888;">Številka ponudbe:</span>
+    </td>
+    <td style="background:#F5F5F3;padding:5px 20px;text-align:right;border-bottom:0.5px solid #E0E0E0;">
+      <span style="font-size:10px;">${ponNum}</span>
+    </td>
+  </tr>
+  <tr>
+    <td style="background:#F5F5F3;padding:5px 20px;border-bottom:0.5px solid #E0E0E0;">
+      <span style="font-size:9px;color:#888;">Datum:</span>
+    </td>
+    <td style="background:#F5F5F3;padding:5px 20px;text-align:right;border-bottom:0.5px solid #E0E0E0;">
+      <span style="font-size:10px;">${todayStr()}</span>
+    </td>
+  </tr>
+  <tr>
+    <td style="background:#F5F5F3;padding:5px 20px;border-bottom:0.5px solid #E0E0E0;">
+      <span style="font-size:9px;color:#888;">Veljavnost:</span>
+    </td>
+    <td style="background:#F5F5F3;padding:5px 20px;text-align:right;border-bottom:0.5px solid #E0E0E0;">
+      <span style="font-size:10px;">30 dni</span>
+    </td>
+  </tr>
+</table>
+
+<div style="margin:16px 20px 4px 20px;">
+  <div style="font-size:8px;color:#888;letter-spacing:2px;border-bottom:2px solid #C4521A;padding-bottom:3px;margin-bottom:6px;">NAROČNIK</div>
+  <div style="font-size:13px;">${strankaIme||'[Naziv podjetja / ime]'}</div>
+  ${dejavnost?'<div style="font-size:11px;color:#888;">'+dejavnost+'</div>':''}
+  <div style="font-size:10px;color:#bbb;font-style:italic;">[Naslov, Kraj]</div>
+  <div style="font-size:10px;color:#bbb;font-style:italic;">[E-pošta / telefon]</div>
 </div>
+
+<div style="margin:16px 20px 0 20px;">
+<table style="border-top:3px solid #111111;">
+  <tr style="background:#111111;">
+    <th style="padding:7px 8px;text-align:center;color:white;font-size:9px;font-weight:400;width:5%;">#</th>
+    <th style="padding:7px 8px;text-align:left;color:white;font-size:9px;font-weight:400;width:48%;">Opis storitve</th>
+    <th style="padding:7px 8px;text-align:center;color:white;font-size:9px;font-weight:400;width:8%;">Kol.</th>
+    <th style="padding:7px 8px;text-align:right;color:white;font-size:9px;font-weight:400;width:18%;">Cena / enoto (€)</th>
+    <th style="padding:7px 8px;text-align:right;color:white;font-size:9px;font-weight:400;width:16%;">Skupaj (€)</th>
+  </tr>
+  ${itemRows}
+</table>
+
+<table style="margin-top:4px;">
+  <tr>
+    <td colspan="4" style="padding:5px 12px;text-align:right;background:#F5F5F3;font-size:10px;color:#111;">Skupaj brez DDV:</td>
+    <td style="padding:5px 12px;text-align:right;background:#F5F5F3;font-size:10px;color:#111;width:16%;">€${total.toLocaleString('sl-SI')}</td>
+  </tr>
+  ${discRow}
+  <tr>
+    <td colspan="4" style="padding:5px 12px;text-align:right;background:#F5F5F3;font-size:10px;color:#111;">DDV (22 %):</td>
+    <td style="padding:5px 12px;text-align:right;background:#F5F5F3;font-size:10px;color:#111;">€${ddv.toLocaleString('sl-SI')}</td>
+  </tr>
+  <tr>
+    <td colspan="4" style="padding:8px 12px;text-align:right;background:#C4521A;font-size:12px;font-weight:bold;color:white;">SKUPAJ Z DDV:</td>
+    <td style="padding:8px 12px;text-align:right;background:#C4521A;font-size:14px;font-weight:bold;color:white;">€${skupajDDV.toLocaleString('sl-SI')}</td>
+  </tr>
+</table>
+
+${retainerRow}
+</div>
+
+<div style="margin:20px 20px 8px 20px;">
+  <div style="font-size:8px;color:#888;letter-spacing:2px;border-bottom:2px solid #C4521A;padding-bottom:3px;margin-bottom:6px;">Pogoji in opombe:</div>
+  <div style="font-size:9px;color:#888;font-style:italic;">Predujem: 50 % ob potrditvi naročila · 50 % pred izročitvijo. Cene so v EUR brez DDV. Plačilo v roku 15 dni od prejema računa.</div>
+</div>
+
+<table style="margin-top:16px;">
+  <tr>
+    <td style="background:#111111;padding:8px 20px;text-align:center;">
+      <span style="font-size:8px;color:white;">GRAFEIO  ·  info@grafeio.si  ·  grafeio.si  ·  DŠ: [vaša DŠ]</span>
+    </td>
+  </tr>
+</table>
+
 </body></html>`;
 
-  const blob=new Blob([html],{type:'application/msword'});
+  const blob=new Blob(['\ufeff'+html],{type:'application/msword;charset=utf-8'});
   const url=URL.createObjectURL(blob);
   const a=document.createElement('a');
-  a.href=url;
-  a.download='Ponudba GRAFEIO - '+strankaIme+'.doc';
-  a.click();
-  URL.revokeObjectURL(url);
+  a.href=url; a.download='Ponudba GRAFEIO - '+strankaIme+'.doc';
+  a.click(); URL.revokeObjectURL(url);
 }
 
 function sendWhatsApp(){
