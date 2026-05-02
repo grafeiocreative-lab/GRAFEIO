@@ -491,65 +491,153 @@ function downloadExcel(){
   const total=subtotal-discAmt;
   const strankaIme=getStrankaIme();
   const dejavnost=getDejavnost();
-  const ddvRate=0.22;
+  const ddv=Math.round(total*0.22);
+  const skupajDDV=total+ddv;
 
   const wb=XLSX.utils.book_new();
-  const wsData=[];
 
-  wsData.push(['GRAFEIO','','','GRADNIK ODLIČNOSTI','']);
-  wsData.push(['PONUDBA','','','','']);
-  wsData.push(['Številka:','PON-'+new Date().getFullYear()+'-001','','Datum:',todayStr()]);
-  wsData.push(['Veljavnost:','30 dni','','','']);
-  wsData.push([]);
-  wsData.push(['NAROČNIK','','','','']);
-  wsData.push([strankaIme||'[Naziv podjetja / ime]','','','','']);
-  if(dejavnost) wsData.push([dejavnost,'','','','']);
-  wsData.push([]);
-  wsData.push(['#','Opis storitve','Kol.','Cena / enoto (€)','Skupaj (€)']);
+  // ── STYLE HELPERS ──────────────────────────────────────────────────
+  function cs(v,opts){
+    const c={v:v,t:typeof v==='number'?'n':'s'};
+    if(opts) c.s=opts;
+    return c;
+  }
+  const OBS='111111', TERRA='C4521A', SLATE='4A7BA5', SAGE='6A9970';
+  const CREAM='F5F5F3', BORDER='E0E0E0', MUTED='888888', WHITE='FFFFFF';
+  const arial=(sz,bold,color,italic)=>({name:'Arial',sz:sz||10,bold:!!bold,color:{rgb:color||OBS},italic:!!italic});
+  const thinBorder=(color)=>{const s={style:'thin',color:{rgb:color||BORDER}};return{top:s,bottom:s,left:s,right:s};};
+  const bottomBorder=(color)=>({bottom:{style:'thin',color:{rgb:color||BORDER}}});
+  const medBottom=(color)=>({bottom:{style:'medium',color:{rgb:color||TERRA}}});
+  const solidFill=(color)=>({patternType:'solid',fgColor:{rgb:color}});
 
-  const firstDataRow = wsData.length + 1;
-  lines.forEach((l,i)=>{
-    wsData.push([i+1, l.name, 1, l.price, l.price]);
+  // ── SHEET DATA ──────────────────────────────────────────────────────
+  const ws={};
+  let r=1;
+
+  function setCell(col,row,val,style){
+    const addr=col+row;
+    ws[addr]={v:val,t:typeof val==='number'?'n':'s',s:style||{}};
+  }
+  function setNum(col,row,val,fmt,style){
+    ws[col+row]={v:val,t:'n',z:fmt||'#,##0.00',s:style||{}};
+  }
+  function merge(s,e){
+    if(!ws['!merges']) ws['!merges']=[];
+    ws['!merges'].push({s:s,e:e});
+  }
+
+  // ROW 1: HEADER BAR
+  ['A','B','C','D','E'].forEach(c=>{ ws[c+r]={v:'',t:'s',s:{fill:solidFill(OBS)}}; });
+  ws['A'+r]={v:'g  RAFEIO',t:'s',s:{font:arial(20,false,WHITE),fill:solidFill(OBS),alignment:{vertical:'center'}}};
+  ws['D'+r]={v:'GRADNIK ODLIČNOSTI',t:'s',s:{font:arial(9,false,MUTED),fill:solidFill(OBS),alignment:{horizontal:'right',vertical:'center'}}};
+  merge({r:r-1,c:0},{r:r-1,c:2}); merge({r:r-1,c:3},{r:r-1,c:4});
+  r++;
+
+  // ROW 2: DOCUMENT TYPE
+  ['A','B','C','D','E'].forEach(c=>{ ws[c+r]={v:'',t:'s',s:{fill:solidFill(TERRA)}}; });
+  ws['A'+r]={v:'PONUDBA',t:'s',s:{font:arial(15,false,WHITE),fill:solidFill(TERRA),alignment:{vertical:'center'}}};
+  merge({r:r-1,c:0},{r:r-1,c:4});
+  r++;
+
+  // ROWS 3-5: META
+  const metaStyle={font:arial(9,false,MUTED),fill:solidFill(CREAM),border:bottomBorder()};
+  const metaValStyle={font:arial(10,false,OBS),fill:solidFill(CREAM),border:bottomBorder(),alignment:{horizontal:'right'}};
+  const today=todayStr();
+  const ponNum='PON-'+new Date().getFullYear()+'-001';
+  [['Številka ponudbe:',ponNum],['Datum:',today],['Veljavnost:','30 dni']].forEach(([lbl,val])=>{
+    ws['A'+r]={v:lbl,t:'s',s:metaStyle};
+    ws['B'+r]={v:'',t:'s',s:{fill:solidFill(CREAM),border:bottomBorder()}};
+    ws['C'+r]={v:val,t:'s',s:metaValStyle};
+    ws['D'+r]={v:'',t:'s',s:{fill:solidFill(CREAM),border:bottomBorder()}};
+    ws['E'+r]={v:'',t:'s',s:{fill:solidFill(CREAM),border:bottomBorder()}};
+    merge({r:r-1,c:0},{r:r-1,c:1}); merge({r:r-1,c:2},{r:r-1,c:4});
+    r++;
   });
-  // empty rows up to 8
-  for(let i=lines.length;i<8;i++) wsData.push([i+1,'',1,0,0]);
-  const lastDataRow = wsData.length;
+  r++; // blank
 
-  wsData.push([]);
-  wsData.push(['','','','Skupaj brez DDV (€):',subtotal]);
-  if(S.disc>0) wsData.push(['','','','Popust '+S.disc+' % (€):','-'+discAmt]);
-  wsData.push(['','','','DDV 22 % (€):',Math.round((S.disc>0?total:subtotal)*ddvRate)]);
-  wsData.push(['','','','SKUPAJ Z DDV (€):',Math.round((S.disc>0?total:subtotal)*(1+ddvRate))]);
-  if(S.retainer>0) wsData.push(['','','','Mesečno vzdrževanje (€/mes):',S.retainer+' ('+S.retainerName+')']);
-  wsData.push([]);
-  wsData.push(['Predujem: 50 % ob potrditvi naročila · 50 % pred izročitvijo','','','','']);
-  wsData.push(['Cene so v EUR brez DDV. Plačilo v roku 15 dni od prejema računa.','','','','']);
-  wsData.push([]);
-  wsData.push(['GRAFEIO · info@grafeio.si · grafeio.si','','','','']);
+  // NAROCNIK LABEL
+  ws['A'+r]={v:'NAROČNIK',t:'s',s:{font:arial(8,false,MUTED),border:medBottom()}};
+  merge({r:r-1,c:0},{r:r-1,c:4});
+  r++;
+  const narocnik=[strankaIme||'[Naziv podjetja / ime]', dejavnost||'[Naslov, Kraj]','[E-pošta / telefon]'];
+  narocnik.forEach(lbl=>{
+    const isPlaceholder=lbl.startsWith('[');
+    ws['A'+r]={v:lbl,t:'s',s:{font:arial(10,false,isPlaceholder?'BBBBBB':OBS,isPlaceholder)}};
+    merge({r:r-1,c:0},{r:r-1,c:4}); r++;
+  });
+  r++;
 
-  const ws=XLSX.utils.aoa_to_sheet(wsData);
+  // TABLE HEADER
+  const thStyle=(a)=>({font:arial(9,false,WHITE),fill:solidFill(OBS),alignment:{horizontal:a,vertical:'center'}});
+  ws['A'+r]={v:'#',t:'s',s:thStyle('center')};
+  ws['B'+r]={v:'Opis storitve',t:'s',s:thStyle('left')};
+  ws['C'+r]={v:'Kol.',t:'s',s:thStyle('center')};
+  ws['D'+r]={v:'Cena / enoto (€)',t:'s',s:thStyle('right')};
+  ws['E'+r]={v:'Skupaj (€)',t:'s',s:thStyle('right')};
+  r++;
 
-  // Column widths
-  ws['!cols']=[{wch:5},{wch:40},{wch:8},{wch:22},{wch:16}];
+  // TABLE ROWS
+  const firstDataRow=r;
+  const MAX_ROWS=8;
+  for(let i=0;i<MAX_ROWS;i++){
+    const bg=i%2===0?WHITE:CREAM;
+    const item=lines[i];
+    const rowBorder={bottom:{style:'hair',color:{rgb:BORDER}}};
+    ws['A'+r]={v:i+1,t:'n',s:{font:arial(10,false,MUTED),fill:solidFill(bg),alignment:{horizontal:'center'},border:{...rowBorder,left:{style:'thin',color:{rgb:BORDER}}}}};
+    ws['B'+r]={v:item?item.name:'',t:'s',s:{font:arial(10),fill:solidFill(bg),border:rowBorder}};
+    ws['C'+r]={v:1,t:'n',z:'#,##0.##',s:{font:arial(10),fill:solidFill(bg),alignment:{horizontal:'center'},border:rowBorder}};
+    ws['D'+r]={v:item?item.price:0,t:'n',z:'#,##0.00',s:{font:arial(10),fill:solidFill(bg),alignment:{horizontal:'right'},border:rowBorder}};
+    ws['E'+r]={v:item?item.price:0,t:'n',z:'#,##0.00',s:{font:arial(10),fill:solidFill(bg),alignment:{horizontal:'right'},border:{...rowBorder,right:{style:'thin',color:{rgb:BORDER}}}}};
+    r++;
+  }
+  r++;
 
-  // Merge cells
-  const merges=[
-    {s:{r:0,c:0},e:{r:0,c:2}},{s:{r:0,c:3},e:{r:0,c:4}},
-    {s:{r:1,c:0},e:{r:1,c:4}},
-    {s:{r:5,c:0},e:{r:5,c:4}},
-    {s:{r:6,c:0},e:{r:6,c:4}},
-  ];
-  ws['!merges']=merges;
+  // TOTALS
+  function totRow(lbl,val,bold,hi){
+    const bg=hi?TERRA:CREAM;
+    const fc=hi?WHITE:OBS;
+    ['A','B','C','D'].forEach(c=>{ ws[c+r]={v:'',t:'s',s:{fill:solidFill(bg)}}; });
+    ws['A'+r]={v:lbl,t:'s',s:{font:arial(10,bold,fc),fill:solidFill(bg),alignment:{horizontal:'right',vertical:'center'}}};
+    ws['E'+r]={v:val,t:'n',z:'#,##0.00',s:{font:arial(hi?11:10,bold,fc),fill:solidFill(bg),alignment:{horizontal:'right',vertical:'center'}}};
+    merge({r:r-1,c:0},{r:r-1,c:3}); r++;
+  }
+  totRow('Skupaj brez DDV:',total,false,false);
+  if(S.disc>0) totRow('Popust '+S.disc+' % (€):',-discAmt,false,false);
+  totRow('DDV (22 %):',ddv,false,false);
+  totRow('SKUPAJ Z DDV:',skupajDDV,true,true);
+  if(S.retainer>0){ r++;
+    ws['A'+r]={v:'Mesečno vzdrževanje (retainer '+S.retainerName+'):',t:'s',s:{font:arial(10,false,MUTED)}};
+    ws['E'+r]={v:S.retainer,t:'n',z:'#,##0.00',s:{font:arial(10,false,SLATE),alignment:{horizontal:'right'}}};
+    merge({r:r-1,c:0},{r:r-1,c:3}); r++;
+  }
+  r++;
 
-  // Print settings
+  // OPOMBE
+  ws['A'+r]={v:'Pogoji in opombe:',t:'s',s:{font:arial(8,false,MUTED),border:medBottom()}};
+  merge({r:r-1,c:0},{r:r-1,c:4}); r++;
+  ws['A'+r]={v:'Predujem: 50 % ob potrditvi naročila · 50 % pred izročitvijo. Cene so v EUR brez DDV. Plačilo v roku 15 dni od prejema računa.',t:'s',s:{font:arial(9,false,MUTED,true),alignment:{wrapText:true}}};
+  merge({r:r-1,c:0},{r:r-1,c:4}); r+=2;
+
+  // FOOTER
+  ['A','B','C','D','E'].forEach(c=>{ ws[c+r]={v:'',t:'s',s:{fill:solidFill(OBS)}}; });
+  ws['A'+r]={v:'GRAFEIO  ·  info@grafeio.si  ·  grafeio.si',t:'s',s:{font:arial(8,false,WHITE),fill:solidFill(OBS),alignment:{horizontal:'center',vertical:'center'}}};
+  merge({r:r-1,c:0},{r:r-1,c:4});
+
+  // ── SHEET CONFIG ────────────────────────────────────────────────────
+  ws['!ref']='A1:E'+r;
+  ws['!cols']=[{wch:5},{wch:38},{wch:8},{wch:20},{wch:16}];
+
+  // Row heights
+  ws['!rows']=[];
+  for(let i=0;i<r;i++) ws['!rows'].push({hpt:20});
+  ws['!rows'][0]={hpt:44}; ws['!rows'][1]={hpt:30};
+
   ws['!pageSetup']={paperSize:9,orientation:'portrait',fitToWidth:1,fitToHeight:0};
-  ws['!margins']={left:0.6,right:0.6,top:0.7,bottom:0.7};
-  ws['!printArea']='A1:E'+wsData.length;
+  ws['!margins']={left:0.6,right:0.6,top:0.7,bottom:0.7,header:0.3,footer:0.3};
+  ws['!printArea']='A1:E'+r;
 
-  XLSX.utils.book_append_sheet(wb, ws, 'Ponudba');
-
-  const fname='Ponudba GRAFEIO - '+strankaIme+'.xlsx';
-  XLSX.writeFile(wb, fname);
+  XLSX.utils.book_append_sheet(wb,ws,'Ponudba');
+  XLSX.writeFile(wb,'Ponudba GRAFEIO - '+strankaIme+'.xlsx');
 }
 
 function downloadWord(){
