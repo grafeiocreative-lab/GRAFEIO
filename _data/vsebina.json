@@ -20,21 +20,21 @@
       "barva": "sage"
     },
     {
-  "naziv": "Obraz podjetja",
-  "opis": "Logo, slogan, barve, zgodba. Prva stvar, ki jo stranka vidi, preden sploh stopi skozi vrata. Uredimo, da bo vtis pravi.",
-  "tag": "Vaša podoba",
-  "barva": "mix-tss"
-},
+      "naziv": "Obraz podjetja",
+      "opis": "Logo, slogan, barve, zgodba. Prva stvar, ki jo stranka vidi, preden sploh stopi skozi vrata. Uredimo, da bo vtis pravi.",
+      "tag": "Vaša podoba",
+      "barva": "mix-tss"
+    },
     {
-      "naziv": "Orodja, ki rešujejo težave",
-      "opis": "Kalkulator za dopust, evidenca ur, obrazec za naročanje, cenik z avtomatskim izračunom. Majhna orodja, ki jih stranka ali zaposleni uporablja vsak dan, jim prihranijo ure na teden.",
+      "naziv": "Majhna orodja za vsakdan",
+      "opis": "Preprosti dodatki, ki olajšajo delo. Obrazec za naročanje, preprost cenik, osnovni kalkulatorji, pregled nad terminom ali povpraševanjem. Vse deluje samostojno, brez posega v obstoječe sisteme.",
       "tag": "Praktične rešitve",
       "barva": "mix-sss"
     },
     {
-      "naziv": "AI za vaše podjetje",
-      "opis": "Chatbot za spletno stran, avtomatski odgovori na pogosta vprašanja, orodje za rezervacije. AI postane vaš nočni asistent.",
-      "tag": "Prihodnost, danes",
+      "naziv": "Enostavna avtomatizacija",
+      "opis": "Manj administrativnega dela, več časa za stranke. Avtomatski odgovori na pogosta vprašanja, osnovni chatbot na spletni strani, potrditve in opomniki za termine. Preprosto nastavljeno, brez tehničnih zapletov.",
+      "tag": "Manj ročnega dela",
       "barva": "mix-sts"
     }
   ]

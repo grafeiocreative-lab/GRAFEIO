@@ -35,8 +35,8 @@
   --slate:#4A7BA5;
   --sage:#6A9970;
   --cream:#F5F5F3;
-  --cream-60:rgba(245,245,243,0.6);
-  --cream-20:rgba(245,245,243,0.2);
+  --cream-60:rgba(245,245,243,0.82);
+  --cream-20:rgba(245,245,243,0.4);
   --cream-08:rgba(245,245,243,0.08);
   --cream-04:rgba(245,245,243,0.04);
   --border:rgba(245,245,243,0.1);
@@ -100,6 +100,7 @@ nav.scrolled{
   transition:color 0.2s;
 }
 .nav-links a:hover{color:var(--cream)}
+  <a href="/index-en.html" style="font-size:12px;font-weight:400;letter-spacing:0.08em;color:var(--terra);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='var(--cream)'" onmouseout="this.style.color='var(--cream-20)'">EN</a>
 .nav-cta{
   font-size:12px;font-weight:400;letter-spacing:0.08em;
   color:var(--cream);text-decoration:none;
@@ -107,6 +108,7 @@ nav.scrolled{
   padding:10px 22px;
   transition:background 0.2s,border-color 0.2s;
 }
+  <a href="/index-en.html" style="font-size:12px;font-weight:400;letter-spacing:0.08em;color:var(--terra);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='var(--cream)'" onmouseout="this.style.color='var(--cream-20)'">EN</a>
 .nav-cta:hover{background:var(--cream-08);border-color:var(--cream-60)}
 
 /* ── HERO ── */
@@ -130,7 +132,7 @@ nav.scrolled{
   pointer-events:none;
 }
 .hero-squares-top{
-  position:absolute;top:48px;right:48px;
+  position:absolute;top:90px;right:48px;
 }
 .hero-eyebrow{
   font-size:11px;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;
@@ -570,6 +572,7 @@ footer{
     <a href="#povprasajte">Povpraševanje</a>
     <a href="#contact" class="nav-cta">Pišite nam</a>
   </div>
+  <a href="/index-en.html" style="font-size:12px;font-weight:400;letter-spacing:0.08em;color:var(--terra);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='var(--cream)'" onmouseout="this.style.color='var(--cream-20)'">EN</a>
 </nav>
 
 <!-- HERO -->
@@ -661,6 +664,7 @@ footer{
   <div id="services-grid" class="services-grid">
     <!-- Vsebina se naloži iz _data/vsebina.json -->
   </div>
+  <p style="margin-top:32px;font-size:12px;font-weight:300;color:var(--cream-20);text-align:center;letter-spacing:0.04em;">Orodja so namenjena podpori vsakodnevnim opravilom in ne nadomeščajo obstoječih poslovnih sistemov.</p>
 </section>
 
 <!-- FORM SECTION -->
@@ -691,19 +695,19 @@ footer{
     <div class="reveal">
       <div id="inquiry-form" style="border:1px solid var(--border);padding:40px 36px;background:var(--cream-04);">
         <div style="margin-bottom:28px;">
-          <label style="display:block;font-size:11px;font-weight:400;letter-spacing:0.15em;text-transform:uppercase;color:var(--cream-60);margin-bottom:10px;">Ime in priimek</label>
+          <label style="display:block;font-size:11px;font-weight:400;letter-spacing:0.15em;text-transform:uppercase;color:var(--terra);margin-bottom:10px;">Ime in priimek</label>
           <input type="text" id="f-name" placeholder="npr. Ana Kovač" style="width:100%;background:transparent;border:none;border-bottom:1px solid var(--border);padding:10px 0;font-size:15px;font-weight:300;color:var(--cream);font-family:inherit;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='rgba(245,245,243,0.5)'" onblur="this.style.borderColor='rgba(245,245,243,0.1)'">
         </div>
         <div style="margin-bottom:28px;">
-          <label style="display:block;font-size:11px;font-weight:400;letter-spacing:0.15em;text-transform:uppercase;color:var(--cream-60);margin-bottom:10px;">Email</label>
+          <label style="display:block;font-size:11px;font-weight:400;letter-spacing:0.15em;text-transform:uppercase;color:var(--terra);margin-bottom:10px;">Email</label>
           <input type="email" id="f-email" placeholder="ana@ordinacija.si" style="width:100%;background:transparent;border:none;border-bottom:1px solid var(--border);padding:10px 0;font-size:15px;font-weight:300;color:var(--cream);font-family:inherit;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='rgba(245,245,243,0.5)'" onblur="this.style.borderColor='rgba(245,245,243,0.1)'">
         </div>
         <div style="margin-bottom:28px;">
-          <label style="display:block;font-size:11px;font-weight:400;letter-spacing:0.15em;text-transform:uppercase;color:var(--cream-60);margin-bottom:10px;">Poklic / vrsta dejavnosti</label>
+          <label style="display:block;font-size:11px;font-weight:400;letter-spacing:0.15em;text-transform:uppercase;color:var(--terra);margin-bottom:10px;">Poklic / vrsta dejavnosti</label>
           <input type="text" id="f-type" placeholder="npr. fizioterapevt, zobozdravnik, masažni salon" style="width:100%;background:transparent;border:none;border-bottom:1px solid var(--border);padding:10px 0;font-size:15px;font-weight:300;color:var(--cream);font-family:inherit;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='rgba(245,245,243,0.5)'" onblur="this.style.borderColor='rgba(245,245,243,0.1)'">
         </div>
         <div style="margin-bottom:36px;">
-          <label style="display:block;font-size:11px;font-weight:400;letter-spacing:0.15em;text-transform:uppercase;color:var(--cream-60);margin-bottom:10px;">Kaj bi najprej radi uredili?</label>
+          <label style="display:block;font-size:11px;font-weight:400;letter-spacing:0.15em;text-transform:uppercase;color:var(--terra);margin-bottom:10px;">Kaj bi najprej radi uredili?</label>
           <textarea id="f-msg" rows="3" placeholder="Spletna stran, email, orodje za naročanje... ali pa samo povejte, kje ste zdaj." style="width:100%;background:transparent;border:none;border-bottom:1px solid var(--border);padding:10px 0;font-size:15px;font-weight:300;color:var(--cream);font-family:inherit;outline:none;resize:none;transition:border-color 0.2s;line-height:1.6;" onfocus="this.style.borderColor='rgba(245,245,243,0.5)'" onblur="this.style.borderColor='rgba(245,245,243,0.1)'"></textarea>
         </div>
         <button id="f-submit" onclick="submitForm()" style="width:100%;background:var(--cream);color:var(--obsidian);border:none;padding:16px;font-size:13px;font-weight:400;letter-spacing:0.08em;cursor:pointer;font-family:inherit;transition:background 0.2s,transform 0.2s;" onmouseover="this.style.background='#ddddd8'" onmouseout="this.style.background='var(--cream)'">
