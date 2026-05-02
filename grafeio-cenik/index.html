@@ -119,6 +119,7 @@ h2{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--muted)
 .stranka-row input,.stranka-row textarea{border:0.5px solid var(--border);border-radius:6px;padding:10px 12px;font-size:13px;font-family:Arial,sans-serif;background:white;color:var(--obs);resize:none;}
 .stranka-row input:focus,.stranka-row textarea:focus{outline:none;border-color:var(--slate);}
 </style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 </head>
 <body>
 
@@ -288,8 +289,19 @@ h2{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--muted)
         <div id="summaryRetainer" style="font-size:13px;color:var(--muted);margin-top:2px;"></div>
       </div>
     </div>
+    <div style="margin-bottom:8px;">
+      <div style="font-size:11px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Format izvoza</div>
+      <div style="display:flex;gap:8px;margin-bottom:8px;">
+        <label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:13px;">
+          <input type="radio" name="exportFmt" value="word" checked style="accent-color:var(--slate);"> Word (.doc)
+        </label>
+        <label style="display:flex;align-items:center;gap:6px;cursor:pointer;font-size:13px;">
+          <input type="radio" name="exportFmt" value="excel" style="accent-color:var(--slate);"> Excel (.xlsx)
+        </label>
+      </div>
+    </div>
     <div class="action-row">
-      <button class="btn-word" onclick="downloadWord()">Prenesi ponudbo (.doc)</button>
+      <button class="btn-word" onclick="downloadDoc()">Prenesi ponudbo</button>
       <button class="btn-wa" onclick="sendWhatsApp()">Pošlji na WhatsApp</button>
     </div>
     <button class="btn-reset" onclick="resetAll()">Ponastavi vse</button>
@@ -464,6 +476,82 @@ function getStrankaIme(){return document.getElementById('strankaIme').value.trim
 function getDejavnost(){return document.getElementById('strankaDejavnost').value.trim();}
 function todayStr(){const d=new Date();return d.getDate()+'. '+['januar','februar','marec','april','maj','junij','julij','avgust','september','oktober','november','december'][d.getMonth()]+' '+d.getFullYear();}
 
+function getExportFmt(){
+  return document.querySelector('input[name="exportFmt"]:checked').value;
+}
+
+function downloadDoc(){
+  if(getExportFmt()==='excel') downloadExcel();
+  else downloadWord();
+}
+
+function downloadExcel(){
+  const {lines,subtotal}=buildLines();
+  const discAmt=Math.round(subtotal*S.disc/100);
+  const total=subtotal-discAmt;
+  const strankaIme=getStrankaIme();
+  const dejavnost=getDejavnost();
+  const ddvRate=0.22;
+
+  const wb=XLSX.utils.book_new();
+  const wsData=[];
+
+  wsData.push(['GRAFEIO','','','GRADNIK ODLIČNOSTI','']);
+  wsData.push(['PONUDBA','','','','']);
+  wsData.push(['Številka:','PON-'+new Date().getFullYear()+'-001','','Datum:',todayStr()]);
+  wsData.push(['Veljavnost:','30 dni','','','']);
+  wsData.push([]);
+  wsData.push(['NAROČNIK','','','','']);
+  wsData.push([strankaIme||'[Naziv podjetja / ime]','','','','']);
+  if(dejavnost) wsData.push([dejavnost,'','','','']);
+  wsData.push([]);
+  wsData.push(['#','Opis storitve','Kol.','Cena / enoto (€)','Skupaj (€)']);
+
+  const firstDataRow = wsData.length + 1;
+  lines.forEach((l,i)=>{
+    wsData.push([i+1, l.name, 1, l.price, l.price]);
+  });
+  // empty rows up to 8
+  for(let i=lines.length;i<8;i++) wsData.push([i+1,'',1,0,0]);
+  const lastDataRow = wsData.length;
+
+  wsData.push([]);
+  wsData.push(['','','','Skupaj brez DDV (€):',subtotal]);
+  if(S.disc>0) wsData.push(['','','','Popust '+S.disc+' % (€):','-'+discAmt]);
+  wsData.push(['','','','DDV 22 % (€):',Math.round((S.disc>0?total:subtotal)*ddvRate)]);
+  wsData.push(['','','','SKUPAJ Z DDV (€):',Math.round((S.disc>0?total:subtotal)*(1+ddvRate))]);
+  if(S.retainer>0) wsData.push(['','','','Mesečno vzdrževanje (€/mes):',S.retainer+' ('+S.retainerName+')']);
+  wsData.push([]);
+  wsData.push(['Predujem: 50 % ob potrditvi naročila · 50 % pred izročitvijo','','','','']);
+  wsData.push(['Cene so v EUR brez DDV. Plačilo v roku 15 dni od prejema računa.','','','','']);
+  wsData.push([]);
+  wsData.push(['GRAFEIO · info@grafeio.si · grafeio.si','','','','']);
+
+  const ws=XLSX.utils.aoa_to_sheet(wsData);
+
+  // Column widths
+  ws['!cols']=[{wch:5},{wch:40},{wch:8},{wch:22},{wch:16}];
+
+  // Merge cells
+  const merges=[
+    {s:{r:0,c:0},e:{r:0,c:2}},{s:{r:0,c:3},e:{r:0,c:4}},
+    {s:{r:1,c:0},e:{r:1,c:4}},
+    {s:{r:5,c:0},e:{r:5,c:4}},
+    {s:{r:6,c:0},e:{r:6,c:4}},
+  ];
+  ws['!merges']=merges;
+
+  // Print settings
+  ws['!pageSetup']={paperSize:9,orientation:'portrait',fitToWidth:1,fitToHeight:0};
+  ws['!margins']={left:0.6,right:0.6,top:0.7,bottom:0.7};
+  ws['!printArea']='A1:E'+wsData.length;
+
+  XLSX.utils.book_append_sheet(wb, ws, 'Ponudba');
+
+  const fname='Ponudba GRAFEIO - '+strankaIme+'.xlsx';
+  XLSX.writeFile(wb, fname);
+}
+
 function downloadWord(){
   const {lines,subtotal}=buildLines();
   const discAmt=Math.round(subtotal*S.disc/100);
@@ -490,7 +578,8 @@ table{width:100%;border-collapse:collapse;margin-bottom:24px;}
 .footer-note{font-size:11px;color:#888;margin-top:32px;border-top:0.5px solid #E0E0E0;padding-top:16px;line-height:1.8;}
 .logo{font-size:36px;margin-bottom:0;}
 .logoword{font-size:12px;letter-spacing:6px;font-weight:300;}
-</style></head>
+</style><script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
 <body>
 <p class="logo">g<span class="logoword"> RAFEIO</span></p>
 <p style="font-size:9px;color:#888;letter-spacing:2px;margin-bottom:40px;">GRADNIK ODLIČNOSTI</p>
