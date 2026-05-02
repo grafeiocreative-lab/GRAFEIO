@@ -20,11 +20,11 @@
       "barva": "sage"
     },
     {
-      "naziv": "Poslovni procesi",
-      "opis": "Narišemo, kako vaše podjetje dejansko deluje. Naročanje, sprejemi, opomniki, sledenje strankam. Jasni procesi pomenijo manj kaosa.",
-      "tag": "Red v ozadju",
-      "barva": "mix-tss"
-    },
+  "naziv": "Obraz podjetja",
+  "opis": "Logo, slogan, barve, zgodba. Prva stvar, ki jo stranka vidi, preden sploh stopi skozi vrata. Uredimo, da bo vtis pravi.",
+  "tag": "Vaša podoba",
+  "barva": "mix-tss"
+},
     {
       "naziv": "Orodja, ki rešujejo težave",
       "opis": "Kalkulator za dopust, evidenca ur, obrazec za naročanje, cenik z avtomatskim izračunom. Majhna orodja, ki jih stranka ali zaposleni uporablja vsak dan, jim prihranijo ure na teden.",
