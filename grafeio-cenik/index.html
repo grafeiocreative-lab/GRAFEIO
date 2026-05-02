@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GRAFEIO · Ponudba</title>
+<style>
+:root{--terra:#C4521A;--slate:#4A7BA5;--sage:#6A9970;--obs:#111111;--border:#E0E0E0;--muted:#888;--bg:#F8F7F5;--card:#FFFFFF;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:Arial,sans-serif;background:var(--bg);color:var(--obs);}
+
+/* PASSWORD SCREEN */
+#lockScreen{position:fixed;inset:0;background:var(--obs);display:flex;align-items:center;justify-content:center;z-index:100;flex-direction:column;gap:24px;}
+#lockScreen.hidden{display:none;}
+.lock-logo{display:flex;align-items:baseline;gap:4px;}
+.lock-g{font-size:56px;color:white;line-height:1;}
+.lock-word{font-size:16px;letter-spacing:6px;color:white;font-weight:300;}
+.lock-dots{display:flex;gap:3px;margin-left:8px;margin-bottom:4px;align-items:flex-end;}
+.ld{border-radius:1px;}
+.lock-input{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:6px;padding:14px 20px;font-size:16px;color:white;letter-spacing:3px;text-align:center;width:260px;outline:none;}
+.lock-input::placeholder{color:rgba(255,255,255,.3);letter-spacing:1px;}
+.lock-input:focus{border-color:var(--terra);}
+.lock-btn{background:var(--terra);border:none;border-radius:6px;padding:14px 40px;color:white;font-size:13px;letter-spacing:2px;cursor:pointer;width:260px;}
+.lock-btn:hover{background:#A8431A;}
+.lock-err{color:var(--terra);font-size:12px;letter-spacing:1px;height:16px;}
+
+/* MAIN */
+#mainScreen{display:none;}
+#mainScreen.visible{display:block;}
+.page{max-width:860px;margin:0 auto;padding:32px 24px 64px;}
+
+.header{display:flex;align-items:center;justify-content:space-between;margin-bottom:32px;padding-bottom:20px;border-bottom:0.5px solid var(--border);}
+.header-logo{display:flex;align-items:baseline;gap:2px;}
+.hg{font-size:44px;line-height:1;}
+.hw{font-size:13px;letter-spacing:6px;font-weight:300;margin-left:2px;}
+.hdots{display:flex;gap:3px;margin-left:8px;margin-bottom:3px;align-items:flex-end;}
+.header-tag{font-size:10px;letter-spacing:2px;color:var(--muted);text-transform:uppercase;}
+
+h2{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:12px;}
+.section{margin-bottom:20px;}
+
+.pkg-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:24px;}
+.pkg-card{border:1.5px solid var(--border);border-radius:6px;padding:14px 12px;cursor:pointer;text-align:center;background:var(--card);transition:border-color .15s;}
+.pkg-card:hover{border-color:var(--slate);}
+.pkg-card.selected{border-color:var(--terra);background:#FFF6F2;}
+.pkg-name{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+.pkg-price{font-size:22px;}
+.pkg-price span{font-size:12px;color:var(--muted);}
+.custom-price{width:100%;border:1.5px solid var(--terra);border-radius:6px;padding:8px 10px;font-size:18px;text-align:center;margin-top:6px;background:white;}
+
+.addon-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;}
+.addon-item{display:flex;align-items:center;gap:8px;padding:8px 10px;border:0.5px solid var(--border);border-radius:6px;cursor:pointer;background:var(--card);}
+.addon-item:hover{border-color:var(--slate);}
+.addon-item.checked{border-color:var(--sage);background:#F3FAF3;}
+.addon-cb{width:14px;height:14px;border:1.5px solid var(--border);border-radius:3px;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+.addon-item.checked .addon-cb{background:var(--sage);border-color:var(--sage);}
+.cbchk{color:white;font-size:10px;display:none;}
+.addon-item.checked .cbchk{display:block;}
+.addon-label{font-size:13px;flex:1;}
+.addon-price{font-size:13px;color:var(--terra);font-weight:500;white-space:nowrap;}
+
+.migr-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.migr-card{border:1.5px solid var(--border);border-radius:6px;padding:14px;background:var(--card);}
+.migr-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}
+.migr-name{font-size:13px;font-weight:500;}
+.migr-badge{font-size:10px;color:var(--slate);background:#E8F0FA;padding:2px 8px;border-radius:10px;}
+.migr-tiers{display:flex;flex-direction:column;gap:4px;}
+.migr-tier{display:flex;justify-content:space-between;align-items:center;padding:6px 8px;border-radius:4px;cursor:pointer;border:0.5px solid var(--border);}
+.migr-tier:hover{border-color:var(--slate);}
+.migr-tier.sel{border-color:var(--slate);background:#E8F0FA;}
+.mt-name{font-size:12px;color:#555;}
+.mt-lim{font-size:11px;color:var(--muted);}
+.mt-price{font-size:13px;color:var(--slate);font-weight:500;}
+
+.retainer-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-bottom:6px;}
+.ret-card{border:1.5px solid var(--border);border-radius:6px;padding:10px;cursor:pointer;text-align:center;background:var(--card);}
+.ret-card:hover{border-color:var(--slate);}
+.ret-card.selected{border-color:var(--sage);background:#F3FAF3;}
+.rn{font-size:11px;color:var(--muted);margin-bottom:4px;}
+.rp{font-size:16px;}
+
+.qty-row{display:flex;align-items:center;gap:8px;padding:8px 10px;border:0.5px solid var(--border);border-radius:6px;background:var(--card);margin-bottom:6px;}
+.qty-label{font-size:13px;flex:1;}
+.qty-price{font-size:13px;color:var(--terra);width:70px;text-align:right;}
+.qty-ctrl{display:flex;align-items:center;gap:6px;}
+.qbtn{width:24px;height:24px;border:0.5px solid var(--border);border-radius:4px;background:#F5F5F3;cursor:pointer;font-size:15px;display:flex;align-items:center;justify-content:center;}
+.qbtn:hover{border-color:var(--slate);}
+.qval{font-size:14px;width:20px;text-align:center;}
+
+.disc-row{display:flex;align-items:center;gap:12px;padding:12px 0;}
+.disc-row label{font-size:13px;color:#555;width:80px;flex-shrink:0;}
+.disc-row input[type=range]{flex:1;accent-color:var(--terra);}
+.dval{font-size:15px;font-weight:500;min-width:42px;text-align:right;}
+.disc-warn{font-size:12px;color:var(--terra);padding:4px 8px;border:0.5px solid #F0C0A0;border-radius:4px;background:#FFF6F0;display:none;margin-top:4px;}
+
+.note{font-size:11px;color:var(--muted);margin-top:6px;font-style:italic;}
+
+/* SUMMARY */
+.summary-card{border:1.5px solid var(--border);border-top:3px solid var(--terra);border-radius:8px;padding:24px;margin-top:24px;background:var(--card);}
+.summary-title{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:16px;}
+.sline{display:flex;justify-content:space-between;padding:5px 0;border-bottom:0.5px solid var(--border);font-size:13px;color:#555;}
+.sline .sn{color:var(--obs);}
+.stotal{display:flex;justify-content:space-between;align-items:baseline;margin-top:14px;padding-top:14px;border-top:1px solid var(--border);}
+.stlabel{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);}
+.stprice{font-size:34px;}
+.disc-pill{display:inline-block;background:#EAF6EA;color:var(--sage);font-size:11px;padding:2px 8px;border-radius:10px;margin-left:6px;}
+
+/* ACTION BUTTONS */
+.action-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px;}
+.btn-word{padding:13px;border:1.5px solid var(--slate);border-radius:6px;background:transparent;cursor:pointer;font-size:13px;color:var(--slate);letter-spacing:1px;width:100%;}
+.btn-word:hover{background:#F0F6FF;}
+.btn-wa{padding:13px;border:1.5px solid #25D366;border-radius:6px;background:transparent;cursor:pointer;font-size:13px;color:#128C5E;letter-spacing:1px;width:100%;}
+.btn-wa:hover{background:#F0FFF5;}
+.btn-reset{width:100%;margin-top:10px;padding:9px;border:0.5px solid var(--border);border-radius:6px;background:transparent;cursor:pointer;font-size:12px;color:var(--muted);}
+.btn-reset:hover{border-color:var(--muted);}
+
+/* STRANKA INPUT */
+.stranka-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:20px;}
+.stranka-row input,.stranka-row textarea{border:0.5px solid var(--border);border-radius:6px;padding:10px 12px;font-size:13px;font-family:Arial,sans-serif;background:white;color:var(--obs);resize:none;}
+.stranka-row input:focus,.stranka-row textarea:focus{outline:none;border-color:var(--slate);}
+</style>
+</head>
+<body>
+
+<!-- LOCK SCREEN -->
+<div id="lockScreen">
+  <div class="lock-logo">
+    <span class="lock-g">g</span>
+    <span class="lock-word">RAFEIO</span>
+    <div class="lock-dots">
+      <div class="ld" style="width:8px;height:8px;background:#C4521A;"></div>
+      <div class="ld" style="width:6px;height:6px;background:#4A7BA5;margin-bottom:1px;"></div>
+      <div class="ld" style="width:8px;height:8px;background:#6A9970;"></div>
+    </div>
+  </div>
+  <input class="lock-input" id="pwInput" type="password" placeholder="geslo" onkeydown="if(event.key==='Enter')checkPw()">
+  <button class="lock-btn" onclick="checkPw()">VSTOPI</button>
+  <div class="lock-err" id="lockErr">&nbsp;</div>
+</div>
+
+<!-- MAIN SCREEN -->
+<div id="mainScreen">
+<div class="page">
+
+  <div class="header">
+    <div class="header-logo">
+      <span class="hg">g</span>
+      <span class="hw">RAFEIO</span>
+      <div class="hdots">
+        <div class="ld" style="width:7px;height:7px;background:#C4521A;border-radius:1px;"></div>
+        <div class="ld" style="width:5px;height:5px;background:#4A7BA5;border-radius:1px;margin-bottom:1px;"></div>
+        <div class="ld" style="width:7px;height:7px;background:#6A9970;border-radius:1px;"></div>
+      </div>
+    </div>
+    <span class="header-tag">Kalkulator ponudbe · interno</span>
+  </div>
+
+  <!-- STRANKA -->
+  <div class="section">
+    <h2>Stranka</h2>
+    <div class="stranka-row">
+      <input type="text" id="strankaIme" placeholder="Ime stranke ali podjetja">
+      <input type="text" id="strankaDejavnost" placeholder="Dejavnost (npr. avtoservis, kozmetika)">
+    </div>
+  </div>
+
+  <!-- 01 OSNOVA -->
+  <h2>01 · Osnova projekta</h2>
+  <div class="pkg-grid">
+    <div class="pkg-card" data-pkg="osnovna" data-price="499" onclick="selectPkg(this)">
+      <div class="pkg-name">Osnovna</div>
+      <div class="pkg-price">€499 <span>enkr.</span></div>
+    </div>
+    <div class="pkg-card" data-pkg="profesionalna" data-price="890" onclick="selectPkg(this)">
+      <div class="pkg-name">Profesionalna</div>
+      <div class="pkg-price">€890 <span>enkr.</span></div>
+    </div>
+    <div class="pkg-card" data-pkg="kompleksna" data-price="1290" onclick="selectPkg(this)">
+      <div class="pkg-name">Kompleksna</div>
+      <div class="pkg-price">€1.290 <span>enkr.</span></div>
+    </div>
+    <div class="pkg-card" data-pkg="dogovor" data-price="0" onclick="selectPkg(this)">
+      <div class="pkg-name">Po dogovoru</div>
+      <div class="pkg-price" id="customDisplay">€ <span>vnesi</span></div>
+      <input class="custom-price" id="customInput" type="number" min="0" placeholder="npr. 350" style="display:none" oninput="updateCustom()" onclick="event.stopPropagation()">
+    </div>
+  </div>
+
+  <!-- 02 MIGRACIJA -->
+  <div class="section">
+    <h2>02 · Platformska migracija · izbirno</h2>
+    <div class="migr-grid">
+      <div class="migr-card" id="wp-card">
+        <div class="migr-head"><span class="migr-name">WordPress migracija</span><span class="migr-badge">HTML → WP</span></div>
+        <div class="migr-tiers">
+          <div class="migr-tier sel" onclick="selectMigr('wp','none',0,this)"><span class="mt-name">Brez</span><span class="mt-price" style="color:var(--muted)">—</span></div>
+          <div class="migr-tier" onclick="selectMigr('wp','wp1',350,this)"><div><div class="mt-name">Enostavna</div><div class="mt-lim">do 3 strani</div></div><span class="mt-price">€350</span></div>
+          <div class="migr-tier" onclick="selectMigr('wp','wp2',550,this)"><div><div class="mt-name">Standardna</div><div class="mt-lim">do 5 strani</div></div><span class="mt-price">€550</span></div>
+          <div class="migr-tier" onclick="selectMigr('wp','wp3',800,this)"><div><div class="mt-name">Kompleksna</div><div class="mt-lim">do 7 strani</div></div><span class="mt-price">€800</span></div>
+        </div>
+      </div>
+      <div class="migr-card" id="odoo-card">
+        <div class="migr-head"><span class="migr-name">Odoo migracija</span><span class="migr-badge">HTML → Odoo</span></div>
+        <div class="migr-tiers">
+          <div class="migr-tier sel" onclick="selectMigr('odoo','none',0,this)"><span class="mt-name">Brez</span><span class="mt-price" style="color:var(--muted)">—</span></div>
+          <div class="migr-tier" onclick="selectMigr('odoo','od1',600,this)"><div><div class="mt-name">Osnovna</div><div class="mt-lim">do 3 strani</div></div><span class="mt-price">od €600</span></div>
+          <div class="migr-tier" onclick="selectMigr('odoo','od2',900,this)"><div><div class="mt-name">Standardna</div><div class="mt-lim">do 5 strani</div></div><span class="mt-price">od €900</span></div>
+          <div class="migr-tier" onclick="selectMigr('odoo','od3',1300,this)"><div><div class="mt-name">Kompleksna</div><div class="mt-lim">do 7 strani</div></div><span class="mt-price">od €1.300</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="note">Migracija se zaračuna namesto paketa Osnovna–Kompleksna, ne povrh njega.</div>
+  </div>
+
+  <!-- 03 DODATKI -->
+  <div class="section">
+    <h2>03 · Enkratni dodatki</h2>
+    <div class="addon-grid" id="addonGrid"></div>
+  </div>
+
+  <!-- 04 CGP -->
+  <div class="section">
+    <h2>04 · Mini CGP · grafična podoba</h2>
+    <div class="addon-grid" id="cgpGrid"></div>
+  </div>
+
+  <!-- 05 EMAIL -->
+  <div class="section">
+    <h2>05 · E-poštni marketing</h2>
+    <div class="addon-grid" id="emailGrid"></div>
+  </div>
+
+  <!-- 06 RETAINER -->
+  <div class="section">
+    <h2>06 · Vzdrževanje · mesečni retainer</h2>
+    <div class="retainer-grid" id="retainerGrid">
+      <div class="ret-card selected" data-price="0" onclick="selectRetainer(this)"><div class="rn">Brez</div><div class="rp" style="color:var(--muted)">—</div></div>
+      <div class="ret-card" data-price="50" onclick="selectRetainer(this)"><div class="rn">Osnovno</div><div class="rp">€50<span style="font-size:11px;color:var(--muted)">/mes</span></div></div>
+      <div class="ret-card" data-price="100" onclick="selectRetainer(this)"><div class="rn">Aktivno</div><div class="rp">€100<span style="font-size:11px;color:var(--muted)">/mes</span></div></div>
+      <div class="ret-card" data-price="150" onclick="selectRetainer(this)"><div class="rn">Rast</div><div class="rp">€150<span style="font-size:11px;color:var(--muted)">/mes</span></div></div>
+    </div>
+    <div class="note">Neuporabljene ure se ne prenašajo v naslednji mesec.</div>
+  </div>
+
+  <!-- 07 SESTANKI -->
+  <div class="section">
+    <h2>07 · Sestanki in pot</h2>
+    <div class="qty-row">
+      <div class="qty-label">Dodatni sestanki / klici <span style="font-size:11px;color:var(--muted)">(nad uvodnim)</span></div>
+      <div class="qty-ctrl">
+        <div class="qbtn" onclick="adjustQty(-1)">−</div>
+        <div class="qval" id="mtg-val">0</div>
+        <div class="qbtn" onclick="adjustQty(1)">+</div>
+      </div>
+      <div class="qty-price" id="mtg-price">€0</div>
+    </div>
+    <div class="qty-row">
+      <div class="qty-label">Kilometrina <span style="font-size:11px;color:var(--muted)">(km povratno · €0,43/km)</span></div>
+      <div class="qty-ctrl">
+        <input type="number" id="km-input" min="0" value="0" step="1" style="width:70px;text-align:center;font-size:14px;padding:4px 6px;border:0.5px solid var(--border);border-radius:4px;" oninput="recalc()">
+      </div>
+      <div class="qty-price" id="km-price">€0</div>
+    </div>
+  </div>
+
+  <!-- 08 POPUST -->
+  <div class="section">
+    <h2>08 · Popust</h2>
+    <div class="disc-row">
+      <label>Popust</label>
+      <input type="range" id="discSlider" min="0" max="50" step="1" value="0" oninput="updateDisc()">
+      <div class="dval" id="discVal">0 %</div>
+    </div>
+    <div class="disc-warn" id="discWarn">Popust nad 20 % je izjema — evidentiraj razlog.</div>
+  </div>
+
+  <!-- SUMMARY -->
+  <div class="summary-card">
+    <div class="summary-title">Povzetek ponudbe · brez DDV</div>
+    <div id="summaryLines"><div style="font-size:13px;color:var(--muted);padding:8px 0">Izberi paket ali migracijo zgoraj.</div></div>
+    <div class="stotal">
+      <div>
+        <div class="stlabel">Skupaj enkratno</div>
+        <div id="summaryOrig" style="display:none;margin-top:4px;"></div>
+      </div>
+      <div style="text-align:right">
+        <div class="stprice" id="summaryTotal">€0</div>
+        <div id="summaryRetainer" style="font-size:13px;color:var(--muted);margin-top:2px;"></div>
+      </div>
+    </div>
+    <div class="action-row">
+      <button class="btn-word" onclick="downloadWord()">Prenesi ponudbo (.doc)</button>
+      <button class="btn-wa" onclick="sendWhatsApp()">Pošlji na WhatsApp</button>
+    </div>
+    <button class="btn-reset" onclick="resetAll()">Ponastavi vse</button>
+  </div>
+
+</div>
+</div>
+
+<script>
+const PW = 'grafeio123';
+const WA_NUM = '38641291690';
+
+function checkPw(){
+  const v = document.getElementById('pwInput').value;
+  if(v === PW){
+    document.getElementById('lockScreen').classList.add('hidden');
+    document.getElementById('mainScreen').classList.add('visible');
+    sessionStorage.setItem('grf_auth','1');
+  } else {
+    document.getElementById('lockErr').textContent = 'Napačno geslo.';
+    document.getElementById('pwInput').value = '';
+    setTimeout(()=>document.getElementById('lockErr').textContent='\u00a0', 2000);
+  }
+}
+if(sessionStorage.getItem('grf_auth')==='1'){
+  document.getElementById('lockScreen').classList.add('hidden');
+  document.getElementById('mainScreen').classList.add('visible');
+}
+
+const ADDONS=[
+  {id:'copy',label:'Copywriting',price:80,disp:'od €80 / stran'},
+  {id:'logo',label:'Logotip + identiteta',price:250,disp:'od €250'},
+  {id:'cms',label:'CMS (Netlify)',price:120,disp:'€120'},
+  {id:'cookie',label:'Cookie consent + zasebnost',price:80,disp:'€80'},
+  {id:'ai',label:'AI slike za stran',price:120,disp:'od €120'},
+  {id:'bilingual',label:'Dvojezičnost SL+EN',price:180,disp:'od €180'},
+  {id:'urgent',label:'Urgentna popravila',price:90,disp:'€90 / intervencija'},
+  {id:'domain',label:'Grafeio registrira domeno',price:50,disp:'€50'},
+];
+const CGP=[
+  {id:'cgp-s',label:'CGP Začetni',price:250,disp:'od €250'},
+  {id:'cgp-m',label:'CGP Standardni',price:450,disp:'od €450'},
+  {id:'cgp-l',label:'CGP Razširjeni',price:700,disp:'od €700'},
+];
+const EMAIL=[
+  {id:'em-1',label:'Enkratna e-mail kampanja',price:80,disp:'od €80 / pošiljka'},
+  {id:'em-m',label:'Mesečni e-mail paket',price:60,disp:'od €60 / pošiljka'},
+];
+
+const S={pkg:null,pkgPrice:0,pkgName:'',addons:{},migr:{wp:{id:'none',price:0,label:''},odoo:{id:'none',price:0,label:''}},retainer:0,retainerName:'',mtg:0,disc:0};
+
+function buildGrid(cId, items){
+  const c = document.getElementById(cId);
+  c.innerHTML = '';
+  items.forEach(a=>{
+    const d = document.createElement('div');
+    d.className='addon-item'; d.id='addon-'+a.id;
+    d.onclick=()=>toggleAddon(a);
+    d.innerHTML='<div class="addon-cb"><span class="cbchk">✓</span></div><span class="addon-label">'+a.label+'</span><span class="addon-price">'+a.disp+'</span>';
+    c.appendChild(d);
+  });
+}
+buildGrid('addonGrid',ADDONS);
+buildGrid('cgpGrid',CGP);
+buildGrid('emailGrid',EMAIL);
+
+function selectPkg(el){
+  document.querySelectorAll('.pkg-card').forEach(c=>c.classList.remove('selected'));
+  el.classList.add('selected');
+  S.pkgName=el.dataset.pkg;
+  const inp=document.getElementById('customInput'),disp=document.getElementById('customDisplay');
+  if(el.dataset.pkg==='dogovor'){inp.style.display='block';disp.style.display='none';S.pkgPrice=parseInt(inp.value)||0;}
+  else{inp.style.display='none';disp.style.display='block';S.pkgPrice=parseInt(el.dataset.price);}
+  recalc();
+}
+function updateCustom(){S.pkgPrice=parseInt(document.getElementById('customInput').value)||0;recalc();}
+
+function selectMigr(platform,id,price,el){
+  document.querySelectorAll('#'+platform+'-card .migr-tier').forEach(t=>t.classList.remove('sel'));
+  el.classList.add('sel');
+  const label=id==='none'?'':el.querySelector('.mt-name').textContent+' migracija ('+platform.toUpperCase()+')';
+  S.migr[platform]={id,price,label};
+  recalc();
+}
+
+function toggleAddon(a){
+  const el=document.getElementById('addon-'+a.id);
+  if(S.addons[a.id]){delete S.addons[a.id];el.classList.remove('checked');}
+  else{S.addons[a.id]={label:a.label,price:a.price,disp:a.disp};el.classList.add('checked');}
+  recalc();
+}
+
+function selectRetainer(el){
+  document.querySelectorAll('#retainerGrid .ret-card').forEach(c=>c.classList.remove('selected'));
+  el.classList.add('selected');
+  S.retainer=parseInt(el.dataset.price)||0;
+  S.retainerName=el.querySelector('.rn').textContent;
+  recalc();
+}
+
+let mtgCount=0;
+function adjustQty(delta){
+  mtgCount=Math.max(0,mtgCount+delta);
+  document.getElementById('mtg-val').textContent=mtgCount;
+  S.mtg=mtgCount; recalc();
+}
+
+function updateDisc(){
+  const v=parseInt(document.getElementById('discSlider').value);
+  S.disc=v;
+  const dv=document.getElementById('discVal');
+  dv.textContent=v+' %'; dv.style.color=v>20?'#C4521A':'#111';
+  document.getElementById('discWarn').style.display=v>20?'block':'none';
+  recalc();
+}
+
+function fmt(n){return n.toLocaleString('sl-SI');}
+
+function buildLines(){
+  const lines=[]; let subtotal=0;
+  const pkgNames={osnovna:'Paket Osnovna',profesionalna:'Paket Profesionalna',kompleksna:'Paket Kompleksna',dogovor:'Paket po dogovoru'};
+  if(S.pkgPrice>0||S.pkgName==='dogovor'){
+    lines.push({name:pkgNames[S.pkgName]||'Paket',price:S.pkgPrice,disp:'€'+fmt(S.pkgPrice)});
+    subtotal+=S.pkgPrice;
+  }
+  ['wp','odoo'].forEach(p=>{
+    const m=S.migr[p];
+    if(m.id!=='none'&&m.price>0){
+      lines.push({name:m.label,price:m.price,disp:(p==='odoo'?'od ':'')+'€'+fmt(m.price)});
+      subtotal+=m.price;
+    }
+  });
+  Object.values(S.addons).forEach(a=>{
+    lines.push({name:a.label,price:a.price,disp:a.disp});
+    subtotal+=a.price;
+  });
+  const km=parseFloat(document.getElementById('km-input').value)||0;
+  const kmCost=Math.round(km*0.43);
+  const mtgCost=S.mtg*35;
+  if(mtgCost>0){lines.push({name:'Sestanki ('+S.mtg+' h)',price:mtgCost,disp:'€'+fmt(mtgCost)});subtotal+=mtgCost;}
+  if(kmCost>0){lines.push({name:'Kilometrina ('+Math.round(km)+' km)',price:kmCost,disp:'€'+fmt(kmCost)});subtotal+=kmCost;}
+  return {lines,subtotal};
+}
+
+function recalc(){
+  const km=parseFloat(document.getElementById('km-input').value)||0;
+  document.getElementById('km-price').textContent='€'+Math.round(km*0.43);
+  document.getElementById('mtg-price').textContent='€'+(S.mtg*35);
+
+  const {lines,subtotal}=buildLines();
+  const discAmt=Math.round(subtotal*S.disc/100);
+  const total=subtotal-discAmt;
+
+  const lEl=document.getElementById('summaryLines');
+  if(lines.length===0){lEl.innerHTML='<div style="font-size:13px;color:#888;padding:8px 0">Izberi paket ali migracijo zgoraj.</div>';}
+  else{
+    lEl.innerHTML=lines.map(l=>'<div class="sline"><span class="sn">'+l.name+'</span><span>'+l.disp+'</span></div>').join('')
+      +(S.disc>0?'<div class="sline" style="color:#6A9970"><span class="sn">Popust '+S.disc+' %</span><span>− €'+fmt(discAmt)+'</span></div>':'');
+  }
+
+  const origEl=document.getElementById('summaryOrig');
+  if(S.disc>0&&subtotal>0){
+    origEl.style.display='block';
+    origEl.innerHTML='<span style="font-size:13px;color:#888;text-decoration:line-through">€'+fmt(subtotal)+'</span><span class="disc-pill">-'+S.disc+'%</span>';
+  } else {origEl.style.display='none';}
+
+  document.getElementById('summaryTotal').textContent=subtotal>0?'€'+fmt(total):'€0';
+  document.getElementById('summaryRetainer').textContent=S.retainer>0?'+ retainer '+S.retainerName+' €'+S.retainer+'/mes':'';
+}
+
+function getStrankaIme(){return document.getElementById('strankaIme').value.trim()||'Stranka';}
+function getDejavnost(){return document.getElementById('strankaDejavnost').value.trim();}
+function todayStr(){const d=new Date();return d.getDate()+'. '+['januar','februar','marec','april','maj','junij','julij','avgust','september','oktober','november','december'][d.getMonth()]+' '+d.getFullYear();}
+
+function downloadWord(){
+  const {lines,subtotal}=buildLines();
+  const discAmt=Math.round(subtotal*S.disc/100);
+  const total=subtotal-discAmt;
+  const strankaIme=getStrankaIme();
+  const dejavnost=getDejavnost();
+
+  let tableRows='';
+  lines.forEach(l=>{
+    tableRows+=`<tr><td style="padding:6px 12px;border-bottom:0.5px solid #E0E0E0;">${l.name}</td><td style="padding:6px 12px;border-bottom:0.5px solid #E0E0E0;text-align:right;">${l.disp}</td></tr>`;
+  });
+  if(S.disc>0&&subtotal>0){
+    tableRows+=`<tr><td style="padding:6px 12px;color:#6A9970;">Popust ${S.disc} %</td><td style="padding:6px 12px;text-align:right;color:#6A9970;">− €${fmt(discAmt)}</td></tr>`;
+  }
+
+  const html=`<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">
+<head><meta charset="UTF-8"><style>
+body{font-family:Arial,sans-serif;color:#111111;margin:40px;}
+h1{font-size:28px;font-weight:300;letter-spacing:2px;margin-bottom:4px;}
+.sub{font-size:12px;color:#888;letter-spacing:1px;margin-bottom:32px;}
+.terra{color:#C4521A;}
+table{width:100%;border-collapse:collapse;margin-bottom:24px;}
+.total-row td{padding:12px;font-size:20px;border-top:2px solid #111;}
+.footer-note{font-size:11px;color:#888;margin-top:32px;border-top:0.5px solid #E0E0E0;padding-top:16px;line-height:1.8;}
+.logo{font-size:36px;margin-bottom:0;}
+.logoword{font-size:12px;letter-spacing:6px;font-weight:300;}
+</style></head>
+<body>
+<p class="logo">g<span class="logoword"> RAFEIO</span></p>
+<p style="font-size:9px;color:#888;letter-spacing:2px;margin-bottom:40px;">GRADNIK ODLIČNOSTI</p>
+<table style="margin-bottom:8px;"><tr>
+  <td style="width:50%;"><strong style="font-size:13px;letter-spacing:1px;text-transform:uppercase;color:#888;">Ponudba za</strong><br><span style="font-size:18px;">${strankaIme}</span>${dejavnost?'<br><span style="font-size:12px;color:#888;">'+dejavnost+'</span>':''}</td>
+  <td style="width:50%;text-align:right;vertical-align:top;"><span style="font-size:12px;color:#888;">${todayStr()}</span><br><span style="font-size:11px;color:#888;">Veljavnost: 30 dni</span></td>
+</tr></table>
+<table style="border-top:3px solid #C4521A;">
+  <tr style="background:#F8F7F5;"><th style="padding:8px 12px;text-align:left;font-size:10px;letter-spacing:2px;color:#888;font-weight:400;text-transform:uppercase;">Postavka</th><th style="padding:8px 12px;text-align:right;font-size:10px;letter-spacing:2px;color:#888;font-weight:400;text-transform:uppercase;">Cena (brez DDV)</th></tr>
+  ${tableRows}
+  <tr class="total-row"><td><strong>SKUPAJ enkratno</strong></td><td style="text-align:right;color:#C4521A;"><strong>€${fmt(total)}</strong></td></tr>
+</table>
+${S.retainer>0?'<p style="font-size:13px;color:#555;margin-bottom:24px;">Mesečno vzdrževanje (retainer <strong>'+S.retainerName+'</strong>): <strong>€'+S.retainer+' / mesec</strong></p>':''}
+<div class="footer-note">
+Predujem: 50 % ob potrditvi naročila · 50 % pred izročitvijo<br>
+Slike niso vključene. Koda je last naročnika.<br>
+Uvodni sestanek je vključen. Vsak nadaljnji sestanek ali klic nad 30 min: €35/ura.<br>
+GRAFEIO · grafeio.si · info@grafeio.si
+</div>
+</body></html>`;
+
+  const blob=new Blob([html],{type:'application/msword'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url;
+  a.download='Ponudba GRAFEIO - '+strankaIme+'.doc';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function sendWhatsApp(){
+  const {lines,subtotal}=buildLines();
+  const discAmt=Math.round(subtotal*S.disc/100);
+  const total=subtotal-discAmt;
+  const strankaIme=getStrankaIme();
+
+  let msg='*GRAFEIO · Okvirna ponudba*\n';
+  msg+='_'+todayStr()+'_\n\n';
+  if(strankaIme!=='Stranka')msg+='Stranka: '+strankaIme+'\n\n';
+  lines.forEach(l=>msg+=l.name+'  '+l.disp+'\n');
+  if(S.disc>0&&subtotal>0)msg+='Popust '+S.disc+' %  − €'+fmt(discAmt)+'\n';
+  msg+='\n*SKUPAJ (brez DDV): €'+fmt(total)+'*';
+  if(S.retainer>0)msg+='\nVzdrževanje: €'+S.retainer+'/mes ('+S.retainerName+')';
+  msg+='\n\nPredujem: 50 % ob potrditvi · 50 % pred izročitvijo\nVeljavnost ponudbe: 30 dni.\ngrafeio.si';
+
+  window.open('https://wa.me/'+WA_NUM+'?text='+encodeURIComponent(msg),'_blank');
+}
+
+function resetAll(){
+  document.querySelectorAll('.pkg-card').forEach(c=>c.classList.remove('selected'));
+  document.querySelectorAll('.migr-tier').forEach(t=>t.classList.remove('sel'));
+  document.querySelectorAll('#wp-card .migr-tier')[0].classList.add('sel');
+  document.querySelectorAll('#odoo-card .migr-tier')[0].classList.add('sel');
+  document.querySelectorAll('.addon-item').forEach(a=>a.classList.remove('checked'));
+  document.querySelectorAll('.ret-card').forEach(c=>c.classList.remove('selected'));
+  document.getElementById('retainerGrid').querySelector('[data-price="0"]').classList.add('selected');
+  document.getElementById('customInput').style.display='none';
+  document.getElementById('customDisplay').style.display='block';
+  document.getElementById('km-input').value=0;
+  document.getElementById('discSlider').value=0;
+  document.getElementById('discVal').textContent='0 %';
+  document.getElementById('discWarn').style.display='none';
+  document.getElementById('strankaIme').value='';
+  document.getElementById('strankaDejavnost').value='';
+  mtgCount=0;
+  document.getElementById('mtg-val').textContent='0';
+  Object.assign(S,{pkg:null,pkgPrice:0,pkgName:'',addons:{},migr:{wp:{id:'none',price:0,label:''},odoo:{id:'none',price:0,label:''}},retainer:0,retainerName:'',mtg:0,disc:0});
+  recalc();
+}
+
+recalc();
+</script>
+</body>
+</html>
