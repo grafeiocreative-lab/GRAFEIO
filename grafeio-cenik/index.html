@@ -290,7 +290,7 @@ h2{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--muted)
       </div>
     </div>
     <div class="action-row">
-      <button class="btn-word" onclick="openPrint()">Natisni / PDF</button>
+      <button class="btn-word" onclick="openGoogleSheets()">Odpri v Google Sheets</button>
       <button class="btn-word" style="border-color:var(--sage);color:var(--sage);" onclick="downloadExcel()">Excel (.xlsx)</button>
     </div>
     <div class="action-row" style="margin-top:0;">
@@ -468,6 +468,58 @@ function recalc(){
 function getStrankaIme(){return document.getElementById('strankaIme').value.trim()||'Stranka';}
 function getDejavnost(){return document.getElementById('strankaDejavnost').value.trim();}
 function todayStr(){const d=new Date();return d.getDate()+'. '+['januar','februar','marec','april','maj','junij','julij','avgust','september','oktober','november','december'][d.getMonth()]+' '+d.getFullYear();}
+
+function openGoogleSheets(){
+  const {lines,subtotal}=buildLines();
+  const discAmt=Math.round(subtotal*S.disc/100);
+  const total=subtotal-discAmt;
+  const ddv=Math.round(total*0.22);
+  const skupajDDV=total+ddv;
+  const strankaIme=getStrankaIme();
+  const dejavnost=getDejavnost();
+  const ponNum='PON-'+new Date().getFullYear()+'-001';
+
+  // Build CSV
+  const rows=[
+    ['GRAFEIO','','','GRADNIK ODLIČNOSTI',''],
+    ['PONUDBA','','','',''],
+    ['Številka:',ponNum,'','Datum:',todayStr()],
+    ['Veljavnost:','30 dni','','',''],
+    ['','','','',''],
+    ['NAROČNIK','','','',''],
+    [strankaIme||'','','','',''],
+    [dejavnost||'','','','',''],
+    ['','','','',''],
+    ['#','Opis storitve','Kol.','Cena / enoto (€)','Skupaj (€)'],
+  ];
+  for(let i=0;i<8;i++){
+    const item=lines[i];
+    rows.push([i+1, item?item.name:'', 1, item?item.price:0, item?item.price:0]);
+  }
+  rows.push(['','','','','']);
+  rows.push(['','','','Skupaj brez DDV (€):',total]);
+  if(S.disc>0) rows.push(['','','','Popust '+S.disc+' % (€):',-discAmt]);
+  rows.push(['','','','DDV 22 % (€):',ddv]);
+  rows.push(['','','','SKUPAJ Z DDV (€):',skupajDDV]);
+  if(S.retainer>0) rows.push(['','','','Mesečno vzdrževanje (€/mes):',S.retainer+' ('+S.retainerName+')']);
+  rows.push(['','','','','']);
+  rows.push(['Predujem: 50 % ob potrditvi naročila · 50 % pred izročitvijo','','','','']);
+  rows.push(['GRAFEIO · info@grafeio.si · grafeio.si','','','','']);
+
+  const csv=rows.map(r=>r.map(c=>{
+    const s=String(c);
+    return s.includes(',')||s.includes('"')||s.includes('\n')?'"'+s.replace(/"/g,'""')+'"':s;
+  }).join(',')).join('\n');
+
+  const blob=new Blob(['﻿'+csv],{type:'text/csv;charset=utf-8'});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url;
+  a.download='Ponudba GRAFEIO - '+strankaIme+'.csv';
+  a.click();
+  URL.revokeObjectURL(url);
+  setTimeout(()=>window.open('https://sheets.new','_blank'),800);
+}
 
 function openPrint(){
   const {lines,subtotal}=buildLines();
