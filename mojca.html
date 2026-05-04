@@ -1,17 +1,106 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mojca Babič · GRAFEIO</title>
+<meta property="og:type" content="profile">
+<meta property="og:url" content="https://grafeio.si/mojca">
+<meta property="og:title" content="Mojca Babič · GRAFEIO">
+<meta property="og:description" content="Kompleksno postane preprosto. Gradnik odličnosti.">
+<meta property="og:image" content="https://grafeio.si/vizitke/vizitka-mojca-front.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://grafeio.si/vizitke/vizitka-mojca-front.png">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--obsidian:#111111;--terracotta:#C4521A;--slate:#4A7BA5;--sage:#6A9970;--cream:#F5F5F3}
+body{font-family:'Helvetica Neue','Liberation Sans',Helvetica,Arial,sans-serif;background:#E8E8E5;min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 16px;-webkit-font-smoothing:antialiased}
+.card-wrapper{perspective:1200px;width:100%;max-width:420px;aspect-ratio:1.7/1;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.card-inner{position:relative;width:100%;height:100%;transition:transform .65s cubic-bezier(.4,0,.2,1);transform-style:preserve-3d}
+.card-wrapper.flipped .card-inner{transform:rotateY(180deg)}
+.card-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:10px;overflow:hidden;display:flex;box-shadow:0 8px 32px rgba(0,0,0,.22),0 2px 8px rgba(0,0,0,.12)}
+.front{background:var(--obsidian)}
+.front-left{width:44%;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.front-left .logo-g{font-family:Georgia,'Times New Roman',serif;font-size:min(28vw,160px);font-weight:400;color:#fff;line-height:.85;margin-left:-10%}
+.front-right{width:56%;padding:24px 24px 24px 8px;display:flex;flex-direction:column;justify-content:center}
+.squares{display:flex;gap:5px;margin-bottom:16px}
+.sq{width:13px;height:13px;border-radius:1px}
+.sq-t{background:var(--terracotta)}.sq-s{background:var(--slate)}.sq-g{background:var(--sage)}
+.front-name{font-size:18px;font-weight:700;color:#fff;letter-spacing:.3px}
+.front-tagline{font-size:12.5px;font-weight:300;font-style:italic;color:rgba(255,255,255,.55);margin-top:6px;line-height:1.5}
+.accent-line{width:100%;max-width:140px;height:2.5px;background:var(--terracotta);border-radius:1px;margin:14px 0}
+.front-contact{display:flex;flex-direction:column;gap:4px}
+.front-contact span{font-size:12px;font-weight:400;color:rgba(255,255,255,.7);letter-spacing:.2px}
+.front-contact span:last-child{font-weight:500;color:rgba(255,255,255,.85)}
+.back{background:var(--cream);transform:rotateY(180deg);flex-direction:column;justify-content:space-between;padding:28px 24px}
+.back-top{display:flex;justify-content:space-between;align-items:flex-start}
+.back-logo{display:flex;align-items:baseline;gap:8px}
+.back-logo .g{font-family:Georgia,'Times New Roman',serif;font-size:42px;font-weight:400;color:var(--obsidian);line-height:.85}
+.back-logo .wm{font-size:18px;font-weight:300;letter-spacing:5px;color:var(--obsidian)}
+.back-sub{font-size:10px;color:rgba(17,17,17,.35);margin-top:2px;margin-left:52px}
+.back-taglines{margin-top:auto}
+.back-taglines p{font-size:14px;font-weight:400;font-style:italic;color:var(--obsidian);line-height:1.6}
+.back-keywords{margin-top:12px;display:flex;gap:8px;font-size:10px;font-weight:700;letter-spacing:.5px}
+.kw-t{color:var(--terracotta)}.kw-s{color:var(--slate)}.kw-o{color:var(--obsidian)}
+.actions{margin-top:20px;display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.btn{display:flex;align-items:center;gap:8px;padding:12px 20px;border:none;border-radius:8px;font-family:inherit;font-size:13px;font-weight:400;letter-spacing:.3px;cursor:pointer;-webkit-tap-highlight-color:transparent;text-decoration:none;transition:opacity .2s}
+.btn:active{opacity:.7}
+.btn-dark{background:var(--obsidian);color:var(--cream)}
+.btn-light{background:#fff;color:var(--obsidian);border:1px solid rgba(17,17,17,.12)}
+.btn svg{flex-shrink:0}
+.hint{margin-top:14px;font-size:11px;font-weight:300;color:rgba(17,17,17,.3);text-align:center}
+</style>
+</head>
+<body>
+<div class="card-wrapper" id="card" onclick="this.classList.toggle('flipped')">
+  <div class="card-inner">
+    <div class="card-face front">
+      <div class="front-left"><div class="logo-g">g</div></div>
+      <div class="front-right">
+        <div class="squares"><div class="sq sq-t"></div><div class="sq sq-s"></div><div class="sq sq-g"></div></div>
+        <div class="front-name">Mojca Babič</div>
+        <div class="front-tagline">Kompleksno postane<br>preprosto.</div>
+        <div class="accent-line"></div>
+        <div class="front-contact">
+          <span>+386 (0)40 467 277</span>
+          <span>grafeio.creative@gmail.com</span>
+          <span>grafeio.si</span>
+        </div>
+      </div>
+    </div>
+    <div class="card-face back">
+      <div>
+        <div class="back-top">
+          <div>
+            <div class="back-logo"><span class="g">g</span><span class="wm">RAFEIO</span></div>
+            <div class="back-sub">Gradnik odličnosti.</div>
+          </div>
+          <div class="squares"><div class="sq sq-t"></div><div class="sq sq-s"></div><div class="sq sq-g"></div></div>
+        </div>
+      </div>
+      <div class="back-taglines">
+        <p>Vaša zgodba je naše izhodišče.<br>Kar izdelamo, nosi vaš odtis.</p>
+        <div class="back-keywords">
+          <span class="kw-t">PREPROSTO.</span>
+          <span class="kw-s">HITRO.</span>
+          <span class="kw-o">PROFESIONALNO.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="actions">
+  <button class="btn btn-dark" onclick="event.stopPropagation();downloadVCard()">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5F5F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+    Shrani kontakt
+  </button>
+  <a class="btn btn-light" href="tel:+38640467277" onclick="event.stopPropagation()">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C4521A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+    Pokliči
+  </a>
+</div>
+<div class="hint">Klikni na vizitko za obrat</div>
 <script>
-function checkPw(){
-  const inp=document.getElementById('pwInput');
-
-  if(inp.value==='g4r9!oK2'){
-    document.getElementById('lockScreen').classList.add('hidden');
-    document.getElementById('mainScreen').classList.add('visible');
-  } else {
-    document.getElementById('lockErr').textContent='Napačna koda';
-    inp.value='';
-    setTimeout(()=>document.getElementById('lockErr').innerHTML='&nbsp;',2000);
-  }
-}
-
 function downloadVCard(){
   const v=['BEGIN:VCARD','VERSION:3.0','FN:Mojca Babič','N:Babič;Mojca;;;','ORG:GRAFEIO','TITLE:Kompleksno postane preprosto.','TEL;TYPE=WORK,VOICE:+38640467277','EMAIL;TYPE=WORK:grafeio.creative@gmail.com','URL:https://grafeio.si','NOTE:GRAFEIO · Gradnik odličnosti','END:VCARD'].join('\r\n');
   const b=new Blob([v],{type:'text/vcard;charset=utf-8'});
@@ -20,3 +109,5 @@ function downloadVCard(){
   document.body.appendChild(a);a.click();document.body.removeChild(a);URL.revokeObjectURL(u);
 }
 </script>
+</body>
+</html>
