@@ -14,7 +14,27 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--obsidian:#111111;--terracotta:#C4521A;--slate:#4A7BA5;--sage:#6A9970;--cream:#F5F5F3}
-body{font-family:'Helvetica Neue','Liberation Sans',Helvetica,Arial,sans-serif;background:#E8E8E5;min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 16px;-webkit-font-smoothing:antialiased}
+body{font-family:'Helvetica Neue','Liberation Sans',Helvetica,Arial,sans-serif;background:#E8E8E5;min-height:100dvh;-webkit-font-smoothing:antialiased}
+
+/* ===== LOCK SCREEN (enak kot grafeio-cenik) ===== */
+#lockScreen{position:fixed;inset:0;background:var(--obsidian);display:flex;align-items:center;justify-content:center;z-index:100;flex-direction:column;gap:24px}
+#lockScreen.hidden{display:none}
+.lock-logo{display:flex;align-items:baseline;gap:4px}
+.lock-g{font-size:56px;color:white;line-height:1}
+.lock-word{font-size:16px;letter-spacing:6px;color:white;font-weight:300}
+.lock-dots{display:flex;gap:3px;margin-left:8px;margin-bottom:4px;align-items:flex-end}
+.ld{border-radius:1px}
+.lock-input{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:6px;padding:14px 20px;font-size:16px;color:white;letter-spacing:3px;text-align:center;width:260px;outline:none;font-family:inherit}
+.lock-input::placeholder{color:rgba(255,255,255,.3);letter-spacing:1px}
+.lock-input:focus{border-color:var(--terracotta)}
+.lock-btn{background:var(--terracotta);border:none;border-radius:6px;padding:14px 40px;color:white;font-size:13px;letter-spacing:2px;cursor:pointer;width:260px;font-family:inherit}
+.lock-btn:hover{background:#A8431A}
+.lock-err{color:var(--terracotta);font-size:12px;letter-spacing:1px;height:16px}
+
+/* ===== MAIN SCREEN ===== */
+#mainScreen{display:none}
+#mainScreen.visible{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100dvh;padding:24px 16px}
+
 .card-wrapper{perspective:1200px;width:100%;max-width:420px;aspect-ratio:1.7/1;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .card-inner{position:relative;width:100%;height:100%;transition:transform .65s cubic-bezier(.4,0,.2,1);transform-style:preserve-3d}
 .card-wrapper.flipped .card-inner{transform:rotateY(180deg)}
@@ -52,55 +72,88 @@ body{font-family:'Helvetica Neue','Liberation Sans',Helvetica,Arial,sans-serif;b
 </style>
 </head>
 <body>
-<div class="card-wrapper" id="card" onclick="this.classList.toggle('flipped')">
-  <div class="card-inner">
-    <div class="card-face front">
-      <div class="front-left"><div class="logo-g">g</div></div>
-      <div class="front-right">
-        <div class="squares"><div class="sq sq-t"></div><div class="sq sq-s"></div><div class="sq sq-g"></div></div>
-        <div class="front-name">Mojca Babič</div>
-        <div class="front-tagline">Kompleksno postane<br>preprosto.</div>
-        <div class="accent-line"></div>
-        <div class="front-contact">
-          <span>+386 (0)40 467 277</span>
-          <span>grafeio.creative@gmail.com</span>
-          <span>grafeio.si</span>
-        </div>
-      </div>
+
+<!-- LOCK SCREEN -->
+<div id="lockScreen">
+  <div class="lock-logo">
+    <span class="lock-g">g</span>
+    <span class="lock-word">RAFEIO</span>
+    <div class="lock-dots">
+      <div class="ld" style="width:8px;height:8px;background:#C4521A;"></div>
+      <div class="ld" style="width:6px;height:6px;background:#4A7BA5;margin-bottom:1px;"></div>
+      <div class="ld" style="width:8px;height:8px;background:#6A9970;"></div>
     </div>
-    <div class="card-face back">
-      <div>
-        <div class="back-top">
-          <div>
-            <div class="back-logo"><span class="g">g</span><span class="wm">RAFEIO</span></div>
-            <div class="back-sub">Gradnik odličnosti.</div>
-          </div>
+  </div>
+  <input class="lock-input" id="pwInput" type="password" placeholder="geslo" autofocus onkeydown="if(event.key==='Enter')checkPw()">
+  <button class="lock-btn" onclick="checkPw()">VSTOPI</button>
+  <div class="lock-err" id="lockErr">&nbsp;</div>
+</div>
+
+<!-- MAIN SCREEN -->
+<div id="mainScreen">
+  <div class="card-wrapper" id="card" onclick="this.classList.toggle('flipped')">
+    <div class="card-inner">
+      <div class="card-face front">
+        <div class="front-left"><div class="logo-g">g</div></div>
+        <div class="front-right">
           <div class="squares"><div class="sq sq-t"></div><div class="sq sq-s"></div><div class="sq sq-g"></div></div>
+          <div class="front-name">Mojca Babič</div>
+          <div class="front-tagline">Kompleksno postane<br>preprosto.</div>
+          <div class="accent-line"></div>
+          <div class="front-contact">
+            <span>+386 (0)40 467 277</span>
+            <span>grafeio.creative@gmail.com</span>
+            <span>grafeio.si</span>
+          </div>
         </div>
       </div>
-      <div class="back-taglines">
-        <p>Vaša zgodba je naše izhodišče.<br>Kar izdelamo, nosi vaš odtis.</p>
-        <div class="back-keywords">
-          <span class="kw-t">PREPROSTO.</span>
-          <span class="kw-s">HITRO.</span>
-          <span class="kw-o">PROFESIONALNO.</span>
+      <div class="card-face back">
+        <div>
+          <div class="back-top">
+            <div>
+              <div class="back-logo"><span class="g">g</span><span class="wm">RAFEIO</span></div>
+              <div class="back-sub">Gradnik odličnosti.</div>
+            </div>
+            <div class="squares"><div class="sq sq-t"></div><div class="sq sq-s"></div><div class="sq sq-g"></div></div>
+          </div>
+        </div>
+        <div class="back-taglines">
+          <p>Vaša zgodba je naše izhodišče.<br>Kar izdelamo, nosi vaš odtis.</p>
+          <div class="back-keywords">
+            <span class="kw-t">PREPROSTO.</span>
+            <span class="kw-s">HITRO.</span>
+            <span class="kw-o">PROFESIONALNO.</span>
+          </div>
         </div>
       </div>
     </div>
   </div>
+  <div class="actions">
+    <button class="btn btn-dark" onclick="event.stopPropagation();downloadVCard()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5F5F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+      Shrani kontakt
+    </button>
+    <a class="btn btn-light" href="tel:+38640467277" onclick="event.stopPropagation()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C4521A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      Pokliči
+    </a>
+  </div>
+  <div class="hint">Klikni na vizitko za obrat</div>
 </div>
-<div class="actions">
-  <button class="btn btn-dark" onclick="event.stopPropagation();downloadVCard()">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#F5F5F3" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
-    Shrani kontakt
-  </button>
-  <a class="btn btn-light" href="tel:+38640467277" onclick="event.stopPropagation()">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C4521A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-    Pokliči
-  </a>
-</div>
-<div class="hint">Klikni na vizitko za obrat</div>
+
 <script>
+function checkPw(){
+  const inp=document.getElementById('pwInput');
+  if(inp.value==='grafeio123'){
+    document.getElementById('lockScreen').classList.add('hidden');
+    document.getElementById('mainScreen').classList.add('visible');
+  } else {
+    document.getElementById('lockErr').textContent='Napačna koda';
+    inp.value='';
+    setTimeout(()=>document.getElementById('lockErr').innerHTML='&nbsp;',2000);
+  }
+}
+
 function downloadVCard(){
   const v=['BEGIN:VCARD','VERSION:3.0','FN:Mojca Babič','N:Babič;Mojca;;;','ORG:GRAFEIO','TITLE:Kompleksno postane preprosto.','TEL;TYPE=WORK,VOICE:+38640467277','EMAIL;TYPE=WORK:grafeio.creative@gmail.com','URL:https://grafeio.si','NOTE:GRAFEIO · Gradnik odličnosti','END:VCARD'].join('\r\n');
   const b=new Blob([v],{type:'text/vcard;charset=utf-8'});
