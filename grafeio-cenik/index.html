@@ -304,24 +304,25 @@ h2{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--muted)
 </div>
 
 <script>
-const PW = 'grafeio123';
+const PW_HASH = '9c6670b9c87ee115fe2599842106a2fcfec71ed9a760ae853f5d2f6ef1077114';
 const WA_NUM = '38641291690';
 
-function checkPw(){
-  const v = document.getElementById('pwInput').value;
-  if(v === PW){
+async function sha256(msg){
+  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(msg));
+  return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
+}
+
+async function checkPw(){
+  const inp = document.getElementById('pwInput');
+  const hash = await sha256(inp.value);
+  if(hash === PW_HASH){
     document.getElementById('lockScreen').classList.add('hidden');
     document.getElementById('mainScreen').classList.add('visible');
-    sessionStorage.setItem('grf_auth','1');
   } else {
     document.getElementById('lockErr').textContent = 'Napačno geslo.';
-    document.getElementById('pwInput').value = '';
-    setTimeout(()=>document.getElementById('lockErr').textContent='\u00a0', 2000);
+    inp.value = '';
+    setTimeout(()=>document.getElementById('lockErr').innerHTML='&nbsp;', 2000);
   }
-}
-if(sessionStorage.getItem('grf_auth')==='1'){
-  document.getElementById('lockScreen').classList.add('hidden');
-  document.getElementById('mainScreen').classList.add('visible');
 }
 
 const ADDONS=[
