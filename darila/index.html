@@ -1015,8 +1015,7 @@
   <h2>Podarite digitalni korak.</h2>
 
   <div class="form-wrap">
-    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="darila-form" id="darilaForm">
-      <input type="hidden" name="_subject" value="Novo naročilo darila · Grafeio Darila">
+    <form class="darila-form" id="darilaForm" onsubmit="return false;">
 
       <div class="form-group">
         <label for="paket">Izbrano darilo</label>
@@ -1057,7 +1056,18 @@
         <textarea name="sporocilo" id="sporocilo" rows="4" placeholder="Karkoli bi radi dodali: priložnost, poseben datum, ideja za izvedbo ..."></textarea>
       </div>
 
-      <button type="submit" class="form-submit">Pošljite naročilo</button>
+      <button type="button" id="darila-submit" class="form-submit" onclick="submitDarilo()">Pošljite naročilo</button>
+
+      <div id="darila-success" style="display:none;text-align:center;padding:24px 0;">
+        <div style="display:flex;justify-content:center;gap:8px;margin-bottom:16px;">
+          <span class="sq-t" style="width:10px;height:10px;display:block;"></span>
+          <span class="sq-s" style="width:10px;height:10px;display:block;"></span>
+          <span class="sq-g" style="width:10px;height:10px;display:block;"></span>
+        </div>
+        <p style="font-family:'Playfair Display',Georgia,serif;font-size:22px;font-weight:400;margin-bottom:8px;">Naročilo je na poti.</p>
+        <p style="font-size:13px;color:var(--text-soft);">Odgovorimo v 24 urah.</p>
+      </div>
+
       <p class="form-note">Odgovorimo v 24 urah. Po potrditvi vam pošljemo kratek vprašalnik za pripravo darila.</p>
     </form>
   </div>
@@ -1091,6 +1101,7 @@
 </footer>
 
 <script>
+// Predizpolni paket ob kliku na gumb
 document.querySelectorAll('[data-paket]').forEach(function(btn) {
   btn.addEventListener('click', function() {
     var paket = this.getAttribute('data-paket');
@@ -1105,6 +1116,62 @@ document.querySelectorAll('[data-paket]').forEach(function(btn) {
     }
   });
 });
+
+// Pošlji obrazec prek Formspree
+async function submitDarilo() {
+  var paket      = document.getElementById('paket').value;
+  var ime        = document.getElementById('ime').value.trim();
+  var email      = document.getElementById('email').value.trim();
+  var prejemnik  = document.getElementById('prejemnik').value.trim();
+  var dejavnost  = document.getElementById('dejavnost').value.trim();
+  var sporocilo  = document.getElementById('sporocilo').value.trim();
+  var btn        = document.getElementById('darila-submit');
+
+  if (!paket || !ime || !email) {
+    btn.textContent = 'Izpolnite darilo, ime in email.';
+    btn.style.background = 'var(--terracotta)';
+    setTimeout(function() {
+      btn.textContent = 'Pošljite naročilo';
+      btn.style.background = 'var(--obsidian)';
+    }, 2500);
+    return;
+  }
+
+  btn.textContent = 'Pošiljam...';
+  btn.disabled = true;
+
+  try {
+    var res = await fetch('https://formspree.io/f/xwvaogvw', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        _subject: 'Novo naročilo darila · Grafeio Darila',
+        paket: paket,
+        ime: ime,
+        email: email,
+        prejemnik: prejemnik,
+        dejavnost: dejavnost,
+        sporocilo: sporocilo
+      })
+    });
+
+    if (res.ok) {
+      btn.style.display = 'none';
+      document.getElementById('darila-success').style.display = 'block';
+      document.querySelector('.form-note').style.display = 'none';
+      ['paket','ime','email','prejemnik','dejavnost','sporocilo'].forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el) el.value = '';
+      });
+    } else {
+      throw new Error('server');
+    }
+  } catch(e) {
+    btn.textContent = 'Napaka. Pišite na grafeio.creative@gmail.com';
+    btn.style.background = 'var(--terracotta)';
+    btn.disabled = false;
+  }
+}
 </script>
 
 </body>
