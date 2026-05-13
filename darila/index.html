@@ -1,1032 +1,1161 @@
 <!DOCTYPE html>
 <html lang="sl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GRAFEIO Darila · Podarite digitalni korak naprej</title>
-<meta name="description" content="Digitalna darila za male podjetnike. Vizitka, spletna stran ali Google profil. Darilo, ki obrtniku spremeni posel.">
-<!-- Open Graph -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://grafeio.si/darila/">
-<meta property="og:title" content="GRAFEIO Darila · Podarite digitalni korak naprej">
-<meta property="og:description" content="Digitalna darila za male podjetnike. Vizitka, spletna stran ali Google profil. Darilo, ki obrtniku spremeni posel.">
-<meta property="og:image" content="https://grafeio.si/og-image.png">
-<meta name="twitter:card" content="summary_large_image">
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap');
-
-  :root {
-    --obsidian: #111111;
-    --terracotta: #C4521A;
-    --slate: #4A7BA5;
-    --sage: #6A9970;
-    --cream: #F5F5F3;
-    --warm-cream: #FAF8F5;
-    --text-soft: #3D3D3D;
-    --border-light: #E8E5E0;
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  html { scroll-behavior: smooth; }
-
-  body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    color: var(--obsidian);
-    background: var(--warm-cream);
-    line-height: 1.7;
-    font-weight: 400;
-    font-size: 15px;
-    -webkit-font-smoothing: antialiased;
-  }
-
-  /* === NAV === */
-  nav {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 100;
-    padding: 20px 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(250, 248, 245, 0.92);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border-light);
-  }
-
-  .nav-logo {
-    display: flex;
-    align-items: baseline;
-    gap: 6px;
-    text-decoration: none;
-    color: var(--obsidian);
-  }
-
-  .nav-logo .g {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 28px;
-    font-weight: 400;
-    line-height: 1;
-  }
-
-  .nav-logo .wordmark {
-    font-size: 14px;
-    font-weight: 300;
-    letter-spacing: 6px;
-    text-transform: uppercase;
-  }
-
-  .nav-logo .darila {
-    font-size: 11px;
-    font-weight: 400;
-    letter-spacing: 3px;
-    color: var(--terracotta);
-    text-transform: uppercase;
-    margin-left: 4px;
-  }
-
-  .nav-squares {
-    display: flex;
-    gap: 5px;
-  }
-
-  .nav-squares span {
-    width: 10px;
-    height: 10px;
-    display: block;
-  }
-
-  .sq-t { background: var(--terracotta); }
-  .sq-s { background: var(--slate); }
-  .sq-g { background: var(--sage); }
-
-  /* === HERO === */
-  .hero {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 120px 40px 80px;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .hero::before {
-    content: '';
-    position: absolute;
-    top: -100px;
-    right: -60px;
-    width: 400px;
-    height: 400px;
-    background: radial-gradient(circle, rgba(196,82,26,0.06) 0%, transparent 70%);
-    border-radius: 50%;
-  }
-
-  .hero::after {
-    content: '';
-    position: absolute;
-    bottom: -80px;
-    left: -40px;
-    width: 350px;
-    height: 350px;
-    background: radial-gradient(circle, rgba(74,123,165,0.05) 0%, transparent 70%);
-    border-radius: 50%;
-  }
-
-  .hero-label {
-    font-size: 10px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: var(--terracotta);
-    margin-bottom: 32px;
-    font-weight: 400;
-  }
-
-  .hero h1 {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: clamp(36px, 6vw, 64px);
-    font-weight: 400;
-    line-height: 1.15;
-    max-width: 700px;
-    margin-bottom: 28px;
-    letter-spacing: -0.5px;
-  }
-
-  .hero h1 em {
-    font-style: italic;
-    color: var(--terracotta);
-  }
-
-  .hero p {
-    font-size: 17px;
-    color: var(--text-soft);
-    max-width: 500px;
-    line-height: 1.8;
-    margin-bottom: 48px;
-    font-weight: 400;
-  }
-
-  .hero-cta {
-    display: inline-block;
-    padding: 16px 48px;
-    background: var(--obsidian);
-    color: var(--cream);
-    text-decoration: none;
-    font-size: 12px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    font-weight: 400;
-    transition: all 0.3s ease;
-  }
-
-  .hero-cta:hover {
-    background: var(--terracotta);
-    transform: translateY(-2px);
-  }
-
-  .hero-scroll {
-    position: absolute;
-    bottom: 40px;
-    font-size: 10px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--text-soft);
-    opacity: 0.5;
-  }
-
-  /* === SQUARES DIVIDER === */
-  .divider {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    padding: 60px 0;
-  }
-
-  .divider span {
-    width: 12px;
-    height: 12px;
-    display: block;
-  }
-
-  .divider span:nth-child(1) { animation: squareFloat 3s ease-in-out infinite; }
-  .divider span:nth-child(2) { animation: squareFloat 3s ease-in-out 0.4s infinite; }
-  .divider span:nth-child(3) { animation: squareFloat 3s ease-in-out 0.8s infinite; }
-
-  @keyframes squareFloat {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-6px); }
-  }
-
-  /* Nav squares animation */
-  .nav-squares span:nth-child(1) { animation: squareFloat 3s ease-in-out infinite; }
-  .nav-squares span:nth-child(2) { animation: squareFloat 3s ease-in-out 0.4s infinite; }
-  .nav-squares span:nth-child(3) { animation: squareFloat 3s ease-in-out 0.8s infinite; }
-
-  /* Footer squares animation */
-  .footer-squares span:nth-child(1) { animation: squareFloat 3s ease-in-out infinite; }
-  .footer-squares span:nth-child(2) { animation: squareFloat 3s ease-in-out 0.4s infinite; }
-  .footer-squares span:nth-child(3) { animation: squareFloat 3s ease-in-out 0.8s infinite; }
-
-  /* === ZA KOGA === */
-  .section {
-    padding: 40px 40px 80px;
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
-  .section-label {
-    font-size: 10px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: var(--slate);
-    margin-bottom: 16px;
-    font-weight: 400;
-  }
-
-  .section h2 {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: clamp(28px, 4vw, 42px);
-    font-weight: 400;
-    margin-bottom: 48px;
-    line-height: 1.2;
-  }
-
-  /* Za koga cards */
-  .occasions {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 24px;
-  }
-
-  .occasion-card {
-    padding: 32px 28px;
-    border: 1px solid var(--border-light);
-    background: white;
-    transition: all 0.3s ease;
-  }
-
-  .occasion-card:hover {
-    border-color: var(--terracotta);
-    transform: translateY(-4px);
-    box-shadow: 0 12px 32px rgba(17,17,17,0.06);
-  }
-
-  .occasion-icon {
-    width: 44px;
-    height: 44px;
-    margin-bottom: 20px;
-    display: block;
-  }
-
-  .occasion-icon svg {
-    width: 100%;
-    height: 100%;
-  }
-
-  .occasion-card h3 {
-    font-size: 15px;
-    font-weight: 500;
-    margin-bottom: 8px;
-  }
-
-  .occasion-card p {
-    font-size: 13px;
-    color: var(--text-soft);
-    line-height: 1.6;
-  }
-
-  /* === PAKETI === */
-  .packages {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 20px;
-  }
-
-  .package {
-    border: 1px solid var(--border-light);
-    background: white;
-    padding: 36px 28px;
-    display: flex;
-    flex-direction: column;
-    transition: all 0.3s ease;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .package::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 3px;
-    background: var(--border-light);
-    transition: background 0.3s ease;
-  }
-
-  .package:nth-child(1)::before { background: var(--terracotta); }
-  .package:nth-child(2)::before { background: var(--slate); }
-  .package:nth-child(3)::before { background: var(--sage); }
-  .package:nth-child(4)::before { background: var(--obsidian); }
-
-  .package:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 16px 40px rgba(17,17,17,0.07);
-  }
-
-  .package-name {
-    font-size: 10px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--text-soft);
-    margin-bottom: 8px;
-  }
-
-  .package h3 {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 24px;
-    font-weight: 400;
-    margin-bottom: 16px;
-  }
-
-  .package-price {
-    font-size: 28px;
-    font-weight: 300;
-    margin-bottom: 4px;
-    letter-spacing: -1px;
-  }
-
-  .package-price small {
-    font-size: 14px;
-    color: var(--text-soft);
-    font-weight: 400;
-  }
-
-  .package-desc {
-    font-size: 13px;
-    color: var(--text-soft);
-    line-height: 1.7;
-    margin: 20px 0;
-    flex: 1;
-    padding-top: 20px;
-    border-top: 1px solid var(--border-light);
-  }
-
-  .package-items {
-    list-style: none;
-    margin-bottom: 28px;
-  }
-
-  .package-items li {
-    font-size: 13px;
-    color: var(--text-soft);
-    padding: 6px 0;
-    padding-left: 16px;
-    position: relative;
-  }
-
-  .package-items li::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 13px;
-    width: 6px;
-    height: 6px;
-    background: var(--sage);
-    border-radius: 0;
-  }
-
-  .package-btn {
-    display: block;
-    width: 100%;
-    padding: 14px;
-    border: 1px solid var(--obsidian);
-    background: transparent;
-    color: var(--obsidian);
-    font-size: 11px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    text-align: center;
-    text-decoration: none;
-    cursor: pointer;
-    font-family: inherit;
-    transition: all 0.3s ease;
-  }
-
-  .package-btn:hover {
-    background: var(--obsidian);
-    color: var(--cream);
-  }
-
-  /* === CUSTOM IDEA === */
-  .custom-idea {
-    padding: 80px 40px;
-    background: var(--obsidian);
-    text-align: center;
-  }
-
-  .custom-idea-inner {
-    max-width: 560px;
-    margin: 0 auto;
-  }
-
-  .custom-idea-title {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: clamp(28px, 4vw, 38px);
-    font-weight: 400;
-    color: var(--cream);
-    margin-bottom: 20px;
-    line-height: 1.2;
-  }
-
-  .custom-idea-text {
-    font-size: 15px;
-    color: rgba(245,245,243,0.7);
-    line-height: 1.8;
-    margin-bottom: 28px;
-  }
-
-  .custom-idea-price {
-    font-size: 11px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--terracotta);
-    margin-bottom: 36px;
-  }
-
-  .custom-idea .hero-cta {
-    background: transparent;
-    border: 1px solid var(--cream);
-    color: var(--cream);
-  }
-
-  .custom-idea .hero-cta:hover {
-    background: var(--terracotta);
-    border-color: var(--terracotta);
-  }
-
-  /* === KAKO DELUJE === */
-  .steps {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 40px;
-    margin-top: 48px;
-  }
-
-  .step {
-    position: relative;
-  }
-
-  .step-num {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 56px;
-    font-weight: 400;
-    color: #C8C3BC;
-    line-height: 1;
-    margin-bottom: 16px;
-  }
-
-  .step h3 {
-    font-size: 15px;
-    font-weight: 500;
-    margin-bottom: 10px;
-  }
-
-  .step p {
-    font-size: 13px;
-    color: var(--text-soft);
-    line-height: 1.7;
-  }
-
-  /* === GIFT RIBBON === */
-  .ribbon-section {
-    padding: 80px 40px;
-    text-align: center;
-    max-width: 600px;
-    margin: 0 auto;
-  }
-
-  .ribbon-section blockquote {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: clamp(22px, 3vw, 30px);
-    font-weight: 400;
-    font-style: italic;
-    line-height: 1.5;
-    color: var(--obsidian);
-    margin-bottom: 16px;
-  }
-
-  .ribbon-section cite {
-    font-size: 12px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    font-style: normal;
-    color: var(--text-soft);
-  }
-
-  /* === FOOTER === */
-  footer {
-    background: var(--obsidian);
-    color: var(--cream);
-    padding: 60px 40px;
-    text-align: center;
-  }
-
-  .footer-logo {
-    display: flex;
-    align-items: baseline;
-    justify-content: center;
-    gap: 6px;
-    margin-bottom: 20px;
-    text-decoration: none;
-    color: var(--cream);
-  }
-
-  .footer-logo .g {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 32px;
-    font-weight: 400;
-  }
-
-  .footer-logo .wordmark {
-    font-size: 14px;
-    font-weight: 300;
-    letter-spacing: 6px;
-  }
-
-  .footer-tagline {
-    font-size: 12px;
-    color: rgba(245,245,243,0.6);
-    letter-spacing: 2px;
-    margin-bottom: 32px;
-  }
-
-  .footer-link {
-    color: var(--cream);
-    text-decoration: none;
-    font-size: 13px;
-    opacity: 0.8;
-    transition: opacity 0.3s;
-  }
-
-  .footer-link:hover { opacity: 1; }
-
-  .footer-squares {
-    display: flex;
-    justify-content: center;
-    gap: 6px;
-    margin-top: 40px;
-  }
-
-  .footer-squares span {
-    width: 8px;
-    height: 8px;
-    display: block;
-    opacity: 0.85;
-  }
-
-  .footer-copy {
-    font-size: 11px;
-    color: rgba(245,245,243,0.45);
-    margin-top: 40px;
-    letter-spacing: 1px;
-  }
-
-  /* === ORDER FORM === */
-  .form-wrap {
-    max-width: 640px;
-  }
-
-  .darila-form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .form-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-  }
-
-  .form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  .form-group label {
-    font-size: 10px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: var(--text-soft);
-    font-weight: 400;
-  }
-
-  .form-group input,
-  .form-group select,
-  .form-group textarea {
-    font-family: inherit;
-    font-size: 15px;
-    padding: 14px 16px;
-    border: 1px solid var(--border-light);
-    background: white;
-    color: var(--obsidian);
-    outline: none;
-    transition: border-color 0.3s ease;
-    -webkit-appearance: none;
-    border-radius: 0;
-  }
-
-  .form-group input:focus,
-  .form-group select:focus,
-  .form-group textarea:focus {
-    border-color: var(--terracotta);
-  }
-
-  .form-group input::placeholder,
-  .form-group textarea::placeholder {
-    color: #B8B3AC;
-  }
-
-  .form-group select {
-    cursor: pointer;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%233D3D3D' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 16px center;
-    padding-right: 40px;
-  }
-
-  .form-group textarea {
-    resize: vertical;
-    min-height: 100px;
-  }
-
-  .form-submit {
-    display: inline-block;
-    padding: 16px 48px;
-    background: var(--obsidian);
-    color: var(--cream);
-    border: none;
-    font-family: inherit;
-    font-size: 12px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    font-weight: 400;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    align-self: flex-start;
-  }
-
-  .form-submit:hover {
-    background: var(--terracotta);
-    transform: translateY(-2px);
-  }
-
-  .form-note {
-    font-size: 12px;
-    color: var(--text-soft);
-    line-height: 1.6;
-    opacity: 0.7;
-  }
-
-  /* === ANIMATIONS === */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(24px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .hero-label, .hero h1, .hero p, .hero-cta {
-    animation: fadeUp 0.8s ease both;
-  }
-  .hero h1 { animation-delay: 0.15s; }
-  .hero p { animation-delay: 0.3s; }
-  .hero-cta { animation-delay: 0.45s; }
-
-  /* === RESPONSIVE === */
-  @media (max-width: 768px) {
-    nav { padding: 16px 24px; }
-    .nav-logo .wordmark { display: none; }
-    .section { padding: 40px 24px 60px; }
-    .hero { padding: 100px 24px 60px; }
-    .steps { grid-template-columns: 1fr; gap: 32px; }
-    .packages { grid-template-columns: 1fr; }
-    .occasions { grid-template-columns: 1fr 1fr; }
-    .ribbon-section { padding: 60px 24px; }
-    footer { padding: 48px 24px; }
-    .form-row { grid-template-columns: 1fr; }
-  }
-
-  @media (max-width: 480px) {
-    .occasions { grid-template-columns: 1fr; }
-  }
-</style>
-</head>
-<body>
-
-<!-- NAV -->
-<nav>
-  <a href="/" class="nav-logo">
-    <span class="g">g</span>
-    <span class="wordmark">RAFEIO</span>
-    <span class="darila">darila</span>
-  </a>
-  <div class="nav-squares">
-    <span class="sq-t"></span>
-    <span class="sq-s"></span>
-    <span class="sq-g"></span>
-  </div>
-</nav>
-
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-label">Digitalna darila za male podjetnike</div>
-  <h1>Podarite <em>digitalni korak</em> naprej.</h1>
-  <p>Vizitka, spletna stran ali profil na Googlu. Darilo, ki obrtniku spremeni posel. Preprosto, lepo, uporabno.</p>
-  <a href="#paketi" class="hero-cta">Izberite darilo</a>
-  <div class="hero-scroll">↓</div>
-</section>
-
-<!-- DIVIDER -->
-<div class="divider">
-  <span class="sq-t"></span>
-  <span class="sq-s"></span>
-  <span class="sq-g"></span>
-</div>
-
-<!-- ZA KOGA -->
-<section class="section">
-  <div class="section-label">Za koga</div>
-  <h2>Ko želite podariti<br>nekaj, kar resnično pomaga.</h2>
-
-  <div class="occasions">
-    <div class="occasion-card">
-      <span class="occasion-icon"><svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="6" y="18" width="32" height="20" rx="1" stroke="#111111" stroke-width="1.5"/>
-        <rect x="3" y="13" width="38" height="7" rx="1" stroke="#111111" stroke-width="1.5"/>
-        <line x1="22" y1="13" x2="22" y2="38" stroke="#111111" stroke-width="1.5"/>
-        <path d="M22 13C22 13 22 8 17 6C14 5 13 8 15 10C17 12 22 13 22 13Z" stroke="#111111" stroke-width="1.5" stroke-linejoin="round"/>
-        <path d="M22 13C22 13 22 8 27 6C30 5 31 8 29 10C27 12 22 13 22 13Z" stroke="#111111" stroke-width="1.5" stroke-linejoin="round"/>
-        <rect x="30" y="5" width="6" height="6" fill="#C4521A"/>
-      </svg></span>
-      <h3>Rojstni dan</h3>
-      <p>Frizerka praznuje petdesetletnico. Namesto šopka podarite vizitko, ki jo deli naprej.</p>
-    </div>
-    <div class="occasion-card">
-      <span class="occasion-icon"><svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="6" y="14" width="32" height="24" rx="1" stroke="#111111" stroke-width="1.5"/>
-        <path d="M4 14L6 6H38L40 14" stroke="#111111" stroke-width="1.5" stroke-linejoin="round"/>
-        <rect x="16" y="24" width="12" height="14" stroke="#111111" stroke-width="1.5"/>
-        <line x1="22" y1="24" x2="22" y2="38" stroke="#111111" stroke-width="1.5"/>
-        <rect x="32" y="4" width="6" height="6" fill="#4A7BA5"/>
-      </svg></span>
-      <h3>Odprtje salona</h3>
-      <p>Prijateljica odpre salon. Mini stran je darilo, ki dela še dolgo po odprtju.</p>
-    </div>
-    <div class="occasion-card">
-      <span class="occasion-icon"><svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="22" cy="22" r="14" stroke="#111111" stroke-width="1.5"/>
-        <circle cx="22" cy="22" r="7" stroke="#111111" stroke-width="1.5"/>
-        <line x1="22" y1="4" x2="22" y2="8" stroke="#111111" stroke-width="1.5" stroke-linecap="round"/>
-        <line x1="22" y1="36" x2="22" y2="40" stroke="#111111" stroke-width="1.5" stroke-linecap="round"/>
-        <line x1="4" y1="22" x2="8" y2="22" stroke="#111111" stroke-width="1.5" stroke-linecap="round"/>
-        <line x1="36" y1="22" x2="40" y2="22" stroke="#111111" stroke-width="1.5" stroke-linecap="round"/>
-        <rect x="19" y="19" width="6" height="6" fill="#6A9970"/>
-      </svg></span>
-      <h3>Jubilej prakse</h3>
-      <p>Zobozdravnik praznuje 20 let. Google profil mu pripelje nove paciente.</p>
-    </div>
-    <div class="occasion-card">
-      <span class="occasion-icon"><svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <line x1="22" y1="38" x2="22" y2="16" stroke="#111111" stroke-width="1.5" stroke-linecap="round"/>
-        <path d="M22 24C22 24 14 22 12 14C18 14 22 18 22 24Z" stroke="#111111" stroke-width="1.5" stroke-linejoin="round"/>
-        <path d="M22 18C22 18 30 17 32 10C26 9 22 13 22 18Z" stroke="#111111" stroke-width="1.5" stroke-linejoin="round"/>
-        <line x1="16" y1="38" x2="28" y2="38" stroke="#111111" stroke-width="1.5" stroke-linecap="round"/>
-        <rect x="4" y="6" width="6" height="6" fill="#C4521A"/>
-        <rect x="4" y="6" width="6" height="6" fill="none" stroke="none"/>
-      </svg></span>
-      <h3>Zagon dejavnosti</h3>
-      <p>Maserka začenja samostojno pot. Socialni paket ji da profesionalen začetek.</p>
-    </div>
-  </div>
-</section>
-
-<!-- DIVIDER -->
-<div class="divider">
-  <span class="sq-t"></span>
-  <span class="sq-s"></span>
-  <span class="sq-g"></span>
-</div>
-
-<!-- PAKETI -->
-<section class="section" id="paketi">
-  <div class="section-label">Paketi</div>
-  <h2>Štiri darila,<br>štiri velikosti koraka.</h2>
-
-  <div class="packages">
-
-    <div class="package">
-      <div class="package-name">Paket 1</div>
-      <h3>Digitalna vizitka</h3>
-      <div class="package-price">49 € <small>enkratno</small></div>
-      <div class="package-desc">Ena elegantna stran z imenom, storitvami, kontaktom in QR kodo. Prejemnik dobi link, ki ga deli naprej.</div>
-      <ul class="package-items">
-        <li>Ime, storitve, kontakt</li>
-        <li>QR koda za tisk</li>
-        <li>Mobilno prilagojena</li>
-        <li>Trajen link brez vzdrževanja</li>
-      </ul>
-      <a href="#narocilo" class="package-btn" data-paket="Digitalna vizitka (49 €)">Podari vizitko</a>
-    </div>
-
-    <div class="package">
-      <div class="package-name">Paket 2</div>
-      <h3>Mini stran</h3>
-      <div class="package-price">199 € <small>enkratno</small></div>
-      <div class="package-desc">Enostranska spletna stran: kdo sem, kaj delam, kje sem, kontaktni obrazec. Profesionalna osnova za obrtnika.</div>
-      <ul class="package-items">
-        <li>Predstavitev in storitve</li>
-        <li>Galerija fotografij</li>
-        <li>Kontaktni obrazec</li>
-        <li>Optimizirano za Google</li>
-      </ul>
-      <a href="#narocilo" class="package-btn" data-paket="Mini stran (199 €)">Podari stran</a>
-    </div>
-
-    <div class="package">
-      <div class="package-name">Paket 3</div>
-      <h3>Google start</h3>
-      <div class="package-price">89 € <small>enkratno</small></div>
-      <div class="package-desc">Nastavitev Google Business profila: fotografije, opis, delovni čas, kategorija. Obrtnik postane viden na zemljevidu.</div>
-      <ul class="package-items">
-        <li>Google Business profil</li>
-        <li>Fotografije in opis</li>
-        <li>Delovni čas in lokacija</li>
-        <li>Viden na Google Maps</li>
-      </ul>
-      <a href="#narocilo" class="package-btn" data-paket="Google start (89 €)">Podari profil</a>
-    </div>
-
-    <div class="package">
-      <div class="package-name">Paket 4</div>
-      <h3>Socialni paket</h3>
-      <div class="package-price">69 € <small>enkratno</small></div>
-      <div class="package-desc">Komplet za družbena omrežja: profilne slike, cover fotografije, bio besedilo in predloge za tri objave.</div>
-      <ul class="package-items">
-        <li>Profilne in naslovne slike</li>
-        <li>Bio besedilo za profil</li>
-        <li>3 predloge za objave</li>
-        <li>Instagram + Facebook</li>
-      </ul>
-      <a href="#narocilo" class="package-btn" data-paket="Socialni paket (69 €)">Podari paket</a>
-    </div>
-
-  </div>
-</section>
-
-<!-- CUSTOM IDEA -->
-<section class="custom-idea">
-  <div class="custom-idea-inner">
-    <div class="section-label" style="color: var(--terracotta);">Vaša ideja</div>
-    <h2 class="custom-idea-title">Imate svojo idejo?</h2>
-    <p class="custom-idea-text">Sporočite nam jo in spravimo jo v življenje. Digitalna vizitka z drugačno zasnovo, posebna mini stran, unikatno darilo za posebno priložnost. Pišite, pogovorimo se.</p>
-    <div class="custom-idea-price">Cena po dogovoru</div>
-    <a href="#narocilo" class="hero-cta" data-paket="Po meri (vaša ideja)">Pišite nam</a>
-  </div>
-</section>
-
-<!-- DIVIDER -->
-<div class="divider">
-  <span class="sq-t"></span>
-  <span class="sq-s"></span>
-  <span class="sq-g"></span>
-</div>
-
-<!-- KAKO DELUJE -->
-<section class="section">
-  <div class="section-label">Kako deluje</div>
-  <h2>Preprosto kot<br>naročilo rož.</h2>
-
-  <div class="steps">
-    <div class="step">
-      <div class="step-num">1</div>
-      <h3>Izberite darilo</h3>
-      <p>Izberite paket in kliknite gumb. Odpre se plačilna stran, kjer varno zaključite naročilo.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">2</div>
-      <h3>Povejte nam za koga</h3>
-      <p>Po plačilu vam pošljemo kratek vprašalnik. Ime prejemnika, dejavnost, kontakt.</p>
-    </div>
-    <div class="step">
-      <div class="step-num">3</div>
-      <h3>Prejemnik dobi darilo</h3>
-      <p>V treh do petih dneh prejemnik dobi obvestilo in povezavo do svojega digitalnega darila.</p>
-    </div>
-  </div>
-</section>
-
-<!-- NAROČILO -->
-<section class="section" id="narocilo">
-  <div class="section-label">Naročilo</div>
-  <h2>Podarite digitalni korak.</h2>
-
-  <div class="form-wrap">
-    <form action="https://formspree.io/f/xwvaogvw" method="POST" class="darila-form" id="darilaForm">
-      <input type="hidden" name="_subject" value="Novo naročilo darila · Grafeio Darila">
-
-      <div class="form-group">
-        <label for="paket">Izbrano darilo</label>
-        <select name="paket" id="paket" required>
-          <option value="" disabled selected>Izberite paket</option>
-          <option value="Digitalna vizitka (49 €)">Digitalna vizitka · 49 €</option>
-          <option value="Mini stran (199 €)">Mini stran · 199 €</option>
-          <option value="Google start (89 €)">Google start · 89 €</option>
-          <option value="Socialni paket (69 €)">Socialni paket · 69 €</option>
-          <option value="Po meri (vaša ideja)">Po meri (vaša ideja)</option>
-        </select>
-      </div>
-
-      <div class="form-row">
-        <div class="form-group">
-          <label for="ime">Vaše ime</label>
-          <input type="text" name="ime" id="ime" required placeholder="Ime in priimek">
-        </div>
-        <div class="form-group">
-          <label for="email">Vaš email</label>
-          <input type="email" name="email" id="email" required placeholder="vas@email.com">
-        </div>
-      </div>
-
-      <div class="form-row">
-        <div class="form-group">
-          <label for="prejemnik">Ime prejemnika</label>
-          <input type="text" name="prejemnik" id="prejemnik" placeholder="Komu je darilo namenjeno">
-        </div>
-        <div class="form-group">
-          <label for="dejavnost">Dejavnost prejemnika</label>
-          <input type="text" name="dejavnost" id="dejavnost" placeholder="npr. frizerski salon, masaže">
-        </div>
-      </div>
-
-      <div class="form-group">
-        <label for="sporocilo">Sporočilo ali posebne želje</label>
-        <textarea name="sporocilo" id="sporocilo" rows="4" placeholder="Karkoli bi radi dodali: priložnost, poseben datum, ideja za izvedbo ..."></textarea>
-      </div>
-
-      <button type="submit" class="form-submit">Pošljite naročilo</button>
-      <p class="form-note">Odgovorimo v 24 urah. Po potrditvi vam pošljemo kratek vprašalnik za pripravo darila.</p>
-    </form>
-  </div>
-</section>
-
-<!-- RIBBON QUOTE -->
-<section class="ribbon-section">
-  <div class="divider">
-    <span class="sq-t"></span>
-    <span class="sq-s"></span>
-    <span class="sq-g"></span>
-  </div>
-  <blockquote>Ne podarite še kar eno darilo<br>od mnogih. Podarite prvi korak<br>k boljšemu poslu.</blockquote>
-  <cite>Grafeio Darila</cite>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <a href="https://grafeio.si" class="footer-logo">
-    <span class="g">g</span>
-    <span class="wordmark">RAFEIO</span>
-  </a>
-  <div class="footer-tagline">Gradnik odličnosti.</div>
-  <a href="https://grafeio.si" class="footer-link">grafeio.si</a>
-  <div class="footer-squares">
-    <span class="sq-t"></span>
-    <span class="sq-s"></span>
-    <span class="sq-g"></span>
-  </div>
-  <div class="footer-copy">© 2026 Grafeio · Vsa darila ustvarjena z občutkom in vdihnjeno osebnostjo.</div>
-</footer>
-
-<script>
-document.querySelectorAll('[data-paket]').forEach(function(btn) {
-  btn.addEventListener('click', function() {
-    var paket = this.getAttribute('data-paket');
-    var select = document.getElementById('paket');
-    if (select) {
-      for (var i = 0; i < select.options.length; i++) {
-        if (select.options[i].value === paket) {
-          select.selectedIndex = i;
-          break;
-        }
-      }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="color-scheme" content="light only">
+  <title>Mehka taca | Naroči termin za ljubljenčka</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #2B2B2A;
+      --coral: #FF6B6B;
+      --coral-hover: #ff5252;
+      --cream: #FFF9F0;
+      --cream-mid: #FFEAD2;
+      --cream-dark: #FFEFE0;
+      --coral-soft: rgba(255,107,107,0.1);
+      --shadow: 0 2px 12px rgba(0,0,0,0.07);
+      --shadow-hover: 0 4px 20px rgba(0,0,0,0.1);
+      --radius-card: 20px;
+      --radius-pill: 50px;
+      --radius-section: 32px;
+      color-scheme: light only;
     }
-  });
-});
-</script>
 
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      background: var(--cream);
+      font-family: 'Quicksand', system-ui, sans-serif;
+      color: var(--navy);
+      line-height: 1.55;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ---------- ODTISI TAČK ---------- */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" opacity="0.07"><g fill="%23FF6B6B" transform="translate(80,80) rotate(-20,30,40) scale(2.2)"><ellipse cx="15" cy="28" rx="11" ry="9"/><ellipse cx="3" cy="12" rx="5" ry="6"/><ellipse cx="13" cy="5" rx="5" ry="6"/><ellipse cx="24" cy="7" rx="5" ry="6"/><ellipse cx="30" cy="16" rx="5" ry="6"/></g><g fill="%23FF6B6B" opacity="0.5" transform="translate(310,300) rotate(15,30,40) scale(1.8)"><ellipse cx="15" cy="28" rx="11" ry="9"/><ellipse cx="3" cy="12" rx="5" ry="6"/><ellipse cx="13" cy="5" rx="5" ry="6"/><ellipse cx="24" cy="7" rx="5" ry="6"/><ellipse cx="30" cy="16" rx="5" ry="6"/></g></svg>');
+      background-size: 480px 480px;
+    }
+
+    .z { position: relative; z-index: 2; }
+
+    /* ---------- HERO / VIDEO ---------- */
+    .hero {
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+      background: var(--navy);
+      min-height: 460px;
+    }
+
+    .hero video, .hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      inset: 0;
+      filter: brightness(0.85) saturate(1.1);
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 30% 80%, rgba(255,107,107,0.15) 0%, transparent 60%),
+        linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.45) 40%, rgba(0,0,0,0.6) 100%);
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 3;
+      min-height: 460px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: center;
+      text-align: right;
+      padding: 3rem 1.5rem;
+      gap: 1rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-family: 'Quicksand', sans-serif;
+      font-size: clamp(5rem, 12vw, 8rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.05;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--coral);
+    }
+
+    .hero h1 span {
+      display: block;
+      font-size: 0.32em;
+      color: var(--cream-mid);
+      font-weight: 500;
+      margin-top: 0.15rem;
+      opacity: 0.85;
+    }
+
+    .hero h1 span:first-of-type {
+      margin-top: 0.5rem;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 0.4rem;
+      padding: 0.85rem 2rem;
+      background: var(--coral);
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.05rem;
+      border-radius: var(--radius-pill);
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    .hero-cta:hover { background: var(--coral-hover); }
+
+    /* ---------- CONTAINER ---------- */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* ---------- SEKCIJA NASLOVI ---------- */
+    .section-head {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      margin: 3rem 0 1.5rem;
+    }
+    .section-head::before {
+      content: "";
+      width: 4px;
+      height: 32px;
+      background: var(--coral);
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+    .section-head h2 {
+      font-size: clamp(1.4rem, 3.5vw, 1.8rem);
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    /* ---------- STORITVE ---------- */
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .svc {
+      background: white;
+      border-radius: var(--radius-card);
+      padding: 1.6rem 1.2rem 1.2rem;
+      text-align: center;
+      border: 1.5px solid rgba(0,0,0,0.06);
+      box-shadow: var(--shadow);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+    }
+    .svc:hover {
+      border-color: rgba(255,107,107,0.3);
+      box-shadow: var(--shadow-hover);
+    }
+    .svc.selected {
+      border-color: var(--coral);
+      box-shadow: 0 0 0 1px var(--coral), var(--shadow-hover);
+    }
+
+    .svc-icon { width: 72px; height: 72px; margin: 0 auto; }
+    .svc-icon img { width: 100%; height: 100%; object-fit: contain; }
+    .svc h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin: 0.5rem 0 0.25rem;
+    }
+    .svc-desc {
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 0.7rem;
+    }
+    .svc-meta {
+      display: flex;
+      justify-content: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+    .svc-price {
+      background: var(--navy);
+      color: var(--coral);
+      font-weight: 700;
+      padding: 0.25rem 0.85rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.9rem;
+    }
+    .svc-time {
+      background: var(--coral-soft);
+      color: var(--navy);
+      font-weight: 600;
+      padding: 0.25rem 0.85rem;
+      border-radius: var(--radius-pill);
+      font-size: 0.85rem;
+    }
+
+    /* ---------- BOOKING SEKCIJA ---------- */
+    .booking {
+      background: var(--navy);
+      border-radius: var(--radius-section);
+      padding: 2.5rem 2rem;
+      margin: 2rem 0 3rem;
+      color: var(--cream);
+      box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+    }
+
+    .booking h2 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--coral);
+      text-align: center;
+      margin-bottom: 0.3rem;
+    }
+    .booking > p {
+      text-align: center;
+      color: rgba(255,234,210,0.6);
+      margin-bottom: 2rem;
+      font-size: 0.9rem;
+    }
+
+    .b-form {
+      max-width: 640px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+    }
+    .b-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .b-group {
+      flex: 1;
+      min-width: 200px;
+    }
+    .b-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+      color: rgba(255,234,210,0.7);
+      font-size: 0.85rem;
+    }
+    .b-group input,
+    .b-group select,
+    .b-group textarea {
+      width: 100%;
+      padding: 11px 16px;
+      background: rgba(255,249,240,0.95);
+      border: 1.5px solid transparent;
+      border-radius: 14px;
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--navy);
+      transition: border-color 0.2s;
+      outline: none;
+    }
+    .b-group textarea {
+      border-radius: 14px;
+      resize: vertical;
+      min-height: 72px;
+    }
+    .b-group input:focus,
+    .b-group select:focus,
+    .b-group textarea:focus {
+      border-color: var(--coral);
+    }
+
+    /* koraki */
+    .b-step {
+      display: none;
+      animation: fadeUp 0.3s ease;
+    }
+    .b-step.active { display: block; }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .step-indicator {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      margin-bottom: 1.5rem;
+    }
+    .step-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.15);
+      transition: background 0.3s, width 0.3s;
+    }
+    .step-dot.active {
+      background: var(--coral);
+      width: 24px;
+      border-radius: 4px;
+    }
+    .step-dot.done {
+      background: rgba(255,107,107,0.4);
+    }
+
+    /* termini grid */
+    .slots-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(88px, 1fr));
+      gap: 0.5rem;
+      margin-top: 0.6rem;
+    }
+    .slot-btn {
+      padding: 0.55rem 0.3rem;
+      border: 1.5px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
+      background: rgba(255,255,255,0.04);
+      color: var(--cream);
+      font-weight: 600;
+      font-size: 0.9rem;
+      font-family: 'Quicksand', sans-serif;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+      text-align: center;
+    }
+    .slot-btn:hover {
+      border-color: rgba(255,107,107,0.4);
+      background: rgba(255,107,107,0.08);
+    }
+    .slot-btn.selected {
+      background: var(--coral);
+      color: var(--navy);
+      border-color: var(--coral);
+      font-weight: 700;
+    }
+    .slot-btn.taken {
+      opacity: 0.2;
+      cursor: not-allowed;
+      text-decoration: line-through;
+    }
+    .slots-empty {
+      text-align: center;
+      color: rgba(255,234,210,0.5);
+      padding: 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    /* gumbi */
+    .btn-coral {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 0.8rem 1.8rem;
+      background: var(--coral);
+      color: #fff;
+      font-weight: 700;
+      font-size: 1rem;
+      font-family: 'Quicksand', sans-serif;
+      border: none;
+      border-radius: var(--radius-pill);
+      cursor: pointer;
+      transition: background 0.2s;
+      width: 100%;
+    }
+    .btn-coral:hover { background: var(--coral-hover); }
+    .btn-coral:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      border: 1.5px solid rgba(255,255,255,0.15);
+      color: rgba(255,234,210,0.6);
+      padding: 0.65rem 1.4rem;
+      border-radius: var(--radius-pill);
+      font-weight: 600;
+      font-family: 'Quicksand', sans-serif;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-ghost:hover { border-color: var(--coral); color: var(--coral); }
+
+    .b-actions {
+      display: flex;
+      gap: 0.8rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 0.4rem;
+    }
+
+    /* potrditev */
+    .confirmation {
+      text-align: center;
+      padding: 2rem 0;
+    }
+    .confirmation .check-circle {
+      width: 72px; height: 72px;
+      border-radius: 50%;
+      background: var(--coral);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+      animation: popIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    @keyframes popIn {
+      from { transform: scale(0); }
+      to { transform: scale(1); }
+    }
+    .confirmation h3 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--coral);
+      margin-bottom: 0.4rem;
+    }
+    .conf-detail {
+      background: rgba(255,255,255,0.06);
+      border-radius: 16px;
+      padding: 1.2rem;
+      margin: 1rem auto;
+      max-width: 380px;
+      text-align: left;
+      font-size: 0.9rem;
+      line-height: 1.8;
+    }
+    .conf-detail strong { color: var(--coral); }
+
+    /* ---------- O NAS ---------- */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: center;
+      margin: 1rem 0 3rem;
+    }
+    .about-text p {
+      margin-bottom: 0.8rem;
+      font-size: 1rem;
+      color: #444;
+    }
+    .about-img {
+      width: 100%;
+      border-radius: var(--radius-card);
+      aspect-ratio: 4/3;
+      background: var(--coral-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      overflow: hidden;
+    }
+    .about-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .trust-bar {
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      flex-wrap: wrap;
+      padding: 1.3rem 1.5rem;
+      background: white;
+      border-radius: var(--radius-card);
+      box-shadow: var(--shadow);
+      margin: 0 0 2.5rem;
+    }
+    .trust-item { text-align: center; }
+    .trust-num {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--coral);
+    }
+    .trust-label {
+      font-size: 0.8rem;
+      color: #999;
+      font-weight: 600;
+    }
+
+    /* ---------- KONTAKT ---------- */
+    .contact-bar {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin: 1rem 0 2rem;
+    }
+    .contact-card {
+      flex: 1;
+      min-width: 220px;
+      background: white;
+      border-radius: var(--radius-card);
+      padding: 1.3rem;
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .contact-card .c-icon {
+      width: 48px; height: 48px;
+      background: var(--coral-soft);
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+    .contact-card .c-icon img {
+      width: 30px;
+      height: 30px;
+      object-fit: contain;
+    }
+    .contact-card .c-label {
+      font-size: 0.75rem;
+      color: #aaa;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .contact-card .c-value {
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+    .contact-card a {
+      color: var(--navy);
+      text-decoration: none;
+    }
+    .contact-card a:hover { color: var(--coral); }
+
+    /* ---------- FOOTER ---------- */
+    footer {
+      background: var(--navy);
+      padding: 1.8rem 1.5rem;
+      text-align: center;
+      color: rgba(255,234,210,0.4);
+      font-size: 0.8rem;
+    }
+    footer a {
+      color: var(--coral);
+      text-decoration: none;
+    }
+
+    /* ---------- SCROLL REVEAL ---------- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.45s ease, transform 0.45s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ---------- MOBILE ---------- */
+    @media (max-width: 768px) {
+      .hero-inner { min-height: 360px; padding: 2rem 1.2rem; }
+      .booking { border-radius: 24px; padding: 1.8rem 1.2rem; margin: 1.5rem 0.5rem; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-img { max-height: 240px; }
+      .services { grid-template-columns: 1fr 1fr; gap: 0.8rem; }
+      .svc { padding: 1.2rem 0.8rem; }
+      .svc-icon { width: 56px; height: 56px; }
+      .svc h3 { font-size: 1rem; }
+      .slots-grid { grid-template-columns: repeat(auto-fill, minmax(78px, 1fr)); }
+      .trust-bar { gap: 1.5rem; }
+      .contact-bar { flex-direction: column; }
+    }
+    @media (max-width: 420px) {
+      .services { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- ====== HERO ====== -->
+  <section class="hero z">
+    <video autoplay muted loop playsinline>
+      <source src="tacke.mp4" type="video/mp4">
+    </video>
+    <div class="hero-overlay"></div>
+    <div class="hero-inner">
+      <h1>
+        <em>Mehka</em><br>
+        <em>taca</em>
+        <span>Striženje, kopanje in razvajanje</span>
+        <span>za vašega kosmatinca</span>
+      </h1>
+      <a href="#booking" class="hero-cta">
+        &#x2728; Naroči termin
+      </a>
+    </div>
+  </section>
+
+  <!-- ====== STORITVE ====== -->
+  <div class="container z">
+    <div class="section-head reveal">
+      <h2>Naše storitve</h2>
+    </div>
+    <p class="reveal" style="margin-bottom:1.5rem; color:#666;">Izberi storitev in nadaljuj z naročilom termina.</p>
+
+    <div class="services reveal" id="services-grid">
+      <!-- JS napolni iz STORITVE array -->
+    </div>
+
+    <!-- ====== BOOKING ====== -->
+    <section class="booking z reveal" id="booking">
+      <h2>&#x1F4C5; Rezerviraj termin</h2>
+      <p>Izberi storitev zgoraj, potem datum in uro, vnesi podatke, gotovo.</p>
+
+      <div class="step-indicator" id="step-dots">
+        <div class="step-dot active" data-step="1"></div>
+        <div class="step-dot" data-step="2"></div>
+        <div class="step-dot" data-step="3"></div>
+      </div>
+
+      <div class="b-form" id="booking-form">
+
+        <!-- KORAK 1: Datum + Ura -->
+        <div class="b-step active" data-step="1">
+          <div id="selected-service-preview" style="text-align:center; margin-bottom:1.2rem; display:none;">
+            <span style="font-size:2rem;" id="prev-icon"></span>
+            <div style="font-weight:700; font-size:1.1rem; color:var(--coral);" id="prev-name"></div>
+            <div style="font-size:0.85rem; color:var(--cream-mid);" id="prev-meta"></div>
+          </div>
+          <div class="b-row">
+            <div class="b-group">
+              <label for="datum">Izberi datum</label>
+              <input type="date" id="datum" required>
+            </div>
+          </div>
+          <div id="slots-container" style="margin-top:1rem;">
+            <label style="margin-bottom:0.6rem; display:block;">Prosti termini</label>
+            <div class="slots-grid" id="slots-grid"></div>
+            <div class="slots-empty" id="slots-empty" style="display:none;">Najprej izberi storitev in datum</div>
+          </div>
+          <div class="b-actions" style="margin-top:1.2rem;">
+            <button class="btn-coral" id="btn-step2" disabled onclick="goStep(2)">Naprej &#x27A1;</button>
+          </div>
+        </div>
+
+        <!-- KORAK 2: Podatki -->
+        <div class="b-step" data-step="2">
+          <div class="b-row">
+            <div class="b-group">
+              <label for="ime">Ime in priimek *</label>
+              <input type="text" id="ime" placeholder="Ana Novak" required>
+            </div>
+            <div class="b-group">
+              <label for="tel">Telefon *</label>
+              <input type="tel" id="tel" placeholder="040 123 456" required>
+            </div>
+          </div>
+          <div class="b-row">
+            <div class="b-group">
+              <label for="email">E-pošta</label>
+              <input type="email" id="email" placeholder="ana@email.com">
+            </div>
+            <div class="b-group">
+              <label for="pes">Ime psa *</label>
+              <input type="text" id="pes" placeholder="Rex">
+            </div>
+          </div>
+          <div class="b-row">
+            <div class="b-group">
+              <label for="pasma">Pasma</label>
+              <input type="text" id="pasma" placeholder="Zlati prinašalec">
+            </div>
+            <div class="b-group">
+              <label for="opombe">Opombe</label>
+              <textarea id="opombe" placeholder="Alergije, posebne želje …"></textarea>
+            </div>
+          </div>
+          <div class="b-actions">
+            <button class="btn-ghost" onclick="goStep(1)">&#x2B05; Nazaj</button>
+            <button class="btn-coral" style="flex:1;" id="btn-step3" onclick="goStep(3)">Preglej naročilo &#x27A1;</button>
+          </div>
+        </div>
+
+        <!-- KORAK 3: Pregled + Potrdi -->
+        <div class="b-step" data-step="3">
+          <div class="conf-detail" id="summary" style="margin-bottom:1.5rem;"></div>
+          <div class="b-actions">
+            <button class="btn-ghost" onclick="goStep(2)">&#x2B05; Nazaj</button>
+            <button class="btn-coral" style="flex:1;" id="btn-submit" onclick="submitBooking()">&#x2705; Potrdi naročilo</button>
+          </div>
+        </div>
+
+        <!-- KORAK 4: Potrditev -->
+        <div class="b-step" data-step="4">
+          <div class="confirmation">
+            <div class="check-circle">&#x1F43E;</div>
+            <h3>Termin je rezerviran!</h3>
+            <p style="color:var(--cream-mid); margin-bottom:1rem;">Poklicali vas bomo za potrditev. Hvala!</p>
+            <div class="conf-detail" id="final-summary"></div>
+            <button class="btn-coral" style="margin-top:1.5rem; max-width:300px;" onclick="resetBooking()">&#x1F504; Nov termin</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ====== O NAS ====== -->
+    <div class="section-head reveal">
+      <h2>Zakaj Mehka taca?</h2>
+    </div>
+
+    <div class="trust-bar reveal">
+      <div class="trust-item">
+        <div class="trust-num">5+</div>
+        <div class="trust-label">let izkušenj</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">1200+</div>
+        <div class="trust-label">zadovoljnih tačk</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">4.9</div>
+        <div class="trust-label">Google ocena</div>
+      </div>
+      <div class="trust-item">
+        <div class="trust-num">100%</div>
+        <div class="trust-label">ljubezni</div>
+      </div>
+    </div>
+
+    <div class="about-grid reveal">
+      <div class="about-text">
+        <p>Vsak kosmatinec si zasluži najboljšo oskrbo. Pri Mehki taci kombiniramo profesionalno striženje s toplim pristopom, ki pomiri tudi najbolj živahne tačke.</p>
+        <p>Uporabljamo samo naravno kozmetiko, prilagojeno občutljivi pasji koži. Vaš pes bo po obisku pri nas ne samo lep, ampak tudi sproščen in zadovoljen.</p>
+        <p style="font-weight:700; color:var(--coral);">Ker vsak pes zasluži, da se počuti kot zvezda.</p>
+      </div>
+      <div class="about-img">
+        <img src="img/salon.jpg" alt="Mehka taca salon">
+      </div>
+    </div>
+
+    <!-- ====== KONTAKT ====== -->
+    <div class="section-head reveal">
+      <h2>Kontakt</h2>
+    </div>
+    <div class="contact-bar reveal">
+      <div class="contact-card">
+        <div class="c-icon"><img src="img/icon-telefon.png" alt="Telefon"></div>
+        <div>
+          <div class="c-label">Telefon</div>
+          <div class="c-value"><a href="tel:040123456">040 123 456</a></div>
+        </div>
+      </div>
+      <div class="contact-card">
+        <div class="c-icon"><img src="img/icon-email.png" alt="E-pošta"></div>
+        <div>
+          <div class="c-label">E-pošta</div>
+          <div class="c-value"><a href="mailto:info@mehkataca.si">info@mehkataca.si</a></div>
+        </div>
+      </div>
+      <div class="contact-card">
+        <div class="c-icon"><img src="img/icon-lokacija.png" alt="Naslov"></div>
+        <div>
+          <div class="c-label">Naslov</div>
+          <div class="c-value">Tržaška cesta 12, 2000 Maribor</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="z">
+    <p>&copy; 2026 Mehka taca &middot; Maribor &middot; Design: <a href="#">Grafeio</a></p>
+  </footer>
+
+  <!-- ====== SUPABASE SDK ====== -->
+  <!-- Ko povežeš Supabase, odkomentiraj:
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  -->
+
+  <script>
+  /* ============================================================
+     KONFIGURACIJA — zamenjaj z dejanskimi vrednostmi
+     ============================================================ */
+  const CONFIG = {
+    // Supabase (odkomentiraj ko povežeš):
+    // SUPABASE_URL: 'https://xxxxx.supabase.co',
+    // SUPABASE_KEY: 'eyJhbGciOi...',
+    DEMO_MODE: true  // false ko povežeš Supabase
+  };
+
+  /* ============================================================
+     STORITVE — v produkciji pridejo iz Supabase
+     ============================================================ */
+  const STORITVE = [
+    { id: '1', ime: 'Striženje mali pes',    trajanje: 60,  cena: 25,  opis: 'Psi do 10 kg',              icon: 'img/icon-strizenje-mali.png', vrstni_red: 1 },
+    { id: '2', ime: 'Striženje srednji pes',  trajanje: 90,  cena: 35,  opis: 'Psi 10–25 kg',             icon: 'img/icon-strizenje-srednji.png', vrstni_red: 2 },
+    { id: '3', ime: 'Striženje veliki pes',   trajanje: 120, cena: 50,  opis: 'Psi nad 25 kg',            icon: 'img/icon-strizenje-veliki.png', vrstni_red: 3 },
+    { id: '4', ime: 'Kopanje + sušenje',      trajanje: 45,  cena: 20,  opis: 'Brez striženja',           icon: 'img/icon-kopanje.png', vrstni_red: 4 },
+    { id: '5', ime: 'Striženje krempljev',    trajanje: 15,  cena: 8,   opis: 'Samo kremplji',            icon: 'img/icon-kremplji.png', vrstni_red: 5 },
+    { id: '6', ime: 'Trimanje',               trajanje: 90,  cena: 40,  opis: 'Za žičaste pasme',         icon: 'img/icon-trimanje.png', vrstni_red: 6 },
+  ];
+
+  /* ============================================================
+     DELOVNI ČAS — v produkciji iz Supabase tabele delovni_cas
+     ============================================================ */
+  const DELOVNI_CAS = {
+    0: { od: '08:00', do: '16:00' },  // ponedeljek
+    1: { od: '08:00', do: '16:00' },
+    2: { od: '08:00', do: '16:00' },
+    3: { od: '08:00', do: '16:00' },
+    4: { od: '08:00', do: '16:00' },
+    5: { od: '09:00', do: '13:00' },  // sobota
+    // 6: nedelja — zaprto
+  };
+
+  /* ============================================================
+     DEMO: zasedeni termini (v produkciji iz Supabase)
+     ============================================================ */
+  const ZASEDENI_DEMO = [
+    { datum: getTodayStr(), cas: '09:00', trajanje: 60 },
+    { datum: getTodayStr(), cas: '14:00', trajanje: 90 },
+  ];
+
+  function getTodayStr() {
+    const d = new Date();
+    d.setDate(d.getDate() + 1);
+    return d.toISOString().split('T')[0];
+  }
+
+  /* ============================================================
+     STANJE
+     ============================================================ */
+  let state = {
+    selectedService: null,
+    selectedDate: null,
+    selectedSlot: null,
+    currentStep: 1
+  };
+
+  /* ============================================================
+     INICIALIZACIJA
+     ============================================================ */
+  document.addEventListener('DOMContentLoaded', () => {
+    renderServices();
+    setupDateInput();
+    setupScrollReveal();
+  });
+
+  /* ---------- STORITVE RENDER ---------- */
+  function renderServices() {
+    const grid = document.getElementById('services-grid');
+    grid.innerHTML = STORITVE
+      .sort((a,b) => a.vrstni_red - b.vrstni_red)
+      .map(s => `
+        <div class="svc" data-id="${s.id}" onclick="selectService('${s.id}')">
+          <div class="svc-icon"><img src="${s.icon}" alt="${s.ime}"></div>
+          <h3>${s.ime}</h3>
+          <div class="svc-desc">${s.opis}</div>
+          <div class="svc-meta">
+            <span class="svc-price">${s.cena} €</span>
+            <span class="svc-time">${s.trajanje} min</span>
+          </div>
+        </div>
+      `).join('');
+  }
+
+  function selectService(id) {
+    state.selectedService = STORITVE.find(s => s.id === id);
+    state.selectedSlot = null;
+
+    document.querySelectorAll('.svc').forEach(el => {
+      el.classList.toggle('selected', el.dataset.id === id);
+    });
+
+    // preview v booking
+    const prev = document.getElementById('selected-service-preview');
+    prev.style.display = 'block';
+    document.getElementById('prev-icon').innerHTML = `<img src="${state.selectedService.icon}" alt="" style="width:40px;height:40px;object-fit:contain;">`;
+    document.getElementById('prev-name').textContent = state.selectedService.ime;
+    document.getElementById('prev-meta').textContent =
+      `${state.selectedService.cena} € · ${state.selectedService.trajanje} min`;
+
+    // scroll k bookingu
+    document.getElementById('booking').scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+    // osveži termine če datum že izbran
+    if (state.selectedDate) generateSlots();
+    updateButtons();
+  }
+
+  /* ---------- DATUM ---------- */
+  function setupDateInput() {
+    const inp = document.getElementById('datum');
+    const today = new Date();
+    inp.min = today.toISOString().split('T')[0];
+    const maxDate = new Date(today);
+    maxDate.setDate(maxDate.getDate() + 60);
+    inp.max = maxDate.toISOString().split('T')[0];
+
+    inp.addEventListener('change', () => {
+      state.selectedDate = inp.value;
+      state.selectedSlot = null;
+      generateSlots();
+      updateButtons();
+    });
+  }
+
+  /* ---------- GENERIRANJE TERMINOV ---------- */
+  function generateSlots() {
+    const grid = document.getElementById('slots-grid');
+    const empty = document.getElementById('slots-empty');
+
+    if (!state.selectedService || !state.selectedDate) {
+      grid.innerHTML = '';
+      empty.style.display = 'block';
+      empty.textContent = 'Najprej izberi storitev in datum';
+      return;
+    }
+
+    const date = new Date(state.selectedDate);
+    // JS: 0=nedelja, naš model: 0=ponedeljek
+    let dayIdx = date.getDay() - 1;
+    if (dayIdx < 0) dayIdx = 6;
+
+    const hours = DELOVNI_CAS[dayIdx];
+    if (!hours) {
+      grid.innerHTML = '';
+      empty.style.display = 'block';
+      empty.textContent = 'Ta dan je salon zaprt';
+      return;
+    }
+
+    empty.style.display = 'none';
+    const trajanje = state.selectedService.trajanje;
+    const [odH, odM] = hours.od.split(':').map(Number);
+    const [doH, doM] = hours.do.split(':').map(Number);
+    const startMin = odH * 60 + odM;
+    const endMin = doH * 60 + doM;
+
+    let slots = [];
+    for (let m = startMin; m + trajanje <= endMin; m += 30) {
+      const h = String(Math.floor(m / 60)).padStart(2, '0');
+      const min = String(m % 60).padStart(2, '0');
+      const timeStr = `${h}:${min}`;
+      const taken = isSlotTaken(state.selectedDate, timeStr, trajanje);
+      slots.push({ time: timeStr, taken });
+    }
+
+    if (slots.length === 0) {
+      grid.innerHTML = '';
+      empty.style.display = 'block';
+      empty.textContent = 'Za ta dan ni prostih terminov';
+      return;
+    }
+
+    grid.innerHTML = slots.map(s => `
+      <button class="slot-btn ${s.taken ? 'taken' : ''} ${state.selectedSlot === s.time ? 'selected' : ''}"
+              onclick="${s.taken ? '' : `selectSlot('${s.time}')`}"
+              ${s.taken ? 'disabled' : ''}>
+        ${s.time}
+      </button>
+    `).join('');
+  }
+
+  function isSlotTaken(date, time, duration) {
+    // DEMO mode: preverja lokalni array
+    // PRODUKCIJA: Supabase query
+    const slotStart = timeToMin(time);
+    const slotEnd = slotStart + duration;
+
+    return ZASEDENI_DEMO.some(z => {
+      if (z.datum !== date) return false;
+      const zStart = timeToMin(z.cas);
+      const zEnd = zStart + z.trajanje;
+      return slotStart < zEnd && slotEnd > zStart;
+    });
+  }
+
+  function timeToMin(t) {
+    const [h, m] = t.split(':').map(Number);
+    return h * 60 + m;
+  }
+
+  function selectSlot(time) {
+    state.selectedSlot = time;
+    document.querySelectorAll('.slot-btn').forEach(btn => {
+      btn.classList.toggle('selected', btn.textContent.trim() === time);
+    });
+    updateButtons();
+  }
+
+  /* ---------- KORAKI ---------- */
+  function goStep(step) {
+    // validacija pred korakom 3
+    if (step === 3) {
+      const ime = document.getElementById('ime').value.trim();
+      const tel = document.getElementById('tel').value.trim();
+      const pes = document.getElementById('pes').value.trim();
+      if (!ime || !tel || !pes) {
+        alert('Prosim izpolni obvezna polja (ime, telefon, ime psa).');
+        return;
+      }
+      renderSummary();
+    }
+
+    state.currentStep = step;
+    document.querySelectorAll('.b-step').forEach(el => {
+      el.classList.toggle('active', Number(el.dataset.step) === step);
+    });
+    document.querySelectorAll('.step-dot').forEach(dot => {
+      const s = Number(dot.dataset.step);
+      dot.classList.toggle('active', s === Math.min(step, 3));
+      dot.classList.toggle('done', s < step);
+    });
+
+    // scroll booking v pogled
+    document.getElementById('booking').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function updateButtons() {
+    const btn = document.getElementById('btn-step2');
+    btn.disabled = !(state.selectedService && state.selectedDate && state.selectedSlot);
+  }
+
+  /* ---------- PREGLED ---------- */
+  function renderSummary() {
+    const s = state.selectedService;
+    const endTime = minToTime(timeToMin(state.selectedSlot) + s.trajanje);
+    const dateObj = new Date(state.selectedDate);
+    const dnevi = ['nedelja','ponedeljek','torek','sreda','četrtek','petek','sobota'];
+    const meseci = ['jan','feb','mar','apr','maj','jun','jul','avg','sep','okt','nov','dec'];
+
+    const dateStr = `${dnevi[dateObj.getDay()]}, ${dateObj.getDate()}. ${meseci[dateObj.getMonth()]} ${dateObj.getFullYear()}`;
+
+    const html = `
+      <strong>${s.ime}</strong><br>
+      📅 ${dateStr}<br>
+      🕐 ${state.selectedSlot} – ${endTime} (${s.trajanje} min)<br>
+      💰 ${s.cena} €<br><br>
+      👤 ${document.getElementById('ime').value}<br>
+      📱 ${document.getElementById('tel').value}<br>
+      🐕 ${document.getElementById('pes').value}
+      ${document.getElementById('pasma').value ? ' (' + document.getElementById('pasma').value + ')' : ''}
+      ${document.getElementById('opombe').value ? '<br>📝 ' + document.getElementById('opombe').value : ''}
+    `;
+    document.getElementById('summary').innerHTML = html;
+  }
+
+  function minToTime(m) {
+    return String(Math.floor(m / 60)).padStart(2, '0') + ':' + String(m % 60).padStart(2, '0');
+  }
+
+  /* ---------- ODDAJA ---------- */
+  async function submitBooking() {
+    const btn = document.getElementById('btn-submit');
+    btn.disabled = true;
+    btn.innerHTML = '⏳ Pošiljam …';
+
+    if (CONFIG.DEMO_MODE) {
+      // DEMO: simuliraj zamik
+      await new Promise(r => setTimeout(r, 800));
+      ZASEDENI_DEMO.push({
+        datum: state.selectedDate,
+        cas: state.selectedSlot,
+        trajanje: state.selectedService.trajanje
+      });
+    } else {
+      /* ── SUPABASE PRODUKCIJA ──
+      const supabase = window.supabase.createClient(CONFIG.SUPABASE_URL, CONFIG.SUPABASE_KEY);
+
+      // 1. Ustvari ali najdi stranko
+      const { data: stranka } = await supabase
+        .from('stranke_psov')
+        .insert({
+          ime_lastnika: document.getElementById('ime').value,
+          telefon: document.getElementById('tel').value,
+          email: document.getElementById('email').value || null,
+          ime_psa: document.getElementById('pes').value,
+          pasma: document.getElementById('pasma').value || null,
+          opombe: document.getElementById('opombe').value || null
+        })
+        .select()
+        .single();
+
+      // 2. Ustvari termin
+      const startDT = `${state.selectedDate}T${state.selectedSlot}:00`;
+      const endMin = timeToMin(state.selectedSlot) + state.selectedService.trajanje;
+      const endDT = `${state.selectedDate}T${minToTime(endMin)}:00`;
+
+      await supabase
+        .from('termini')
+        .insert({
+          stranka_id: stranka.id,
+          storitev_id: state.selectedService.id,
+          datum_cas: startDT,
+          konec: endDT,
+          status: 'caka'
+        });
+      */
+    }
+
+    document.getElementById('final-summary').innerHTML = document.getElementById('summary').innerHTML;
+    goStep(4);
+    btn.disabled = false;
+    btn.innerHTML = '✅ Potrdi naročilo';
+  }
+
+  function resetBooking() {
+    state = { selectedService: null, selectedDate: null, selectedSlot: null, currentStep: 1 };
+    document.querySelectorAll('.svc').forEach(el => el.classList.remove('selected'));
+    document.getElementById('selected-service-preview').style.display = 'none';
+    document.getElementById('datum').value = '';
+    document.getElementById('ime').value = '';
+    document.getElementById('tel').value = '';
+    document.getElementById('email').value = '';
+    document.getElementById('pes').value = '';
+    document.getElementById('pasma').value = '';
+    document.getElementById('opombe').value = '';
+    document.getElementById('slots-grid').innerHTML = '';
+    document.getElementById('slots-empty').style.display = 'block';
+    document.getElementById('slots-empty').textContent = 'Najprej izberi storitev in datum';
+    goStep(1);
+    updateButtons();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  /* ---------- SCROLL REVEAL ---------- */
+  function setupScrollReveal() {
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  }
+  </script>
 </body>
 </html>
