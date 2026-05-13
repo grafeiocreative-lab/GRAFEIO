@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GRAFEIO Darila · Podarite digitalni korak naprej</title>
+<meta name="description" content="Digitalna darila za male podjetnike. Vizitka, spletna stran ali Google profil. Darilo, ki obrtniku spremeni posel.">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://grafeio.si/darila/">
+<meta property="og:title" content="GRAFEIO Darila · Podarite digitalni korak naprej">
+<meta property="og:description" content="Digitalna darila za male podjetnike. Vizitka, spletna stran ali Google profil. Darilo, ki obrtniku spremeni posel.">
+<meta property="og:image" content="https://grafeio.si/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap');
+
+  :root {
+    --obsidian: #111111;
+    --terracotta: #C4521A;
+    --slate: #4A7BA5;
+    --sage: #6A9970;
+    --cream: #F5F5F3;
+    --warm-cream: #FAF8F5;
+    --text-soft: #3D3D3D;
+    --border-light: #E8E5E0;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: var(--obsidian);
+    background: var(--warm-cream);
+    line-height: 1.7;
+    font-weight: 400;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* === NAV === */
+  nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(250, 248, 245, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .nav-logo {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    text-decoration: none;
+    color: var(--obsidian);
+  }
+
+  .nav-logo .g {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 1;
+  }
+
+  .nav-logo .wordmark {
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+  }
+
+  .nav-logo .darila {
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 3px;
+    color: var(--terracotta);
+    text-transform: uppercase;
+    margin-left: 4px;
+  }
+
+  .nav-squares {
+    display: flex;
+    gap: 5px;
+  }
+
+  .nav-squares span {
+    width: 10px;
+    height: 10px;
+    display: block;
+  }
+
+  .sq-t { background: var(--terracotta); }
+  .sq-s { background: var(--slate); }
+  .sq-g { background: var(--sage); }
+
+  /* === HERO === */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 120px 40px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -100px;
+    right: -60px;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(196,82,26,0.06) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -80px;
+    left: -40px;
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, rgba(74,123,165,0.05) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .hero-label {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 32px;
+    font-weight: 400;
+  }
+
+  .hero h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(36px, 6vw, 64px);
+    font-weight: 400;
+    line-height: 1.15;
+    max-width: 700px;
+    margin-bottom: 28px;
+    letter-spacing: -0.5px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--terracotta);
+  }
+
+  .hero p {
+    font-size: 17px;
+    color: var(--text-soft);
+    max-width: 500px;
+    line-height: 1.8;
+    margin-bottom: 48px;
+    font-weight: 400;
+  }
+
+  .hero-cta {
+    display: inline-block;
+    padding: 16px 48px;
+    background: var(--obsidian);
+    color: var(--cream);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 400;
+    transition: all 0.3s ease;
+  }
+
+  .hero-cta:hover {
+    background: var(--terracotta);
+    transform: translateY(-2px);
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 40px;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    opacity: 0.5;
+  }
+
+  /* === SQUARES DIVIDER === */
+  .divider {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 60px 0;
+  }
+
+  .divider span {
+    width: 12px;
+    height: 12px;
+    display: block;
+  }
+
+  .divider span:nth-child(1) { animation: squareFloat 3s ease-in-out infinite; }
+  .divider span:nth-child(2) { animation: squareFloat 3s ease-in-out 0.4s infinite; }
+  .divider span:nth-child(3) { animation: squareFloat 3s ease-in-out 0.8s infinite; }
+
+  @keyframes squareFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+
+  /* Nav squares animation */
+  .nav-squares span:nth-child(1) { animation: squareFloat 3s ease-in-out infinite; }
+  .nav-squares span:nth-child(2) { animation: squareFloat 3s ease-in-out 0.4s infinite; }
+  .nav-squares span:nth-child(3) { animation: squareFloat 3s ease-in-out 0.8s infinite; }
+
+  /* Footer squares animation */
+  .footer-squares span:nth-child(1) { animation: squareFloat 3s ease-in-out infinite; }
+  .footer-squares span:nth-child(2) { animation: squareFloat 3s ease-in-out 0.4s infinite; }
+  .footer-squares span:nth-child(3) { animation: squareFloat 3s ease-in-out 0.8s infinite; }
+
+  /* === ZA KOGA === */
+  .section {
+    padding: 40px 40px 80px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--slate);
+    margin-bottom: 16px;
+    font-weight: 400;
+  }
+
+  .section h2 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(28px, 4vw, 42px);
+    font-weight: 400;
+    margin-bottom: 48px;
+    line-height: 1.2;
+  }
+
+  /* Za koga cards */
+  .occasions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+  }
+
+  .occasion-card {
+    padding: 32px 28px;
+    border: 1px solid var(--border-light);
+    background: white;
+    transition: all 0.3s ease;
+  }
+
+  .occasion-card:hover {
+    border-color: var(--terracotta);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(17,17,17,0.06);
+  }
+
+  .occasion-icon {
+    width: 44px;
+    height: 44px;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .occasion-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .occasion-card h3 {
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+
+  .occasion-card p {
+    font-size: 13px;
+    color: var(--text-soft);
+    line-height: 1.6;
+  }
+
+  /* === PAKETI === */
+  .packages {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+  }
+
+  .package {
+    border: 1px solid var(--border-light);
+    background: white;
+    padding: 36px 28px;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .package::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: var(--border-light);
+    transition: background 0.3s ease;
+  }
+
+  .package:nth-child(1)::before { background: var(--terracotta); }
+  .package:nth-child(2)::before { background: var(--slate); }
+  .package:nth-child(3)::before { background: var(--sage); }
+  .package:nth-child(4)::before { background: var(--obsidian); }
+
+  .package:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(17,17,17,0.07);
+  }
+
+  .package-name {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    margin-bottom: 8px;
+  }
+
+  .package h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 16px;
+  }
+
+  .package-price {
+    font-size: 28px;
+    font-weight: 300;
+    margin-bottom: 4px;
+    letter-spacing: -1px;
+  }
+
+  .package-price small {
+    font-size: 14px;
+    color: var(--text-soft);
+    font-weight: 400;
+  }
+
+  .package-desc {
+    font-size: 13px;
+    color: var(--text-soft);
+    line-height: 1.7;
+    margin: 20px 0;
+    flex: 1;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-light);
+  }
+
+  .package-items {
+    list-style: none;
+    margin-bottom: 28px;
+  }
+
+  .package-items li {
+    font-size: 13px;
+    color: var(--text-soft);
+    padding: 6px 0;
+    padding-left: 16px;
+    position: relative;
+  }
+
+  .package-items li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 13px;
+    width: 6px;
+    height: 6px;
+    background: var(--sage);
+    border-radius: 0;
+  }
+
+  .package-btn {
+    display: block;
+    width: 100%;
+    padding: 14px;
+    border: 1px solid var(--obsidian);
+    background: transparent;
+    color: var(--obsidian);
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.3s ease;
+  }
+
+  .package-btn:hover {
+    background: var(--obsidian);
+    color: var(--cream);
+  }
+
+  /* === CUSTOM IDEA === */
+  .custom-idea {
+    padding: 80px 40px;
+    background: var(--obsidian);
+    text-align: center;
+  }
+
+  .custom-idea-inner {
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  .custom-idea-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(28px, 4vw, 38px);
+    font-weight: 400;
+    color: var(--cream);
+    margin-bottom: 20px;
+    line-height: 1.2;
+  }
+
+  .custom-idea-text {
+    font-size: 15px;
+    color: rgba(245,245,243,0.7);
+    line-height: 1.8;
+    margin-bottom: 28px;
+  }
+
+  .custom-idea-price {
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--terracotta);
+    margin-bottom: 36px;
+  }
+
+  .custom-idea .hero-cta {
+    background: transparent;
+    border: 1px solid var(--cream);
+    color: var(--cream);
+  }
+
+  .custom-idea .hero-cta:hover {
+    background: var(--terracotta);
+    border-color: var(--terracotta);
+  }
+
+  /* === KAKO DELUJE === */
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-top: 48px;
+  }
+
+  .step {
+    position: relative;
+  }
+
+  .step-num {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 56px;
+    font-weight: 400;
+    color: #C8C3BC;
+    line-height: 1;
+    margin-bottom: 16px;
+  }
+
+  .step h3 {
+    font-size: 15px;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+
+  .step p {
+    font-size: 13px;
+    color: var(--text-soft);
+    line-height: 1.7;
+  }
+
+  /* === GIFT RIBBON === */
+  .ribbon-section {
+    padding: 80px 40px;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .ribbon-section blockquote {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(22px, 3vw, 30px);
+    font-weight: 400;
+    font-style: italic;
+    line-height: 1.5;
+    color: var(--obsidian);
+    margin-bottom: 16px;
+  }
+
+  .ribbon-section cite {
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-style: normal;
+    color: var(--text-soft);
+  }
+
+  /* === FOOTER === */
+  footer {
+    background: var(--obsidian);
+    color: var(--cream);
+    padding: 60px 40px;
+    text-align: center;
+  }
+
+  .footer-logo {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 6px;
+    margin-bottom: 20px;
+    text-decoration: none;
+    color: var(--cream);
+  }
+
+  .footer-logo .g {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 32px;
+    font-weight: 400;
+  }
+
+  .footer-logo .wordmark {
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 6px;
+  }
+
+  .footer-tagline {
+    font-size: 12px;
+    color: rgba(245,245,243,0.6);
+    letter-spacing: 2px;
+    margin-bottom: 32px;
+  }
+
+  .footer-link {
+    color: var(--cream);
+    text-decoration: none;
+    font-size: 13px;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+  }
+
+  .footer-link:hover { opacity: 1; }
+
+  .footer-squares {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 40px;
+  }
+
+  .footer-squares span {
+    width: 8px;
+    height: 8px;
+    display: block;
+    opacity: 0.85;
+  }
+
+  .footer-copy {
+    font-size: 11px;
+    color: rgba(245,245,243,0.45);
+    margin-top: 40px;
+    letter-spacing: 1px;
+  }
+
+  /* === ORDER FORM === */
+  .form-wrap {
+    max-width: 640px;
+  }
+
+  .darila-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .form-group label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-soft);
+    font-weight: 400;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    font-family: inherit;
+    font-size: 15px;
+    padding: 14px 16px;
+    border: 1px solid var(--border-light);
+    background: white;
+    color: var(--obsidian);
+    outline: none;
+    transition: border-color 0.3s ease;
+    -webkit-appearance: none;
+    border-radius: 0;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus,
+  .form-group textarea:focus {
+    border-color: var(--terracotta);
+  }
+
+  .form-group input::placeholder,
+  .form-group textarea::placeholder {
+    color: #B8B3AC;
+  }
+
+  .form-group select {
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%233D3D3D' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+  }
+
+  .form-group textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  .form-submit {
+    display: inline-block;
+    padding: 16px 48px;
+    background: var(--obsidian);
+    color: var(--cream);
+    border: none;
+    font-family: inherit;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    align-self: flex-start;
+  }
+
+  .form-submit:hover {
+    background: var(--terracotta);
+    transform: translateY(-2px);
+  }
+
+  .form-note {
+    font-size: 12px;
+    color: var(--text-soft);
+    line-height: 1.6;
+    opacity: 0.7;
+  }
+
+  /* === ANIMATIONS === */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-label, .hero h1, .hero p, .hero-cta {
+    animation: fadeUp 0.8s ease both;
+  }
+  .hero h1 { animation-delay: 0.15s; }
+  .hero p { animation-delay: 0.3s; }
+  .hero-cta { animation-delay: 0.45s; }
+
+  /* === RESPONSIVE === */
+  @media (max-width: 768px) {
+    nav { padding: 16px 24px; }
+    .nav-logo .wordmark { display: none; }
+    .section { padding: 40px 24px 60px; }
+    .hero { padding: 100px 24px 60px; }
+    .steps { grid-template-columns: 1fr; gap: 32px; }
+    .packages { grid-template-columns: 1fr; }
+    .occasions { grid-template-columns: 1fr 1fr; }
+    .ribbon-section { padding: 60px 24px; }
+    footer { padding: 48px 24px; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 480px) {
+    .occasions { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="/" class="nav-logo">
+    <span class="g">g</span>
+    <span class="wordmark">RAFEIO</span>
+    <span class="darila">darila</span>
+  </a>
+  <div class="nav-squares">
+    <span class="sq-t"></span>
+    <span class="sq-s"></span>
+    <span class="sq-g"></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-label">Digitalna darila za male podjetnike</div>
+  <h1>Podarite <em>digitalni korak</em> naprej.</h1>
+  <p>Vizitka, spletna stran ali profil na Googlu. Darilo, ki obrtniku spremeni posel. Preprosto, lepo, uporabno.</p>
+  <a href="#paketi" class="hero-cta">Izberite darilo</a>
+  <div class="hero-scroll">↓</div>
+</section>
+
+<!-- DIVIDER -->
+<div class="divider">
+  <span class="sq-t"></span>
+  <span class="sq-s"></span>
+  <span class="sq-g"></span>
+</div>
+
+<!-- ZA KOGA -->
+<section class="section">
+  <div class="section-label">Za koga</div>
+  <h2>Ko želite podariti<br>nekaj, kar resnično pomaga.</h2>
+
+  <div class="occasions">
+    <div class="occasion-card">
+      <span class="occasion-icon"><svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="6" y="18" width="32" height="20" rx="1" stroke="#111111" stroke-width="1.5"/>
+        <rect x="3" y="13" width="38" height="7" rx="1" stroke="#111111" stroke-width="1.5"/>
+        <line x1="22" y1="13" x2="22" y2="38" stroke="#111111" stroke-width="1.5"/>
+        <path d="M22 13C22 13 22 8 17 6C14 5 13 8 15 10C17 12 22 13 22 13Z" stroke="#111111" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M22 13C22 13 22 8 27 6C30 5 31 8 29 10C27 12 22 13 22 13Z" stroke="#111111" stroke-width="1.5" stroke-linejoin="round"/>
+        <rect x="30" y="5" width="6" height="6" fill="#C4521A"/>
+      </svg></span>
+      <h3>Rojstni dan</h3>
+      <p>Frizerka praznuje petdesetletnico. Namesto šopka podarite vizitko, ki jo deli naprej.</p>
+    </div>
+    <div class="occasion-card">
+      <span class="occasion-icon"><svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="6" y="14" width="32" height="24" rx="1" stroke="#111111" stroke-width="1.5"/>
+        <path d="M4 14L6 6H38L40 14" stroke="#111111" stroke-width="1.5" stroke-linejoin="round"/>
+        <rect x="16" y="24" width="12" height="14" stroke="#111111" stroke-width="1.5"/>
+        <line x1="22" y1="24" x2="22" y2="38" stroke="#111111" stroke-width="1.5"/>
+        <rect x="32" y="4" width="6" height="6" fill="#4A7BA5"/>
+      </svg></span>
+      <h3>Odprtje salona</h3>
+      <p>Prijateljica odpre salon. Mini stran je darilo, ki dela še dolgo po odprtju.</p>
+    </div>
+    <div class="occasion-card">
+      <span class="occasion-icon"><svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="22" cy="22" r="14" stroke="#111111" stroke-width="1.5"/>
+        <circle cx="22" cy="22" r="7" stroke="#111111" stroke-width="1.5"/>
+        <line x1="22" y1="4" x2="22" y2="8" stroke="#111111" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="22" y1="36" x2="22" y2="40" stroke="#111111" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="4" y1="22" x2="8" y2="22" stroke="#111111" stroke-width="1.5" stroke-linecap="round"/>
+        <line x1="36" y1="22" x2="40" y2="22" stroke="#111111" stroke-width="1.5" stroke-linecap="round"/>
+        <rect x="19" y="19" width="6" height="6" fill="#6A9970"/>
+      </svg></span>
+      <h3>Jubilej prakse</h3>
+      <p>Zobozdravnik praznuje 20 let. Google profil mu pripelje nove paciente.</p>
+    </div>
+    <div class="occasion-card">
+      <span class="occasion-icon"><svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="22" y1="38" x2="22" y2="16" stroke="#111111" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M22 24C22 24 14 22 12 14C18 14 22 18 22 24Z" stroke="#111111" stroke-width="1.5" stroke-linejoin="round"/>
+        <path d="M22 18C22 18 30 17 32 10C26 9 22 13 22 18Z" stroke="#111111" stroke-width="1.5" stroke-linejoin="round"/>
+        <line x1="16" y1="38" x2="28" y2="38" stroke="#111111" stroke-width="1.5" stroke-linecap="round"/>
+        <rect x="4" y="6" width="6" height="6" fill="#C4521A"/>
+        <rect x="4" y="6" width="6" height="6" fill="none" stroke="none"/>
+      </svg></span>
+      <h3>Zagon dejavnosti</h3>
+      <p>Maserka začenja samostojno pot. Socialni paket ji da profesionalen začetek.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="divider">
+  <span class="sq-t"></span>
+  <span class="sq-s"></span>
+  <span class="sq-g"></span>
+</div>
+
+<!-- PAKETI -->
+<section class="section" id="paketi">
+  <div class="section-label">Paketi</div>
+  <h2>Štiri darila,<br>štiri velikosti koraka.</h2>
+
+  <div class="packages">
+
+    <div class="package">
+      <div class="package-name">Paket 1</div>
+      <h3>Digitalna vizitka</h3>
+      <div class="package-price">49 € <small>enkratno</small></div>
+      <div class="package-desc">Ena elegantna stran z imenom, storitvami, kontaktom in QR kodo. Prejemnik dobi link, ki ga deli naprej.</div>
+      <ul class="package-items">
+        <li>Ime, storitve, kontakt</li>
+        <li>QR koda za tisk</li>
+        <li>Mobilno prilagojena</li>
+        <li>Trajen link brez vzdrževanja</li>
+      </ul>
+      <a href="#narocilo" class="package-btn" data-paket="Digitalna vizitka (49 €)">Podari vizitko</a>
+    </div>
+
+    <div class="package">
+      <div class="package-name">Paket 2</div>
+      <h3>Mini stran</h3>
+      <div class="package-price">199 € <small>enkratno</small></div>
+      <div class="package-desc">Enostranska spletna stran: kdo sem, kaj delam, kje sem, kontaktni obrazec. Profesionalna osnova za obrtnika.</div>
+      <ul class="package-items">
+        <li>Predstavitev in storitve</li>
+        <li>Galerija fotografij</li>
+        <li>Kontaktni obrazec</li>
+        <li>Optimizirano za Google</li>
+      </ul>
+      <a href="#narocilo" class="package-btn" data-paket="Mini stran (199 €)">Podari stran</a>
+    </div>
+
+    <div class="package">
+      <div class="package-name">Paket 3</div>
+      <h3>Google start</h3>
+      <div class="package-price">89 € <small>enkratno</small></div>
+      <div class="package-desc">Nastavitev Google Business profila: fotografije, opis, delovni čas, kategorija. Obrtnik postane viden na zemljevidu.</div>
+      <ul class="package-items">
+        <li>Google Business profil</li>
+        <li>Fotografije in opis</li>
+        <li>Delovni čas in lokacija</li>
+        <li>Viden na Google Maps</li>
+      </ul>
+      <a href="#narocilo" class="package-btn" data-paket="Google start (89 €)">Podari profil</a>
+    </div>
+
+    <div class="package">
+      <div class="package-name">Paket 4</div>
+      <h3>Socialni paket</h3>
+      <div class="package-price">69 € <small>enkratno</small></div>
+      <div class="package-desc">Komplet za družbena omrežja: profilne slike, cover fotografije, bio besedilo in predloge za tri objave.</div>
+      <ul class="package-items">
+        <li>Profilne in naslovne slike</li>
+        <li>Bio besedilo za profil</li>
+        <li>3 predloge za objave</li>
+        <li>Instagram + Facebook</li>
+      </ul>
+      <a href="#narocilo" class="package-btn" data-paket="Socialni paket (69 €)">Podari paket</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- CUSTOM IDEA -->
+<section class="custom-idea">
+  <div class="custom-idea-inner">
+    <div class="section-label" style="color: var(--terracotta);">Vaša ideja</div>
+    <h2 class="custom-idea-title">Imate svojo idejo?</h2>
+    <p class="custom-idea-text">Sporočite nam jo in spravimo jo v življenje. Digitalna vizitka z drugačno zasnovo, posebna mini stran, unikatno darilo za posebno priložnost. Pišite, pogovorimo se.</p>
+    <div class="custom-idea-price">Cena po dogovoru</div>
+    <a href="#narocilo" class="hero-cta" data-paket="Po meri (vaša ideja)">Pišite nam</a>
+  </div>
+</section>
+
+<!-- DIVIDER -->
+<div class="divider">
+  <span class="sq-t"></span>
+  <span class="sq-s"></span>
+  <span class="sq-g"></span>
+</div>
+
+<!-- KAKO DELUJE -->
+<section class="section">
+  <div class="section-label">Kako deluje</div>
+  <h2>Preprosto kot<br>naročilo rož.</h2>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <h3>Izberite darilo</h3>
+      <p>Izberite paket in kliknite gumb. Odpre se plačilna stran, kjer varno zaključite naročilo.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <h3>Povejte nam za koga</h3>
+      <p>Po plačilu vam pošljemo kratek vprašalnik. Ime prejemnika, dejavnost, kontakt.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <h3>Prejemnik dobi darilo</h3>
+      <p>V treh do petih dneh prejemnik dobi obvestilo in povezavo do svojega digitalnega darila.</p>
+    </div>
+  </div>
+</section>
+
+<!-- NAROČILO -->
+<section class="section" id="narocilo">
+  <div class="section-label">Naročilo</div>
+  <h2>Podarite digitalni korak.</h2>
+
+  <div class="form-wrap">
+    <form action="https://formspree.io/f/xwvaogvw" method="POST" class="darila-form" id="darilaForm">
+      <input type="hidden" name="_subject" value="Novo naročilo darila · Grafeio Darila">
+
+      <div class="form-group">
+        <label for="paket">Izbrano darilo</label>
+        <select name="paket" id="paket" required>
+          <option value="" disabled selected>Izberite paket</option>
+          <option value="Digitalna vizitka (49 €)">Digitalna vizitka · 49 €</option>
+          <option value="Mini stran (199 €)">Mini stran · 199 €</option>
+          <option value="Google start (89 €)">Google start · 89 €</option>
+          <option value="Socialni paket (69 €)">Socialni paket · 69 €</option>
+          <option value="Po meri (vaša ideja)">Po meri (vaša ideja)</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="ime">Vaše ime</label>
+          <input type="text" name="ime" id="ime" required placeholder="Ime in priimek">
+        </div>
+        <div class="form-group">
+          <label for="email">Vaš email</label>
+          <input type="email" name="email" id="email" required placeholder="vas@email.com">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="prejemnik">Ime prejemnika</label>
+          <input type="text" name="prejemnik" id="prejemnik" placeholder="Komu je darilo namenjeno">
+        </div>
+        <div class="form-group">
+          <label for="dejavnost">Dejavnost prejemnika</label>
+          <input type="text" name="dejavnost" id="dejavnost" placeholder="npr. frizerski salon, masaže">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="sporocilo">Sporočilo ali posebne želje</label>
+        <textarea name="sporocilo" id="sporocilo" rows="4" placeholder="Karkoli bi radi dodali: priložnost, poseben datum, ideja za izvedbo ..."></textarea>
+      </div>
+
+      <button type="submit" class="form-submit">Pošljite naročilo</button>
+      <p class="form-note">Odgovorimo v 24 urah. Po potrditvi vam pošljemo kratek vprašalnik za pripravo darila.</p>
+    </form>
+  </div>
+</section>
+
+<!-- RIBBON QUOTE -->
+<section class="ribbon-section">
+  <div class="divider">
+    <span class="sq-t"></span>
+    <span class="sq-s"></span>
+    <span class="sq-g"></span>
+  </div>
+  <blockquote>Ne podarite še kar eno darilo<br>od mnogih. Podarite prvi korak<br>k boljšemu poslu.</blockquote>
+  <cite>Grafeio Darila</cite>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="https://grafeio.si" class="footer-logo">
+    <span class="g">g</span>
+    <span class="wordmark">RAFEIO</span>
+  </a>
+  <div class="footer-tagline">Gradnik odličnosti.</div>
+  <a href="https://grafeio.si" class="footer-link">grafeio.si</a>
+  <div class="footer-squares">
+    <span class="sq-t"></span>
+    <span class="sq-s"></span>
+    <span class="sq-g"></span>
+  </div>
+  <div class="footer-copy">© 2026 Grafeio · Vsa darila ustvarjena z občutkom in vdihnjeno osebnostjo.</div>
+</footer>
+
+<script>
+document.querySelectorAll('[data-paket]').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var paket = this.getAttribute('data-paket');
+    var select = document.getElementById('paket');
+    if (select) {
+      for (var i = 0; i < select.options.length; i++) {
+        if (select.options[i].value === paket) {
+          select.selectedIndex = i;
+          break;
+        }
+      }
+    }
+  });
+});
+</script>
+
+</body>
+</html>
