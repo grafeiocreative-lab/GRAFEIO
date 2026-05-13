@@ -484,6 +484,12 @@ section{padding:100px 48px}
   letter-spacing:0.05em;
 }
 
+/* ── DARILA CTA ── */
+.darila-cta-inner a:hover{
+  background:var(--terra);border-color:var(--terra);
+  transform:translateY(-2px);
+}
+
 /* ── FOOTER ── */
 footer{
   border-top:1px solid var(--border);
@@ -546,6 +552,7 @@ footer{
   .step-accent-3{background:var(--sage) !important;transition:none}
   .step-accent-4{background:linear-gradient(90deg,var(--terra),var(--slate),var(--sage)) !important;transition:none}
   /* Obrazec — enojni stolpec */
+  #darila-cta{padding:48px 24px !important}
   #povprasajte > div{grid-template-columns:1fr !important;gap:48px}
 }
 </style>
@@ -805,6 +812,24 @@ footer{
     </div>
   </div>
   <p class="audiences-note reveal">Mali podjetniki, zasebniki, ordinacije. Brez megalomanskih pričakovanj.</p>
+</section>
+
+<!-- DARILA CTA -->
+<section id="darila-cta" style="background:var(--obsidian-soft);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:56px 48px;">
+  <div class="darila-cta-inner reveal">
+    <div class="squares" style="margin-bottom:24px">
+      <span class="sq sq-terra" style="width:8px;height:8px"></span>
+      <span class="sq sq-slate" style="width:8px;height:8px;margin-bottom:-1px"></span>
+      <span class="sq sq-sage" style="width:8px;height:8px;margin-bottom:1px"></span>
+    </div>
+    <p style="font-family:'Cormorant Garamond',serif;font-size:clamp(22px,2.5vw,32px);font-weight:300;line-height:1.35;margin-bottom:20px;max-width:520px;">
+      Poznate obrtnika, ki potrebuje<br>digitalni korak naprej?
+    </p>
+    <p style="font-size:14px;color:var(--cream-60);margin-bottom:28px;max-width:440px;line-height:1.7;">
+      Podarite mu spletno vizitko, mini stran ali Google profil. Darilo, ki spremeni posel.
+    </p>
+    <a href="/darila/" style="display:inline-block;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--cream);border:1px solid var(--border);padding:14px 36px;text-decoration:none;transition:all 0.3s ease;">Razišči darila →</a>
+  </div>
 </section>
 
 <!-- CONTACT -->
