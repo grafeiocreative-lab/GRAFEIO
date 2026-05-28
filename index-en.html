@@ -189,10 +189,22 @@ footer{border-top:1px solid var(--border);padding:36px 48px;display:flex;align-i
 .reveal-delay-2{transition-delay:0.2s}
 .reveal-delay-3{transition-delay:0.3s}
 .reveal-delay-4{transition-delay:0.4s}
+/* ── HAMBURGER ── */
+.nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.nav-hamburger span{display:block;width:22px;height:1.5px;background:var(--cream);transition:transform 0.25s,opacity 0.25s}
+.nav-hamburger.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.nav-hamburger.open span:nth-child(2){opacity:0}
+.nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+body.nav-open{overflow:hidden}
 @media(max-width:900px){
   nav{padding:20px 24px}
   nav.scrolled{padding:14px 24px}
-  .nav-links{display:none}
+  .nav-hamburger{display:flex}
+  .nav-links{display:none;position:fixed;inset:0;background:var(--obsidian);flex-direction:column;align-items:center;justify-content:center;gap:40px;z-index:99}
+  .nav-links.open{display:flex}
+  .nav-links.open a{font-size:15px;letter-spacing:0.2em;color:var(--cream-60)}
+  .nav-links.open a:hover{color:var(--cream)}
+  .nav-links.open .nav-cta{border-color:var(--cream-20);padding:14px 40px;color:var(--cream)}
   #hero{padding:0 24px 64px}
   section{padding:72px 24px}
   .problem-grid,.services-header,.process-intro{grid-template-columns:1fr}
@@ -237,6 +249,9 @@ footer{border-top:1px solid var(--border);padding:36px 48px;display:flex;align-i
     <a href="#povprasajte">Enquiry</a>
       <a href="#contact" class="nav-cta">Get in touch</a>
   </div>
+  <button class="nav-hamburger" aria-label="Menu" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </button>
   <a href="/" style="font-size:12px;font-weight:400;letter-spacing:0.08em;color:var(--terra);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='var(--cream)'" onmouseout="this.style.color='var(--terra)'">SL</a>
 </nav>
 
@@ -556,6 +571,19 @@ window.addEventListener('load',()=>{
   document.querySelectorAll('.reveal').forEach(el=>{
     const rect=el.getBoundingClientRect();
     if(rect.top<window.innerHeight)el.classList.add('visible');
+  });
+});
+
+function toggleNav() {
+  document.querySelector('.nav-links').classList.toggle('open');
+  document.querySelector('.nav-hamburger').classList.toggle('open');
+  document.body.classList.toggle('nav-open');
+}
+document.querySelectorAll('.nav-links a').forEach(function(a) {
+  a.addEventListener('click', function() {
+    document.querySelector('.nav-links').classList.remove('open');
+    document.querySelector('.nav-hamburger').classList.remove('open');
+    document.body.classList.remove('nav-open');
   });
 });
 
