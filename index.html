@@ -574,6 +574,102 @@ body.nav-open{overflow:hidden}
   /* Obrazec — enojni stolpec */
   #darila-cta{padding:48px 24px !important}
   #povprasajte > div{grid-template-columns:1fr !important;gap:48px}
+  /* Video sekcija */
+  .video-play-circle{width:56px;height:56px}
+  .video-play-circle svg{width:18px;height:18px}
+}
+
+/* ── VIDEO SECTION ── */
+.video-thumb-wrapper{
+  position:relative;
+  max-width:760px;
+  margin:0 auto;
+  cursor:pointer;
+  border:1px solid var(--border);
+  overflow:hidden;
+}
+.video-thumb-wrapper img{
+  display:block;
+  width:100%;
+  aspect-ratio:16/9;
+  object-fit:cover;
+  background:var(--obsidian-soft);
+  transition:transform 0.5s ease,filter 0.4s ease;
+  filter:brightness(0.75);
+}
+.video-thumb-wrapper:hover img{
+  transform:scale(1.025);
+  filter:brightness(0.5);
+}
+.video-play-btn{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  pointer-events:none;
+}
+.video-play-circle{
+  width:72px;height:72px;
+  border-radius:50%;
+  border:2px solid var(--cream);
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(17,17,17,0.55);
+  transition:background 0.3s,transform 0.3s,border-color 0.3s;
+}
+.video-thumb-wrapper:hover .video-play-circle{
+  background:rgba(17,17,17,0.8);
+  border-color:var(--cream-60);
+  transform:scale(1.1);
+}
+.video-play-circle svg{
+  width:24px;height:24px;
+  margin-left:3px;
+  fill:var(--cream);
+}
+.video-bottom-bar{
+  position:absolute;
+  bottom:0;left:0;right:0;
+  padding:20px 24px 16px;
+  background:linear-gradient(to top,rgba(17,17,17,0.88) 0%,transparent 100%);
+  font-size:11px;letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--cream-20);
+  pointer-events:none;
+}
+
+/* Lightbox */
+#video-lightbox{
+  display:none;
+  position:fixed;inset:0;z-index:200;
+  background:rgba(11,11,11,0.94);
+  align-items:center;justify-content:center;
+  padding:24px;
+}
+#video-lightbox.open{display:flex}
+.video-lb-inner{
+  position:relative;
+  width:100%;max-width:920px;
+}
+.video-lb-close{
+  position:absolute;
+  top:-48px;right:0;
+  background:none;border:none;
+  color:var(--cream-60);
+  font-size:32px;font-weight:200;
+  cursor:pointer;line-height:1;
+  transition:color 0.2s;
+  font-family:'Helvetica Neue',sans-serif;
+}
+.video-lb-close:hover{color:var(--cream)}
+.video-lb-frame{
+  position:relative;
+  padding-bottom:56.25%;height:0;
+  background:var(--obsidian);
+}
+.video-lb-frame iframe{
+  position:absolute;
+  inset:0;width:100%;height:100%;
+  border:none;
 }
 </style>
 </head>
@@ -596,6 +692,7 @@ body.nav-open{overflow:hidden}
     <a href="#services">Storitve</a>
     <a href="#process">Pristop</a>
     <a href="#for-whom">Za koga</a>
+    <a href="#o-nas">Kdo sva</a>
     <a href="#povprasajte">Povpraševanje</a>
     <a href="/darila/">Darila</a>
     <a href="#contact" class="nav-cta">Pišite nam</a>
@@ -839,6 +936,55 @@ body.nav-open{overflow:hidden}
   <p class="audiences-note reveal">Mali podjetniki, zasebniki, ordinacije. Brez megalomanskih pričakovanj.</p>
 </section>
 
+<!-- VIDEO · KDO SVA -->
+<!-- Zamenjaj YOUTUBE_VIDEO_ID z dejanskim YouTube ID-jem (npr. dQw4w9WgXcQ) -->
+<section id="o-nas" style="text-align:center;border-top:1px solid var(--border);">
+  <p class="reveal" style="font-size:11px;font-weight:400;letter-spacing:0.22em;text-transform:uppercase;color:var(--terra);margin-bottom:32px;">Kdo sva</p>
+  <h2 class="section-title reveal" style="max-width:460px;margin:0 auto 20px;">
+    Dve osebi.<br>
+    <em style="color:var(--cream-60)">Polna pozornost za vsako stranko.</em>
+  </h2>
+  <p class="reveal" style="font-size:17px;font-weight:300;color:var(--cream-60);line-height:1.75;max-width:480px;margin:0 auto 48px;">
+    Mojca in Barbara. Ne agencija. Vsako stranko poznava po imenu in sva tu, ko naju potrebujete.
+  </p>
+  <div
+    class="video-thumb-wrapper reveal"
+    onclick="openVideoLightbox()"
+    onkeydown="if(event.key==='Enter'||event.key===' ')openVideoLightbox()"
+    role="button"
+    tabindex="0"
+    aria-label="Predvajaj video – Kdo sva Grafeio"
+  >
+    <img
+      src="https://img.youtube.com/vi/YOUTUBE_VIDEO_ID/maxresdefault.jpg"
+      alt="Grafeio – Mojca in Barbara, kdo sva"
+      loading="lazy"
+    >
+    <div class="video-play-btn">
+      <div class="video-play-circle">
+        <svg viewBox="0 0 24 24"><polygon points="6,3 20,12 6,21"/></svg>
+      </div>
+    </div>
+    <div class="video-bottom-bar">Predvajaj · ~1 min</div>
+  </div>
+</section>
+
+<!-- VIDEO LIGHTBOX -->
+<div
+  id="video-lightbox"
+  onclick="if(event.target===this)closeVideoLightbox()"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Video predvajalnik"
+>
+  <div class="video-lb-inner">
+    <button class="video-lb-close" onclick="closeVideoLightbox()" aria-label="Zapri video">&#x2715;</button>
+    <div class="video-lb-frame">
+      <iframe id="video-lb-iframe" src="" allowfullscreen allow="autoplay; fullscreen; picture-in-picture"></iframe>
+    </div>
+  </div>
+</div>
+
 <!-- DARILA CTA -->
 <section id="darila-cta" style="background:var(--obsidian-soft);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:56px 48px;">
   <div class="darila-cta-inner reveal">
@@ -995,6 +1141,24 @@ document.querySelectorAll('.nav-links a').forEach(function(a) {
     document.querySelector('.nav-hamburger').classList.remove('open');
     document.body.classList.remove('nav-open');
   });
+});
+
+// ── VIDEO LIGHTBOX ───────────────────────────────────────────────
+// Zamenjaj YOUTUBE_VIDEO_ID z dejanskim ID-jem videa (kar je za v= v URL-ju)
+const GRAFEIO_VIDEO_ID = 'YOUTUBE_VIDEO_ID';
+function openVideoLightbox() {
+  document.getElementById('video-lb-iframe').src =
+    'https://www.youtube.com/embed/' + GRAFEIO_VIDEO_ID + '?autoplay=1&playsinline=1&rel=0';
+  document.getElementById('video-lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeVideoLightbox() {
+  document.getElementById('video-lb-iframe').src = '';
+  document.getElementById('video-lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closeVideoLightbox();
 });
 
 async function submitForm() {
