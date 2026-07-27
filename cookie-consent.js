@@ -6,7 +6,6 @@
  * 1. Ko ima Barbara pripravljene dokumente, v index.html posodobi URL-je:
  *    - PRIVACY_URL → link na politiko zasebnosti
  *    - COOKIES_URL → link na politiko piškotkov
- * 2. Odstrani komentar /* DISABLED */ na dnu tega fila
  *
  * KAKO DELUJE:
  * - Ob prvem obisku se prikaže baner

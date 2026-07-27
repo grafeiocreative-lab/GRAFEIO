@@ -29,7 +29,9 @@
 <link rel="alternate" hreflang="x-default" href="https://grafeio.si/">
 <title>GRAFEIO · Gradnik odličnosti</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet"></noscript>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -141,7 +143,7 @@ nav.scrolled{
 }
 .hero-eyebrow{
   font-size:11px;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;
-  color:var(--terra);margin-bottom:32px;
+  color:#e26425;margin-bottom:32px;
 }
 .hero-title{
   font-family:'Cormorant Garamond',serif;
@@ -190,7 +192,7 @@ nav.scrolled{
 section{padding:100px 48px}
 .section-label{
   font-size:11px;font-weight:400;letter-spacing:0.22em;text-transform:uppercase;
-  color:var(--terra);margin-bottom:56px;
+  color:#e26425;margin-bottom:56px;
   display:flex;align-items:center;gap:16px;
 }
 .section-label::after{
@@ -513,7 +515,7 @@ footer{
   color:var(--cream-60);
 }
 .footer-right{
-  font-size:12px;font-weight:300;color:var(--cream-20);
+  font-size:12px;font-weight:300;color:rgba(245,245,243,0.52);
 }
 
 /* ── ANIMATIONS ── */
@@ -601,9 +603,10 @@ body.nav-open{overflow:hidden}
   <button class="nav-hamburger" aria-label="Meni" onclick="toggleNav()">
     <span></span><span></span><span></span>
   </button>
-  <a href="/index-en.html" style="font-size:12px;font-weight:400;letter-spacing:0.08em;color:var(--terra);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='var(--cream)'" onmouseout="this.style.color='var(--cream-20)'">EN</a>
+  <a href="/index-en.html" style="font-size:12px;font-weight:400;letter-spacing:0.08em;color:#e26425;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='var(--cream)'" onmouseout="this.style.color='var(--cream-20)'">EN</a>
 </nav>
 
+<main>
 <!-- HERO -->
 <section id="hero">
   <div class="hero-bg-g">g</div>
@@ -693,7 +696,7 @@ body.nav-open{overflow:hidden}
   <div id="services-grid" class="services-grid">
     <!-- Vsebina se naloži iz _data/vsebina.json -->
   </div>
-  <p style="margin-top:32px;font-size:12px;font-weight:300;color:var(--cream-20);text-align:center;letter-spacing:0.04em;">Orodja so namenjena podpori vsakodnevnim opravilom in ne nadomeščajo obstoječih poslovnih sistemov.</p>
+  <p style="margin-top:32px;font-size:12px;font-weight:300;color:rgba(245,245,243,0.52);text-align:center;letter-spacing:0.04em;">Orodja so namenjena podpori vsakodnevnim opravilom in ne nadomeščajo obstoječih poslovnih sistemov.</p>
 </section>
 
 <!-- FORM SECTION -->
@@ -751,7 +754,7 @@ body.nav-open{overflow:hidden}
           <p style="font-size:16px;font-weight:300;color:var(--cream);margin-bottom:8px;">Sporočilo je na poti.</p>
           <p style="font-size:13px;font-weight:300;color:var(--cream-60);">Odgovorimo v 24 urah.</p>
         </div>
-        <p style="margin-top:16px;font-size:11px;font-weight:300;color:var(--cream-20);text-align:center;letter-spacing:0.05em;">Vaši podatki so varni. Ne pošiljamo neželene pošte.</p>
+        <p style="margin-top:16px;font-size:11px;font-weight:300;color:rgba(245,245,243,0.52);text-align:center;letter-spacing:0.05em;">Vaši podatki so varni. Ne pošiljamo neželene pošte.</p>
       </div>
     </div>
   </div>
@@ -878,6 +881,7 @@ body.nav-open{overflow:hidden}
     &copy; 2026 GRAFEIO
   </p>
 </section>
+</main>
 
 <!-- FOOTER -->
 <footer>

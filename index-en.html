@@ -27,7 +27,9 @@
 <link rel="alternate" hreflang="x-default" href="https://grafeio.si/">
 <title>GRAFEIO · Building Excellence</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet"></noscript>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -89,7 +91,7 @@ nav.scrolled{
 #hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:0 48px 80px;position:relative;overflow:hidden;}
 .hero-bg-g{position:absolute;top:-80px;right:-60px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:clamp(400px,45vw,700px);font-weight:400;color:rgba(245,245,243,0.025);line-height:1;user-select:none;pointer-events:none;}
 .hero-squares-top{position:absolute;top:90px;right:48px;}
-.hero-eyebrow{font-size:11px;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;color:var(--terra);margin-bottom:32px;}
+.hero-eyebrow{font-size:11px;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;color:#e26425;margin-bottom:32px;}
 .hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(48px,6.5vw,100px);font-weight:300;line-height:1.08;max-width:900px;margin-bottom:40px;letter-spacing:-0.01em;}
 .hero-title em{font-style:italic;color:var(--cream-60);}
 .hero-sub{font-size:18px;font-weight:300;color:var(--cream-60);max-width:520px;line-height:1.65;margin-bottom:56px;}
@@ -103,7 +105,7 @@ nav.scrolled{
 .btn-secondary:hover .arrow{transform:translateX(4px)}
 .hero-bottom-line{position:absolute;bottom:0;left:0;right:0;height:1px;background:var(--border);}
 section{padding:100px 48px}
-.section-label{font-size:11px;font-weight:400;letter-spacing:0.22em;text-transform:uppercase;color:var(--terra);margin-bottom:56px;display:flex;align-items:center;gap:16px;}
+.section-label{font-size:11px;font-weight:400;letter-spacing:0.22em;text-transform:uppercase;color:#e26425;margin-bottom:56px;display:flex;align-items:center;gap:16px;}
 .section-label::after{content:'';flex:1;height:1px;background:var(--border);}
 .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,3.5vw,56px);font-weight:300;line-height:1.15;margin-bottom:24px;}
 #problem{background:var(--obsidian-soft);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
@@ -182,7 +184,7 @@ footer{border-top:1px solid var(--border);padding:36px 48px;display:flex;align-i
 .footer-logo{display:flex;align-items:center;gap:10px;}
 .footer-g{font-size:22px;font-weight:400;color:var(--cream);line-height:1;}
 .footer-name{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--cream-60);}
-.footer-right{font-size:12px;font-weight:300;color:var(--cream-20);}
+.footer-right{font-size:12px;font-weight:300;color:rgba(245,245,243,0.52);}
 .reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease;}
 .reveal.visible{opacity:1;transform:none}
 .reveal-delay-1{transition-delay:0.1s}
@@ -252,9 +254,10 @@ body.nav-open{overflow:hidden}
   <button class="nav-hamburger" aria-label="Menu" onclick="toggleNav()">
     <span></span><span></span><span></span>
   </button>
-  <a href="/" style="font-size:12px;font-weight:400;letter-spacing:0.08em;color:var(--terra);text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='var(--cream)'" onmouseout="this.style.color='var(--terra)'">SL</a>
+  <a href="/" style="font-size:12px;font-weight:400;letter-spacing:0.08em;color:#e26425;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='var(--cream)'" onmouseout="this.style.color='#e26425'">SL</a>
 </nav>
 
+<main>
 <section id="hero">
   <div class="hero-bg-g">g</div>
   <div class="hero-squares-top">
@@ -333,7 +336,7 @@ body.nav-open{overflow:hidden}
     <p class="reveal">We don't sell packages. We build what makes sense for you, from a website to an email sequence that works while you sleep.</p>
   </div>
   <div id="services-grid" class="services-grid"></div>
-  <p style="margin-top:32px;font-size:12px;font-weight:300;color:var(--cream-20);text-align:center;letter-spacing:0.04em;">These tools are designed to support everyday tasks and do not replace existing business systems.</p>
+  <p style="margin-top:32px;font-size:12px;font-weight:300;color:rgba(245,245,243,0.52);text-align:center;letter-spacing:0.04em;">These tools are designed to support everyday tasks and do not replace existing business systems.</p>
 </section>
 
 <section id="povprasajte" style="background:var(--obsidian-soft);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
@@ -389,7 +392,7 @@ body.nav-open{overflow:hidden}
           <p style="font-size:16px;font-weight:300;color:var(--cream);margin-bottom:8px;">Your message is on its way.</p>
           <p style="font-size:13px;font-weight:300;color:var(--cream-60);">We'll respond within 24 hours.</p>
         </div>
-        <p style="margin-top:16px;font-size:11px;font-weight:300;color:var(--cream-20);text-align:center;letter-spacing:0.05em;">Your data is safe. We do not send spam.</p>
+        <p style="margin-top:16px;font-size:11px;font-weight:300;color:rgba(245,245,243,0.52);text-align:center;letter-spacing:0.05em;">Your data is safe. We do not send spam.</p>
       </div>
     </div>
   </div>
@@ -489,6 +492,7 @@ body.nav-open{overflow:hidden}
   </a>
   <p class="contact-tagline reveal">&copy; 2026 GRAFEIO</p>
 </section>
+</main>
 
 <footer>
   <div class="footer-logo">
