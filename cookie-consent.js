@@ -129,7 +129,7 @@
         <strong>Piškotki na grafeio.si</strong><br>
         Uporabljamo piškotke za analitiko obiskanosti. Vaši podatki so vaši —
         soglasje lahko kadar koli spremenite.
-        <a onclick="document.getElementById('gc-modal').classList.remove('gc-hidden')">Nastavitve</a>
+        <button type="button" onclick="document.getElementById('gc-modal').classList.remove('gc-hidden')">Nastavitve</button>
         &nbsp;·&nbsp;
         <a href="${CONFIG.PRIVACY_URL}" target="_blank">Politika zasebnosti</a>
         &nbsp;·&nbsp;
