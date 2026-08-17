@@ -597,10 +597,10 @@ body.nav-open{overflow:hidden}
   .video-play-circle svg{width:18px;height:18px}
 }
 
-/* ── VIDEO SECTION ── */
+/* ── VIDEO SECTION (navpičen format · Shorts/Reel) ── */
 .video-thumb-wrapper{
   position:relative;
-  max-width:760px;
+  max-width:300px;
   margin:0 auto;
   cursor:pointer;
   border:1px solid var(--border);
@@ -609,7 +609,7 @@ body.nav-open{overflow:hidden}
 .video-thumb-wrapper img{
   display:block;
   width:100%;
-  aspect-ratio:16/9;
+  aspect-ratio:9/16;
   object-fit:cover;
   background:var(--obsidian-soft);
   transition:transform 0.5s ease,filter 0.4s ease;
@@ -666,7 +666,7 @@ body.nav-open{overflow:hidden}
 #video-lightbox.open{display:flex}
 .video-lb-inner{
   position:relative;
-  width:100%;max-width:920px;
+  width:100%;max-width:380px;
 }
 .video-lb-close{
   position:absolute;
@@ -681,7 +681,7 @@ body.nav-open{overflow:hidden}
 .video-lb-close:hover{color:var(--cream)}
 .video-lb-frame{
   position:relative;
-  padding-bottom:56.25%;height:0;
+  padding-bottom:177.78%;height:0;
   background:var(--obsidian);
 }
 .video-lb-frame iframe{
@@ -710,7 +710,7 @@ body.nav-open{overflow:hidden}
     <a href="#services">Storitve</a>
     <a href="#process">Pristop</a>
     <a href="#for-whom">Za koga</a>
-    <!-- "Kdo smo" skrito dokler razdelek #o-nas ni objavljen, glej komentar zgoraj -->
+    <a href="#o-nas">Kdo smo</a>
     <a href="#povprasajte">Povpraševanje</a>
     <a href="/darila/">Darila</a>
     <a href="#contact" class="nav-cta">Pišite nam</a>
@@ -954,9 +954,9 @@ body.nav-open{overflow:hidden}
   <p class="audiences-note reveal">Mali podjetniki, zasebniki, ordinacije. Brez megalomanskih pričakovanj.</p>
 </section>
 
-<!-- VIDEO · KDO SMO — namerno skrito, ni bilo v načrtu za objavo (video še ni pripravljen, YOUTUBE_VIDEO_ID je placeholder). Odstrani ta komentar, ko je video pripravljen za objavo.
+<!-- VIDEO · KDO SMO -->
 <section id="o-nas" style="text-align:center;border-top:1px solid var(--border);">
-  <p class="reveal" style="font-size:11px;font-weight:400;letter-spacing:0.22em;text-transform:uppercase;color:var(--terra);margin-bottom:32px;">Kdo smo</p>
+  <p class="reveal" style="font-size:11px;font-weight:400;letter-spacing:0.22em;text-transform:uppercase;color:#e26425;margin-bottom:32px;">Kdo smo</p>
   <h2 class="section-title reveal" style="max-width:460px;margin:0 auto 20px;">
     Dve osebi.<br>
     <em style="color:var(--cream-60)">Polna pozornost za vsako stranko.</em>
@@ -973,7 +973,7 @@ body.nav-open{overflow:hidden}
     aria-label="Predvajaj video – Kdo smo Grafeio"
   >
     <img
-      src="https://img.youtube.com/vi/YOUTUBE_VIDEO_ID/maxresdefault.jpg"
+      src="/video-kdo-smo-thumb.jpg"
       alt="Grafeio – kdo smo"
       loading="lazy"
     >
@@ -985,7 +985,6 @@ body.nav-open{overflow:hidden}
     <div class="video-bottom-bar">Predvajaj · ~1 min</div>
   </div>
 </section>
--->
 
 <!-- VIDEO LIGHTBOX -->
 <div
@@ -1064,6 +1063,14 @@ body.nav-open{overflow:hidden}
     <span style="letter-spacing:0.05em">Gradnik odličnosti.</span>
     &nbsp;·&nbsp;
     <a id="kontakt-email-footer" href="mailto:grafeio.creative@gmail.com" style="color:inherit;text-decoration:none">grafeio.creative@gmail.com</a>
+    &nbsp;·&nbsp;
+    <a href="https://www.instagram.com/grafeio.creative/" target="_blank" rel="noopener" aria-label="GRAFEIO na Instagramu" style="color:inherit;text-decoration:none;display:inline-flex;vertical-align:-3px" onmouseover="this.style.color='var(--cream)'" onmouseout="this.style.color='inherit'">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="0.6" fill="currentColor" stroke="none"/></svg>
+    </a>
+    &nbsp;·&nbsp;
+    <a href="https://www.tiktok.com/@grafeio.creative" target="_blank" rel="noopener" aria-label="GRAFEIO na TikToku" style="color:inherit;text-decoration:none;display:inline-flex;vertical-align:-3px" onmouseover="this.style.color='var(--cream)'" onmouseout="this.style.color='inherit'">
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M16.6 5.82c-1.02-.98-1.6-2.32-1.6-3.82h-3.03v14.14c0 1.61-1.31 2.92-2.92 2.92-1.61 0-2.92-1.31-2.92-2.92 0-1.61 1.31-2.92 2.92-2.92.32 0 .62.05.91.14v-3.09a6.13 6.13 0 0 0-.91-.07c-3.28 0-5.95 2.66-5.95 5.94s2.67 5.94 5.95 5.94 5.94-2.66 5.94-5.94V9.4a9.3 9.3 0 0 0 5.03 1.48V7.85c-1.1 0-2.12-.35-2.95-.94a5.7 5.7 0 0 1-.47-1.09Z"/></svg>
+    </a>
     &nbsp;·&nbsp;
     <span>© 2026 Grafeio</span>
   </div>
@@ -1165,8 +1172,7 @@ document.querySelectorAll('.nav-links a').forEach(function(a) {
 });
 
 // ── VIDEO LIGHTBOX ───────────────────────────────────────────────
-// Zamenjaj YOUTUBE_VIDEO_ID z dejanskim ID-jem videa (kar je za v= v URL-ju)
-const GRAFEIO_VIDEO_ID = 'YOUTUBE_VIDEO_ID';
+const GRAFEIO_VIDEO_ID = 'mbe14iINj10';
 function openVideoLightbox() {
   document.getElementById('video-lb-iframe').src =
     'https://www.youtube.com/embed/' + GRAFEIO_VIDEO_ID + '?autoplay=1&playsinline=1&rel=0';
