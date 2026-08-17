@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="canonical" href="https://grafeio.si/politika-piskotkov/">
+<title>Politika piškotkov · GRAFEIO</title>
+<meta name="description" content="Kateri piškotki tečejo na grafeio.si, zakaj, in kako spremenite svojo odločitev.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet"></noscript>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --obsidian:#111111;--obsidian-soft:#1a1a1a;
+  --terra:#C4521A;--slate:#4A7BA5;--sage:#6A9970;
+  --cream:#F5F5F3;--cream-60:rgba(245,245,243,0.6);--cream-20:rgba(245,245,243,0.2);
+  --border:rgba(245,245,243,0.12);
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+  background:var(--obsidian);color:var(--cream-60);
+  line-height:1.7;font-weight:300;font-size:16px;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--cream)}
+a:hover{color:#e26425}
+header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:24px 48px;border-bottom:1px solid var(--border);
+}
+.back{font-size:13px;letter-spacing:0.04em;text-decoration:none;color:var(--cream-60)}
+.back:hover{color:var(--cream)}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo .g{font-size:22px;color:var(--cream);line-height:1}
+.logo .word{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--cream-60)}
+main{max-width:720px;margin:0 auto;padding:72px 24px 96px}
+.doc-label{font-size:11px;font-weight:400;letter-spacing:0.22em;text-transform:uppercase;color:#e26425;margin-bottom:20px}
+h1{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(36px,5vw,54px);color:var(--cream);line-height:1.1;margin-bottom:16px}
+.updated{font-size:13px;color:var(--cream-20);margin-bottom:56px}
+h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:26px;color:var(--cream);margin:48px 0 16px}
+h2:first-of-type{margin-top:0}
+p{margin-bottom:16px}
+ul,ol{margin:0 0 16px 22px}
+li{margin-bottom:8px}
+strong{color:var(--cream);font-weight:500}
+table{width:100%;border-collapse:collapse;margin:16px 0 24px;font-size:14px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top}
+th{color:var(--cream);font-weight:500;font-size:12px;letter-spacing:0.04em;text-transform:uppercase}
+.todo{
+  background:rgba(196,82,26,0.16);color:#e26425;
+  padding:1px 7px;border-radius:2px;font-weight:600;
+  border:1px dashed rgba(196,82,26,0.55);white-space:normal;
+}
+.note{
+  border-left:2px solid var(--terra);padding:14px 18px;margin:24px 0;
+  background:rgba(196,82,26,0.06);font-size:14px;color:var(--cream-60);
+}
+.btn-settings{
+  display:inline-block;margin-top:8px;padding:10px 22px;
+  border:1px solid var(--cream-20);color:var(--cream);text-decoration:none;
+  font-size:13px;letter-spacing:0.04em;cursor:pointer;background:none;
+  font-family:inherit;transition:background 0.2s,border-color 0.2s;
+}
+.btn-settings:hover{background:rgba(245,245,243,0.06);border-color:var(--cream-60);color:var(--cream)}
+footer{border-top:1px solid var(--border);padding:36px 48px;text-align:center;font-size:12px;color:var(--cream-20)}
+footer a{color:inherit}
+@media(max-width:640px){
+  header{padding:20px 24px}
+  main{padding:56px 20px 72px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a href="/" class="logo">
+    <span class="g">g</span>
+    <span class="word">RAFEIO</span>
+  </a>
+  <a href="/" class="back">← Nazaj na grafeio.si</a>
+</header>
+
+<main>
+  <div class="doc-label">Pravno</div>
+  <h1>Politika piškotkov</h1>
+  <p class="updated">Zadnja posodobitev: 17. 8. 2026</p>
+
+  <div class="note">
+    <strong>Opomba za GRAFEIO:</strong> ta stran opisuje piškotke, ki dejansko tečejo v kodi strani (`cookie-consent.js`, Google Analytics), zato ne bi smela potrebovati veliko sprememb — a preveri, če se seznam kdaj razširi (npr. dodan nov analitičen ali marketinški piškotek), da ostane skladen z dejanskim stanjem.
+  </div>
+
+  <h2>1. Kaj so piškotki</h2>
+  <p>Piškotki so majhne besedilne datoteke, ki jih spletna stran shrani v vaš brskalnik. Nekateri so nujni za delovanje strani, drugi (npr. analitični) nam pomagajo razumeti, kako obiskovalci uporabljajo stran — te uporabljamo samo z vašim soglasjem.</p>
+
+  <h2>2. Katere piškotke uporabljamo</h2>
+  <table>
+    <tr><th>Ime</th><th>Vrsta</th><th>Namen</th><th>Trajanje</th></tr>
+    <tr><td><code>grafeio_consent</code></td><td>Nujno potreben</td><td>Zapomni si vašo odločitev o piškotkih, da vas ob vsakem obisku ne sprašujemo znova.</td><td>365 dni (localStorage)</td></tr>
+    <tr><td><code>_ga</code>, <code>_ga_*</code></td><td>Analitika (Google Analytics 4)</td><td>Razločevanje obiskovalcev za anonimizirano statistiko obiska. Aktivira se samo, če v pasici izberete "Analitika".</td><td>do 14 mesecev (privzeta nastavitev Google Analytics 4)</td></tr>
+  </table>
+  <p>Stran ne uporablja oglaševalskih piškotkov niti piškotkov za sledenje med spletnimi stranmi tretjih ponudnikov.</p>
+
+  <h2>3. Google Analytics in "consent mode"</h2>
+  <p>
+    Za analitiko obiska uporabljamo Google Analytics 4, nastavljen v načinu "Consent Mode v2" — to pomeni, da se shranjevanje analitičnih piškotkov privzeto zavrne (<code>denied</code>) in se aktivira šele, ko v pasici izrecno izberete "Sprejmi vse" ali v Nastavitvah vklopite "Analitiko". Podatki so anonimizirani in se ne uporabljajo za oglaševanje ali profiliranje.
+  </p>
+  <p>Več o tem, kako Google obravnava podatke: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a>.</p>
+
+  <h2>4. Kako spremenite svojo odločitev</h2>
+  <p>Svoje soglasje lahko kadar koli spremenite ali prekličete — pasica za piškotke z gumbom "Nastavitve" teče na glavni strani:</p>
+  <a href="/#" class="btn-settings">Pojdi na grafeio.si → Nastavitve piškotkov</a>
+  <p style="margin-top:16px">Piškotke lahko onemogočite tudi neposredno v nastavitvah svojega brskalnika — upoštevajte, da lahko to vpliva na delovanje nekaterih funkcij strani.</p>
+
+  <h2>5. Kontakt</h2>
+  <p>Za vprašanja o piškotkih nas kontaktirajte na <a href="mailto:grafeio.creative@gmail.com">grafeio.creative@gmail.com</a>. Za splošne informacije o obdelavi osebnih podatkov glej <a href="/politika-zasebnosti/">politiko zasebnosti</a>.</p>
+</main>
+
+<footer>
+  © 2026 GRAFEIO · <a href="/">grafeio.si</a> · <a href="/politika-zasebnosti/">Politika zasebnosti</a> · <a href="/splosni-pogoji/">Splošni pogoji</a>
+</footer>
+
+</body>
+</html>

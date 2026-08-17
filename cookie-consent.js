@@ -2,10 +2,9 @@
  * GRAFEIO · Cookie Consent Banner
  * GDPR + ZVOP-2 · Consent Mode v2 za Google Analytics
  *
- * KAKO AKTIVIRATI:
- * 1. Ko ima Barbara pripravljene dokumente, v index.html posodobi URL-je:
- *    - PRIVACY_URL → link na politiko zasebnosti
- *    - COOKIES_URL → link na politiko piškotkov
+ * PRIVACY_URL / COOKIES_URL spodaj kažeta na /politika-zasebnosti/ in
+ * /politika-piskotkov/ — obe strani od 17. 8. 2026 obstajata (osnutek,
+ * dopolniti manjkajoče pravne podatke, glej opombo na vrhu vsake strani).
  *
  * KAKO DELUJE:
  * - Ob prvem obisku se prikaže baner
@@ -19,8 +18,8 @@
   // ── KONFIGURACIJA ──────────────────────────────────────────
   const CONFIG = {
     GA_ID: 'G-HWDJSS1EM5',
-    PRIVACY_URL: '/politika-zasebnosti',    // ← posodobi ko bo Barbara imela dokument
-    COOKIES_URL: '/politika-piskotkov',     // ← posodobi ko bo Barbara imela dokument
+    PRIVACY_URL: '/politika-zasebnosti/',
+    COOKIES_URL: '/politika-piskotkov/',
     STORAGE_KEY: 'grafeio_consent',
     EXPIRY_DAYS: 365
   };
