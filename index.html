@@ -579,6 +579,10 @@ body.nav-open{overflow:hidden}
   .nav-links.open a:hover{color:var(--cream)}
   .nav-links.open .nav-cta{border-color:var(--cream-20);padding:14px 40px;color:var(--cream)}
   #hero{padding:108px 24px 64px}
+  /* Na ozkih zaslonih je besedilo sidrano na dno hero sekcije (flex-end) — "g" sledi
+     enako, sidrano od spodaj in dimenzionirana glede na višino zaslona (vh), da vedno
+     pristane za/ob besedilu, ne obtičala v praznem prostoru zgoraj pri fiksnem "top". */
+  .hero-bg-g{top:auto;bottom:-8vh;right:-40px;font-size:62vh}
   section{padding:72px 24px}
   .problem-grid,.services-header,.process-intro{grid-template-columns:1fr}
   .services-grid{grid-template-columns:1fr}
@@ -1087,6 +1091,13 @@ body.nav-open{overflow:hidden}
     &nbsp;·&nbsp;
     <span>© 2026 Grafeio</span>
   </div>
+  <div style="flex-basis:100%;text-align:center;font-size:11px;color:var(--cream-20);margin-top:4px">
+    <a href="/politika-zasebnosti/" style="color:inherit;text-decoration:none" onmouseover="this.style.color='var(--cream)'" onmouseout="this.style.color='var(--cream-20)'">Politika zasebnosti</a>
+    &nbsp;·&nbsp;
+    <a href="/politika-piskotkov/" style="color:inherit;text-decoration:none" onmouseover="this.style.color='var(--cream)'" onmouseout="this.style.color='var(--cream-20)'">Politika piškotkov</a>
+    &nbsp;·&nbsp;
+    <a href="/splosni-pogoji/" style="color:inherit;text-decoration:none" onmouseover="this.style.color='var(--cream)'" onmouseout="this.style.color='var(--cream-20)'">Splošni pogoji</a>
+  </div>
 </footer>
 
 <script>
@@ -1145,6 +1156,10 @@ fetch('/_data/vsebina.json')
   const heroEl = document.getElementById('hero');
   if (!wrap || !heroEl) return;
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  // Krog za fiziko je umerjen na namizno pozicijo "g" — na ozkih zaslonih se "g"
+  // premakne (glej mobilni media query), zato bi kvadratki lahko zaletavali čez
+  // besedilo. Na mobilniku ostanejo v mirni formaciji, ne poganjaj fizike.
+  if (window.matchMedia('(max-width: 900px)').matches) return;
 
   // Rahel parallax celotne skupine ob kurzorju (samo naprave s pravo miško)
   if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
