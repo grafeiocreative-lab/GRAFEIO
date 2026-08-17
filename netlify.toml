@@ -8,5 +8,17 @@
   [headers.values]
     Cache-Control = "public, max-age=86400"
 
+[[redirects]]
+  from = "/index-en"
+  to = "/en/"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "/index-en.html"
+  to = "/en/"
+  status = 301
+  force = true
+
 [build]
   publish = "."
