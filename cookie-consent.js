@@ -1,10 +1,11 @@
 /**
  * GRAFEIO · Cookie Consent Banner
  * GDPR + ZVOP-2 · Consent Mode v2 za Google Analytics
+ * Dvojezično (SL/EN) — jezik se prebere iz <html lang="..."> strani, ki naloži ta file.
  *
- * PRIVACY_URL / COOKIES_URL spodaj kažeta na /politika-zasebnosti/ in
- * /politika-piskotkov/ — obe strani od 17. 8. 2026 obstajata (osnutek,
- * dopolniti manjkajoče pravne podatke, glej opombo na vrhu vsake strani).
+ * PRIVACY_URL / COOKIES_URL sta jezikovno odvisna:
+ *  - SL: /politika-zasebnosti/, /politika-piskotkov/
+ *  - EN: /en/privacy-policy/, /en/cookie-policy/
  *
  * KAKO DELUJE:
  * - Ob prvem obisku se prikaže baner
@@ -15,11 +16,55 @@
 
 (function() {
 
+  // ── JEZIK ───────────────────────────────────────────────────
+  const LANG = (document.documentElement.lang || 'sl').toLowerCase().startsWith('en') ? 'en' : 'sl';
+
+  // ── PREVODI ─────────────────────────────────────────────────
+  const I18N = {
+    sl: {
+      privacyUrl: '/politika-zasebnosti/',
+      cookiesUrl: '/politika-piskotkov/',
+      bannerTitle: 'Piškotki na grafeio.si',
+      bannerText: 'Uporabljamo piškotke za analitiko obiskanosti. Vaši podatki so vaši — soglasje lahko kadar koli spremenite.',
+      settings: 'Nastavitve',
+      privacyPolicy: 'Politika zasebnosti',
+      cookiePolicy: 'Politika piškotkov',
+      rejectAll: 'Zavrni vse',
+      acceptAll: 'Sprejmi vse',
+      modalTitle: 'Nastavitve piškotkov',
+      modalSub: 'Izberite katere piškotke dovolite. Nujno potrebni piškotki so vedno aktivni in zagotavljajo osnovno delovanje strani.',
+      necessaryTitle: 'Nujno potrebni',
+      necessaryDesc: 'Zagotavljajo osnovno delovanje strani. Ne morejo biti onemogočeni.',
+      analyticsTitle: 'Analitika (Google Analytics)',
+      analyticsDesc: 'Pomagajo nam razumeti kako obiskovalci uporabljajo stran. Podatki so anonimni in se ne delijo z oglaševalci.',
+      saveSettings: 'Shrani nastavitve'
+    },
+    en: {
+      privacyUrl: '/en/privacy-policy/',
+      cookiesUrl: '/en/cookie-policy/',
+      bannerTitle: 'Cookies on grafeio.si',
+      bannerText: 'We use cookies for visit analytics. Your data is yours — you can change your consent at any time.',
+      settings: 'Settings',
+      privacyPolicy: 'Privacy Policy',
+      cookiePolicy: 'Cookie Policy',
+      rejectAll: 'Reject all',
+      acceptAll: 'Accept all',
+      modalTitle: 'Cookie settings',
+      modalSub: 'Choose which cookies to allow. Strictly necessary cookies are always active and ensure the site’s basic functioning.',
+      necessaryTitle: 'Strictly necessary',
+      necessaryDesc: 'Ensure the site’s basic functioning. Cannot be disabled.',
+      analyticsTitle: 'Analytics (Google Analytics)',
+      analyticsDesc: 'Help us understand how visitors use the site. Data is anonymous and never shared with advertisers.',
+      saveSettings: 'Save settings'
+    }
+  };
+  const T = I18N[LANG];
+
   // ── KONFIGURACIJA ──────────────────────────────────────────
   const CONFIG = {
     GA_ID: 'G-HWDJSS1EM5',
-    PRIVACY_URL: '/politika-zasebnosti/',
-    COOKIES_URL: '/politika-piskotkov/',
+    PRIVACY_URL: T.privacyUrl,
+    COOKIES_URL: T.cookiesUrl,
     STORAGE_KEY: 'grafeio_consent',
     EXPIRY_DAYS: 365
   };
@@ -125,19 +170,18 @@
     banner.id = 'gc-banner';
     banner.innerHTML = `
       <div class="gc-text">
-        <strong>Piškotki na grafeio.si</strong><br>
-        Uporabljamo piškotke za analitiko obiskanosti. Vaši podatki so vaši —
-        soglasje lahko kadar koli spremenite.
-        <button type="button" onclick="document.getElementById('gc-modal').classList.remove('gc-hidden')">Nastavitve</button>
+        <strong>${T.bannerTitle}</strong><br>
+        ${T.bannerText}
+        <button type="button" onclick="document.getElementById('gc-modal').classList.remove('gc-hidden')">${T.settings}</button>
         &nbsp;·&nbsp;
-        <a href="${CONFIG.PRIVACY_URL}" target="_blank">Politika zasebnosti</a>
+        <a href="${CONFIG.PRIVACY_URL}" target="_blank">${T.privacyPolicy}</a>
         &nbsp;·&nbsp;
-        <a href="${CONFIG.COOKIES_URL}" target="_blank">Politika piškotkov</a>
+        <a href="${CONFIG.COOKIES_URL}" target="_blank">${T.cookiePolicy}</a>
       </div>
       <div class="gc-buttons">
-        <button class="gc-btn gc-btn-settings" onclick="window._gcOpenSettings()">Nastavitve</button>
-        <button class="gc-btn gc-btn-reject"   onclick="window._gcRejectAll()">Zavrni vse</button>
-        <button class="gc-btn gc-btn-accept"   onclick="window._gcAcceptAll()">Sprejmi vse</button>
+        <button class="gc-btn gc-btn-settings" onclick="window._gcOpenSettings()">${T.settings}</button>
+        <button class="gc-btn gc-btn-reject"   onclick="window._gcRejectAll()">${T.rejectAll}</button>
+        <button class="gc-btn gc-btn-accept"   onclick="window._gcAcceptAll()">${T.acceptAll}</button>
       </div>
     `;
     document.body.appendChild(banner);
@@ -150,16 +194,15 @@
     modal.classList.add('gc-hidden');
     modal.innerHTML = `
       <div class="gc-modal-box">
-        <h3 class="gc-modal-title">Nastavitve piškotkov</h3>
+        <h3 class="gc-modal-title">${T.modalTitle}</h3>
         <p class="gc-modal-sub">
-          Izberite katere piškotke dovolite. Nujno potrebni piškotki so vedno aktivni
-          in zagotavljajo osnovno delovanje strani.
+          ${T.modalSub}
         </p>
 
         <div class="gc-option">
           <div class="gc-option-text">
-            <h4>Nujno potrebni</h4>
-            <p>Zagotavljajo osnovno delovanje strani. Ne morejo biti onemogočeni.</p>
+            <h4>${T.necessaryTitle}</h4>
+            <p>${T.necessaryDesc}</p>
           </div>
           <label class="gc-toggle">
             <input type="checkbox" checked disabled>
@@ -169,9 +212,8 @@
 
         <div class="gc-option">
           <div class="gc-option-text">
-            <h4>Analitika (Google Analytics)</h4>
-            <p>Pomagajo nam razumeti kako obiskovalci uporabljajo stran.
-               Podatki so anonimni in se ne delijo z oglaševalci.</p>
+            <h4>${T.analyticsTitle}</h4>
+            <p>${T.analyticsDesc}</p>
           </div>
           <label class="gc-toggle">
             <input type="checkbox" id="gc-toggle-analytics">
@@ -180,9 +222,9 @@
         </div>
 
         <div class="gc-modal-buttons">
-          <button class="gc-btn gc-btn-reject"  onclick="window._gcRejectAll()">Zavrni vse</button>
-          <button class="gc-btn gc-btn-settings" onclick="window._gcSaveCustom()">Shrani nastavitve</button>
-          <button class="gc-btn gc-btn-accept"  onclick="window._gcAcceptAll()">Sprejmi vse</button>
+          <button class="gc-btn gc-btn-reject"  onclick="window._gcRejectAll()">${T.rejectAll}</button>
+          <button class="gc-btn gc-btn-settings" onclick="window._gcSaveCustom()">${T.saveSettings}</button>
+          <button class="gc-btn gc-btn-accept"  onclick="window._gcAcceptAll()">${T.acceptAll}</button>
         </div>
       </div>
     `;
