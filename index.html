@@ -152,7 +152,7 @@ nav.scrolled{
   font-size:clamp(400px,45vw,700px);
   font-weight:400;
   color:var(--cream);
-  opacity:0.04;
+  opacity:0.1;
   line-height:1;
   user-select:none;
   pointer-events:none;
@@ -160,11 +160,11 @@ nav.scrolled{
   animation:heroGLive 16s ease-in-out infinite;
 }
 @keyframes heroGLive{
-  0%,100%{opacity:0.035;transform:rotate(0deg) scale(1)}
-  50%{opacity:0.065;transform:rotate(1.2deg) scale(1.015)}
+  0%,100%{opacity:0.09;transform:rotate(0deg) scale(1)}
+  50%{opacity:0.14;transform:rotate(1.2deg) scale(1.015)}
 }
 @media(prefers-reduced-motion:reduce){
-  .hero-bg-g{animation:none;opacity:0.045}
+  .hero-bg-g{animation:none;opacity:0.11}
 }
 .hero-squares-top{
   position:absolute;top:90px;right:48px;
