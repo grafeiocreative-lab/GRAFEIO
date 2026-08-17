@@ -699,7 +699,7 @@ body.nav-open{overflow:hidden}
     <a href="/darila/">Darila</a>
     <a href="#contact" class="nav-cta">Pišite nam</a>
   </div>
-  <button class="nav-hamburger" aria-label="Meni" onclick="toggleNav()">
+  <button class="nav-hamburger" aria-label="Meni" aria-expanded="false" onclick="toggleNav()">
     <span></span><span></span><span></span>
   </button>
   <a href="/en/" style="font-size:12px;font-weight:400;letter-spacing:0.08em;color:#e26425;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='var(--cream)'" onmouseout="this.style.color='var(--cream-20)'">EN</a>
@@ -1134,13 +1134,16 @@ window.addEventListener('load', () => {
 
 function toggleNav() {
   document.querySelector('.nav-links').classList.toggle('open');
-  document.querySelector('.nav-hamburger').classList.toggle('open');
+  const hamburger = document.querySelector('.nav-hamburger');
+  hamburger.classList.toggle('open');
+  hamburger.setAttribute('aria-expanded', hamburger.classList.contains('open'));
   document.body.classList.toggle('nav-open');
 }
 document.querySelectorAll('.nav-links a').forEach(function(a) {
   a.addEventListener('click', function() {
     document.querySelector('.nav-links').classList.remove('open');
     document.querySelector('.nav-hamburger').classList.remove('open');
+    document.querySelector('.nav-hamburger').setAttribute('aria-expanded', 'false');
     document.body.classList.remove('nav-open');
   });
 });
