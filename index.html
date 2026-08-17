@@ -168,7 +168,10 @@ nav.scrolled{
 }
 .hero-squares-top{
   position:absolute;top:90px;right:48px;
+  pointer-events:none;
 }
+/* Fizika (pospešek/trk/dušenje) za kvadratke poganja JS, glej "HERO KVADRATKI: fizika" spodaj */
+.hero-squares-top .sq{will-change:transform;animation:none;opacity:0.68}
 .hero-eyebrow{
   font-size:11px;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;
   color:#e26425;margin-bottom:32px;
@@ -586,7 +589,7 @@ body.nav-open{overflow:hidden}
   .step-accent{order:-1;margin-bottom:20px}
   .step-num{margin-bottom:12px}
   footer{padding:28px 24px}
-  .hero-squares-top{right:24px}
+  .hero-squares-top{right:24px;transform:scale(0.55);transform-origin:top right}
   /* Pikice — vedno barvne na mobilniku */
   .audience-item:nth-child(1) .audience-dot{background:var(--terra)}
   .audience-item:nth-child(2) .audience-dot{background:var(--slate)}
@@ -738,9 +741,9 @@ body.nav-open{overflow:hidden}
 
   <div class="hero-squares-top">
     <div class="squares" style="gap:5px">
-      <span class="sq sq-terra" style="width:18px;height:18px"></span>
-      <span class="sq sq-slate" style="width:14px;height:14px;align-self:flex-end;margin-bottom:2px"></span>
-      <span class="sq sq-sage" style="width:16px;height:16px;align-self:flex-end;margin-bottom:4px"></span>
+      <span class="sq sq-terra" style="width:26px;height:26px"></span>
+      <span class="sq sq-slate" style="width:20px;height:20px;align-self:flex-end;margin-bottom:2px"></span>
+      <span class="sq sq-sage" style="width:23px;height:23px;align-self:flex-end;margin-bottom:4px"></span>
     </div>
   </div>
 
@@ -1135,6 +1138,128 @@ fetch('/_data/vsebina.json')
   .catch(() => {
     console.warn('Grafeio: _data/vsebina.json ni dostopen lokalno. Na Netlify bo deloval.');
   });
+
+// ── HERO KVADRATKI: fizika (trk/odboj v notranjem krogu "g", dušen povratek domov) ──
+(function () {
+  const wrap = document.querySelector('.hero-squares-top');
+  const heroEl = document.getElementById('hero');
+  if (!wrap || !heroEl) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  // Rahel parallax celotne skupine ob kurzorju (samo naprave s pravo miško)
+  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    let tX = 0, tY = 0, cX = 0, cY = 0;
+    heroEl.addEventListener('mousemove', (e) => {
+      const r = heroEl.getBoundingClientRect();
+      tX = ((e.clientX - r.left) / r.width - 0.5) * 22;
+      tY = ((e.clientY - r.top) / r.height - 0.5) * 16;
+    });
+    heroEl.addEventListener('mouseleave', () => { tX = 0; tY = 0; });
+    (function parallaxTick() {
+      cX += (tX - cX) * 0.06;
+      cY += (tY - cY) * 0.06;
+      wrap.style.transform = `translate(${cX.toFixed(2)}px, ${cY.toFixed(2)}px)`;
+      requestAnimationFrame(parallaxTick);
+    })();
+  }
+
+  // Fizika posameznih kvadratkov: mirujejo doma -> se izstrelijo v notranji krog
+  // črke "g" -> se nekajkrat elastično odbijejo od notranje stene kroga (kot žogice
+  // v okrogli posodi) -> vzmetno (dušeno, s prenihajem) priletijo nazaj domov -> premor -> ponovi.
+  // Središče kroga in polmer sta izmerjena vizualno relativno na domačo pozicijo
+  // vsakega kvadratka (velja za desktop postavitev; na mobilniku se s CSS scale
+  // pomanjša skupaj z ostalim).
+  const CIRCLE_R = 75;
+  const defs = [
+    { sel: '.sq-terra', center: { x: -34, y: 194 } },
+    { sel: '.sq-slate', center: { x: -62, y: 193 } },
+    { sel: '.sq-sage',  center: { x: -88, y: 196 } },
+  ];
+  const squares = defs.map((d, i) => {
+    const el = wrap.querySelector(d.sel);
+    return el ? {
+      el, center: d.center,
+      x: 0, y: 0, vx: 0, vy: 0, rot: 0, vrot: 0,
+      state: 'home', stateTime: 0,
+      restDelay: 900 + i * 500,
+      bounces: 0, maxBounces: 3 + (i % 2),
+    } : null;
+  }).filter(Boolean);
+
+  let last = performance.now();
+  function frame(now) {
+    const dt = Math.min(now - last, 40);
+    last = now;
+
+    squares.forEach((s) => {
+      s.stateTime += dt;
+
+      if (s.state === 'home') {
+        if (s.stateTime > s.restDelay) {
+          const dx = s.center.x, dy = s.center.y;
+          const d = Math.hypot(dx, dy) || 1;
+          const nx = dx / d, ny = dy / d;
+          const tx = -ny, ty = nx;
+          const speed = 0.62;
+          s.vx = nx * speed * 0.9 + tx * speed * 0.55;
+          s.vy = ny * speed * 0.9 + ty * speed * 0.55;
+          s.vrot = (Math.random() < 0.5 ? -1 : 1) * (0.35 + Math.random() * 0.15);
+          s.state = 'bounce';
+          s.stateTime = 0;
+          s.bounces = 0;
+        }
+      } else if (s.state === 'bounce') {
+        s.x += s.vx * dt;
+        s.y += s.vy * dt;
+        s.rot += s.vrot * dt;
+
+        const dx = s.x - s.center.x, dy = s.y - s.center.y;
+        const dist = Math.hypot(dx, dy) || 1;
+        const limit = CIRCLE_R - 11;
+        if (dist > limit) {
+          const nx = dx / dist, ny = dy / dist;
+          s.x = s.center.x + nx * limit;
+          s.y = s.center.y + ny * limit;
+          const dot = s.vx * nx + s.vy * ny;
+          const REST = 0.86;
+          s.vx = (s.vx - 2 * dot * nx) * REST;
+          s.vy = (s.vy - 2 * dot * ny) * REST;
+          s.vrot += (Math.random() - 0.5) * 0.25;
+          s.bounces++;
+        }
+        s.vx *= 0.999;
+        s.vy *= 0.999;
+        s.vrot *= 0.997;
+
+        if (s.bounces >= s.maxBounces && dist < limit * 0.9) {
+          s.state = 'return';
+          s.stateTime = 0;
+        }
+      } else if (s.state === 'return') {
+        // Semi-implicit spring (numerically stable, framerate-normalized) — a tiny
+        // overshoot-and-settle, kot bi vzmet dušeno povlekla predmet nazaj domov.
+        const dtN = dt / 16.67;
+        const stiffness = 0.06, damping = 0.82;
+        s.vx = (s.vx + (0 - s.x) * stiffness) * damping;
+        s.vy = (s.vy + (0 - s.y) * stiffness) * damping;
+        s.vrot = (s.vrot + (0 - s.rot) * stiffness * 3) * damping;
+        s.x += s.vx * dtN; s.y += s.vy * dtN; s.rot += s.vrot * dtN;
+
+        if (Math.hypot(s.x, s.y) < 0.6 && Math.hypot(s.vx, s.vy) < 0.05) {
+          s.x = 0; s.y = 0; s.vx = 0; s.vy = 0; s.rot = 0; s.vrot = 0;
+          s.state = 'home';
+          s.stateTime = 0;
+          s.restDelay = 2600 + Math.random() * 1400;
+        }
+      }
+
+      s.el.style.transform = `translate(${s.x.toFixed(2)}px, ${s.y.toFixed(2)}px) rotate(${s.rot.toFixed(1)}deg)`;
+    });
+
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
 
 // ── NAV, REVEAL, SMOOTH SCROLL ──────────────────────────────────
 const nav = document.getElementById('mainNav');
