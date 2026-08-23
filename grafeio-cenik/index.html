@@ -14,19 +14,8 @@
 body{font-family:Arial,sans-serif;background:#F0F0EE;color:#111;font-size:14px;}
 :root{--terra:#C4521A;--slate:#4A7BA5;--sage:#6A9970;--obs:#111111;--border:#D8D8D6;--muted:#888;--card:#FFFFFF;}
 
-/* LOCK */
-#lockScreen{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;gap:12px;background:#111;}
-.lock-logo{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
-.lock-g{font-size:36px;color:white;font-weight:400;}
-.lock-word{font-size:11px;color:white;letter-spacing:6px;}
-.lock-dots{display:flex;gap:3px;align-items:flex-end;margin-left:4px;}
 .ld{border-radius:1px;}
-.lock-input{width:200px;padding:10px 14px;border:1px solid #444;background:#1a1a1a;color:white;font-size:14px;text-align:center;border-radius:4px;}
-.lock-btn{padding:10px 32px;background:var(--terra);color:white;border:none;cursor:pointer;font-size:13px;letter-spacing:2px;border-radius:4px;}
-.lock-err{color:#C4521A;font-size:12px;height:16px;}
-#mainScreen{display:none;}
-#mainScreen.visible{display:block;}
-#lockScreen.hidden{display:none;}
+#mainScreen{display:block;}
 
 /* PAGE */
 .page{max-width:560px;margin:0 auto;padding:16px;}
@@ -151,23 +140,7 @@ h2{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)
 </head>
 <body>
 
-<!-- LOCK SCREEN -->
-<div id="lockScreen">
-  <div class="lock-logo">
-    <span class="lock-g">g</span>
-    <span class="lock-word">RAFEIO</span>
-    <div class="lock-dots">
-      <div class="ld" style="width:8px;height:8px;background:#C4521A;"></div>
-      <div class="ld" style="width:6px;height:6px;background:#4A7BA5;margin-bottom:1px;"></div>
-      <div class="ld" style="width:8px;height:8px;background:#6A9970;"></div>
-    </div>
-  </div>
-  <input class="lock-input" id="pwInput" type="password" placeholder="geslo" onkeydown="if(event.key==='Enter')checkPw()">
-  <button class="lock-btn" onclick="checkPw()">VSTOPI</button>
-  <div class="lock-err" id="lockErr">&nbsp;</div>
-</div>
-
-<!-- MAIN SCREEN -->
+<!-- Dostop do te vsebine preveri Netlify Edge Function, preden se HTML pošlje obiskovalcu. -->
 <div id="mainScreen">
 <div class="page">
 
@@ -347,25 +320,7 @@ h2{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)
 </div>
 
 <script>
-const PW_HASH = '9c6670b9c87ee115fe2599842106a2fcfec71ed9a760ae853f5d2f6ef1077114';
 const WA_NUM = '38641291690';
-
-async function sha256(msg){
-  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(msg));
-  return Array.from(new Uint8Array(buf)).map(b=>b.toString(16).padStart(2,'0')).join('');
-}
-async function checkPw(){
-  const inp = document.getElementById('pwInput');
-  const hash = await sha256(inp.value);
-  if(hash === PW_HASH){
-    document.getElementById('lockScreen').classList.add('hidden');
-    document.getElementById('mainScreen').classList.add('visible');
-  } else {
-    document.getElementById('lockErr').textContent = 'Napačno geslo.';
-    inp.value = '';
-    setTimeout(()=>document.getElementById('lockErr').innerHTML='&nbsp;', 2000);
-  }
-}
 
 const ADDONS=[
   {id:'copy',label:'Copywriting',price:80,disp:'od €80 / stran'},

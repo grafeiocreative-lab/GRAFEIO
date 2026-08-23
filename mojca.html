@@ -21,21 +21,8 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{--obsidian:#111111;--terracotta:#C4521A;--slate:#4A7BA5;--sage:#6A9970;--cream:#F5F5F3}
 body{font-family:'Helvetica Neue','Liberation Sans',Helvetica,Arial,sans-serif;background:#E8E8E5;min-height:100dvh;-webkit-font-smoothing:antialiased}
-#lockScreen{position:fixed;inset:0;background:var(--obsidian);display:flex;align-items:center;justify-content:center;z-index:100;flex-direction:column;gap:24px}
-#lockScreen.hidden{display:none}
-.lock-logo{display:flex;align-items:baseline;gap:4px}
-.lock-g{font-size:56px;color:white;line-height:1}
-.lock-word{font-size:16px;letter-spacing:6px;color:white;font-weight:300}
-.lock-dots{display:flex;gap:3px;margin-left:8px;margin-bottom:4px;align-items:flex-end}
 .ld{border-radius:1px}
-.lock-input{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:6px;padding:14px 20px;font-size:16px;color:white;letter-spacing:3px;text-align:center;width:260px;outline:none;font-family:inherit}
-.lock-input::placeholder{color:rgba(255,255,255,.3);letter-spacing:1px}
-.lock-input:focus{border-color:var(--terracotta)}
-.lock-btn{background:var(--terracotta);border:none;border-radius:6px;padding:14px 40px;color:white;font-size:13px;letter-spacing:2px;cursor:pointer;width:260px;font-family:inherit}
-.lock-btn:hover{background:#A8431A}
-.lock-err{color:var(--terracotta);font-size:12px;letter-spacing:1px;height:16px}
-#mainScreen{display:none}
-#mainScreen.visible{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100dvh;padding:24px 16px}
+#mainScreen{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100dvh;padding:24px 16px}
 .card-wrapper{perspective:1200px;width:100%;max-width:420px;aspect-ratio:1.7/1;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .card-inner{position:relative;width:100%;height:100%;transition:transform .65s cubic-bezier(.4,0,.2,1);transform-style:preserve-3d}
 .card-wrapper.flipped .card-inner{transform:rotateY(180deg)}
@@ -74,23 +61,7 @@ body{font-family:'Helvetica Neue','Liberation Sans',Helvetica,Arial,sans-serif;b
 </head>
 <body>
 
-<!-- LOCK SCREEN -->
-<div id="lockScreen">
-  <div class="lock-logo">
-    <span class="lock-g">g</span>
-    <span class="lock-word">RAFEIO</span>
-    <div class="lock-dots">
-      <div class="ld" style="width:8px;height:8px;background:#C4521A;"></div>
-      <div class="ld" style="width:6px;height:6px;background:#4A7BA5;margin-bottom:1px;"></div>
-      <div class="ld" style="width:8px;height:8px;background:#6A9970;"></div>
-    </div>
-  </div>
-  <input class="lock-input" id="pwInput" type="password" placeholder="geslo" autofocus onkeydown="if(event.key==='Enter')checkPw()">
-  <button class="lock-btn" onclick="checkPw()">VSTOPI</button>
-  <div class="lock-err" id="lockErr">&nbsp;</div>
-</div>
-
-<!-- MAIN SCREEN: vsebina je prazna, JS jo vstavi po prijavi -->
+<!-- Dostop do te vsebine preveri Netlify Edge Function, preden se HTML pošlje obiskovalcu. -->
 <div id="mainScreen">
   <div class="card-wrapper" id="card" onclick="this.classList.toggle('flipped')">
     <div class="card-inner">
@@ -143,29 +114,7 @@ body{font-family:'Helvetica Neue','Liberation Sans',Helvetica,Arial,sans-serif;b
 </div>
 
 <script>
-// SHA-256 hash gesla — geslo ni nikjer v plaintext
-const PW_HASH = '9c6670b9c87ee115fe2599842106a2fcfec71ed9a760ae853f5d2f6ef1077114';
-
-async function sha256(msg) {
-  const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(msg));
-  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
-}
-
-async function checkPw() {
-  const inp = document.getElementById('pwInput');
-  const hash = await sha256(inp.value);
-  if (hash === PW_HASH) {
-    document.getElementById('lockScreen').classList.add('hidden');
-    buildCard();
-    document.getElementById('mainScreen').classList.add('visible');
-  } else {
-    document.getElementById('lockErr').textContent = 'Napačna koda';
-    inp.value = '';
-    setTimeout(() => document.getElementById('lockErr').innerHTML = '&nbsp;', 2000);
-  }
-}
-
-// Kontaktni podatki se sestavijo šele po uspešni prijavi
+// Kontaktni podatki se sestavijo po strežniško preverjenem dostopu.
 function buildCard() {
   const d = {
     fn:    ['\u004d\u006f\u006a\u0063\u0061', '\u0042\u0061\u0062\u0069\u010d'].join(' '),
@@ -204,6 +153,8 @@ function downloadVCard() {
   document.body.appendChild(a); a.click();
   document.body.removeChild(a); URL.revokeObjectURL(u);
 }
+
+buildCard();
 </script>
 </body>
 </html>
