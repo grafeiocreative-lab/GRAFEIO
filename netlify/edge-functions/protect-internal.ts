@@ -44,6 +44,10 @@ async function safeEqual(left: string, right: string): Promise<boolean> {
   return difference === 0;
 }
 
+function normalizePassword(value: string): string {
+  return value.normalize("NFC").trim();
+}
+
 async function createSession(secret: string): Promise<string> {
   const expires = Math.floor(Date.now() / 1000) + SESSION_SECONDS;
   return `${expires}.${await hmac(String(expires), secret)}`;
@@ -98,8 +102,8 @@ export default async function protectInternal(request: Request, context: { next:
     const origin = request.headers.get("origin");
     if (origin && origin !== url.origin) return new Response("Nedovoljena zahteva.", { status: 403 });
     const form = await request.formData();
-    const submitted = String(form.get("password") || "");
-    if (await safeEqual(submitted, password)) {
+    const submitted = normalizePassword(String(form.get("password") || ""));
+    if (await safeEqual(submitted, normalizePassword(password))) {
       const token = await createSession(sessionSecret);
       return new Response(null, { status: 303, headers: { location: url.pathname, "set-cookie": cookie(token, SESSION_SECONDS), "cache-control": "no-store" } });
     }
