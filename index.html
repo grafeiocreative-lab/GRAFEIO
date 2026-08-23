@@ -1103,6 +1103,12 @@ const IKONE = {
 };
 const DELAYS = ['', 'reveal-delay-1', 'reveal-delay-2', 'reveal-delay-1', 'reveal-delay-2', 'reveal-delay-3'];
 
+function escapeHtml(value) {
+  return String(value).replace(/[&<>"']/g, char => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+  })[char]);
+}
+
 fetch('/_data/vsebina.json')
   .then(r => r.json())
   .then(d => {
@@ -1129,9 +1135,9 @@ fetch('/_data/vsebina.json')
             '<div class="si" style="background:' + barve[1] + '"></div>' +
             '<div class="si" style="background:' + barve[2] + '"></div>' +
           '</div>' +
-          '<h3 class="service-name">' + s.naziv + '</h3>' +
-          '<p class="service-desc">' + s.opis + '</p>' +
-          '<span class="service-tag">' + s.tag + '</span>';
+          '<h3 class="service-name">' + escapeHtml(s.naziv) + '</h3>' +
+          '<p class="service-desc">' + escapeHtml(s.opis) + '</p>' +
+          '<span class="service-tag">' + escapeHtml(s.tag) + '</span>';
         grid.appendChild(card);
         observer.observe(card);
       });

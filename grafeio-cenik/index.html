@@ -450,11 +450,17 @@ function renderCustomItems(){
   const el = document.getElementById('customItemsList');
   el.innerHTML = S.customItems.map(c=>
     '<div class="custom-item-row">'+
-    '<span class="custom-item-name">'+c.desc+'</span>'+
+    '<span class="custom-item-name">'+escapeHtml(c.desc)+'</span>'+
     '<span class="custom-item-price">€'+fmt(c.price)+'</span>'+
     '<button class="custom-item-del" onclick="removeCustomItem(\''+c.id+'\')">×</button>'+
     '</div>'
   ).join('');
+}
+
+function escapeHtml(value){
+  return String(value).replace(/[&<>"']/g,char=>({
+    '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+  })[char]);
 }
 
 function fmt(n){return n.toLocaleString('sl-SI');}
@@ -527,7 +533,7 @@ function recalc(){
           +(disc===100?'<span style="color:var(--sage);font-size:12px;">BONUS</span>':'<span>€'+fmt(l.net)+'</span>')
         : '<span>€'+fmt(l.net)+'</span>';
       return '<div class="sline">'+
-        '<span class="sn">'+l.name+'</span>'+
+        '<span class="sn">'+escapeHtml(l.name)+'</span>'+
         '<div class="sline-right">'+
         '<input class="disc-inp" type="number" min="0" max="100" value="'+disc+'" placeholder="%" '+
         'title="Popust %" onchange="setItemDisc(\''+l.key+'\',this.value)">'+
