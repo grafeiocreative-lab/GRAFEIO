@@ -132,6 +132,12 @@ nav.scrolled{
 .inquiry-submit:hover{background:var(--terra);color:var(--cream);transform:translateY(-2px)}
 .inquiry-submit:focus-visible{outline:2px solid var(--terra);outline-offset:4px}
 .inquiry-submit:disabled{cursor:wait;opacity:0.7;transform:none}
+.inquiry-form-card{border:1px solid var(--cream-20)!important;padding:40px 36px!important;background:var(--obsidian-soft)!important}
+.inquiry-form-card label{font-size:14px!important;font-weight:700!important;letter-spacing:0!important;text-transform:none!important;color:var(--cream)!important;margin-bottom:10px!important}
+.inquiry-form-card input:not([type="hidden"]):not([aria-hidden="true"]),.inquiry-form-card textarea{width:100%!important;background:var(--cream)!important;border:1px solid #c0ccd9!important;padding:14px 16px!important;font-size:15px!important;font-weight:400!important;color:var(--obsidian)!important;font-family:inherit!important;outline:none!important;border-radius:0!important;transition:border-color .2s ease!important}
+.inquiry-form-card input::placeholder,.inquiry-form-card textarea::placeholder{color:#8a8a86!important;opacity:1}
+.inquiry-form-card input:focus,.inquiry-form-card textarea:focus{border-color:var(--terra)!important}
+.inquiry-form-card .inquiry-submit{background:var(--terra);color:var(--cream);border-radius:0}
 
 /* ── HERO ── */
 #hero{
@@ -595,6 +601,7 @@ body.nav-open{overflow:hidden}
      pristane za/ob besedilu, ne obtičala v praznem prostoru zgoraj pri fiksnem "top". */
   .hero-bg-g{top:auto;bottom:-8vh;right:-40px;font-size:62vh}
   section{padding:72px 24px}
+  .inquiry-form-card{padding:32px 20px!important}
   .problem-grid,.services-header,.process-intro{grid-template-columns:1fr}
   .services-grid{grid-template-columns:1fr}
   .problem-right{border-left:none;padding-left:0;border-top:1px solid var(--border);padding-top:48px}
@@ -873,7 +880,7 @@ body.nav-open{overflow:hidden}
     </div>
 
     <div class="reveal">
-      <form id="inquiry-form" onsubmit="event.preventDefault();submitForm();" style="border:1px solid var(--border);padding:40px 36px;background:var(--cream-04);">
+      <form id="inquiry-form" class="inquiry-form-card" onsubmit="event.preventDefault();submitForm();">
         <input type="text" id="f-gotcha" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden;">
         <div style="margin-bottom:28px;">
           <label for="f-name" style="display:block;font-size:11px;font-weight:400;letter-spacing:0.15em;text-transform:uppercase;color:var(--terra);margin-bottom:10px;">Ime in priimek</label>
