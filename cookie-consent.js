@@ -69,36 +69,58 @@
     EXPIRY_DAYS: 365
   };
 
+  let analyticsLoaded = false;
+
+  function ensureGtag() {
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function() {
+      window.dataLayer.push(arguments);
+    };
+  }
+
+  function loadAnalytics() {
+    if (analyticsLoaded) return;
+    analyticsLoaded = true;
+
+    ensureGtag();
+    const script = document.createElement('script');
+    script.async = true;
+    script.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(CONFIG.GA_ID);
+    document.head.appendChild(script);
+
+    gtag('js', new Date());
+    gtag('config', CONFIG.GA_ID);
+  }
+
   // ── PRIVZETE NASTAVITVE (pred privolitivjo) ─────────────────
   // Consent Mode v2 — vse zavrnjeno dokler ne da privolitve
   function setDefaultConsent() {
-    if (typeof gtag !== 'undefined') {
-      gtag('consent', 'default', {
-        ad_storage:              'denied',
-        ad_user_data:            'denied',
-        ad_personalization:      'denied',
-        analytics_storage:       'denied',
-        functionality_storage:   'denied',
-        personalization_storage: 'denied',
-        security_storage:        'granted',
-        wait_for_update:         500
-      });
-    }
+    ensureGtag();
+    gtag('consent', 'default', {
+      ad_storage:              'denied',
+      ad_user_data:            'denied',
+      ad_personalization:      'denied',
+      analytics_storage:       'denied',
+      functionality_storage:   'denied',
+      personalization_storage: 'denied',
+      security_storage:        'granted',
+      wait_for_update:         500
+    });
   }
 
   // ── POSODOBI CONSENT ────────────────────────────────────────
   function updateConsent(analytics) {
-    if (typeof gtag !== 'undefined') {
-      gtag('consent', 'update', {
-        analytics_storage:       analytics ? 'granted' : 'denied',
-        functionality_storage:   analytics ? 'granted' : 'denied',
-        personalization_storage: 'denied',
-        ad_storage:              'denied',
-        ad_user_data:            'denied',
-        ad_personalization:      'denied',
-        security_storage:        'granted'
-      });
-    }
+    ensureGtag();
+    gtag('consent', 'update', {
+      analytics_storage:       analytics ? 'granted' : 'denied',
+      functionality_storage:   analytics ? 'granted' : 'denied',
+      personalization_storage: 'denied',
+      ad_storage:              'denied',
+      ad_user_data:            'denied',
+      ad_personalization:      'denied',
+      security_storage:        'granted'
+    });
+    if (analytics) loadAnalytics();
   }
 
   // ── SHRANI ODLOČITEV ────────────────────────────────────────
