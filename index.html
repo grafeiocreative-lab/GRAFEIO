@@ -848,15 +848,15 @@ body.nav-open{overflow:hidden}
     </div>
 
     <div class="reveal">
-      <div id="inquiry-form" style="border:1px solid var(--border);padding:40px 36px;background:var(--cream-04);">
+      <form id="inquiry-form" onsubmit="event.preventDefault();submitForm();" style="border:1px solid var(--border);padding:40px 36px;background:var(--cream-04);">
         <input type="text" id="f-gotcha" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden;">
         <div style="margin-bottom:28px;">
           <label style="display:block;font-size:11px;font-weight:400;letter-spacing:0.15em;text-transform:uppercase;color:var(--terra);margin-bottom:10px;">Ime in priimek</label>
-          <input type="text" id="f-name" placeholder="npr. Ana Kovač" style="width:100%;background:transparent;border:none;border-bottom:1px solid var(--border);padding:10px 0;font-size:15px;font-weight:300;color:var(--cream);font-family:inherit;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='rgba(245,245,243,0.5)'" onblur="this.style.borderColor='rgba(245,245,243,0.1)'">
+          <input type="text" id="f-name" name="ime" required placeholder="npr. Ana Kovač" style="width:100%;background:transparent;border:none;border-bottom:1px solid var(--border);padding:10px 0;font-size:15px;font-weight:300;color:var(--cream);font-family:inherit;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='rgba(245,245,243,0.5)'" onblur="this.style.borderColor='rgba(245,245,243,0.1)'">
         </div>
         <div style="margin-bottom:28px;">
           <label style="display:block;font-size:11px;font-weight:400;letter-spacing:0.15em;text-transform:uppercase;color:var(--terra);margin-bottom:10px;">Email</label>
-          <input type="email" id="f-email" placeholder="ana@ordinacija.si" style="width:100%;background:transparent;border:none;border-bottom:1px solid var(--border);padding:10px 0;font-size:15px;font-weight:300;color:var(--cream);font-family:inherit;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='rgba(245,245,243,0.5)'" onblur="this.style.borderColor='rgba(245,245,243,0.1)'">
+          <input type="email" id="f-email" name="email" required placeholder="ana@ordinacija.si" style="width:100%;background:transparent;border:none;border-bottom:1px solid var(--border);padding:10px 0;font-size:15px;font-weight:300;color:var(--cream);font-family:inherit;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='rgba(245,245,243,0.5)'" onblur="this.style.borderColor='rgba(245,245,243,0.1)'">
         </div>
         <div style="margin-bottom:28px;">
           <label style="display:block;font-size:11px;font-weight:400;letter-spacing:0.15em;text-transform:uppercase;color:var(--terra);margin-bottom:10px;">Poklic / vrsta dejavnosti</label>
@@ -866,7 +866,7 @@ body.nav-open{overflow:hidden}
           <label style="display:block;font-size:11px;font-weight:400;letter-spacing:0.15em;text-transform:uppercase;color:var(--terra);margin-bottom:10px;">Kaj bi najprej radi uredili?</label>
           <textarea id="f-msg" rows="3" placeholder="Spletna stran, email, orodje za naročanje... ali pa samo povejte, kje ste zdaj." style="width:100%;background:transparent;border:none;border-bottom:1px solid var(--border);padding:10px 0;font-size:15px;font-weight:300;color:var(--cream);font-family:inherit;outline:none;resize:none;transition:border-color 0.2s;line-height:1.6;" onfocus="this.style.borderColor='rgba(245,245,243,0.5)'" onblur="this.style.borderColor='rgba(245,245,243,0.1)'"></textarea>
         </div>
-        <button id="f-submit" onclick="submitForm()" style="width:100%;background:var(--cream);color:var(--obsidian);border:none;padding:16px;font-size:13px;font-weight:400;letter-spacing:0.08em;cursor:pointer;font-family:inherit;transition:background 0.2s,transform 0.2s;" onmouseover="this.style.background='#ddddd8'" onmouseout="this.style.background='var(--cream)'">
+        <button type="submit" id="f-submit" style="width:100%;background:var(--cream);color:var(--obsidian);border:none;padding:16px;font-size:13px;font-weight:400;letter-spacing:0.08em;cursor:pointer;font-family:inherit;transition:background 0.2s,transform 0.2s;" onmouseover="this.style.background='#ddddd8'" onmouseout="this.style.background='var(--cream)'">
           Pošlji povpraševanje
         </button>
         <div id="f-success" style="display:none;text-align:center;padding:24px 0;">
@@ -879,7 +879,7 @@ body.nav-open{overflow:hidden}
           <p style="font-size:13px;font-weight:300;color:var(--cream-60);">Odgovorimo v 24 urah.</p>
         </div>
         <p style="margin-top:16px;font-size:11px;font-weight:300;color:rgba(245,245,243,0.52);text-align:center;letter-spacing:0.05em;">Vaši podatki so varni. Ne pošiljamo neželene pošte.</p>
-      </div>
+      </form>
     </div>
   </div>
 </section>

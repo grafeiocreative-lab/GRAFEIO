@@ -1030,7 +1030,7 @@
   <h2>Podarite digitalni korak.</h2>
 
   <div class="form-wrap">
-    <form class="darila-form" id="darilaForm" onsubmit="return false;">
+    <form class="darila-form" id="darilaForm" onsubmit="event.preventDefault();submitDarilo();">
       <input type="text" name="_gotcha" id="darila-gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden;">
 
       <div class="form-group">
@@ -1072,7 +1072,7 @@
         <textarea name="sporocilo" id="sporocilo" rows="4" placeholder="Karkoli bi radi dodali: priložnost, poseben datum, ideja za izvedbo ..."></textarea>
       </div>
 
-      <button type="button" id="darila-submit" class="form-submit" onclick="submitDarilo()">Pošljite naročilo</button>
+      <button type="submit" id="darila-submit" class="form-submit">Pošljite naročilo</button>
 
       <div id="darila-success" style="display:none;text-align:center;padding:24px 0;">
         <div style="display:flex;justify-content:center;gap:8px;margin-bottom:16px;">

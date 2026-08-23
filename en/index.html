@@ -398,15 +398,15 @@ body.nav-open{overflow:hidden}
       </div>
     </div>
     <div class="reveal">
-      <div id="inquiry-form" style="border:1px solid var(--border);padding:40px 36px;background:var(--cream-04);">
+      <form id="inquiry-form" onsubmit="event.preventDefault();submitForm();" style="border:1px solid var(--border);padding:40px 36px;background:var(--cream-04);">
         <input type="text" id="f-gotcha" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden;">
         <div style="margin-bottom:28px;">
           <label style="display:block;font-size:11px;font-weight:400;letter-spacing:0.15em;text-transform:uppercase;color:var(--terra);margin-bottom:10px;">Full name</label>
-          <input type="text" id="f-name" placeholder="e.g. Ana Kovač" style="width:100%;background:transparent;border:none;border-bottom:1px solid var(--border);padding:10px 0;font-size:15px;font-weight:300;color:var(--cream);font-family:inherit;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='rgba(245,245,243,0.5)'" onblur="this.style.borderColor='rgba(245,245,243,0.1)'">
+          <input type="text" id="f-name" name="name" required placeholder="e.g. Ana Kovač" style="width:100%;background:transparent;border:none;border-bottom:1px solid var(--border);padding:10px 0;font-size:15px;font-weight:300;color:var(--cream);font-family:inherit;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='rgba(245,245,243,0.5)'" onblur="this.style.borderColor='rgba(245,245,243,0.1)'">
         </div>
         <div style="margin-bottom:28px;">
           <label style="display:block;font-size:11px;font-weight:400;letter-spacing:0.15em;text-transform:uppercase;color:var(--terra);margin-bottom:10px;">Email</label>
-          <input type="email" id="f-email" placeholder="ana@practice.com" style="width:100%;background:transparent;border:none;border-bottom:1px solid var(--border);padding:10px 0;font-size:15px;font-weight:300;color:var(--cream);font-family:inherit;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='rgba(245,245,243,0.5)'" onblur="this.style.borderColor='rgba(245,245,243,0.1)'">
+          <input type="email" id="f-email" name="email" required placeholder="ana@practice.com" style="width:100%;background:transparent;border:none;border-bottom:1px solid var(--border);padding:10px 0;font-size:15px;font-weight:300;color:var(--cream);font-family:inherit;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='rgba(245,245,243,0.5)'" onblur="this.style.borderColor='rgba(245,245,243,0.1)'">
         </div>
         <div style="margin-bottom:28px;">
           <label style="display:block;font-size:11px;font-weight:400;letter-spacing:0.15em;text-transform:uppercase;color:var(--terra);margin-bottom:10px;">Profession / type of business</label>
@@ -416,7 +416,7 @@ body.nav-open{overflow:hidden}
           <label style="display:block;font-size:11px;font-weight:400;letter-spacing:0.15em;text-transform:uppercase;color:var(--terra);margin-bottom:10px;">What would you like to sort out first?</label>
           <textarea id="f-msg" rows="3" placeholder="Website, email, booking tool... or just tell us where you are right now." style="width:100%;background:transparent;border:none;border-bottom:1px solid var(--border);padding:10px 0;font-size:15px;font-weight:300;color:var(--cream);font-family:inherit;outline:none;resize:none;transition:border-color 0.2s;line-height:1.6;" onfocus="this.style.borderColor='rgba(245,245,243,0.5)'" onblur="this.style.borderColor='rgba(245,245,243,0.1)'"></textarea>
         </div>
-        <button id="f-submit" onclick="submitForm()" style="width:100%;background:var(--cream);color:var(--obsidian);border:none;padding:16px;font-size:13px;font-weight:400;letter-spacing:0.08em;cursor:pointer;font-family:inherit;transition:background 0.2s,transform 0.2s;" onmouseover="this.style.background='#ddddd8'" onmouseout="this.style.background='var(--cream)'">
+        <button type="submit" id="f-submit" style="width:100%;background:var(--cream);color:var(--obsidian);border:none;padding:16px;font-size:13px;font-weight:400;letter-spacing:0.08em;cursor:pointer;font-family:inherit;transition:background 0.2s,transform 0.2s;" onmouseover="this.style.background='#ddddd8'" onmouseout="this.style.background='var(--cream)'">
           Send enquiry
         </button>
         <div id="f-success" style="display:none;text-align:center;padding:24px 0;">
@@ -429,7 +429,7 @@ body.nav-open{overflow:hidden}
           <p style="font-size:13px;font-weight:300;color:var(--cream-60);">We'll respond within 24 hours.</p>
         </div>
         <p style="margin-top:16px;font-size:11px;font-weight:300;color:rgba(245,245,243,0.52);text-align:center;letter-spacing:0.05em;">Your data is safe. We do not send spam.</p>
-      </div>
+      </form>
     </div>
   </div>
 </section>
