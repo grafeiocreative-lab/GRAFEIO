@@ -1,8 +1,14 @@
 User-agent: *
 Allow: /
+Disallow: /admin/
+Disallow: /grafeio-cenik/
+Disallow: /mojca
 
 User-agent: Googlebot
 Allow: /
+Disallow: /admin/
+Disallow: /grafeio-cenik/
+Disallow: /mojca
 
 User-agent: facebookexternalhit
 Allow: /
