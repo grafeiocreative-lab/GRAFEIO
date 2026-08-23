@@ -128,6 +128,10 @@ nav.scrolled{
   transition:background 0.2s,border-color 0.2s;
 }
 .nav-cta:hover{background:var(--cream-08);border-color:var(--cream-60)}
+.inquiry-submit{display:inline-block;width:auto;padding:16px 48px;background:var(--cream);color:var(--obsidian);border:none;font-family:inherit;font-size:12px;font-weight:400;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:background 0.3s ease,color 0.3s ease,transform 0.3s ease;}
+.inquiry-submit:hover{background:var(--terra);color:var(--cream);transform:translateY(-2px)}
+.inquiry-submit:focus-visible{outline:2px solid var(--terra);outline-offset:4px}
+.inquiry-submit:disabled{cursor:wait;opacity:0.7;transform:none}
 
 /* ── HERO ── */
 #hero{
@@ -868,7 +872,7 @@ body.nav-open{overflow:hidden}
           <label for="f-msg" style="display:block;font-size:11px;font-weight:400;letter-spacing:0.15em;text-transform:uppercase;color:var(--terra);margin-bottom:10px;">Kaj bi najprej radi uredili?</label>
           <textarea id="f-msg" rows="3" placeholder="Spletna stran, email, orodje za naročanje... ali pa samo povejte, kje ste zdaj." style="width:100%;background:transparent;border:none;border-bottom:1px solid var(--border);padding:10px 0;font-size:15px;font-weight:300;color:var(--cream);font-family:inherit;outline:none;resize:none;transition:border-color 0.2s;line-height:1.6;" onfocus="this.style.borderColor='rgba(245,245,243,0.5)'" onblur="this.style.borderColor='rgba(245,245,243,0.1)'"></textarea>
         </div>
-        <button type="submit" id="f-submit" style="width:100%;background:var(--cream);color:var(--obsidian);border:none;padding:16px;font-size:13px;font-weight:400;letter-spacing:0.08em;cursor:pointer;font-family:inherit;transition:background 0.2s,transform 0.2s;" onmouseover="this.style.background='#ddddd8'" onmouseout="this.style.background='var(--cream)'">
+        <button type="submit" id="f-submit" class="inquiry-submit">
           Pošlji povpraševanje
         </button>
         <div id="f-success" style="display:none;text-align:center;padding:24px 0;">
@@ -1352,8 +1356,8 @@ async function submitForm() {
     btn.style.color = 'var(--terra)';
     setTimeout(() => {
       btn.textContent = 'Pošlji povpraševanje';
-      btn.style.background = 'var(--cream)';
-      btn.style.color = 'var(--obsidian)';
+      btn.style.background = '';
+      btn.style.color = '';
     }, 2500);
     return;
   }
