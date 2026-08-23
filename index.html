@@ -467,6 +467,20 @@ section{padding:100px 48px}
   text-align:center;
 }
 
+/* ── NEWSLETTER ── */
+#newsletter{
+  background:var(--obsidian-soft);
+  color:var(--cream);
+  padding:100px 48px;
+  border-top:1px solid var(--border);
+}
+.newsletter-inner{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:minmax(0,0.8fr) minmax(420px,540px);gap:80px;align-items:center}
+.newsletter-copy{text-align:left}
+.newsletter-label{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--terra);margin-bottom:24px}
+.newsletter-title{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,4vw,60px);font-weight:300;line-height:1.08;margin:0 0 20px}
+.newsletter-sub{max-width:470px;margin:0;font-size:16px;font-weight:300;line-height:1.7;color:var(--cream-60)}
+.newsletter-frame{display:block;width:100%;max-width:540px;height:410px;margin:0;border:1px solid var(--border);background:var(--cream)}
+
 /* ── CTA / CONTACT ── */
 #contact{
   background:var(--obsidian-soft);
@@ -605,6 +619,11 @@ body.nav-open{overflow:hidden}
   .step-accent-4{background:linear-gradient(90deg,var(--terra),var(--slate),var(--sage)) !important;transition:none}
   /* Obrazec — enojni stolpec */
   #darila-cta{padding:48px 24px !important}
+  #newsletter{padding:72px 20px}
+  .newsletter-inner{display:block}
+  .newsletter-copy{text-align:center;margin-bottom:40px}
+  .newsletter-sub{margin:0 auto}
+  .newsletter-frame{height:440px;margin:0 auto}
   #povprasajte > div{grid-template-columns:1fr !important;gap:48px}
   /* Video sekcija */
   .video-play-circle{width:56px;height:56px}
@@ -1032,6 +1051,27 @@ body.nav-open{overflow:hidden}
       Podarite mu spletno vizitko, mini stran ali Google profil. Darilo, ki spremeni posel.
     </p>
     <a href="/darila/" style="display:inline-block;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--cream);border:1px solid var(--border);padding:14px 36px;text-decoration:none;transition:all 0.3s ease;">Razišči darila →</a>
+  </div>
+</section>
+
+<!-- NOVICE -->
+<section id="newsletter" aria-labelledby="newsletter-title">
+  <div class="newsletter-inner">
+    <div class="newsletter-copy">
+      <div class="newsletter-label">Novice</div>
+      <h2 id="newsletter-title" class="newsletter-title">Nekaj uporabnega. Tu in tam.</h2>
+      <p class="newsletter-sub">Praktične ideje za jasnejšo digitalno prisotnost. Brez navlake. Odjavite se lahko kadar koli.</p>
+    </div>
+    <iframe
+      class="newsletter-frame"
+      width="540"
+      height="410"
+      loading="lazy"
+      title="Prijava na novice GRAFEIO"
+      src="https://1627eaa1.sibforms.com/v2/serve/MUIFAHkioDWaa3k91iOxeWVQsRzt0jyUZbSF9GoMtEyeOBjwEITSIamC5vIu4q8uot6DUoaAn173BmulIat4ZPGHyTHBT-1Bov_A34R0awXxCyf_xiybMfezwm1iynS2a0PMJKarQ04ZTdgmaNbaneq1CrJIwFBIPqQ_I4DSvw6CGD7KEOyrexceatXhLp9kibEbHKJ0VAeeDmNbFA=="
+      scrolling="auto"
+      referrerpolicy="strict-origin-when-cross-origin"
+    ></iframe>
   </div>
 </section>
 
