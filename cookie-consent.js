@@ -260,15 +260,17 @@
     const existing = getConsent();
 
     if (existing) {
-      // Obnovi privolitev iz localStorage
       updateConsent(existing.analytics);
-      return;
     }
 
-    // Prikaži baner ob nalaganju strani
     window.addEventListener('DOMContentLoaded', function() {
-      createBanner();
       createModal();
+      if (!existing) createBanner();
+      if (window.location.hash === '#cookie-settings') openSettings();
+    });
+
+    window.addEventListener('hashchange', function() {
+      if (window.location.hash === '#cookie-settings') openSettings();
     });
   }
 
