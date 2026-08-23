@@ -1031,6 +1031,7 @@
 
   <div class="form-wrap">
     <form class="darila-form" id="darilaForm" onsubmit="return false;">
+      <input type="text" name="_gotcha" id="darila-gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden;">
 
       <div class="form-group">
         <label for="paket">Selected gift</label>
@@ -1147,6 +1148,7 @@ async function submitDarilo() {
   var prejemnik  = document.getElementById('prejemnik').value.trim();
   var dejavnost  = document.getElementById('dejavnost').value.trim();
   var sporocilo  = document.getElementById('sporocilo').value.trim();
+  var gotcha     = document.getElementById('darila-gotcha').value;
   var btn        = document.getElementById('darila-submit');
 
   if (!paket || !ime || !email) {
@@ -1173,7 +1175,8 @@ async function submitDarilo() {
         email: email,
         prejemnik: prejemnik,
         dejavnost: dejavnost,
-        sporocilo: sporocilo
+        sporocilo: sporocilo,
+        _gotcha: gotcha
       })
     });
 

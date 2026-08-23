@@ -849,6 +849,7 @@ body.nav-open{overflow:hidden}
 
     <div class="reveal">
       <div id="inquiry-form" style="border:1px solid var(--border);padding:40px 36px;background:var(--cream-04);">
+        <input type="text" id="f-gotcha" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden;">
         <div style="margin-bottom:28px;">
           <label style="display:block;font-size:11px;font-weight:400;letter-spacing:0.15em;text-transform:uppercase;color:var(--terra);margin-bottom:10px;">Ime in priimek</label>
           <input type="text" id="f-name" placeholder="npr. Ana Kovač" style="width:100%;background:transparent;border:none;border-bottom:1px solid var(--border);padding:10px 0;font-size:15px;font-weight:300;color:var(--cream);font-family:inherit;outline:none;transition:border-color 0.2s;" onfocus="this.style.borderColor='rgba(245,245,243,0.5)'" onblur="this.style.borderColor='rgba(245,245,243,0.1)'">
@@ -1340,6 +1341,7 @@ async function submitForm() {
   const email = document.getElementById('f-email').value.trim();
   const type  = document.getElementById('f-type').value.trim();
   const msg   = document.getElementById('f-msg').value.trim();
+  const gotcha = document.getElementById('f-gotcha').value;
   const btn   = document.getElementById('f-submit');
 
   if (!name || !email) {
@@ -1362,7 +1364,7 @@ async function submitForm() {
     const res = await fetch('https://formspree.io/f/xwvaogvw', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ ime: name, email, dejavnost: type, sporocilo: msg })
+      body: JSON.stringify({ ime: name, email, dejavnost: type, sporocilo: msg, _gotcha: gotcha })
     });
 
     if (res.ok) {
