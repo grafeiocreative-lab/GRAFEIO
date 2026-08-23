@@ -63,7 +63,7 @@ body{font-family:'Helvetica Neue','Liberation Sans',Helvetica,Arial,sans-serif;b
 
 <!-- Dostop do te vsebine preveri Netlify Edge Function, preden se HTML pošlje obiskovalcu. -->
 <div id="mainScreen">
-  <div class="card-wrapper" id="card" onclick="this.classList.toggle('flipped')">
+  <div class="card-wrapper" id="card" role="button" tabindex="0" aria-label="Obrni vizitko" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.classList.toggle('flipped')}">
     <div class="card-inner">
       <div class="card-face front">
         <div class="front-left"><div class="logo-g">g</div></div>

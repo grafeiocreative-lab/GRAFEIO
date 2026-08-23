@@ -133,6 +133,7 @@ h2{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--muted)
 .custom-add-row input[type=text]{flex:1;border:0.5px solid var(--border);border-radius:6px;padding:8px 10px;font-size:13px;font-family:Arial,sans-serif;background:white;color:var(--obs);}
 .custom-add-row input[type=number]{width:90px;border:0.5px solid var(--border);border-radius:6px;padding:8px 10px;font-size:13px;font-family:Arial,sans-serif;background:white;color:var(--obs);text-align:right;}
 .custom-add-row input:focus{outline:none;border-color:var(--slate);}
+:focus-visible{outline:2px solid var(--terra)!important;outline-offset:2px;}
 .btn-add{padding:8px 16px;background:var(--terra);color:white;border:none;border-radius:6px;cursor:pointer;font-size:16px;font-weight:bold;flex-shrink:0;}
 .btn-add:hover{background:#a8441a;}
 </style>
@@ -352,6 +353,17 @@ const S={
   itemDiscs:{},
   customItems:[],customCounter:0
 };
+
+document.querySelectorAll('.pkg-card,.migr-tier,.ret-card,.qbtn').forEach(el=>{
+  el.setAttribute('role','button');
+  el.tabIndex=0;
+  el.addEventListener('keydown',event=>{
+    if(event.key==='Enter'||event.key===' '){
+      event.preventDefault();
+      el.click();
+    }
+  });
+});
 
 function buildGrid(cId, items){
   const c = document.getElementById(cId);
