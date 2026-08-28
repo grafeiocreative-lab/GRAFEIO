@@ -69,7 +69,7 @@ body{
 nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
   display:flex;align-items:center;justify-content:space-between;
-  padding:24px 48px;
+  padding:24px 32px;
   border-bottom:1px solid transparent;
   transition:background 0.4s,border-color 0.4s,padding 0.4s;
 }
@@ -77,17 +77,17 @@ nav.scrolled{
   background:rgba(17,17,17,0.92);
   backdrop-filter:blur(16px);
   border-color:var(--border);
-  padding:16px 48px;
+  padding:16px 32px;
 }
 .nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
 .nav-g{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:28px;font-weight:400;color:var(--cream);line-height:1;}
 .nav-wordmark{font-size:11px;font-weight:400;letter-spacing:0.22em;color:var(--cream);text-transform:uppercase;line-height:1;}
-.nav-links{display:flex;gap:36px;align-items:center}
+.nav-links{display:flex;gap:24px;align-items:center}
 .nav-links a{font-size:12px;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;color:var(--cream-60);text-decoration:none;transition:color 0.2s;}
 .nav-links a:hover{color:var(--cream)}
 .nav-cta{font-size:12px;font-weight:400;letter-spacing:0.08em;color:var(--cream);text-decoration:none;border:1px solid var(--cream-20);padding:10px 22px;transition:background 0.2s,border-color 0.2s;}
 .nav-cta:hover{background:var(--cream-08);border-color:var(--cream-60)}
-.inquiry-submit{display:inline-block;width:auto;padding:16px 48px;background:var(--cream);color:var(--obsidian);border:none;font-family:inherit;font-size:12px;font-weight:400;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:background 0.3s ease,color 0.3s ease,transform 0.3s ease;}
+.inquiry-submit{display:inline-block;width:auto;padding:16px 32px;background:var(--cream);color:var(--obsidian);border:none;font-family:inherit;font-size:12px;font-weight:400;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:background 0.3s ease,color 0.3s ease,transform 0.3s ease;}
 .inquiry-submit:hover{background:var(--terra);color:var(--cream);transform:translateY(-2px)}
 .inquiry-submit:focus-visible{outline:2px solid var(--terra);outline-offset:4px}
 .inquiry-submit:disabled{cursor:wait;opacity:0.7;transform:none}
@@ -234,7 +234,7 @@ footer{border-top:1px solid var(--border);padding:36px 48px;display:flex;align-i
 .nav-hamburger.open span:nth-child(2){opacity:0}
 .nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
 body.nav-open{overflow:hidden}
-@media(max-width:900px){
+@media(max-width:1024px){
   nav{padding:20px 24px}
   nav.scrolled{padding:14px 24px}
   .nav-hamburger{display:flex}
@@ -268,7 +268,7 @@ body.nav-open{overflow:hidden}
   .step-accent-4{background:linear-gradient(90deg,var(--terra),var(--slate),var(--sage)) !important;transition:none}
   #povprasajte > div{grid-template-columns:1fr !important;gap:48px}
 }
-@media(max-width:900px){
+@media(max-width:1024px){
   #newsletter{padding:72px 20px;}
   .newsletter-inner{display:block;}
   .newsletter-copy{text-align:center;margin-bottom:40px;}
@@ -303,6 +303,13 @@ body.nav-open{overflow:hidden}
 .pp-squares span:nth-child(2){animation-delay:0.3s}
 .pp-squares span:nth-child(3){animation-delay:0.6s}
 
+.pp-hero-compact{padding:152px 48px 56px}
+.pp-squares-big{gap:12px;margin-bottom:24px}
+.pp-squares-big span{width:13px;height:13px}
+.pp-h1-small{font-size:clamp(30px,4.4vw,52px)!important;max-width:560px;margin-left:auto;margin-right:auto}
+.pp-stikisce-top{padding-top:24px}
+.pp-intro{margin-bottom:36px}
+
 /* Del A — kartice */
 .pp-cards{
   display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
@@ -334,7 +341,7 @@ body.nav-open{overflow:hidden}
 .pp-video-note{font-size:14px;font-weight:300;color:var(--cream-60);margin-top:24px}
 .pp-video-note a{color:var(--cream);text-decoration:underline}
 
-@media(max-width:900px){
+@media(max-width:1024px){
   .pp-hero{padding:132px 24px 64px}
   .pp-cards{grid-template-columns:1fr}
 }
@@ -372,22 +379,22 @@ body.nav-open{overflow:hidden}
 <main>
 
 <!-- HERO -->
-<section class="pp-hero">
+<section class="pp-hero pp-hero-compact">
   <svg class="pp-ekg" viewBox="0 0 600 60" preserveAspectRatio="none" aria-hidden="true" focusable="false">
     <path class="pp-ekg-track" d="M0,30 L60,30 L68,21 L76,30 L100,30 L112,6 L120,55 L128,30 L150,30 L162,23 L170,30 L360,30 L368,21 L376,30 L400,30 L412,6 L420,55 L428,30 L450,30 L462,23 L470,30 L600,30"/>
     <path class="pp-ekg-pulse" pathLength="100" d="M0,30 L60,30 L68,21 L76,30 L100,30 L112,6 L120,55 L128,30 L150,30 L162,23 L170,30 L360,30 L368,21 L376,30 L400,30 L412,6 L420,55 L428,30 L450,30 L462,23 L470,30 L600,30"/>
   </svg>
-  <div class="pp-squares reveal" aria-hidden="true">
+  <div class="pp-squares pp-squares-big reveal" aria-hidden="true">
     <span class="sq sq-terra"></span>
     <span class="sq sq-slate"></span>
     <span class="sq sq-sage"></span>
   </div>
   <p class="hero-eyebrow reveal">First aid</p>
-  <h1 class="hero-title reveal">Digital <em>first aid</em> for your business.</h1>
-  <p class="hero-sub reveal">First aid doesn't replace the doctor, but you get it right away and for free. Tell us where things get stuck, look through the good practices, and take what helps. If you need more, you know where we are.</p>
+  <h1 class="hero-title pp-h1-small reveal"><em>First aid</em> for your business.</h1>
+  <p class="hero-sub reveal">Everything can be solved. Tell us what's weighing on you right now, and within a few days we'll point you forward, for free.</p>
 </section>
 
-<!-- PART A: GOOD PRACTICES -->
+<!-- GOOD PRACTICES — intentionally hidden, kept for later, see comment below.
 <section class="pp-section-a">
   <div class="section-label reveal">Good practices</div>
   <h2 class="section-title reveal">Six moves you<br>can make today.</h2>
@@ -425,14 +432,15 @@ body.nav-open{overflow:hidden}
     </div>
   </div>
 </section>
+-->
 
-<!-- PART B: BOTTLENECK -->
-<section id="pp-stikisce">
+<!-- BOTTLENECK -->
+<section id="pp-stikisce" class="pp-stikisce-top">
   <div class="section-label reveal">Bottleneck</div>
   <h2 class="section-title reveal">Where do things get stuck?</h2>
 
   <div class="pp-intro reveal">
-    <p>Every business has a bottleneck somewhere. Tell us what eats the most of your time or nerves. We'll read it and reply by email with how we'd approach it. We don't have a fix for everything, but we do have an outside view and some know-how, and sometimes that's enough to get things moving.</p>
+    <p>No strings attached. You get a short reply by email within a few days.</p>
   </div>
 
   <div class="pp-form-wrap reveal">
@@ -445,11 +453,6 @@ body.nav-open{overflow:hidden}
       </div>
 
       <div style="margin-bottom:24px;">
-        <label for="pp-trade">Trade or field</label>
-        <input type="text" id="pp-trade" placeholder="masseur, dentist, mechanic ...">
-      </div>
-
-      <div style="margin-bottom:24px;">
         <label for="pp-email">Email for our reply</label>
         <input type="email" id="pp-email" required placeholder="you@email.com">
       </div>
@@ -457,10 +460,6 @@ body.nav-open{overflow:hidden}
       <div class="pp-checkbox-row">
         <input type="checkbox" id="pp-consent-reply" required>
         <label for="pp-consent-reply">I agree that Grafeio may reply to this email address. More in the <a href="/en/privacy-policy/">privacy policy</a>.</label>
-      </div>
-      <div class="pp-checkbox-row">
-        <input type="checkbox" id="pp-consent-share">
-        <label for="pp-consent-share">Grafeio may share my case anonymously, as inspiration for others. No name, no contacts.</label>
       </div>
 
       <button type="submit" id="pp-submit" class="inquiry-submit">Send</button>
@@ -569,10 +568,8 @@ function ppUtm(name) {
 
 async function ppSubmit() {
   const problem = document.getElementById('pp-problem').value.trim();
-  const trade = document.getElementById('pp-trade').value.trim();
   const email = document.getElementById('pp-email').value.trim();
   const consentReply = document.getElementById('pp-consent-reply').checked;
-  const consentShare = document.getElementById('pp-consent-share').checked;
   const gotcha = document.getElementById('pp-gotcha').value;
   const btn = document.getElementById('pp-submit');
 
@@ -590,10 +587,8 @@ async function ppSubmit() {
       body: JSON.stringify({
         lang: 'en',
         problem: problem,
-        trade: trade,
         email: email,
         consentReply: consentReply,
-        consentShare: consentShare,
         utm_source: ppUtm('utm_source'),
         utm_medium: ppUtm('utm_medium'),
         utm_campaign: ppUtm('utm_campaign'),
@@ -604,9 +599,8 @@ async function ppSubmit() {
     if (res.ok) {
       btn.style.display = 'none';
       document.getElementById('pp-success').style.display = 'block';
-      ['pp-problem', 'pp-trade', 'pp-email'].forEach(id => document.getElementById(id).value = '');
+      ['pp-problem', 'pp-email'].forEach(id => document.getElementById(id).value = '');
       document.getElementById('pp-consent-reply').checked = false;
-      document.getElementById('pp-consent-share').checked = false;
       if (typeof gtag === 'function') gtag('event', 'tezava_oddana');
     } else {
       throw new Error('server');

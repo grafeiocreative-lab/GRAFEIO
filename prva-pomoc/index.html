@@ -73,7 +73,7 @@ body{
 nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
   display:flex;align-items:center;justify-content:space-between;
-  padding:24px 48px;
+  padding:24px 32px;
   border-bottom:1px solid transparent;
   transition:background 0.4s,border-color 0.4s,padding 0.4s;
 }
@@ -81,7 +81,7 @@ nav.scrolled{
   background:rgba(17,17,17,0.92);
   backdrop-filter:blur(16px);
   border-color:var(--border);
-  padding:16px 48px;
+  padding:16px 32px;
 }
 .nav-logo{
   display:flex;align-items:center;gap:12px;
@@ -97,7 +97,7 @@ nav.scrolled{
   color:var(--cream);text-transform:uppercase;
   line-height:1;
 }
-.nav-links{display:flex;gap:36px;align-items:center}
+.nav-links{display:flex;gap:24px;align-items:center}
 .nav-links a{
   font-size:12px;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;
   color:var(--cream-60);text-decoration:none;
@@ -112,7 +112,7 @@ nav.scrolled{
   transition:background 0.2s,border-color 0.2s;
 }
 .nav-cta:hover{background:var(--cream-08);border-color:var(--cream-60)}
-.inquiry-submit{display:inline-block;width:auto;padding:16px 48px;background:var(--cream);color:var(--obsidian);border:none;font-family:inherit;font-size:12px;font-weight:400;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:background 0.3s ease,color 0.3s ease,transform 0.3s ease;}
+.inquiry-submit{display:inline-block;width:auto;padding:16px 32px;background:var(--cream);color:var(--obsidian);border:none;font-family:inherit;font-size:12px;font-weight:400;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:background 0.3s ease,color 0.3s ease,transform 0.3s ease;}
 .inquiry-submit:hover{background:var(--terra);color:var(--cream);transform:translateY(-2px)}
 .inquiry-submit:focus-visible{outline:2px solid var(--terra);outline-offset:4px}
 .inquiry-submit:disabled{cursor:wait;opacity:0.7;transform:none}
@@ -570,7 +570,7 @@ footer{
 body.nav-open{overflow:hidden}
 
 /* ── RESPONSIVE ── */
-@media(max-width:900px){
+@media(max-width:1024px){
   nav{padding:20px 24px}
   nav.scrolled{padding:14px 24px}
   .nav-hamburger{display:flex}
@@ -741,7 +741,16 @@ body.nav-open{overflow:hidden}
 .pp-squares span:nth-child(2){animation-delay:0.3s}
 .pp-squares span:nth-child(3){animation-delay:0.6s}
 
-/* Del A — kartice */
+/* Kompaktna, igrivejša različica: manj besedila, manj teže na naslovu, malo
+   večji in bolj opazni kvadratki, obrazec takoj v dosegu. */
+.pp-hero-compact{padding:152px 48px 56px}
+.pp-squares-big{gap:12px;margin-bottom:24px}
+.pp-squares-big span{width:13px;height:13px}
+.pp-h1-small{font-size:clamp(30px,4.4vw,52px)!important;max-width:560px;margin-left:auto;margin-right:auto}
+.pp-stikisce-top{padding-top:24px}
+.pp-intro{margin-bottom:36px}
+
+/* Del A — kartice (trenutno skrito, ostane v kodi za kasneje) */
 .pp-cards{
   display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
   background:var(--border);border:1px solid var(--border);margin-top:56px;
@@ -772,7 +781,7 @@ body.nav-open{overflow:hidden}
 .pp-video-note{font-size:14px;font-weight:300;color:var(--cream-60);margin-top:24px}
 .pp-video-note a{color:var(--cream);text-decoration:underline}
 
-@media(max-width:900px){
+@media(max-width:1024px){
   .pp-hero{padding:132px 24px 64px}
   .pp-cards{grid-template-columns:1fr}
 }
@@ -812,22 +821,22 @@ body.nav-open{overflow:hidden}
 <main>
 
 <!-- HERO -->
-<section class="pp-hero">
+<section class="pp-hero pp-hero-compact">
   <svg class="pp-ekg" viewBox="0 0 600 60" preserveAspectRatio="none" aria-hidden="true" focusable="false">
     <path class="pp-ekg-track" d="M0,30 L60,30 L68,21 L76,30 L100,30 L112,6 L120,55 L128,30 L150,30 L162,23 L170,30 L360,30 L368,21 L376,30 L400,30 L412,6 L420,55 L428,30 L450,30 L462,23 L470,30 L600,30"/>
     <path class="pp-ekg-pulse" pathLength="100" d="M0,30 L60,30 L68,21 L76,30 L100,30 L112,6 L120,55 L128,30 L150,30 L162,23 L170,30 L360,30 L368,21 L376,30 L400,30 L412,6 L420,55 L428,30 L450,30 L462,23 L470,30 L600,30"/>
   </svg>
-  <div class="pp-squares reveal" aria-hidden="true">
+  <div class="pp-squares pp-squares-big reveal" aria-hidden="true">
     <span class="sq sq-terra"></span>
     <span class="sq sq-slate"></span>
     <span class="sq sq-sage"></span>
   </div>
   <p class="hero-eyebrow reveal">Prva pomoč</p>
-  <h1 class="hero-title reveal">Digitalna <em>prva pomoč</em> za vaš posel.</h1>
-  <p class="hero-sub reveal">Prva pomoč ne nadomesti zdravnika, jo pa dobite takoj in zastonj. Napišite, kje se zatika, poglejte dobre prakse in vzemite, kar vam koristi. Za več veste, kje smo.</p>
+  <h1 class="hero-title pp-h1-small reveal"><em>Prva pomoč</em> za vaš posel.</h1>
+  <p class="hero-sub reveal">Vse se da rešiti. Napišite, kaj vas trenutno teži, mi pa v nekaj dneh brezplačno pokažemo pot naprej.</p>
 </section>
 
-<!-- DEL A: DOBRE PRAKSE -->
+<!-- DOBRE PRAKSE — namerno skrito, na voljo za kasneje, glej komentar spodaj.
 <section class="pp-section-a">
   <div class="section-label reveal">Dobre prakse</div>
   <h2 class="section-title reveal">Šest ukrepov,<br>ki jih zmorete sami.</h2>
@@ -865,14 +874,15 @@ body.nav-open{overflow:hidden}
     </div>
   </div>
 </section>
+-->
 
-<!-- DEL B: STIČIŠČE -->
-<section id="pp-stikisce">
+<!-- STIČIŠČE -->
+<section id="pp-stikisce" class="pp-stikisce-top">
   <div class="section-label reveal">Stičišče</div>
   <h2 class="section-title reveal">Kje se vam zatika?</h2>
 
   <div class="pp-intro reveal">
-    <p>Vsak posel ima kje ozko grlo. Napišite, kaj vam jemlje največ časa ali živcev. Preberemo in vam po e-pošti odpišemo svoj pogled na to. Nimamo rešitve za vse, imamo pa pogled od zunaj in nekaj znanja. Včasih to zadošča, da se stvar premakne.</p>
+    <p>Brez obveznosti. V nekaj dneh dobite kratek odgovor po e-pošti.</p>
   </div>
 
   <div class="pp-form-wrap reveal">
@@ -885,11 +895,6 @@ body.nav-open{overflow:hidden}
       </div>
 
       <div style="margin-bottom:24px;">
-        <label for="pp-trade">Dejavnost</label>
-        <input type="text" id="pp-trade" placeholder="maser, zobozdravnik, mehanik ...">
-      </div>
-
-      <div style="margin-bottom:24px;">
         <label for="pp-email">E-naslov, na katerega odgovorimo</label>
         <input type="email" id="pp-email" required placeholder="vas@email.com">
       </div>
@@ -897,10 +902,6 @@ body.nav-open{overflow:hidden}
       <div class="pp-checkbox-row">
         <input type="checkbox" id="pp-consent-reply" required>
         <label for="pp-consent-reply">Strinjam se, da mi Grafeio odgovori na ta e-naslov. Več v <a href="/politika-zasebnosti/">politiki zasebnosti</a>.</label>
-      </div>
-      <div class="pp-checkbox-row">
-        <input type="checkbox" id="pp-consent-share">
-        <label for="pp-consent-share">Grafeio lahko moj primer deli anonimno, kot navdih drugim. Brez imena, brez kontaktov.</label>
       </div>
 
       <button type="submit" id="pp-submit" class="inquiry-submit">Pošljite</button>
@@ -1022,10 +1023,8 @@ function ppUtm(name) {
 
 async function ppSubmit() {
   const problem = document.getElementById('pp-problem').value.trim();
-  const trade = document.getElementById('pp-trade').value.trim();
   const email = document.getElementById('pp-email').value.trim();
   const consentReply = document.getElementById('pp-consent-reply').checked;
-  const consentShare = document.getElementById('pp-consent-share').checked;
   const gotcha = document.getElementById('pp-gotcha').value;
   const btn = document.getElementById('pp-submit');
 
@@ -1043,10 +1042,8 @@ async function ppSubmit() {
       body: JSON.stringify({
         lang: 'sl',
         problem: problem,
-        trade: trade,
         email: email,
         consentReply: consentReply,
-        consentShare: consentShare,
         utm_source: ppUtm('utm_source'),
         utm_medium: ppUtm('utm_medium'),
         utm_campaign: ppUtm('utm_campaign'),
@@ -1057,9 +1054,8 @@ async function ppSubmit() {
     if (res.ok) {
       btn.style.display = 'none';
       document.getElementById('pp-success').style.display = 'block';
-      ['pp-problem', 'pp-trade', 'pp-email'].forEach(id => document.getElementById(id).value = '');
+      ['pp-problem', 'pp-email'].forEach(id => document.getElementById(id).value = '');
       document.getElementById('pp-consent-reply').checked = false;
-      document.getElementById('pp-consent-share').checked = false;
       if (typeof gtag === 'function') gtag('event', 'tezava_oddana');
     } else {
       throw new Error('server');

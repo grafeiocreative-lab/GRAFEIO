@@ -56,8 +56,8 @@ Pot `/api/prva-pomoc` (Netlify Edge Function `netlify/edge-functions/prva-pomoc-
 V **Project configuration → Environment variables** dodajte:
 
 - `BREVO_API_KEY`: API ključ iz Brevo nadzorne plošče (Settings → SMTP & API → API Keys). Obseg **Functions**.
-- `BREVO_LIST_ID_SL`: številka Brevo seznama za slovenske oddaje (Contacts → Lists, ID je v URL-ju/na seznamu).
-- `BREVO_LIST_ID_EN`: številka Brevo seznama za angleške oddaje.
+- `BREVO_LIST_ID_SL`: številka Brevo seznama za slovenske oddaje — trenutno **4** ("Grafeio novice SL").
+- `BREVO_LIST_ID_EN`: številka Brevo seznama za angleške oddaje — trenutno **3** ("Grafeio novice EN").
 - `GRAFEIO_NOTIFY_EMAIL` *(neobvezno)*: kam pride obvestilo o novi oddaji. Če ni nastavljena, gre na `grafeio.creative@gmail.com`.
 - `BREVO_SENDER_EMAIL` *(neobvezno)*: pošiljateljev naslov za obvestilo. Če ni nastavljen, uporabi `grafeio.creative@gmail.com` — **ta naslov mora biti potrjen pošiljatelj v Brevu** (Settings → Senders & IP), sicer pošiljanje spodleti.
 
