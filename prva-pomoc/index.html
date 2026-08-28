@@ -6,8 +6,8 @@
 <!-- Open Graph za deljenje linkov -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://grafeio.si/prva-pomoc/">
-<meta property="og:title" content="Prva pomoč · GRAFEIO">
-<meta property="og:description" content="Digitalna prva pomoč za vaš posel. Napišite, kje se zatika, dobite odgovor po e-pošti. Takoj in zastonj.">
+<meta property="og:title" content="Kje se vam zatika? · GRAFEIO">
+<meta property="og:description" content="Opišite poslovni zaplet. Vsako sporočilo preberemo in nanj osebno odgovorimo z enim konkretnim predlogom.">
 <meta property="og:image" content="https://grafeio.si/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://grafeio.si/og-image.png">
@@ -17,12 +17,12 @@
 <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32">
 <link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<meta name="description" content="Digitalna prva pomoč za vaš posel. Šest ukrepov, ki jih zmorete sami, in prostor, kjer napišete, kje se zatika. Takoj in zastonj.">
+<meta name="description" content="Opišite, kaj vam v poslu jemlje čas ali povzroča zmedo. Sporočilo preberemo in vam osebno odgovorimo z enim konkretnim predlogom.">
 <link rel="canonical" href="https://grafeio.si/prva-pomoc/">
 <link rel="alternate" hreflang="sl" href="https://grafeio.si/prva-pomoc/">
 <link rel="alternate" hreflang="en" href="https://grafeio.si/en/prva-pomoc/">
 <link rel="alternate" hreflang="x-default" href="https://grafeio.si/prva-pomoc/">
-<title>Prva pomoč · GRAFEIO</title>
+<title>Kje se vam zatika? · GRAFEIO</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap">
@@ -714,76 +714,90 @@ body.nav-open{overflow:hidden}
   border:none;
 }
 
-/* ══ PRVA POMOČ ══════════════════════════════════════════════ */
-.pp-hero{
-  padding:176px 48px 88px;
-  display:flex;flex-direction:column;align-items:center;text-align:center;
-}
-.pp-hero .hero-title,.pp-hero .hero-eyebrow{text-align:center}
-.pp-hero .hero-sub{max-width:600px;margin:0 auto}
-.pp-ekg{width:100%;max-width:520px;height:56px;margin-bottom:36px;display:block}
-.pp-ekg .pp-ekg-track{fill:none;stroke:var(--cream-20);stroke-width:1.2}
-.pp-ekg .pp-ekg-pulse{
-  fill:none;stroke:var(--terra);stroke-width:1.8;
-  stroke-linecap:round;stroke-linejoin:round;
-  stroke-dasharray:16 100;
-  animation:ppEkgSweep 3.4s linear infinite;
-}
-@keyframes ppEkgSweep{
-  from{stroke-dashoffset:0}
-  to{stroke-dashoffset:-232}
-}
-@media(prefers-reduced-motion:reduce){
-  .pp-ekg .pp-ekg-pulse{animation:none;stroke-dasharray:none}
-}
-.pp-squares{display:flex;gap:10px;justify-content:center;margin-bottom:28px}
-.pp-squares span{width:9px;height:9px;display:block;animation:float 3s ease-in-out infinite}
-.pp-squares span:nth-child(2){animation-delay:0.3s}
-.pp-squares span:nth-child(3){animation-delay:0.6s}
+/* ══ KJE SE ZATIKA ═══════════════════════════════════════════ */
+.pp-hero{min-height:92vh;padding:152px 48px 96px;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(320px,.65fr);gap:clamp(56px,8vw,128px);align-items:end;position:relative;overflow:hidden;border-bottom:1px solid var(--border)}
+.pp-hero::before{content:'?';position:absolute;right:-.04em;top:-.2em;font-family:'Cormorant Garamond',serif;font-size:min(78vw,760px);font-weight:300;line-height:1;color:var(--cream-04);pointer-events:none}
+.pp-hero-copy,.pp-promise{position:relative;z-index:1}
+.pp-hero .hero-title{font-size:clamp(58px,7.6vw,112px);max-width:920px;margin-bottom:34px}
+.pp-hero .hero-sub{max-width:680px;margin:0;color:var(--cream-60);font-size:clamp(17px,1.35vw,21px)}
+.pp-hero .hero-sub strong{color:var(--cream);font-weight:400}
+.pp-theme-kicker{display:flex;align-items:center;gap:14px;margin-bottom:26px;font-size:11px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:#e26425}
+.pp-theme-kicker::before{content:'';width:28px;height:1px;background:var(--terra)}
+.pp-promise{border-top:1px solid var(--cream-20);padding-top:30px;max-width:390px}
+.pp-promise-number{font-family:'Cormorant Garamond',serif;font-size:72px;font-weight:300;line-height:.8;color:var(--terra);margin-bottom:28px}
+.pp-promise h2{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:300;line-height:1.2;margin-bottom:18px}
+.pp-promise p{font-size:14px;color:var(--cream-60);line-height:1.8}
+.pp-squares{display:flex;gap:7px;margin-top:34px}
+.pp-squares span{display:block;width:9px;height:9px}
 
-/* Kompaktna, igrivejša različica: manj besedila, manj teže na naslovu, malo
-   večji in bolj opazni kvadratki, obrazec takoj v dosegu. */
-.pp-hero-compact{padding:152px 48px 56px}
-.pp-squares-big{gap:12px;margin-bottom:24px}
-.pp-squares-big span{width:13px;height:13px}
-.pp-h1-small{font-size:clamp(30px,4.4vw,52px)!important;max-width:560px;margin-left:auto;margin-right:auto}
-.pp-stikisce-top{padding-top:24px}
-.pp-intro{margin-bottom:36px}
+.pp-openers{padding:96px 48px;border-bottom:1px solid var(--border)}
+.pp-openers-head{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;margin-bottom:48px}
+.pp-openers-head .section-title{margin:0;max-width:620px}
+.pp-openers-note{max-width:460px;justify-self:end;color:var(--cream-60);font-size:15px}
+.pp-opener-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
+.pp-opener{appearance:none;border:0;background:var(--obsidian);color:var(--cream);padding:34px 30px 30px;text-align:left;cursor:pointer;min-height:210px;display:flex;flex-direction:column;justify-content:space-between;font:inherit;transition:background .25s ease}
+.pp-opener:hover,.pp-opener:focus-visible{background:var(--obsidian-soft)}
+.pp-opener-mark{display:flex;align-items:center;justify-content:space-between;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--cream-20)}
+.pp-opener-dot{width:10px;height:10px;transition:transform .25s ease}
+.pp-opener:hover .pp-opener-dot{transform:translateY(-4px)}
+.pp-opener-quote{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,2.2vw,34px);font-weight:300;line-height:1.18;margin-top:32px}
+.pp-opener-action{display:block;margin-top:22px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#e26425}
 
-/* Del A — kartice (trenutno skrito, ostane v kodi za kasneje) */
-.pp-cards{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
-  background:var(--border);border:1px solid var(--border);margin-top:56px;
+.pp-stikisce{padding:112px 48px 128px}
+.pp-stikisce-grid{display:grid;grid-template-columns:minmax(260px,.75fr) minmax(480px,1.25fr);gap:clamp(64px,10vw,150px);max-width:1200px;margin:0 auto;align-items:start}
+.pp-stikisce-copy{position:sticky;top:112px}
+.pp-stikisce-copy .section-title{font-size:clamp(46px,5.2vw,76px);margin-bottom:32px}
+.pp-stikisce-copy>p{font-size:16px;color:var(--cream-60);max-width:430px;margin-bottom:34px}
+.pp-human-note{border-left:2px solid var(--terra);padding:4px 0 4px 22px;color:var(--cream);font-size:14px;line-height:1.7}
+.pp-human-note strong{display:block;font-weight:400;margin-bottom:4px}
+.pp-steps{display:flex;gap:24px;margin-top:44px}
+.pp-step{flex:1;border-top:1px solid var(--cream-20);padding-top:12px;font-size:12px;color:var(--cream-60)}
+.pp-step b{display:block;color:var(--cream);font-weight:400;margin-bottom:5px}
+.pp-form-wrap{max-width:660px}
+.pp-form-intro{font-family:'Cormorant Garamond',serif;font-size:25px;line-height:1.35;margin-bottom:28px;color:var(--cream)}
+.pp-form-wrap .inquiry-form-card input:not([type="hidden"]):not([aria-hidden="true"]),
+.pp-form-wrap .inquiry-form-card textarea{
+  background:var(--obsidian)!important;
+  border-color:var(--cream-20)!important;
+  color:var(--cream)!important;
 }
-.pp-card{background:var(--obsidian);padding:40px 32px;transition:background 0.3s ease}
-.pp-card:hover{background:var(--obsidian-soft)}
-.pp-card-block{width:20px;height:20px;margin-bottom:24px;transition:transform 0.3s ease}
-.pp-card:hover .pp-card-block{transform:translateY(-3px)}
-.pp-card h3{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:22px;color:var(--cream);margin-bottom:12px;line-height:1.3}
-.pp-card p{font-size:14.5px;font-weight:300;color:var(--cream-60);line-height:1.7;margin:0}
-
-/* Del B — stičišče / obrazec */
-.pp-intro{max-width:640px;margin:0 auto 48px;text-align:center}
-.pp-intro p{font-size:16px;font-weight:300;color:var(--cream-60);line-height:1.75;margin:0}
-.pp-form-wrap{max-width:600px;margin:0 auto}
+.pp-form-wrap .inquiry-form-card input::placeholder,
+.pp-form-wrap .inquiry-form-card textarea::placeholder{color:rgba(245,245,243,.34)!important}
+.pp-form-wrap .inquiry-form-card input:focus,
+.pp-form-wrap .inquiry-form-card textarea:focus{
+  border-color:var(--terra)!important;
+  background:#141414!important;
+}
+.pp-field{margin-bottom:24px}
+.pp-field-hint{display:block;margin-top:8px;font-size:12px;color:var(--cream-20)}
 .pp-checkbox-row{display:flex;gap:12px;align-items:flex-start;margin-bottom:20px}
-/* .inquiry-form-card input:not([type=hidden])... forces width:100%/cream bg/padding
-   with !important — it wasn't written with checkboxes in mind, so undo that here. */
-.pp-checkbox-row input[type="checkbox"]{
-  width:16px!important;height:16px!important;
-  flex:0 0 16px!important;
-  margin:3px 0 0!important;padding:0!important;
-  background:none!important;border:1px solid var(--cream-20)!important;
-  accent-color:var(--terra);
-}
+.pp-checkbox-row input[type="checkbox"]{width:16px!important;height:16px!important;flex:0 0 16px!important;margin:3px 0 0!important;padding:0!important;background:none!important;border:1px solid var(--cream-20)!important;accent-color:var(--terra)}
 .pp-checkbox-row label{font-size:13px!important;font-weight:300!important;color:var(--cream-60)!important;line-height:1.6;text-transform:none!important;letter-spacing:0!important;margin-bottom:0!important}
 .pp-checkbox-row a{color:var(--cream);text-decoration:underline}
-.pp-video-note{font-size:14px;font-weight:300;color:var(--cream-60);margin-top:24px}
-.pp-video-note a{color:var(--cream);text-decoration:underline}
+.pp-form-footer{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-top:28px}
+.pp-form-footer small{max-width:250px;color:var(--cream-20);font-size:11px;line-height:1.5}
 
-@media(max-width:1024px){
-  .pp-hero{padding:132px 24px 64px}
-  .pp-cards{grid-template-columns:1fr}
+@media(max-width:900px){
+  .pp-hero{min-height:auto;padding:132px 24px 72px;grid-template-columns:1fr;gap:64px}
+  .pp-hero::before{font-size:620px;top:-80px;right:-140px}
+  .pp-promise{max-width:520px}
+  .pp-openers{padding:72px 24px}
+  .pp-openers-head{grid-template-columns:1fr;gap:20px}
+  .pp-openers-note{justify-self:start}
+  .pp-opener-grid{grid-template-columns:1fr}
+  .pp-opener{min-height:170px}
+  .pp-stikisce{padding:80px 24px 104px}
+  .pp-stikisce-grid{grid-template-columns:1fr;gap:54px}
+  .pp-stikisce-copy{position:static}
+  .pp-form-wrap{max-width:none}
+}
+@media(max-width:520px){
+  .pp-hero .hero-title{font-size:51px}
+  .pp-hero .hero-sub{font-size:16px}
+  .pp-promise-number{font-size:58px}
+  .pp-steps{flex-direction:column;gap:16px}
+  .pp-form-footer{align-items:flex-start;flex-direction:column}
+  .pp-form-footer small{max-width:none}
 }
 </style>
 </head>
@@ -821,103 +835,108 @@ body.nav-open{overflow:hidden}
 <main>
 
 <!-- HERO -->
-<section class="pp-hero pp-hero-compact">
-  <svg class="pp-ekg" viewBox="0 0 600 60" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-    <path class="pp-ekg-track" d="M0,30 L60,30 L68,21 L76,30 L100,30 L112,6 L120,55 L128,30 L150,30 L162,23 L170,30 L360,30 L368,21 L376,30 L400,30 L412,6 L420,55 L428,30 L450,30 L462,23 L470,30 L600,30"/>
-    <path class="pp-ekg-pulse" pathLength="100" d="M0,30 L60,30 L68,21 L76,30 L100,30 L112,6 L120,55 L128,30 L150,30 L162,23 L170,30 L360,30 L368,21 L376,30 L400,30 L412,6 L420,55 L428,30 L450,30 L462,23 L470,30 L600,30"/>
-  </svg>
-  <div class="pp-squares pp-squares-big reveal" aria-hidden="true">
-    <span class="sq sq-terra"></span>
-    <span class="sq sq-slate"></span>
-    <span class="sq sq-sage"></span>
+<section class="pp-hero">
+  <div class="pp-hero-copy">
+    <p id="pp-theme-kicker" class="pp-theme-kicker reveal">Prva pomoč · pogled od zunaj</p>
+    <h1 class="hero-title reveal reveal-delay-1">Kaj vam v poslu <em>ne da miru?</em></h1>
+    <p class="hero-sub reveal reveal-delay-2">Povejte nam, kje se zatika. <strong>Vsako sporočilo preberemo in nanj odgovorimo osebno.</strong> Predlagamo vam en konkreten korak, ki ga lahko preizkusite.</p>
   </div>
-  <p class="hero-eyebrow reveal">Prva pomoč</p>
-  <h1 class="hero-title pp-h1-small reveal"><em>Prva pomoč</em> za vaš posel.</h1>
-  <p class="hero-sub reveal">Vse se da rešiti. Napišite, kaj vas trenutno teži, mi pa v nekaj dneh brezplačno pokažemo pot naprej.</p>
+  <aside class="pp-promise reveal reveal-delay-2" aria-label="Naša obljuba">
+    <div class="pp-promise-number">01</div>
+    <h2>En resničen zaplet.<br>En človeški odgovor.</h2>
+    <p>Brez prodajnega klica in brez splošnega odgovora iz predloge. Vzamemo si čas, premislimo in odgovor napišemo posebej za vas.</p>
+    <div class="pp-squares" aria-hidden="true">
+      <span class="sq-terra"></span><span class="sq-slate"></span><span class="sq-sage"></span>
+    </div>
+  </aside>
 </section>
 
-<!-- DOBRE PRAKSE — namerno skrito, na voljo za kasneje, glej komentar spodaj.
-<section class="pp-section-a">
-  <div class="section-label reveal">Dobre prakse</div>
-  <h2 class="section-title reveal">Šest ukrepov,<br>ki jih zmorete sami.</h2>
-
-  <div class="pp-cards">
-    <div class="pp-card reveal">
-      <div class="pp-card-block sq sq-terra"></div>
-      <h3>Google profil, urejen do konca.</h3>
-      <p>Ko nekdo ob 22. uri išče fizioterapevta v svojem kraju, naj najde vas, ne konkurence.</p>
+<!-- SOCIALNE IZTOČNICE -->
+<section class="pp-openers" aria-labelledby="pp-openers-title">
+  <div class="pp-openers-head">
+    <div>
+      <div class="section-label reveal">Se prepoznate?</div>
+      <h2 id="pp-openers-title" class="section-title reveal">Včasih se težava začne<br>z enim stavkom.</h2>
     </div>
-    <div class="pp-card reveal reveal-delay-1">
-      <div class="pp-card-block sq sq-slate"></div>
-      <h3>Delovni čas tam, kjer ga iščejo.</h3>
-      <p>En podatek na pravem mestu prihrani deset klicev na dan.</p>
-    </div>
-    <div class="pp-card reveal reveal-delay-2">
-      <div class="pp-card-block sq sq-sage"></div>
-      <h3>Tri sekunde, ena poanta.</h3>
-      <p>Naj domača stran takoj pove, kaj delate in kje ste. Vse drugo počaka.</p>
-    </div>
-    <div class="pp-card reveal">
-      <div class="pp-card-block sq sq-terra"></div>
-      <h3>Termin brez telefona.</h3>
-      <p>Naj stranka rezervira sama, tudi ko vi delate. Telefon ni edini vhod.</p>
-    </div>
-    <div class="pp-card reveal reveal-delay-1">
-      <div class="pp-card-block sq sq-slate"></div>
-      <h3>E-naslov ni navlaka.</h3>
-      <p>Vsak zadovoljen obisk je stik, ki brez vprašanja izgine. En opomnik pripelje stranko nazaj.</p>
-    </div>
-    <div class="pp-card reveal reveal-delay-2">
-      <div class="pp-card-block sq sq-sage"></div>
-      <h3>Ena poštena fotografija.</h3>
-      <p>Slika prostora pove več kot pet kupljenih. Stranka hoče videti, kam pride.</p>
-    </div>
+    <p class="pp-openers-note reveal">Izberite stavek, ki vam je najbližje. Dodali ga bomo v obrazec, vi pa dopišite, kako je pri vas.</p>
+  </div>
+  <div class="pp-opener-grid reveal">
+    <button class="pp-opener" type="button" data-theme="termini" data-starter="Vsak dan znova usklajujem termine ...">
+      <span class="pp-opener-mark">01 <i class="pp-opener-dot sq-terra"></i></span>
+      <span class="pp-opener-quote">»Vsak dan znova usklajujem termine.«</span>
+      <span class="pp-opener-action">To je moj zaplet →</span>
+    </button>
+    <button class="pp-opener" type="button" data-theme="vidnost" data-starter="Ljudje ne razumejo, kaj vse ponujamo ...">
+      <span class="pp-opener-mark">02 <i class="pp-opener-dot sq-slate"></i></span>
+      <span class="pp-opener-quote">»Ljudje ne razumejo, kaj vse ponujamo.«</span>
+      <span class="pp-opener-action">To je moj zaplet →</span>
+    </button>
+    <button class="pp-opener" type="button" data-theme="objave" data-starter="Objavljamo, pa se nič ne premakne ...">
+      <span class="pp-opener-mark">03 <i class="pp-opener-dot sq-sage"></i></span>
+      <span class="pp-opener-quote">»Objavljamo, pa se nič ne premakne.«</span>
+      <span class="pp-opener-action">To je moj zaplet →</span>
+    </button>
+    <button class="pp-opener" type="button" data-theme="digitalna-vizitka" data-starter="Ne želim več tiskanih vizitk. Raje bi digitalno, vendar ne vem, kaj potrebujem ...">
+      <span class="pp-opener-mark">04 <i class="pp-opener-dot sq-terra"></i></span>
+      <span class="pp-opener-quote">»Ne želim več tiskanih vizitk. Raje bi digitalno.«</span>
+      <span class="pp-opener-action">To je moj zaplet →</span>
+    </button>
   </div>
 </section>
--->
 
-<!-- STIČIŠČE -->
-<section id="pp-stikisce" class="pp-stikisce-top">
-  <div class="section-label reveal">Stičišče</div>
-  <h2 class="section-title reveal">Kje se vam zatika?</h2>
-
-  <div class="pp-intro reveal">
-    <p>Brez obveznosti. V nekaj dneh dobite kratek odgovor po e-pošti.</p>
-  </div>
-
-  <div class="pp-form-wrap reveal">
-    <form id="pp-form" class="inquiry-form-card" onsubmit="event.preventDefault();ppSubmit();">
-      <input type="text" id="pp-gotcha" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden;">
-
-      <div style="margin-bottom:24px;">
-        <label for="pp-problem">Kaj vam jemlje največ časa ali živcev?</label>
-        <textarea id="pp-problem" rows="4" required placeholder="Npr. pol dneva mi vzame usklajevanje terminov po telefonu ..."></textarea>
+<!-- OSEBNI ODGOVOR -->
+<section id="pp-stikisce" class="pp-stikisce">
+  <div class="pp-stikisce-grid">
+    <div class="pp-stikisce-copy">
+      <div class="section-label reveal">Napišite nam</div>
+      <h2 class="section-title reveal">Poglejmo,<br>kje je vozel.</h2>
+      <p class="reveal">Ni treba, da poznate rešitev ali uporabljate prave izraze. Opišite položaj tako, kot bi ga razložili nekomu ob kavi.</p>
+      <div class="pp-human-note reveal">
+        <strong>Odgovor bo oseben.</strong>
+        Vaše sporočilo preberemo, se o njem pogovorimo in vam odgovorimo po e-pošti.
       </div>
-
-      <div style="margin-bottom:24px;">
-        <label for="pp-email">E-naslov, na katerega odgovorimo</label>
-        <input type="email" id="pp-email" required placeholder="vas@email.com">
+      <div class="pp-steps reveal" aria-label="Kako poteka">
+        <div class="pp-step"><b>01 · Napišete</b>kar vam jemlje čas ali energijo</div>
+        <div class="pp-step"><b>02 · Premislimo</b>in poiščemo uporabno izhodišče</div>
+        <div class="pp-step"><b>03 · Odgovorimo</b>osebno, v nekaj delovnih dneh</div>
       </div>
+    </div>
 
-      <div class="pp-checkbox-row">
-        <input type="checkbox" id="pp-consent-reply" required>
-        <label for="pp-consent-reply">Strinjam se, da mi Grafeio odgovori na ta e-naslov. Več v <a href="/politika-zasebnosti/">politiki zasebnosti</a>.</label>
-      </div>
+    <div class="pp-form-wrap reveal">
+      <p class="pp-form-intro">Začnite tam, kjer vas najbolj žuli.</p>
+      <form id="pp-form" class="inquiry-form-card" onsubmit="event.preventDefault();ppSubmit();">
+        <input type="text" id="pp-gotcha" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden;">
 
-      <button type="submit" id="pp-submit" class="inquiry-submit">Pošljite</button>
-
-      <div id="pp-success" style="display:none;text-align:center;padding:24px 0;">
-        <div style="display:flex;justify-content:center;gap:5px;margin-bottom:16px;">
-          <span class="sq sq-terra" style="width:10px;height:10px;display:block;animation:float 3s ease-in-out infinite;"></span>
-          <span class="sq sq-slate" style="width:10px;height:10px;display:block;animation:float 3s ease-in-out infinite;animation-delay:0.4s;"></span>
-          <span class="sq sq-sage" style="width:10px;height:10px;display:block;animation:float 3s ease-in-out infinite;animation-delay:0.8s;"></span>
+        <div class="pp-field">
+          <label for="pp-problem">Kaj se dogaja?</label>
+          <textarea id="pp-problem" rows="7" required placeholder="Npr. polovico dneva porabimo za usklajevanje terminov po telefonu ..."></textarea>
+          <span class="pp-field-hint">Dovolj je nekaj stavkov. Ni treba, da je zapis popoln.</span>
         </div>
-        <p style="font-size:16px;font-weight:300;color:var(--cream);margin-bottom:8px;">Hvala za sporočilo.</p>
-        <p style="font-size:13px;font-weight:300;color:var(--cream-60);">Preberemo ga in se vam oglasimo po e-pošti. Za premislek si vzamemo dan ali dva.</p>
-      </div>
-    </form>
 
-    <p class="pp-video-note reveal">Kdo prebere sporočilo? Kratek video v razdelku <a href="/#o-nas">Kdo smo</a> pove, s kom imate opravka.</p>
+        <div class="pp-field">
+          <label for="pp-email">Kam vam odgovorimo?</label>
+          <input type="email" id="pp-email" required placeholder="vas@email.com">
+        </div>
+
+        <div class="pp-checkbox-row">
+          <input type="checkbox" id="pp-consent-reply" required>
+          <label for="pp-consent-reply">Strinjam se, da mi Grafeio odgovori na ta e-naslov. Več v <a href="/politika-zasebnosti/">politiki zasebnosti</a>.</label>
+        </div>
+
+        <div class="pp-form-footer">
+          <button type="submit" id="pp-submit" class="inquiry-submit">Pošljite svoj zaplet</button>
+          <small>Ne prijavljate se na e-novice. E-naslov uporabimo samo za odgovor.</small>
+        </div>
+
+        <div id="pp-success" style="display:none;text-align:left;padding:24px 0;">
+          <div class="pp-squares" style="margin:0 0 18px;" aria-hidden="true">
+            <span class="sq-terra"></span><span class="sq-slate"></span><span class="sq-sage"></span>
+          </div>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:300;color:var(--cream);margin-bottom:10px;">Vaš zaplet je pri nas.</p>
+          <p style="font-size:14px;font-weight:300;color:var(--cream-60);">Prebrali ga bomo, premislili in vam osebno odgovorili po e-pošti. Običajno potrebujemo nekaj delovnih dni.</p>
+        </div>
+      </form>
+    </div>
   </div>
 </section>
 
@@ -1021,10 +1040,56 @@ function ppUtm(name) {
   return new URLSearchParams(window.location.search).get(name) || '';
 }
 
+const ppThemes = {
+  termini: {
+    label: 'Prva pomoč · termini',
+    starter: 'Vsak dan znova usklajujem termine ...'
+  },
+  vidnost: {
+    label: 'Prva pomoč · vidnost',
+    starter: 'Ljudje ne razumejo, kaj vse ponujamo ...'
+  },
+  objave: {
+    label: 'Prva pomoč · objave',
+    starter: 'Objavljamo, pa se nič ne premakne ...'
+  },
+  'digitalna-vizitka': {
+    label: 'Prva pomoč · digitalna vizitka',
+    starter: 'Ne želim več tiskanih vizitk. Raje bi digitalno, vendar ne vem, kaj potrebujem ...'
+  }
+};
+
+function ppChooseTheme(theme, starter, shouldScroll) {
+  const problem = document.getElementById('pp-problem');
+  const form = document.getElementById('pp-form');
+  const kicker = document.getElementById('pp-theme-kicker');
+  if (!problem || !form) return;
+
+  form.dataset.topic = theme || '';
+  if (theme && ppThemes[theme] && kicker) kicker.textContent = ppThemes[theme].label;
+  if (!problem.value.trim() && starter) problem.value = starter + '\n\n';
+  if (shouldScroll) {
+    document.getElementById('pp-stikisce').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    window.setTimeout(function() { problem.focus(); problem.setSelectionRange(problem.value.length, problem.value.length); }, 500);
+  }
+}
+
+document.querySelectorAll('.pp-opener').forEach(function(button) {
+  button.addEventListener('click', function() {
+    ppChooseTheme(button.dataset.theme, button.dataset.starter, true);
+  });
+});
+
+const ppInitialTheme = ppUtm('tema');
+if (ppInitialTheme && ppThemes[ppInitialTheme]) {
+  ppChooseTheme(ppInitialTheme, ppThemes[ppInitialTheme].starter, false);
+}
+
 async function ppSubmit() {
   const problem = document.getElementById('pp-problem').value.trim();
   const email = document.getElementById('pp-email').value.trim();
   const consentReply = document.getElementById('pp-consent-reply').checked;
+  const topic = document.getElementById('pp-form').dataset.topic || '';
   const gotcha = document.getElementById('pp-gotcha').value;
   const btn = document.getElementById('pp-submit');
 
@@ -1041,8 +1106,9 @@ async function ppSubmit() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         lang: 'sl',
-        problem: problem,
+        problem: topic ? '[Tema: ' + topic + ']\n' + problem : problem,
         email: email,
+        topic: topic,
         consentReply: consentReply,
         utm_source: ppUtm('utm_source'),
         utm_medium: ppUtm('utm_medium'),

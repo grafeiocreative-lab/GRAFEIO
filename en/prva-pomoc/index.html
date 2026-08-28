@@ -3,11 +3,11 @@
 <head>
   <link rel="stylesheet" href="/cookie-consent.css">
 <script src="/cookie-consent.js"></script>
-<!-- Open Graph -->
+<!-- Open Graph za deljenje linkov -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://grafeio.si/en/prva-pomoc/">
-<meta property="og:title" content="First Aid · GRAFEIO">
-<meta property="og:description" content="Digital first aid for your business. Tell us where things get stuck, get a reply by email. Right away, and free.">
+<meta property="og:title" content="What's keeping you stuck? · GRAFEIO">
+<meta property="og:description" content="Tell us about one real business problem. We read every message and reply personally with one practical next step.">
 <meta property="og:image" content="https://grafeio.si/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://grafeio.si/og-image.png">
@@ -17,12 +17,12 @@
 <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32">
 <link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<meta name="description" content="Digital first aid for your business. Six moves you can make today, and a place to tell us where things get stuck. Right away, and free.">
+<meta name="description" content="Tell us what is taking time or creating friction in your business. We read every message and reply personally with one practical next step.">
 <link rel="canonical" href="https://grafeio.si/en/prva-pomoc/">
 <link rel="alternate" hreflang="sl" href="https://grafeio.si/prva-pomoc/">
 <link rel="alternate" hreflang="en" href="https://grafeio.si/en/prva-pomoc/">
 <link rel="alternate" hreflang="x-default" href="https://grafeio.si/prva-pomoc/">
-<title>First Aid · GRAFEIO</title>
+<title>What's keeping you stuck? · GRAFEIO</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&display=swap">
@@ -56,6 +56,8 @@ body{
   -webkit-font-smoothing:antialiased;
   overflow-x:hidden;
 }
+
+/* ── SQUARES MOTIF ── */
 .squares{display:flex;gap:4px;align-items:flex-end}
 .sq{display:block;animation:float 3s ease-in-out infinite}
 .sq:nth-child(2){animation-delay:0.4s}
@@ -66,6 +68,8 @@ body{
 .si{animation:float 3.2s ease-in-out infinite}
 .service-icon .si:nth-child(2){animation-delay:0.35s}
 .service-icon .si:nth-child(3){animation-delay:0.7s}
+
+/* ── NAV ── */
 nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
   display:flex;align-items:center;justify-content:space-between;
@@ -79,13 +83,34 @@ nav.scrolled{
   border-color:var(--border);
   padding:16px 32px;
 }
-.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
-.nav-g{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:28px;font-weight:400;color:var(--cream);line-height:1;}
-.nav-wordmark{font-size:11px;font-weight:400;letter-spacing:0.22em;color:var(--cream);text-transform:uppercase;line-height:1;}
+.nav-logo{
+  display:flex;align-items:center;gap:12px;
+  text-decoration:none;
+}
+.nav-g{
+  font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size:28px;font-weight:400;
+  color:var(--cream);line-height:1;
+}
+.nav-wordmark{
+  font-size:11px;font-weight:400;letter-spacing:0.22em;
+  color:var(--cream);text-transform:uppercase;
+  line-height:1;
+}
 .nav-links{display:flex;gap:24px;align-items:center}
-.nav-links a{font-size:12px;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;color:var(--cream-60);text-decoration:none;transition:color 0.2s;}
+.nav-links a{
+  font-size:12px;font-weight:400;letter-spacing:0.1em;text-transform:uppercase;
+  color:var(--cream-60);text-decoration:none;
+  transition:color 0.2s;
+}
 .nav-links a:hover{color:var(--cream)}
-.nav-cta{font-size:12px;font-weight:400;letter-spacing:0.08em;color:var(--cream);text-decoration:none;border:1px solid var(--cream-20);padding:10px 22px;transition:background 0.2s,border-color 0.2s;}
+.nav-cta{
+  font-size:12px;font-weight:400;letter-spacing:0.08em;
+  color:var(--cream);text-decoration:none;
+  border:1px solid var(--cream-20);
+  padding:10px 22px;
+  transition:background 0.2s,border-color 0.2s;
+}
 .nav-cta:hover{background:var(--cream-08);border-color:var(--cream-60)}
 .inquiry-submit{display:inline-block;width:auto;padding:16px 32px;background:var(--cream);color:var(--obsidian);border:none;font-family:inherit;font-size:12px;font-weight:400;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:background 0.3s ease,color 0.3s ease,transform 0.3s ease;}
 .inquiry-submit:hover{background:var(--terra);color:var(--cream);transform:translateY(-2px)}
@@ -97,68 +122,283 @@ nav.scrolled{
 .inquiry-form-card input::placeholder,.inquiry-form-card textarea::placeholder{color:#8a8a86!important;opacity:1}
 .inquiry-form-card input:focus,.inquiry-form-card textarea:focus{border-color:var(--terra)!important}
 .inquiry-form-card .inquiry-submit{background:var(--terra);color:var(--cream);border-radius:0}
-#hero{min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;padding:128px 48px 80px;position:relative;overflow:hidden;}
-.hero-bg-g{position:absolute;top:-80px;right:-60px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:clamp(400px,45vw,700px);font-weight:400;color:var(--cream);opacity:0.1;line-height:1;user-select:none;pointer-events:none;transform-origin:60% 40%;animation:heroGLive 16s ease-in-out infinite;}
-@keyframes heroGLive{0%,100%{opacity:0.09;transform:rotate(0deg) scale(1)}50%{opacity:0.14;transform:rotate(1.2deg) scale(1.015)}}
-@media(prefers-reduced-motion:reduce){.hero-bg-g{animation:none;opacity:0.11}}
-.hero-squares-top{position:absolute;top:90px;right:48px;pointer-events:none;}
+
+/* ── HERO ── */
+#hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  justify-content:flex-end;
+  padding:128px 48px 80px;
+  position:relative;
+  overflow:hidden;
+}
+.hero-bg-g{
+  position:absolute;
+  top:-80px;right:-60px;
+  font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
+  font-size:clamp(400px,45vw,700px);
+  font-weight:400;
+  color:var(--cream);
+  opacity:0.1;
+  line-height:1;
+  user-select:none;
+  pointer-events:none;
+  transform-origin:60% 40%;
+  animation:heroGLive 16s ease-in-out infinite;
+}
+@keyframes heroGLive{
+  0%,100%{opacity:0.09;transform:rotate(0deg) scale(1)}
+  50%{opacity:0.14;transform:rotate(1.2deg) scale(1.015)}
+}
+@media(prefers-reduced-motion:reduce){
+  .hero-bg-g{animation:none;opacity:0.11}
+}
+.hero-squares-top{
+  position:absolute;top:90px;right:48px;
+  pointer-events:none;
+}
 /* Fizika (pospešek/trk/dušenje) za kvadratke poganja JS, glej "HERO KVADRATKI: fizika" spodaj */
 .hero-squares-top .sq{will-change:transform;animation:none;opacity:0.68}
-.hero-eyebrow{font-size:11px;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;color:#e26425;margin-bottom:32px;}
-.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(48px,6.5vw,100px);font-weight:300;line-height:1.08;max-width:900px;margin-bottom:40px;letter-spacing:-0.01em;}
-.hero-title em{font-style:italic;color:var(--cream-60);}
-.hero-sub{font-size:18px;font-weight:300;color:var(--cream-60);max-width:520px;line-height:1.65;margin-bottom:56px;}
+.hero-eyebrow{
+  font-size:11px;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;
+  color:#e26425;margin-bottom:32px;
+}
+.hero-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(48px,6.5vw,100px);
+  font-weight:300;
+  line-height:1.08;
+  max-width:900px;
+  margin-bottom:40px;
+  letter-spacing:-0.01em;
+}
+.hero-title em{
+  font-style:italic;
+  color:var(--cream-60);
+}
+.hero-sub{
+  font-size:18px;font-weight:300;
+  color:var(--cream-60);
+  max-width:520px;
+  line-height:1.65;
+  margin-bottom:56px;
+}
 .hero-sub strong{color:var(--cream);font-weight:400}
 .hero-actions{display:flex;gap:20px;align-items:center;flex-wrap:wrap}
-.btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--cream);color:var(--obsidian);font-size:13px;font-weight:400;letter-spacing:0.06em;padding:15px 32px;text-decoration:none;transition:background 0.2s,transform 0.2s;}
+.btn-primary{
+  display:inline-flex;align-items:center;gap:10px;
+  background:var(--cream);color:var(--obsidian);
+  font-size:13px;font-weight:400;letter-spacing:0.06em;
+  padding:15px 32px;text-decoration:none;
+  transition:background 0.2s,transform 0.2s;
+}
 .btn-primary:hover{background:#ddddd8;transform:translateY(-1px)}
-.btn-secondary{font-size:13px;font-weight:400;letter-spacing:0.06em;color:var(--cream-60);text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:color 0.2s;}
+.btn-secondary{
+  font-size:13px;font-weight:400;letter-spacing:0.06em;color:var(--cream-60);
+  text-decoration:none;display:inline-flex;align-items:center;gap:8px;
+  transition:color 0.2s;
+}
 .btn-secondary:hover{color:var(--cream)}
 .btn-secondary .arrow{font-size:16px;transition:transform 0.2s}
 .btn-secondary:hover .arrow{transform:translateX(4px)}
-.hero-bottom-line{position:absolute;bottom:0;left:0;right:0;height:1px;background:var(--border);}
+.hero-bottom-line{
+  position:absolute;bottom:0;left:0;right:0;
+  height:1px;background:var(--border);
+}
+
+/* ── SECTION BASE ── */
 section{padding:100px 48px}
-.section-label{font-size:11px;font-weight:400;letter-spacing:0.22em;text-transform:uppercase;color:#e26425;margin-bottom:56px;display:flex;align-items:center;gap:16px;}
-.section-label::after{content:'';flex:1;height:1px;background:var(--border);}
-.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,3.5vw,56px);font-weight:300;line-height:1.15;margin-bottom:24px;}
-#problem{background:var(--obsidian-soft);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
-.problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
-.problem-left .section-title{max-width:500px;}
-.problem-left p{font-size:17px;font-weight:300;color:var(--cream-60);line-height:1.75;max-width:440px;margin-bottom:24px;}
-.problem-stats{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:48px;}
-.stat-card{background:var(--cream-04);padding:28px 24px;border:1px solid var(--border);}
-.stat-num{font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:300;color:var(--cream);line-height:1;margin-bottom:8px;}
+.section-label{
+  font-size:11px;font-weight:400;letter-spacing:0.22em;text-transform:uppercase;
+  color:#e26425;margin-bottom:56px;
+  display:flex;align-items:center;gap:16px;
+}
+.section-label::after{
+  content:'';flex:1;height:1px;background:var(--border);
+}
+.section-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(32px,3.5vw,56px);
+  font-weight:300;
+  line-height:1.15;
+  margin-bottom:24px;
+}
+
+/* ── PROBLEM SECTION ── */
+#problem{
+  background:var(--obsidian-soft);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
+.problem-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+  align-items:center;
+}
+.problem-left .section-title{
+  max-width:500px;
+}
+.problem-left p{
+  font-size:17px;font-weight:300;
+  color:var(--cream-60);
+  line-height:1.75;
+  max-width:440px;
+  margin-bottom:24px;
+}
+.problem-stats{
+  display:grid;grid-template-columns:1fr 1fr;gap:2px;
+  margin-top:48px;
+}
+.stat-card{
+  background:var(--cream-04);
+  padding:28px 24px;
+  border:1px solid var(--border);
+}
+.stat-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:48px;font-weight:300;
+  color:var(--cream);line-height:1;
+  margin-bottom:8px;
+}
 .stat-num span{color:var(--terra)}
-.stat-label{font-size:12px;font-weight:300;color:var(--cream-60);line-height:1.5;}
-.problem-right{border-left:1px solid var(--border);padding-left:80px;}
-.problem-right .insight{padding:28px 0;border-bottom:1px solid var(--border);}
+.stat-label{
+  font-size:12px;font-weight:300;
+  color:var(--cream-60);
+  line-height:1.5;
+}
+.problem-right{
+  border-left:1px solid var(--border);
+  padding-left:80px;
+}
+.problem-right .insight{
+  padding:28px 0;
+  border-bottom:1px solid var(--border);
+}
 .problem-right .insight:last-child{border-bottom:none}
-.insight-icon{width:8px;height:8px;border-radius:50%;display:inline-block;margin-right:12px;vertical-align:middle;}
-.insight-text{font-size:15px;font-weight:300;color:var(--cream-60);line-height:1.6;}
+.insight-icon{
+  width:8px;height:8px;border-radius:50%;
+  display:inline-block;margin-right:12px;
+  vertical-align:middle;
+}
+.insight-text{
+  font-size:15px;font-weight:300;
+  color:var(--cream-60);line-height:1.6;
+}
 .insight-text strong{color:var(--cream);font-weight:400}
-#services{background:var(--obsidian);}
-.services-header{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;margin-bottom:72px;}
-.services-header p{font-size:17px;font-weight:300;color:var(--cream-60);line-height:1.75;padding-top:12px;align-self:end;}
-.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);}
-.service-card{background:var(--obsidian);padding:40px 36px;position:relative;transition:background 0.3s;overflow:hidden;}
+
+/* ── SERVICES ── */
+#services{
+  background:var(--obsidian);
+}
+.services-header{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:48px;align-items:start;
+  margin-bottom:72px;
+}
+.services-header p{
+  font-size:17px;font-weight:300;
+  color:var(--cream-60);line-height:1.75;
+  padding-top:12px;
+  align-self:end;
+}
+.services-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1px;
+  background:var(--border);
+  border:1px solid var(--border);
+}
+.service-card{
+  background:var(--obsidian);
+  padding:40px 36px;
+  position:relative;
+  transition:background 0.3s;
+  overflow:hidden;
+}
 .service-card:hover{background:var(--obsidian-soft)}
-.service-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:transparent;transition:background 0.3s;}
+.service-card::after{
+  content:'';
+  position:absolute;bottom:0;left:0;right:0;
+  height:2px;
+  background:transparent;
+  transition:background 0.3s;
+}
 .service-card:hover::after{background:var(--terra)}
-.service-num{font-size:11px;font-weight:400;letter-spacing:0.15em;color:var(--cream-20);margin-bottom:40px;}
-.service-icon{display:flex;gap:3px;margin-bottom:28px;}
+.service-num{
+  font-size:11px;font-weight:400;letter-spacing:0.15em;
+  color:var(--cream-20);
+  margin-bottom:40px;
+}
+.service-icon{
+  display:flex;gap:3px;margin-bottom:28px;
+}
 .si{width:10px;height:10px;border-radius:1px}
-.service-name{font-size:20px;font-weight:300;color:var(--cream);margin-bottom:16px;line-height:1.25;}
-.service-desc{font-size:14px;font-weight:300;color:var(--cream-60);line-height:1.7;}
-.service-tag{display:inline-block;margin-top:24px;font-size:10px;letter-spacing:0.15em;text-transform:uppercase;color:var(--terra);border:1px solid rgba(196,82,26,0.3);padding:4px 10px;}
-#process{background:var(--obsidian-soft);border-top:1px solid var(--border);}
-.process-intro{display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-bottom:80px;align-items:start;}
-.process-intro p{font-size:17px;font-weight:300;color:var(--cream-60);line-height:1.75;align-self:end;padding-top:8px;}
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);}
-.step{background:var(--obsidian-soft);padding:40px 32px;}
-.step-num{font-family:'Cormorant Garamond',serif;font-size:64px;font-weight:300;color:var(--cream-08);line-height:1;margin-bottom:24px;}
-.step-name{font-size:16px;font-weight:400;color:var(--cream);margin-bottom:12px;}
-.step-desc{font-size:14px;font-weight:300;color:var(--cream-60);line-height:1.65;}
-.step-accent{height:2px;margin-bottom:32px;transition:background 0.6s ease;}
+.service-name{
+  font-size:20px;font-weight:300;
+  color:var(--cream);
+  margin-bottom:16px;
+  line-height:1.25;
+}
+.service-desc{
+  font-size:14px;font-weight:300;
+  color:var(--cream-60);
+  line-height:1.7;
+}
+.service-tag{
+  display:inline-block;
+  margin-top:24px;
+  font-size:10px;letter-spacing:0.15em;text-transform:uppercase;
+  color:var(--terra);
+  border:1px solid rgba(196,82,26,0.3);
+  padding:4px 10px;
+}
+
+/* ── PROCESS ── */
+#process{
+  background:var(--obsidian-soft);
+  border-top:1px solid var(--border);
+}
+.process-intro{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:80px;margin-bottom:80px;align-items:start;
+}
+.process-intro p{
+  font-size:17px;font-weight:300;
+  color:var(--cream-60);line-height:1.75;
+  align-self:end;
+  padding-top:8px;
+}
+.steps{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  gap:1px;background:var(--border);
+  border:1px solid var(--border);
+}
+.step{
+  background:var(--obsidian-soft);
+  padding:40px 32px;
+}
+.step-num{
+  font-family:'Cormorant Garamond',serif;
+  font-size:64px;font-weight:300;
+  color:var(--cream-08);
+  line-height:1;
+  margin-bottom:24px;
+}
+.step-name{
+  font-size:16px;font-weight:400;
+  color:var(--cream);
+  margin-bottom:12px;
+}
+.step-desc{
+  font-size:14px;font-weight:300;
+  color:var(--cream-60);line-height:1.65;
+}
+.step-accent{
+  height:2px;
+  margin-bottom:32px;
+  transition:background 0.6s ease;
+}
 .step-accent-1{background:var(--terra)}
 .step-accent-2{background:var(--slate)}
 .step-accent-3{background:var(--sage)}
@@ -167,11 +407,32 @@ section{padding:100px 48px}
 .step:hover .step-accent-2{background:var(--sage)}
 .step:hover .step-accent-3{background:var(--terra)}
 .step:hover .step-accent-4{background:linear-gradient(90deg,var(--sage),var(--terra),var(--slate))}
-#for-whom{background:var(--obsidian);border-top:1px solid var(--border);}
-.audiences-grid{display:flex;gap:1px;flex-wrap:wrap;background:var(--border);border:1px solid var(--border);margin-top:64px;}
-.audience-item{flex:1;min-width:180px;background:var(--obsidian);padding:32px 28px;display:flex;flex-direction:column;gap:12px;transition:background 0.3s;}
+
+/* ── AUDIENCES ── */
+#for-whom{
+  background:var(--obsidian);
+  border-top:1px solid var(--border);
+}
+.audiences-grid{
+  display:flex;gap:1px;
+  flex-wrap:wrap;
+  background:var(--border);
+  border:1px solid var(--border);
+  margin-top:64px;
+}
+.audience-item{
+  flex:1;min-width:180px;
+  background:var(--obsidian);
+  padding:32px 28px;
+  display:flex;flex-direction:column;gap:12px;
+  transition:background 0.3s;
+}
 .audience-item:hover{background:var(--obsidian-mid)}
-.audience-dot{width:6px;height:6px;border-radius:50%;background:var(--cream-20);transition:background 0.3s,transform 0.3s;}
+.audience-dot{
+  width:6px;height:6px;border-radius:50%;
+  background:var(--cream-20);
+  transition:background 0.3s,transform 0.3s;
+}
 .audience-item:hover .audience-dot{transform:scale(1.4)}
 .audience-item:nth-child(1):hover .audience-dot{background:var(--terra)}
 .audience-item:nth-child(2):hover .audience-dot{background:var(--slate)}
@@ -179,54 +440,127 @@ section{padding:100px 48px}
 .audience-item:nth-child(4):hover .audience-dot{background:var(--terra)}
 .audience-item:nth-child(5):hover .audience-dot{background:var(--slate)}
 .audience-item:nth-child(6):hover .audience-dot{background:var(--sage)}
-.audience-name{font-size:16px;font-weight:300;color:var(--cream);}
-.audience-hint{font-size:13px;font-weight:300;color:var(--cream-60);line-height:1.5;}
-.audiences-note{margin-top:40px;font-size:14px;font-weight:300;color:var(--cream-60);font-style:italic;text-align:center;}
-#newsletter{background:var(--obsidian-soft);color:var(--cream);padding:100px 48px;border-top:1px solid var(--border);}
-.newsletter-inner{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:minmax(0,0.8fr) minmax(420px,540px);gap:80px;align-items:center;}
-.newsletter-copy{text-align:left;}
-.newsletter-label{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--terra);margin-bottom:24px;}
-.newsletter-title{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,4vw,60px);font-weight:300;line-height:1.08;margin:0 0 20px;}
-.newsletter-sub{max-width:470px;margin:0;font-size:16px;font-weight:300;line-height:1.7;color:var(--cream-60);}
-.newsletter-frame{display:block;width:100%;max-width:540px;height:410px;margin:0;border:1px solid var(--border);background:var(--cream);}
-#contact{background:var(--obsidian-soft);border-top:1px solid var(--border);text-align:center;padding:120px 48px;}
-.contact-squares{display:flex;justify-content:center;gap:6px;margin-bottom:48px;}
+.audience-name{
+  font-size:16px;font-weight:300;
+  color:var(--cream);
+}
+.audience-hint{
+  font-size:13px;font-weight:300;
+  color:var(--cream-60);
+  line-height:1.5;
+}
+.audiences-note{
+  margin-top:40px;
+  font-size:14px;font-weight:300;
+  color:var(--cream-60);
+  font-style:italic;
+  text-align:center;
+}
+
+/* ── NEWSLETTER ── */
+#newsletter{
+  background:var(--obsidian-soft);
+  color:var(--cream);
+  padding:100px 48px;
+  border-top:1px solid var(--border);
+}
+.newsletter-inner{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:minmax(0,0.8fr) minmax(420px,540px);gap:80px;align-items:center}
+.newsletter-copy{text-align:left}
+.newsletter-label{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--terra);margin-bottom:24px}
+.newsletter-title{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,4vw,60px);font-weight:300;line-height:1.08;margin:0 0 20px}
+.newsletter-sub{max-width:470px;margin:0;font-size:16px;font-weight:300;line-height:1.7;color:var(--cream-60)}
+.newsletter-frame{display:block;width:100%;max-width:540px;height:410px;margin:0;border:1px solid var(--border);background:var(--cream)}
+
+/* ── CTA / CONTACT ── */
+#contact{
+  background:var(--obsidian-soft);
+  border-top:1px solid var(--border);
+  text-align:center;
+  padding:120px 48px;
+}
+.contact-squares{
+  display:flex;justify-content:center;gap:6px;margin-bottom:48px;
+}
 .cs{border-radius:2px;animation:float 3s ease-in-out infinite}
 .cs:nth-child(2){animation-delay:0.4s}
 .cs:nth-child(3){animation-delay:0.8s}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
-.contact-title{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,5vw,76px);font-weight:300;line-height:1.1;max-width:720px;margin:0 auto 24px;}
-.contact-sub{font-size:17px;font-weight:300;color:var(--cream-60);max-width:400px;margin:0 auto 52px;line-height:1.65;}
-.contact-email-link{display:inline-flex;align-items:center;gap:12px;font-size:15px;font-weight:300;color:var(--cream-60);text-decoration:none;letter-spacing:0.04em;transition:color 0.2s;}
+@keyframes float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-8px)}
+}
+.contact-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(40px,5vw,76px);
+  font-weight:300;
+  line-height:1.1;
+  max-width:720px;
+  margin:0 auto 24px;
+}
+.contact-sub{
+  font-size:17px;font-weight:300;
+  color:var(--cream-60);
+  max-width:400px;
+  margin:0 auto 52px;
+  line-height:1.65;
+}
+.contact-email-link{
+  display:inline-flex;align-items:center;gap:12px;
+  font-size:15px;font-weight:300;
+  color:var(--cream-60);text-decoration:none;
+  letter-spacing:0.04em;
+  transition:color 0.2s;
+}
 .contact-email-link:hover{color:var(--cream)}
-.contact-tagline{font-size:13px;font-weight:300;color:var(--cream-20);margin-top:64px;letter-spacing:0.05em;}
-footer{border-top:1px solid var(--border);padding:36px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:20px;}
-.footer-logo{display:flex;align-items:center;gap:10px;}
-.footer-g{font-size:22px;font-weight:400;color:var(--cream);line-height:1;}
-.footer-name{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--cream-60);}
-.footer-right{font-size:12px;font-weight:300;color:rgba(245,245,243,0.52);}
-/* ── VIDEO SECTION (navpičen format · Shorts/Reel) ── */
-.video-thumb-wrapper{position:relative;max-width:300px;margin:0 auto;cursor:pointer;border:1px solid var(--border);overflow:hidden;}
-.video-thumb-wrapper img{display:block;width:100%;aspect-ratio:9/16;object-fit:cover;background:var(--obsidian-soft);transition:transform 0.5s ease,filter 0.4s ease;filter:brightness(0.75);}
-.video-thumb-wrapper:hover img{transform:scale(1.025);filter:brightness(0.5);}
-.video-play-btn{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;}
-.video-play-circle{width:72px;height:72px;border-radius:50%;border:2px solid var(--cream);display:flex;align-items:center;justify-content:center;background:rgba(17,17,17,0.55);transition:background 0.3s,transform 0.3s,border-color 0.3s;}
-.video-thumb-wrapper:hover .video-play-circle{background:rgba(17,17,17,0.8);border-color:var(--cream-60);transform:scale(1.1);}
-.video-play-circle svg{width:24px;height:24px;margin-left:3px;fill:var(--cream);}
-.video-bottom-bar{position:absolute;bottom:0;left:0;right:0;padding:20px 24px 16px;background:linear-gradient(to top,rgba(17,17,17,0.88) 0%,transparent 100%);font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--cream-20);pointer-events:none;}
-#video-lightbox{display:none;position:fixed;inset:0;z-index:200;background:rgba(11,11,11,0.94);align-items:center;justify-content:center;padding:24px;}
-#video-lightbox.open{display:flex}
-.video-lb-inner{position:relative;width:100%;max-width:380px;}
-.video-lb-close{position:absolute;top:-48px;right:0;background:none;border:none;color:var(--cream-60);font-size:32px;font-weight:200;cursor:pointer;line-height:1;transition:color 0.2s;font-family:'Helvetica Neue',sans-serif;}
-.video-lb-close:hover{color:var(--cream)}
-.video-lb-frame{position:relative;padding-bottom:177.78%;height:0;background:var(--obsidian);}
-.video-lb-frame iframe{position:absolute;inset:0;width:100%;height:100%;border:none;}
-.reveal{opacity:0;transform:translateY(24px);transition:opacity 0.7s ease,transform 0.7s ease;}
+.contact-or{
+  font-size:12px;letter-spacing:0.15em;text-transform:uppercase;
+  color:var(--cream-20);
+  margin:32px 0;
+}
+.contact-tagline{
+  font-size:13px;font-weight:300;
+  color:var(--cream-20);
+  margin-top:64px;
+  letter-spacing:0.05em;
+}
+
+/* ── DARILA CTA ── */
+.darila-cta-inner a:hover{
+  background:var(--terra);border-color:var(--terra);
+  transform:translateY(-2px);
+}
+
+/* ── FOOTER ── */
+footer{
+  border-top:1px solid var(--border);
+  padding:36px 48px;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:20px;
+}
+.footer-logo{
+  display:flex;align-items:center;gap:10px;
+}
+.footer-g{
+  font-size:22px;font-weight:400;color:var(--cream);line-height:1;
+}
+.footer-name{
+  font-size:10px;letter-spacing:0.2em;text-transform:uppercase;
+  color:var(--cream-60);
+}
+.footer-right{
+  font-size:12px;font-weight:300;color:rgba(245,245,243,0.52);
+}
+
+/* ── ANIMATIONS ── */
+.reveal{
+  opacity:0;transform:translateY(24px);
+  transition:opacity 0.7s ease,transform 0.7s ease;
+}
 .reveal.visible{opacity:1;transform:none}
 .reveal-delay-1{transition-delay:0.1s}
 .reveal-delay-2{transition-delay:0.2s}
 .reveal-delay-3{transition-delay:0.3s}
 .reveal-delay-4{transition-delay:0.4s}
+
 /* ── HAMBURGER ── */
 .nav-hamburger{display:none;flex-direction:column;justify-content:center;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
 .nav-hamburger span{display:block;width:22px;height:1.5px;background:var(--cream);transition:transform 0.25s,opacity 0.25s}
@@ -234,6 +568,8 @@ footer{border-top:1px solid var(--border);padding:36px 48px;display:flex;align-i
 .nav-hamburger.open span:nth-child(2){opacity:0}
 .nav-hamburger.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
 body.nav-open{overflow:hidden}
+
+/* ── RESPONSIVE ── */
 @media(max-width:1024px){
   nav{padding:20px 24px}
   nav.scrolled{padding:14px 24px}
@@ -244,106 +580,224 @@ body.nav-open{overflow:hidden}
   .nav-links.open a:hover{color:var(--cream)}
   .nav-links.open .nav-cta{border-color:var(--cream-20);padding:14px 40px;color:var(--cream)}
   #hero{padding:108px 24px 64px}
+  /* Na ozkih zaslonih je besedilo sidrano na dno hero sekcije (flex-end) — "g" sledi
+     enako, sidrano od spodaj in dimenzionirana glede na višino zaslona (vh), da vedno
+     pristane za/ob besedilu, ne obtičala v praznem prostoru zgoraj pri fiksnem "top". */
   .hero-bg-g{top:auto;bottom:-8vh;right:-40px;font-size:62vh}
   section{padding:72px 24px}
   .inquiry-form-card{padding:32px 20px!important}
   .problem-grid,.services-header,.process-intro{grid-template-columns:1fr}
   .services-grid{grid-template-columns:1fr}
   .problem-right{border-left:none;padding-left:0;border-top:1px solid var(--border);padding-top:48px}
+  /* Koraki — enkoloničen prikaz na mobilniku, crte vedno zgoraj */
   .steps{grid-template-columns:1fr}
   .step{display:flex;flex-direction:column}
   .step-accent{order:-1;margin-bottom:20px}
   .step-num{margin-bottom:12px}
   footer{padding:28px 24px}
   .hero-squares-top{right:24px;transform:scale(0.55);transform-origin:top right}
+  /* Pikice — vedno barvne na mobilniku */
   .audience-item:nth-child(1) .audience-dot{background:var(--terra)}
   .audience-item:nth-child(2) .audience-dot{background:var(--slate)}
   .audience-item:nth-child(3) .audience-dot{background:var(--sage)}
   .audience-item:nth-child(4) .audience-dot{background:var(--terra)}
   .audience-item:nth-child(5) .audience-dot{background:var(--slate)}
   .audience-item:nth-child(6) .audience-dot{background:var(--sage)}
+  /* Crte — fiksne barve, brez hover efekta */
   .step-accent-1{background:var(--terra) !important;transition:none}
   .step-accent-2{background:var(--slate) !important;transition:none}
   .step-accent-3{background:var(--sage) !important;transition:none}
   .step-accent-4{background:linear-gradient(90deg,var(--terra),var(--slate),var(--sage)) !important;transition:none}
+  /* Obrazec — enojni stolpec */
+  #darila-cta{padding:48px 24px !important}
+  #newsletter{padding:72px 20px}
+  .newsletter-inner{display:block}
+  .newsletter-copy{text-align:center;margin-bottom:40px}
+  .newsletter-sub{margin:0 auto}
+  .newsletter-frame{height:440px;margin:0 auto}
   #povprasajte > div{grid-template-columns:1fr !important;gap:48px}
-}
-@media(max-width:1024px){
-  #newsletter{padding:72px 20px;}
-  .newsletter-inner{display:block;}
-  .newsletter-copy{text-align:center;margin-bottom:40px;}
-  .newsletter-sub{margin:0 auto;}
-  .newsletter-frame{height:440px;margin:0 auto;}
+  /* Video sekcija */
+  .video-play-circle{width:56px;height:56px}
+  .video-play-circle svg{width:18px;height:18px}
 }
 
-/* ══ PRVA POMOČ ══════════════════════════════════════════════ */
-.pp-hero{
-  padding:176px 48px 88px;
-  display:flex;flex-direction:column;align-items:center;text-align:center;
+/* ── VIDEO SECTION (navpičen format · Shorts/Reel) ── */
+.video-thumb-wrapper{
+  position:relative;
+  max-width:300px;
+  margin:0 auto;
+  cursor:pointer;
+  border:1px solid var(--border);
+  overflow:hidden;
 }
-.pp-hero .hero-title,.pp-hero .hero-eyebrow{text-align:center}
-.pp-hero .hero-sub{max-width:600px;margin:0 auto}
-.pp-ekg{width:100%;max-width:520px;height:56px;margin-bottom:36px;display:block}
-.pp-ekg .pp-ekg-track{fill:none;stroke:var(--cream-20);stroke-width:1.2}
-.pp-ekg .pp-ekg-pulse{
-  fill:none;stroke:var(--terra);stroke-width:1.8;
-  stroke-linecap:round;stroke-linejoin:round;
-  stroke-dasharray:16 100;
-  animation:ppEkgSweep 3.4s linear infinite;
+.video-thumb-wrapper img{
+  display:block;
+  width:100%;
+  aspect-ratio:9/16;
+  object-fit:cover;
+  background:var(--obsidian-soft);
+  transition:transform 0.5s ease,filter 0.4s ease;
+  filter:brightness(0.75);
 }
-@keyframes ppEkgSweep{
-  from{stroke-dashoffset:0}
-  to{stroke-dashoffset:-232}
+.video-thumb-wrapper:hover img{
+  transform:scale(1.025);
+  filter:brightness(0.5);
 }
-@media(prefers-reduced-motion:reduce){
-  .pp-ekg .pp-ekg-pulse{animation:none;stroke-dasharray:none}
+.video-play-btn{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  pointer-events:none;
 }
-.pp-squares{display:flex;gap:10px;justify-content:center;margin-bottom:28px}
-.pp-squares span{width:9px;height:9px;display:block;animation:float 3s ease-in-out infinite}
-.pp-squares span:nth-child(2){animation-delay:0.3s}
-.pp-squares span:nth-child(3){animation-delay:0.6s}
+.video-play-circle{
+  width:72px;height:72px;
+  border-radius:50%;
+  border:2px solid var(--cream);
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(17,17,17,0.55);
+  transition:background 0.3s,transform 0.3s,border-color 0.3s;
+}
+.video-thumb-wrapper:hover .video-play-circle{
+  background:rgba(17,17,17,0.8);
+  border-color:var(--cream-60);
+  transform:scale(1.1);
+}
+.video-play-circle svg{
+  width:24px;height:24px;
+  margin-left:3px;
+  fill:var(--cream);
+}
+.video-bottom-bar{
+  position:absolute;
+  bottom:0;left:0;right:0;
+  padding:20px 24px 16px;
+  background:linear-gradient(to top,rgba(17,17,17,0.88) 0%,transparent 100%);
+  font-size:11px;letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--cream-20);
+  pointer-events:none;
+}
 
-.pp-hero-compact{padding:152px 48px 56px}
-.pp-squares-big{gap:12px;margin-bottom:24px}
-.pp-squares-big span{width:13px;height:13px}
-.pp-h1-small{font-size:clamp(30px,4.4vw,52px)!important;max-width:560px;margin-left:auto;margin-right:auto}
-.pp-stikisce-top{padding-top:24px}
-.pp-intro{margin-bottom:36px}
-
-/* Del A — kartice */
-.pp-cards{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
-  background:var(--border);border:1px solid var(--border);margin-top:56px;
+/* Lightbox */
+#video-lightbox{
+  display:none;
+  position:fixed;inset:0;z-index:200;
+  background:rgba(11,11,11,0.94);
+  align-items:center;justify-content:center;
+  padding:24px;
 }
-.pp-card{background:var(--obsidian);padding:40px 32px;transition:background 0.3s ease}
-.pp-card:hover{background:var(--obsidian-soft)}
-.pp-card-block{width:20px;height:20px;margin-bottom:24px;transition:transform 0.3s ease}
-.pp-card:hover .pp-card-block{transform:translateY(-3px)}
-.pp-card h3{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:22px;color:var(--cream);margin-bottom:12px;line-height:1.3}
-.pp-card p{font-size:14.5px;font-weight:300;color:var(--cream-60);line-height:1.7;margin:0}
+#video-lightbox.open{display:flex}
+.video-lb-inner{
+  position:relative;
+  width:100%;max-width:380px;
+}
+.video-lb-close{
+  position:absolute;
+  top:-48px;right:0;
+  background:none;border:none;
+  color:var(--cream-60);
+  font-size:32px;font-weight:200;
+  cursor:pointer;line-height:1;
+  transition:color 0.2s;
+  font-family:'Helvetica Neue',sans-serif;
+}
+.video-lb-close:hover{color:var(--cream)}
+.video-lb-frame{
+  position:relative;
+  padding-bottom:177.78%;height:0;
+  background:var(--obsidian);
+}
+.video-lb-frame iframe{
+  position:absolute;
+  inset:0;width:100%;height:100%;
+  border:none;
+}
 
-/* Del B — stičišče / obrazec */
-.pp-intro{max-width:640px;margin:0 auto 48px;text-align:center}
-.pp-intro p{font-size:16px;font-weight:300;color:var(--cream-60);line-height:1.75;margin:0}
-.pp-form-wrap{max-width:600px;margin:0 auto}
+/* ══ KJE SE ZATIKA ═══════════════════════════════════════════ */
+.pp-hero{min-height:92vh;padding:152px 48px 96px;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(320px,.65fr);gap:clamp(56px,8vw,128px);align-items:end;position:relative;overflow:hidden;border-bottom:1px solid var(--border)}
+.pp-hero::before{content:'?';position:absolute;right:-.04em;top:-.2em;font-family:'Cormorant Garamond',serif;font-size:min(78vw,760px);font-weight:300;line-height:1;color:var(--cream-04);pointer-events:none}
+.pp-hero-copy,.pp-promise{position:relative;z-index:1}
+.pp-hero .hero-title{font-size:clamp(58px,7.6vw,112px);max-width:920px;margin-bottom:34px}
+.pp-hero .hero-sub{max-width:680px;margin:0;color:var(--cream-60);font-size:clamp(17px,1.35vw,21px)}
+.pp-hero .hero-sub strong{color:var(--cream);font-weight:400}
+.pp-theme-kicker{display:flex;align-items:center;gap:14px;margin-bottom:26px;font-size:11px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:#e26425}
+.pp-theme-kicker::before{content:'';width:28px;height:1px;background:var(--terra)}
+.pp-promise{border-top:1px solid var(--cream-20);padding-top:30px;max-width:390px}
+.pp-promise-number{font-family:'Cormorant Garamond',serif;font-size:72px;font-weight:300;line-height:.8;color:var(--terra);margin-bottom:28px}
+.pp-promise h2{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:300;line-height:1.2;margin-bottom:18px}
+.pp-promise p{font-size:14px;color:var(--cream-60);line-height:1.8}
+.pp-squares{display:flex;gap:7px;margin-top:34px}
+.pp-squares span{display:block;width:9px;height:9px}
+
+.pp-openers{padding:96px 48px;border-bottom:1px solid var(--border)}
+.pp-openers-head{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:end;margin-bottom:48px}
+.pp-openers-head .section-title{margin:0;max-width:620px}
+.pp-openers-note{max-width:460px;justify-self:end;color:var(--cream-60);font-size:15px}
+.pp-opener-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--border);border:1px solid var(--border)}
+.pp-opener{appearance:none;border:0;background:var(--obsidian);color:var(--cream);padding:34px 30px 30px;text-align:left;cursor:pointer;min-height:210px;display:flex;flex-direction:column;justify-content:space-between;font:inherit;transition:background .25s ease}
+.pp-opener:hover,.pp-opener:focus-visible{background:var(--obsidian-soft)}
+.pp-opener-mark{display:flex;align-items:center;justify-content:space-between;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--cream-20)}
+.pp-opener-dot{width:10px;height:10px;transition:transform .25s ease}
+.pp-opener:hover .pp-opener-dot{transform:translateY(-4px)}
+.pp-opener-quote{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,2.2vw,34px);font-weight:300;line-height:1.18;margin-top:32px}
+.pp-opener-action{display:block;margin-top:22px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#e26425}
+
+.pp-stikisce{padding:112px 48px 128px}
+.pp-stikisce-grid{display:grid;grid-template-columns:minmax(260px,.75fr) minmax(480px,1.25fr);gap:clamp(64px,10vw,150px);max-width:1200px;margin:0 auto;align-items:start}
+.pp-stikisce-copy{position:sticky;top:112px}
+.pp-stikisce-copy .section-title{font-size:clamp(46px,5.2vw,76px);margin-bottom:32px}
+.pp-stikisce-copy>p{font-size:16px;color:var(--cream-60);max-width:430px;margin-bottom:34px}
+.pp-human-note{border-left:2px solid var(--terra);padding:4px 0 4px 22px;color:var(--cream);font-size:14px;line-height:1.7}
+.pp-human-note strong{display:block;font-weight:400;margin-bottom:4px}
+.pp-steps{display:flex;gap:24px;margin-top:44px}
+.pp-step{flex:1;border-top:1px solid var(--cream-20);padding-top:12px;font-size:12px;color:var(--cream-60)}
+.pp-step b{display:block;color:var(--cream);font-weight:400;margin-bottom:5px}
+.pp-form-wrap{max-width:660px}
+.pp-form-intro{font-family:'Cormorant Garamond',serif;font-size:25px;line-height:1.35;margin-bottom:28px;color:var(--cream)}
+.pp-form-wrap .inquiry-form-card input:not([type="hidden"]):not([aria-hidden="true"]),
+.pp-form-wrap .inquiry-form-card textarea{
+  background:var(--obsidian)!important;
+  border-color:var(--cream-20)!important;
+  color:var(--cream)!important;
+}
+.pp-form-wrap .inquiry-form-card input::placeholder,
+.pp-form-wrap .inquiry-form-card textarea::placeholder{color:rgba(245,245,243,.34)!important}
+.pp-form-wrap .inquiry-form-card input:focus,
+.pp-form-wrap .inquiry-form-card textarea:focus{
+  border-color:var(--terra)!important;
+  background:#141414!important;
+}
+.pp-field{margin-bottom:24px}
+.pp-field-hint{display:block;margin-top:8px;font-size:12px;color:var(--cream-20)}
 .pp-checkbox-row{display:flex;gap:12px;align-items:flex-start;margin-bottom:20px}
-/* .inquiry-form-card input:not([type=hidden])... forces width:100%/cream bg/padding
-   with !important — it wasn't written with checkboxes in mind, so undo that here. */
-.pp-checkbox-row input[type="checkbox"]{
-  width:16px!important;height:16px!important;
-  flex:0 0 16px!important;
-  margin:3px 0 0!important;padding:0!important;
-  background:none!important;border:1px solid var(--cream-20)!important;
-  accent-color:var(--terra);
-}
+.pp-checkbox-row input[type="checkbox"]{width:16px!important;height:16px!important;flex:0 0 16px!important;margin:3px 0 0!important;padding:0!important;background:none!important;border:1px solid var(--cream-20)!important;accent-color:var(--terra)}
 .pp-checkbox-row label{font-size:13px!important;font-weight:300!important;color:var(--cream-60)!important;line-height:1.6;text-transform:none!important;letter-spacing:0!important;margin-bottom:0!important}
 .pp-checkbox-row a{color:var(--cream);text-decoration:underline}
-.pp-video-note{font-size:14px;font-weight:300;color:var(--cream-60);margin-top:24px}
-.pp-video-note a{color:var(--cream);text-decoration:underline}
+.pp-form-footer{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-top:28px}
+.pp-form-footer small{max-width:250px;color:var(--cream-20);font-size:11px;line-height:1.5}
 
-@media(max-width:1024px){
-  .pp-hero{padding:132px 24px 64px}
-  .pp-cards{grid-template-columns:1fr}
+@media(max-width:900px){
+  .pp-hero{min-height:auto;padding:132px 24px 72px;grid-template-columns:1fr;gap:64px}
+  .pp-hero::before{font-size:620px;top:-80px;right:-140px}
+  .pp-promise{max-width:520px}
+  .pp-openers{padding:72px 24px}
+  .pp-openers-head{grid-template-columns:1fr;gap:20px}
+  .pp-openers-note{justify-self:start}
+  .pp-opener-grid{grid-template-columns:1fr}
+  .pp-opener{min-height:170px}
+  .pp-stikisce{padding:80px 24px 104px}
+  .pp-stikisce-grid{grid-template-columns:1fr;gap:54px}
+  .pp-stikisce-copy{position:static}
+  .pp-form-wrap{max-width:none}
+}
+@media(max-width:520px){
+  .pp-hero .hero-title{font-size:51px}
+  .pp-hero .hero-sub{font-size:16px}
+  .pp-promise-number{font-size:58px}
+  .pp-steps{flex-direction:column;gap:16px}
+  .pp-form-footer{align-items:flex-start;flex-direction:column}
+  .pp-form-footer small{max-width:none}
 }
 </style>
 </head>
@@ -353,7 +807,9 @@ body.nav-open{overflow:hidden}
 <nav id="mainNav">
   <a href="/en/" class="nav-logo">
     <span class="nav-g">g</span>
-    <div><div class="nav-wordmark">RAFEIO</div></div>
+    <div>
+      <div class="nav-wordmark">RAFEIO</div>
+    </div>
     <div class="squares" style="margin-left:8px">
       <span class="sq sq-terra" style="width:7px;height:7px"></span>
       <span class="sq sq-slate" style="width:7px;height:7px;margin-bottom:-2px"></span>
@@ -368,123 +824,131 @@ body.nav-open{overflow:hidden}
     <a href="/en/#o-nas">Who we are</a>
     <a href="/en/#povprasajte">Enquiry</a>
     <a href="/en/darila/">Gifts</a>
-      <a href="/en/#contact" class="nav-cta">Get in touch</a>
+    <a href="/en/#contact" class="nav-cta">Get in touch</a>
   </div>
   <button class="nav-hamburger" aria-label="Menu" aria-expanded="false" onclick="toggleNav()">
     <span></span><span></span><span></span>
   </button>
-  <a href="/prva-pomoc/" style="font-size:12px;font-weight:400;letter-spacing:0.08em;color:#e26425;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='var(--cream)'" onmouseout="this.style.color='#e26425'">SL</a>
+  <a href="/prva-pomoc/" style="font-size:12px;font-weight:400;letter-spacing:0.08em;color:#e26425;text-decoration:none;transition:color 0.2s;" onmouseover="this.style.color='var(--cream)'" onmouseout="this.style.color='var(--cream-20)'">SL</a>
 </nav>
 
 <main>
 
 <!-- HERO -->
-<section class="pp-hero pp-hero-compact">
-  <svg class="pp-ekg" viewBox="0 0 600 60" preserveAspectRatio="none" aria-hidden="true" focusable="false">
-    <path class="pp-ekg-track" d="M0,30 L60,30 L68,21 L76,30 L100,30 L112,6 L120,55 L128,30 L150,30 L162,23 L170,30 L360,30 L368,21 L376,30 L400,30 L412,6 L420,55 L428,30 L450,30 L462,23 L470,30 L600,30"/>
-    <path class="pp-ekg-pulse" pathLength="100" d="M0,30 L60,30 L68,21 L76,30 L100,30 L112,6 L120,55 L128,30 L150,30 L162,23 L170,30 L360,30 L368,21 L376,30 L400,30 L412,6 L420,55 L428,30 L450,30 L462,23 L470,30 L600,30"/>
-  </svg>
-  <div class="pp-squares pp-squares-big reveal" aria-hidden="true">
-    <span class="sq sq-terra"></span>
-    <span class="sq sq-slate"></span>
-    <span class="sq sq-sage"></span>
+<section class="pp-hero">
+  <div class="pp-hero-copy">
+    <p id="pp-theme-kicker" class="pp-theme-kicker reveal">First aid · an outside view</p>
+    <h1 class="hero-title reveal reveal-delay-1">What's keeping your business <em>stuck?</em></h1>
+    <p class="hero-sub reveal reveal-delay-2">Tell us where things get difficult. <strong>We read every message and reply personally.</strong> You will get one practical next step to try.</p>
   </div>
-  <p class="hero-eyebrow reveal">First aid</p>
-  <h1 class="hero-title pp-h1-small reveal"><em>First aid</em> for your business.</h1>
-  <p class="hero-sub reveal">Everything can be solved. Tell us what's weighing on you right now, and within a few days we'll point you forward, for free.</p>
+  <aside class="pp-promise reveal reveal-delay-2" aria-label="Our promise">
+    <div class="pp-promise-number">01</div>
+    <h2>One real problem.<br>One human reply.</h2>
+    <p>No sales call and no generic template. We take the time to think it through and write a reply for you.</p>
+    <div class="pp-squares" aria-hidden="true">
+      <span class="sq-terra"></span><span class="sq-slate"></span><span class="sq-sage"></span>
+    </div>
+  </aside>
 </section>
 
-<!-- GOOD PRACTICES — intentionally hidden, kept for later, see comment below.
-<section class="pp-section-a">
-  <div class="section-label reveal">Good practices</div>
-  <h2 class="section-title reveal">Six moves you<br>can make today.</h2>
-
-  <div class="pp-cards">
-    <div class="pp-card reveal">
-      <div class="pp-card-block sq sq-terra"></div>
-      <h3>A Google profile, finished properly.</h3>
-      <p>When someone searches for a physio at 10 p.m., let them find you, not the competition.</p>
+<!-- SOCIALNE IZTOČNICE -->
+<section class="pp-openers" aria-labelledby="pp-openers-title">
+  <div class="pp-openers-head">
+    <div>
+      <div class="section-label reveal">Sound familiar?</div>
+      <h2 id="pp-openers-title" class="section-title reveal">Sometimes the problem starts<br>with a single sentence.</h2>
     </div>
-    <div class="pp-card reveal reveal-delay-1">
-      <div class="pp-card-block sq sq-slate"></div>
-      <h3>Opening hours where people look.</h3>
-      <p>One detail in the right place saves ten phone calls a day.</p>
-    </div>
-    <div class="pp-card reveal reveal-delay-2">
-      <div class="pp-card-block sq sq-sage"></div>
-      <h3>Three seconds, one point.</h3>
-      <p>Let your homepage say straight away what you do and where you are. Everything else can wait.</p>
-    </div>
-    <div class="pp-card reveal">
-      <div class="pp-card-block sq sq-terra"></div>
-      <h3>Booking without the phone.</h3>
-      <p>Let clients book on their own, even while you work. The phone isn't the only way in.</p>
-    </div>
-    <div class="pp-card reveal reveal-delay-1">
-      <div class="pp-card-block sq sq-slate"></div>
-      <h3>An email address isn't clutter.</h3>
-      <p>Every happy visit is a contact you lose if you don't ask for it. One reminder brings the client back.</p>
-    </div>
-    <div class="pp-card reveal reveal-delay-2">
-      <div class="pp-card-block sq sq-sage"></div>
-      <h3>One honest photo.</h3>
-      <p>A picture of your actual space says more than five stock photos. People want to see where they're coming.</p>
-    </div>
+    <p class="pp-openers-note reveal">Choose the sentence that comes closest. We will add it to the form, and you can tell us what it looks like in your business.</p>
+  </div>
+  <div class="pp-opener-grid reveal">
+    <button class="pp-opener" type="button" data-theme="appointments" data-starter="Every day, I end up juggling appointments again ...">
+      <span class="pp-opener-mark">01 <i class="pp-opener-dot sq-terra"></i></span>
+      <span class="pp-opener-quote">“Every day, I end up juggling appointments again.”</span>
+      <span class="pp-opener-action">That's my problem →</span>
+    </button>
+    <button class="pp-opener" type="button" data-theme="visibility" data-starter="People don't understand everything we offer ...">
+      <span class="pp-opener-mark">02 <i class="pp-opener-dot sq-slate"></i></span>
+      <span class="pp-opener-quote">“People don't understand everything we offer.”</span>
+      <span class="pp-opener-action">That's my problem →</span>
+    </button>
+    <button class="pp-opener" type="button" data-theme="content" data-starter="We keep posting, but nothing changes ...">
+      <span class="pp-opener-mark">03 <i class="pp-opener-dot sq-sage"></i></span>
+      <span class="pp-opener-quote">“We keep posting, but nothing changes.”</span>
+      <span class="pp-opener-action">That's my problem →</span>
+    </button>
+    <button class="pp-opener" type="button" data-theme="digital-business-card" data-starter="I don't want printed business cards anymore. I'd rather go digital, but I'm not sure what I need ...">
+      <span class="pp-opener-mark">04 <i class="pp-opener-dot sq-terra"></i></span>
+      <span class="pp-opener-quote">“I don't want printed business cards anymore. I'd rather go digital.”</span>
+      <span class="pp-opener-action">That's my problem →</span>
+    </button>
   </div>
 </section>
--->
 
-<!-- BOTTLENECK -->
-<section id="pp-stikisce" class="pp-stikisce-top">
-  <div class="section-label reveal">Bottleneck</div>
-  <h2 class="section-title reveal">Where do things get stuck?</h2>
-
-  <div class="pp-intro reveal">
-    <p>No strings attached. You get a short reply by email within a few days.</p>
-  </div>
-
-  <div class="pp-form-wrap reveal">
-    <form id="pp-form" class="inquiry-form-card" onsubmit="event.preventDefault();ppSubmit();">
-      <input type="text" id="pp-gotcha" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden;">
-
-      <div style="margin-bottom:24px;">
-        <label for="pp-problem">What eats the most of your time or nerves?</label>
-        <textarea id="pp-problem" rows="4" required placeholder="e.g. half my day goes to juggling appointments by phone ..."></textarea>
+<!-- OSEBNI ODGOVOR -->
+<section id="pp-stikisce" class="pp-stikisce">
+  <div class="pp-stikisce-grid">
+    <div class="pp-stikisce-copy">
+      <div class="section-label reveal">Tell us</div>
+      <h2 class="section-title reveal">Let's find<br>the knot.</h2>
+      <p class="reveal">You don't need to know the solution or use the right words. Describe the situation as you would explain it to someone over coffee.</p>
+      <div class="pp-human-note reveal">
+        <strong>Your reply will be personal.</strong>
+        We read your message, talk it through and reply by email.
       </div>
-
-      <div style="margin-bottom:24px;">
-        <label for="pp-email">Email for our reply</label>
-        <input type="email" id="pp-email" required placeholder="you@email.com">
+      <div class="pp-steps reveal" aria-label="How it works">
+        <div class="pp-step"><b>01 · You write</b>what is taking your time or energy</div>
+        <div class="pp-step"><b>02 · We think</b>and look for a useful way forward</div>
+        <div class="pp-step"><b>03 · We reply</b>personally, within a few working days</div>
       </div>
+    </div>
 
-      <div class="pp-checkbox-row">
-        <input type="checkbox" id="pp-consent-reply" required>
-        <label for="pp-consent-reply">I agree that Grafeio may reply to this email address. More in the <a href="/en/privacy-policy/">privacy policy</a>.</label>
-      </div>
+    <div class="pp-form-wrap reveal">
+      <p class="pp-form-intro">Start with what bothers you most.</p>
+      <form id="pp-form" class="inquiry-form-card" onsubmit="event.preventDefault();ppSubmit();">
+        <input type="text" id="pp-gotcha" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden;">
 
-      <button type="submit" id="pp-submit" class="inquiry-submit">Send</button>
-
-      <div id="pp-success" style="display:none;text-align:center;padding:24px 0;">
-        <div style="display:flex;justify-content:center;gap:5px;margin-bottom:16px;">
-          <span class="sq sq-terra" style="width:10px;height:10px;display:block;animation:float 3s ease-in-out infinite;"></span>
-          <span class="sq sq-slate" style="width:10px;height:10px;display:block;animation:float 3s ease-in-out infinite;animation-delay:0.4s;"></span>
-          <span class="sq sq-sage" style="width:10px;height:10px;display:block;animation:float 3s ease-in-out infinite;animation-delay:0.8s;"></span>
+        <div class="pp-field">
+          <label for="pp-problem">What's happening?</label>
+          <textarea id="pp-problem" rows="7" required placeholder="For example, we spend half the day arranging appointments by phone ..."></textarea>
+          <span class="pp-field-hint">A few sentences are enough. It doesn't have to be polished.</span>
         </div>
-        <p style="font-size:16px;font-weight:300;color:var(--cream);margin-bottom:8px;">Thanks for the message.</p>
-        <p style="font-size:13px;font-weight:300;color:var(--cream-60);">We'll read it and get back to you by email. Give us a day or two to think it over.</p>
-      </div>
-    </form>
 
-    <p class="pp-video-note reveal">Wondering who reads it? A short video in <a href="/en/#o-nas">Who we are</a> shows you.</p>
+        <div class="pp-field">
+          <label for="pp-email">Where should we reply?</label>
+          <input type="email" id="pp-email" required placeholder="you@email.com">
+        </div>
+
+        <div class="pp-checkbox-row">
+          <input type="checkbox" id="pp-consent-reply" required>
+          <label for="pp-consent-reply">I agree that Grafeio may reply to this email address. Read more in our <a href="/en/privacy-policy/">privacy policy</a>.</label>
+        </div>
+
+        <div class="pp-form-footer">
+          <button type="submit" id="pp-submit" class="inquiry-submit">Send your problem</button>
+          <small>This does not sign you up for a newsletter. We use your email only to reply.</small>
+        </div>
+
+        <div id="pp-success" style="display:none;text-align:left;padding:24px 0;">
+          <div class="pp-squares" style="margin:0 0 18px;" aria-hidden="true">
+            <span class="sq-terra"></span><span class="sq-slate"></span><span class="sq-sage"></span>
+          </div>
+          <p style="font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:300;color:var(--cream);margin-bottom:10px;">Your message is with us.</p>
+          <p style="font-size:14px;font-weight:300;color:var(--cream-60);">We will read it, think it through and reply personally by email. We usually need a few working days.</p>
+        </div>
+      </form>
+    </div>
   </div>
 </section>
 
 </main>
 
+<!-- FOOTER -->
 <footer>
   <div class="footer-logo">
     <span class="footer-g">g</span>
-    <div style="margin-left:8px"><div class="footer-name">RAFEIO</div></div>
+    <div style="margin-left:8px">
+      <div class="footer-name">RAFEIO</div>
+    </div>
     <div class="squares" style="margin-left:10px;gap:3px">
       <span class="sq sq-terra" style="width:6px;height:6px"></span>
       <span class="sq sq-slate" style="width:6px;height:6px;margin-bottom:-1px"></span>
@@ -492,15 +956,15 @@ body.nav-open{overflow:hidden}
     </div>
   </div>
   <div class="footer-right">
-    <span style="letter-spacing:0.05em">Building Excellence.</span>
+    <span style="letter-spacing:0.05em">Building excellence.</span>
     &nbsp;·&nbsp;
     <a id="kontakt-email-footer" href="mailto:grafeio.creative@gmail.com" style="color:inherit;text-decoration:none">grafeio.creative@gmail.com</a>
     &nbsp;·&nbsp;
-    <a href="https://www.instagram.com/grafeio.creative/" target="_blank" rel="noopener" aria-label="GRAFEIO on Instagram" style="color:inherit;text-decoration:none;display:inline-flex;vertical-align:-3px" onmouseover="this.style.color='var(--cream)'" onmouseout="this.style.color='inherit'">
+    <a href="https://www.instagram.com/grafeio.creative/" target="_blank" rel="noopener" aria-label="GRAFEIO na Instagramu" style="color:inherit;text-decoration:none;display:inline-flex;vertical-align:-3px" onmouseover="this.style.color='var(--cream)'" onmouseout="this.style.color='inherit'">
       <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="0.6" fill="currentColor" stroke="none"/></svg>
     </a>
     &nbsp;·&nbsp;
-    <a href="https://www.tiktok.com/@grafeio.creative" target="_blank" rel="noopener" aria-label="GRAFEIO on TikTok" style="color:inherit;text-decoration:none;display:inline-flex;vertical-align:-3px" onmouseover="this.style.color='var(--cream)'" onmouseout="this.style.color='inherit'">
+    <a href="https://www.tiktok.com/@grafeio.creative" target="_blank" rel="noopener" aria-label="GRAFEIO na TikToku" style="color:inherit;text-decoration:none;display:inline-flex;vertical-align:-3px" onmouseover="this.style.color='var(--cream)'" onmouseout="this.style.color='inherit'">
       <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M16.6 5.82c-1.02-.98-1.6-2.32-1.6-3.82h-3.03v14.14c0 1.61-1.31 2.92-2.92 2.92-1.61 0-2.92-1.31-2.92-2.92 0-1.61 1.31-2.92 2.92-2.92.32 0 .62.05.91.14v-3.09a6.13 6.13 0 0 0-.91-.07c-3.28 0-5.95 2.66-5.95 5.94s2.67 5.94 5.95 5.94 5.94-2.66 5.94-5.94V9.4a9.3 9.3 0 0 0 5.03 1.48V7.85c-1.1 0-2.12-.35-2.95-.94a5.7 5.7 0 0 1-.47-1.09Z"/></svg>
     </a>
     &nbsp;·&nbsp;
@@ -511,11 +975,21 @@ body.nav-open{overflow:hidden}
     &nbsp;·&nbsp;
     <a href="/en/cookie-policy/" style="color:inherit;text-decoration:none" onmouseover="this.style.color='var(--cream)'" onmouseout="this.style.color='var(--cream-20)'">Cookie policy</a>
     &nbsp;·&nbsp;
-    <a href="/en/terms-and-conditions/" style="color:inherit;text-decoration:none" onmouseover="this.style.color='var(--cream)'" onmouseout="this.style.color='var(--cream-20)'">Terms &amp; conditions</a>
+    <a href="/en/terms-and-conditions/" style="color:inherit;text-decoration:none" onmouseover="this.style.color='var(--cream)'" onmouseout="this.style.color='var(--cream-20)'">Terms and conditions</a>
   </div>
 </footer>
 
 <script>
+// ── E-POŠTA V NOGI IZ CMS ────────────────────────────────────────
+fetch('/_data/vsebina.json')
+  .then(r => r.json())
+  .then(d => {
+    const email = d.kontakt_email || '';
+    const el = document.getElementById('kontakt-email-footer');
+    if (el && email) { el.href = 'mailto:' + email; el.textContent = email; }
+  })
+  .catch(() => {});
+
 // ── NAV, REVEAL, SMOOTH SCROLL ──────────────────────────────────
 const nav = document.getElementById('mainNav');
 window.addEventListener('scroll', () => {
@@ -561,15 +1035,61 @@ document.querySelectorAll('.nav-links a').forEach(function(a) {
   });
 });
 
-// ── FIRST AID: FORM ──────────────────────────────────────────────
+// ── PRVA POMOČ: OBRAZEC ─────────────────────────────────────────
 function ppUtm(name) {
   return new URLSearchParams(window.location.search).get(name) || '';
+}
+
+const ppThemes = {
+  appointments: {
+    label: 'First aid · appointments',
+    starter: 'Every day, I end up juggling appointments again ...'
+  },
+  visibility: {
+    label: 'First aid · visibility',
+    starter: "People don't understand everything we offer ..."
+  },
+  content: {
+    label: 'First aid · content',
+    starter: 'We keep posting, but nothing changes ...'
+  },
+  'digital-business-card': {
+    label: 'First aid · digital business card',
+    starter: "I don't want printed business cards anymore. I'd rather go digital, but I'm not sure what I need ..."
+  }
+};
+
+function ppChooseTheme(theme, starter, shouldScroll) {
+  const problem = document.getElementById('pp-problem');
+  const form = document.getElementById('pp-form');
+  const kicker = document.getElementById('pp-theme-kicker');
+  if (!problem || !form) return;
+
+  form.dataset.topic = theme || '';
+  if (theme && ppThemes[theme] && kicker) kicker.textContent = ppThemes[theme].label;
+  if (!problem.value.trim() && starter) problem.value = starter + '\n\n';
+  if (shouldScroll) {
+    document.getElementById('pp-stikisce').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    window.setTimeout(function() { problem.focus(); problem.setSelectionRange(problem.value.length, problem.value.length); }, 500);
+  }
+}
+
+document.querySelectorAll('.pp-opener').forEach(function(button) {
+  button.addEventListener('click', function() {
+    ppChooseTheme(button.dataset.theme, button.dataset.starter, true);
+  });
+});
+
+const ppInitialTheme = ppUtm('tema');
+if (ppInitialTheme && ppThemes[ppInitialTheme]) {
+  ppChooseTheme(ppInitialTheme, ppThemes[ppInitialTheme].starter, false);
 }
 
 async function ppSubmit() {
   const problem = document.getElementById('pp-problem').value.trim();
   const email = document.getElementById('pp-email').value.trim();
   const consentReply = document.getElementById('pp-consent-reply').checked;
+  const topic = document.getElementById('pp-form').dataset.topic || '';
   const gotcha = document.getElementById('pp-gotcha').value;
   const btn = document.getElementById('pp-submit');
 
@@ -586,8 +1106,9 @@ async function ppSubmit() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         lang: 'en',
-        problem: problem,
+        problem: topic ? '[Topic: ' + topic + ']\n' + problem : problem,
         email: email,
+        topic: topic,
         consentReply: consentReply,
         utm_source: ppUtm('utm_source'),
         utm_medium: ppUtm('utm_medium'),
