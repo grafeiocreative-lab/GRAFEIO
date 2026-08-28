@@ -44,3 +44,35 @@ Preverite obe poti v zasebnem oknu brskalnika:
 - Obe poti uporabljata isto prijavno sejo.
 
 Gre za zaščito s skupnim geslom. Če bo dostop potrebovalo več oseb ali bo treba posamezni osebi dostop preklicati, jo nadomestite z uporabniškimi računi in večstopenjskim preverjanjem pristnosti.
+
+---
+
+## Obrazec "Prva pomoč" → Brevo
+
+Pot `/api/prva-pomoc` (Netlify Edge Function `netlify/edge-functions/prva-pomoc-submit.ts`) sprejme oddajo obrazca s strani `/prva-pomoc/` in `/en/prva-pomoc/`, pošlje e-pošto na vaš naslov in doda osebo na ustrezen Brevo seznam.
+
+### Okoljske spremenljivke (Brevo)
+
+V **Project configuration → Environment variables** dodajte:
+
+- `BREVO_API_KEY`: API ključ iz Brevo nadzorne plošče (Settings → SMTP & API → API Keys). Obseg **Functions**.
+- `BREVO_LIST_ID_SL`: številka Brevo seznama za slovenske oddaje (Contacts → Lists, ID je v URL-ju/na seznamu).
+- `BREVO_LIST_ID_EN`: številka Brevo seznama za angleške oddaje.
+- `GRAFEIO_NOTIFY_EMAIL` *(neobvezno)*: kam pride obvestilo o novi oddaji. Če ni nastavljena, gre na `grafeio.creative@gmail.com`.
+- `BREVO_SENDER_EMAIL` *(neobvezno)*: pošiljateljev naslov za obvestilo. Če ni nastavljen, uporabi `grafeio.creative@gmail.com` — **ta naslov mora biti potrjen pošiljatelj v Brevu** (Settings → Senders & IP), sicer pošiljanje spodleti.
+
+Vrednosti ne zapisujte v `netlify.toml`, datoteko `.env`, dokumentacijo ali Git — enako kot pri gornji zaščiti.
+
+### Kako deluje pošiljanje
+
+1. Obiskovalec izpolni obrazec, JavaScript pošlje podatke na `/api/prva-pomoc`.
+2. Funkcija pošlje e-pošto na `GRAFEIO_NOTIFY_EMAIL` prek Brevo API-ja, z odgovorom nastavljenim na e-naslov obiskovalca — odgovorite lahko kar z enim klikom na "Odgovori".
+3. Če je nastavljen ustrezen `BREVO_LIST_ID_*`, funkcija poskusi dodati e-naslov na ta seznam. Ta korak je "best effort": če spodleti, oddaja vseeno šteje za uspešno, ker je e-pošta (korak 2) že prispela.
+4. Če `BREVO_API_KEY` manjka, funkcija vrne `503` in obrazec prikaže napako, noben podatek se ne izgubi tiho.
+
+### Preverjanje pošiljanja po objavi
+
+1. Oddajte testno sporočilo prek obrazca na obeh jezikih.
+2. Preverite, da je e-pošta prispela na `GRAFEIO_NOTIFY_EMAIL`, z vsebino sporočila in "Odgovori na" nastavljenim na testni naslov.
+3. V Brevu preverite, da se je testni e-naslov pojavil na ustreznem seznamu.
+4. V Google Analytics (ali GA4 DebugView) preverite dogodek `tezava_oddana`. Sproži se šele, ko obiskovalec sprejme kategorijo "Analitika" v pasici za piškotke, enako kot povsod na strani.
