@@ -771,7 +771,7 @@ body.nav-open{overflow:hidden}
 .pp-field{margin-bottom:24px}
 .pp-field-hint{display:block;margin-top:8px;font-size:12px;color:var(--cream-20)}
 .pp-checkbox-row{display:flex;gap:12px;align-items:flex-start;margin-bottom:20px}
-.pp-checkbox-row input[type="checkbox"]{width:16px!important;height:16px!important;flex:0 0 16px!important;margin:3px 0 0!important;padding:0!important;background:none!important;border:1px solid var(--cream-20)!important;accent-color:var(--terra)}
+.pp-form-wrap .inquiry-form-card .pp-checkbox-row input[type="checkbox"]{width:16px!important;height:16px!important;flex:0 0 16px!important;margin:3px 0 0!important;padding:0!important;background:transparent!important;border:1px solid var(--cream-20)!important;accent-color:var(--terra)}
 .pp-checkbox-row label{font-size:13px!important;font-weight:300!important;color:var(--cream-60)!important;line-height:1.6;text-transform:none!important;letter-spacing:0!important;margin-bottom:0!important}
 .pp-checkbox-row a{color:var(--cream);text-decoration:underline}
 .pp-form-footer{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-top:28px}
@@ -888,12 +888,12 @@ body.nav-open{overflow:hidden}
 <section id="pp-stikisce" class="pp-stikisce">
   <div class="pp-stikisce-grid">
     <div class="pp-stikisce-copy">
-      <div class="section-label reveal">Napišite nam</div>
-      <h2 class="section-title reveal">Poglejmo,<br>kje je vozel.</h2>
-      <p class="reveal">Ni treba, da poznate rešitev ali uporabljate prave izraze. Opišite položaj tako, kot bi ga razložili nekomu ob kavi.</p>
+      <div class="section-label reveal">Vaš zaplet</div>
+      <h2 class="section-title reveal">Opišite,<br>kje se zatika.</h2>
+      <p class="reveal">Ni vam treba poznati rešitve ali uporabljati pravih izrazov. Preprosto opišite, kaj se dogaja pri vas.</p>
       <div class="pp-human-note reveal">
-        <strong>Odgovor bo oseben.</strong>
-        Vaše sporočilo preberemo, se o njem pogovorimo in vam odgovorimo po e-pošti.
+        <strong>Odgovorimo vam osebno.</strong>
+        Sporočilo preberemo, se o njem pogovorimo in vam po e-pošti predlagamo konkreten naslednji korak.
       </div>
       <div class="pp-steps reveal" aria-label="Kako poteka">
         <div class="pp-step"><b>01 · Napišete</b>kar vam jemlje čas ali energijo</div>
@@ -903,12 +903,12 @@ body.nav-open{overflow:hidden}
     </div>
 
     <div class="pp-form-wrap reveal">
-      <p class="pp-form-intro">Začnite tam, kjer vas najbolj žuli.</p>
+      <p class="pp-form-intro">Začnite s tem, kar vam trenutno jemlje največ časa ali energije.</p>
       <form id="pp-form" class="inquiry-form-card" onsubmit="event.preventDefault();ppSubmit();">
         <input type="text" id="pp-gotcha" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden;">
 
         <div class="pp-field">
-          <label for="pp-problem">Kaj se dogaja?</label>
+          <label for="pp-problem">Kaj se dogaja pri vas?</label>
           <textarea id="pp-problem" rows="7" required placeholder="Npr. polovico dneva porabimo za usklajevanje terminov po telefonu ..."></textarea>
           <span class="pp-field-hint">Dovolj je nekaj stavkov. Ni treba, da je zapis popoln.</span>
         </div>

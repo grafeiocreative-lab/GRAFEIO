@@ -771,7 +771,7 @@ body.nav-open{overflow:hidden}
 .pp-field{margin-bottom:24px}
 .pp-field-hint{display:block;margin-top:8px;font-size:12px;color:var(--cream-20)}
 .pp-checkbox-row{display:flex;gap:12px;align-items:flex-start;margin-bottom:20px}
-.pp-checkbox-row input[type="checkbox"]{width:16px!important;height:16px!important;flex:0 0 16px!important;margin:3px 0 0!important;padding:0!important;background:none!important;border:1px solid var(--cream-20)!important;accent-color:var(--terra)}
+.pp-form-wrap .inquiry-form-card .pp-checkbox-row input[type="checkbox"]{width:16px!important;height:16px!important;flex:0 0 16px!important;margin:3px 0 0!important;padding:0!important;background:transparent!important;border:1px solid var(--cream-20)!important;accent-color:var(--terra)}
 .pp-checkbox-row label{font-size:13px!important;font-weight:300!important;color:var(--cream-60)!important;line-height:1.6;text-transform:none!important;letter-spacing:0!important;margin-bottom:0!important}
 .pp-checkbox-row a{color:var(--cream);text-decoration:underline}
 .pp-form-footer{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-top:28px}
@@ -888,12 +888,12 @@ body.nav-open{overflow:hidden}
 <section id="pp-stikisce" class="pp-stikisce">
   <div class="pp-stikisce-grid">
     <div class="pp-stikisce-copy">
-      <div class="section-label reveal">Tell us</div>
-      <h2 class="section-title reveal">Let's find<br>the knot.</h2>
-      <p class="reveal">You don't need to know the solution or use the right words. Describe the situation as you would explain it to someone over coffee.</p>
+      <div class="section-label reveal">Your challenge</div>
+      <h2 class="section-title reveal">Tell us where<br>things get stuck.</h2>
+      <p class="reveal">You don't need to know the solution or use the right words. Simply tell us what is happening in your business.</p>
       <div class="pp-human-note reveal">
-        <strong>Your reply will be personal.</strong>
-        We read your message, talk it through and reply by email.
+        <strong>We reply personally.</strong>
+        We read your message, talk it through and email you one practical next step.
       </div>
       <div class="pp-steps reveal" aria-label="How it works">
         <div class="pp-step"><b>01 · You write</b>what is taking your time or energy</div>
@@ -903,12 +903,12 @@ body.nav-open{overflow:hidden}
     </div>
 
     <div class="pp-form-wrap reveal">
-      <p class="pp-form-intro">Start with what bothers you most.</p>
+      <p class="pp-form-intro">Start with what is taking most of your time or energy right now.</p>
       <form id="pp-form" class="inquiry-form-card" onsubmit="event.preventDefault();ppSubmit();">
         <input type="text" id="pp-gotcha" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden;">
 
         <div class="pp-field">
-          <label for="pp-problem">What's happening?</label>
+          <label for="pp-problem">What's happening in your business?</label>
           <textarea id="pp-problem" rows="7" required placeholder="For example, we spend half the day arranging appointments by phone ..."></textarea>
           <span class="pp-field-hint">A few sentences are enough. It doesn't have to be polished.</span>
         </div>
