@@ -715,16 +715,15 @@ body.nav-open{overflow:hidden}
 }
 
 /* ══ KJE SE ZATIKA ═══════════════════════════════════════════ */
-.pp-hero{min-height:92vh;padding:152px 48px 96px;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(320px,.65fr);gap:clamp(56px,8vw,128px);align-items:end;position:relative;overflow:hidden;border-bottom:1px solid var(--border)}
-.pp-hero::before{content:'?';position:absolute;right:-.04em;top:-.2em;font-family:'Cormorant Garamond',serif;font-size:min(78vw,760px);font-weight:300;line-height:1;color:var(--cream-04);pointer-events:none}
+.pp-hero{min-height:720px;padding:118px 48px 72px;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(360px,.85fr);gap:clamp(52px,7vw,112px);align-items:center;position:relative;overflow:hidden;border-bottom:1px solid var(--border)}
+.pp-hero::before{content:'g';position:absolute;right:-.06em;top:50%;transform:translateY(-54%);font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:min(70vw,720px);font-weight:300;line-height:.82;color:rgba(245,245,243,.035);pointer-events:none}
 .pp-hero-copy,.pp-promise{position:relative;z-index:1}
-.pp-hero .hero-title{font-size:clamp(58px,7.6vw,112px);max-width:920px;margin-bottom:34px}
+.pp-hero .hero-title{font-size:clamp(58px,7vw,104px);max-width:860px;margin-bottom:30px}
 .pp-hero .hero-sub{max-width:680px;margin:0;color:var(--cream-60);font-size:clamp(17px,1.35vw,21px)}
 .pp-hero .hero-sub strong{color:var(--cream);font-weight:400}
-.pp-theme-kicker{display:flex;align-items:center;gap:14px;margin-bottom:26px;font-size:11px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:#e26425}
-.pp-theme-kicker::before{content:'';width:28px;height:1px;background:var(--terra)}
-.pp-promise{border-top:1px solid var(--cream-20);padding-top:30px;max-width:390px}
-.pp-promise-number{font-family:'Cormorant Garamond',serif;font-size:72px;font-weight:300;line-height:.8;color:var(--terra);margin-bottom:28px}
+.pp-theme-kicker{margin-bottom:26px;font-size:11px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:#e26425}
+.pp-promise{border:1px solid var(--cream-20);padding:34px 36px 32px;max-width:430px;background:rgba(17,17,17,.66);backdrop-filter:blur(3px)}
+.pp-promise-number{font-family:'Cormorant Garamond',serif;font-size:62px;font-weight:300;line-height:.8;color:var(--terra);margin-bottom:24px}
 .pp-promise h2{font-family:'Cormorant Garamond',serif;font-size:30px;font-weight:300;line-height:1.2;margin-bottom:18px}
 .pp-promise p{font-size:14px;color:var(--cream-60);line-height:1.8}
 .pp-squares{display:flex;gap:7px;margin-top:34px}
@@ -738,8 +737,15 @@ body.nav-open{overflow:hidden}
 .pp-opener{appearance:none;border:0;background:var(--obsidian);color:var(--cream);padding:34px 30px 30px;text-align:left;cursor:pointer;min-height:210px;display:flex;flex-direction:column;justify-content:space-between;font:inherit;transition:background .25s ease}
 .pp-opener:hover,.pp-opener:focus-visible{background:var(--obsidian-soft)}
 .pp-opener-mark{display:flex;align-items:center;justify-content:space-between;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--cream-20)}
-.pp-opener-dot{width:10px;height:10px;transition:transform .25s ease}
-.pp-opener:hover .pp-opener-dot{transform:translateY(-4px)}
+.pp-opener-dot{width:10px;height:10px;animation:ppDotFloat 3.6s ease-in-out infinite;transition:transform .25s ease,box-shadow .25s ease}
+.pp-opener:nth-child(2) .pp-opener-dot{animation-delay:-.6s}
+.pp-opener:nth-child(3) .pp-opener-dot{animation-delay:-1.2s}
+.pp-opener:nth-child(4) .pp-opener-dot{animation-delay:-1.8s}
+.pp-opener:nth-child(5) .pp-opener-dot{animation-delay:-2.4s}
+.pp-opener:nth-child(6) .pp-opener-dot{animation-delay:-3s}
+.pp-opener:hover .pp-opener-dot,.pp-opener:focus-visible .pp-opener-dot{animation-play-state:paused;transform:translateY(-4px) rotate(45deg) scale(1.25);box-shadow:0 7px 16px rgba(0,0,0,.32)}
+@keyframes ppDotFloat{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-5px) rotate(12deg)}}
+@media(prefers-reduced-motion:reduce){.pp-opener-dot{animation:none}}
 .pp-opener-quote{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,2.2vw,34px);font-weight:300;line-height:1.18;margin-top:32px}
 .pp-opener-action{display:block;margin-top:22px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#e26425}
 
@@ -778,8 +784,8 @@ body.nav-open{overflow:hidden}
 .pp-form-footer small{max-width:250px;color:var(--cream-20);font-size:11px;line-height:1.5}
 
 @media(max-width:900px){
-  .pp-hero{min-height:auto;padding:132px 24px 72px;grid-template-columns:1fr;gap:64px}
-  .pp-hero::before{font-size:620px;top:-80px;right:-140px}
+  .pp-hero{min-height:auto;padding:112px 24px 64px;grid-template-columns:1fr;gap:48px}
+  .pp-hero::before{font-size:560px;top:48%;right:-170px}
   .pp-promise{max-width:520px}
   .pp-openers{padding:72px 24px}
   .pp-openers-head{grid-template-columns:1fr;gap:20px}
@@ -792,9 +798,12 @@ body.nav-open{overflow:hidden}
   .pp-form-wrap{max-width:none}
 }
 @media(max-width:520px){
+  .pp-hero{padding-top:104px}
+  .pp-hero::before{font-size:430px;right:-150px;top:42%}
   .pp-hero .hero-title{font-size:51px}
   .pp-hero .hero-sub{font-size:16px}
-  .pp-promise-number{font-size:58px}
+  .pp-promise{padding:28px 24px 26px}
+  .pp-promise-number{font-size:54px}
   .pp-steps{flex-direction:column;gap:16px}
   .pp-form-footer{align-items:flex-start;flex-direction:column}
   .pp-form-footer small{max-width:none}
@@ -879,6 +888,16 @@ body.nav-open{overflow:hidden}
     <button class="pp-opener" type="button" data-theme="digital-business-card" data-starter="I don't want printed business cards anymore. I'd rather go digital, but I'm not sure what I need ...">
       <span class="pp-opener-mark">04 <i class="pp-opener-dot sq-terra"></i></span>
       <span class="pp-opener-quote">“I don't want printed business cards anymore. I'd rather go digital.”</span>
+      <span class="pp-opener-action">That's my problem →</span>
+    </button>
+    <button class="pp-opener" type="button" data-theme="repeated-questions" data-starter="Customers keep asking me the same questions ...">
+      <span class="pp-opener-mark">05 <i class="pp-opener-dot sq-slate"></i></span>
+      <span class="pp-opener-quote">“Customers keep asking me the same questions.”</span>
+      <span class="pp-opener-action">That's my problem →</span>
+    </button>
+    <button class="pp-opener" type="button" data-theme="everything-depends-on-me" data-starter="When I'm not there, everything stops ...">
+      <span class="pp-opener-mark">06 <i class="pp-opener-dot sq-sage"></i></span>
+      <span class="pp-opener-quote">“When I'm not there, everything stops.”</span>
       <span class="pp-opener-action">That's my problem →</span>
     </button>
   </div>
@@ -1056,6 +1075,14 @@ const ppThemes = {
   'digital-business-card': {
     label: 'First aid · digital business card',
     starter: "I don't want printed business cards anymore. I'd rather go digital, but I'm not sure what I need ..."
+  },
+  'repeated-questions': {
+    label: 'First aid · repeated questions',
+    starter: 'Customers keep asking me the same questions ...'
+  },
+  'everything-depends-on-me': {
+    label: 'First aid · everything depends on me',
+    starter: "When I'm not there, everything stops ..."
   }
 };
 
