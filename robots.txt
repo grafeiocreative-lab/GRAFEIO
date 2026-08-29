@@ -3,12 +3,14 @@ Allow: /
 Disallow: /admin/
 Disallow: /grafeio-cenik/
 Disallow: /mojca
+Disallow: /miran
 
 User-agent: Googlebot
 Allow: /
 Disallow: /admin/
 Disallow: /grafeio-cenik/
 Disallow: /mojca
+Disallow: /miran
 
 User-agent: facebookexternalhit
 Allow: /
