@@ -224,7 +224,8 @@ section{padding:100px 48px}
 .newsletter-frame{display:block;width:100%;max-width:540px;margin:0;}
 .gf-newsletter-form #sib-container{border:1px solid var(--form-border)!important;padding:40px 36px}
 .gf-newsletter-form .input{width:100%;background:var(--obsidian)!important;border:1px solid var(--form-border)!important;color:var(--cream)!important;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif!important;font-size:15px!important;padding:14px 16px!important;border-radius:0!important;outline:none;transition:border-color .2s ease}
-.gf-newsletter-form .input:focus{border-color:var(--terra)!important}
+.gf-newsletter-form .input:focus{border-color:var(--terra)!important;outline:none!important}
+.gf-newsletter-form .entry__field:focus-within{box-shadow:none!important}
 .gf-newsletter-form .input::placeholder{color:rgba(245,245,243,.4)!important}
 .gf-newsletter-form .entry__specification{color:var(--cream-20)!important}
 .gf-newsletter-form .sib-form-block__button{transition:background .2s ease,transform .2s ease}
@@ -233,6 +234,7 @@ section{padding:100px 48px}
 .gf-newsletter-form .checkbox_tick_positive:before{border-color:var(--obsidian)!important}
 .gf-newsletter-form .input_replaced:checked+.checkbox_tick_positive{background:var(--terra)!important;border-color:var(--terra)!important}
 .gf-newsletter-form .input_replaced:checked+.checkbox_tick_positive:before{border-color:var(--cream)!important}
+.gf-newsletter-form .input_replaced:focus+.checkbox{box-shadow:0 0 0 2px var(--terra)!important}
 #contact{background:var(--obsidian-soft);border-top:1px solid var(--border);text-align:center;padding:120px 48px;}
 .contact-squares{display:flex;justify-content:center;gap:6px;margin-bottom:48px;}
 .cs{border-radius:2px;animation:float 3s ease-in-out infinite}
