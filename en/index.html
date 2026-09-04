@@ -5,9 +5,11 @@
 <script src="/cookie-consent.js"></script>
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://grafeio.si/en/">
-<meta property="og:title" content="GRAFEIO · Building Excellence">
-<meta property="og:description" content="Everything your business needs online.">
+<meta property="og:title" content="Web Development · GRAFEIO">
+<meta property="og:description" content="Web development and everything your business needs online.">
 <meta property="og:image" content="https://grafeio.si/og-image.png">
+<meta property="og:site_name" content="GRAFEIO">
+<meta property="og:locale" content="en_US">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://grafeio.si/og-image.png">
 <meta charset="UTF-8">
@@ -16,26 +18,31 @@
 <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32">
 <link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<meta name="description" content="Online presence for tradespeople, clinics and salons. A site that works while you focus on your craft.">
+<meta name="description" content="Web development for tradespeople, clinics and salons. A site that works while you focus on your craft.">
 <link rel="canonical" href="https://grafeio.si/en/">
 <link rel="alternate" hreflang="sl" href="https://grafeio.si/">
 <link rel="alternate" hreflang="en" href="https://grafeio.si/en/">
 <link rel="alternate" hreflang="x-default" href="https://grafeio.si/">
-<title>GRAFEIO · Building Excellence</title>
+<title>Web Development · GRAFEIO</title>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   "name": "GRAFEIO",
-  "url": "https://grafeio.si/",
+  "url": "https://grafeio.si/en/",
   "logo": "https://grafeio.si/og-image.png",
   "image": "https://grafeio.si/og-image.png",
-  "description": "Online presence for tradespeople, clinics and salons. A site that works while you focus on your craft.",
+  "description": "Web development for tradespeople, clinics and salons. A site that works while you focus on your craft.",
   "email": "grafeio.creative@gmail.com",
+  "telephone": "+38651845307",
   "areaServed": {
     "@type": "Country",
     "name": "Slovenia"
-  }
+  },
+  "sameAs": [
+    "https://www.instagram.com/grafeio.creative/",
+    "https://www.tiktok.com/@grafeio.creative"
+  ]
 }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -136,6 +143,14 @@ section{padding:100px 48px}
 .section-label{font-size:11px;font-weight:400;letter-spacing:0.22em;text-transform:uppercase;color:#e26425;margin-bottom:56px;display:flex;align-items:center;gap:16px;}
 .section-label::after{content:'';flex:1;height:1px;background:var(--border);}
 .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,3.5vw,56px);font-weight:300;line-height:1.15;margin-bottom:24px;}
+#faq{background:var(--obsidian-soft);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.faq-list{max-width:760px;margin:0 auto}
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-item summary{list-style:none;cursor:pointer;padding:24px 0;display:flex;align-items:center;justify-content:space-between;gap:24px;font-size:17px;font-weight:400;color:var(--cream);}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:'+';font-size:20px;font-weight:300;color:var(--cream-20);flex-shrink:0;transition:transform 0.25s;}
+.faq-item[open] summary::after{transform:rotate(45deg)}
+.faq-item p{padding:0 0 24px;max-width:640px;font-size:14px;line-height:1.7;color:var(--cream-60);}
 #problem{background:var(--obsidian-soft);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
 .problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
 .problem-left .section-title{max-width:500px;}
@@ -398,7 +413,75 @@ body.nav-open{overflow:hidden}
     </h2>
     <p class="reveal">We don't sell packages. We build what makes sense for you, from a website to an email sequence that works while you sleep.</p>
   </div>
-  <div id="services-grid" class="services-grid"></div>
+  <div id="services-grid" class="services-grid">
+    <!-- Statically prerendered; JS refreshes it from the same data on load -->
+    <div class="service-card reveal">
+      <div class="service-num">01</div>
+      <div class="service-icon">
+        <div class="si" style="background:var(--terra)"></div>
+        <div class="si" style="background:rgba(196,82,26,0.5)"></div>
+        <div class="si" style="background:rgba(196,82,26,0.25)"></div>
+      </div>
+      <h3 class="service-name">Website</h3>
+      <p class="service-desc">Fast, clear, professional. It reflects you and convinces a new client in 3 seconds. Includes a contact form, location and services.</p>
+      <span class="service-tag">The foundation</span>
+    </div>
+    <div class="service-card reveal reveal-delay-1">
+      <div class="service-num">02</div>
+      <div class="service-icon">
+        <div class="si" style="background:var(--slate)"></div>
+        <div class="si" style="background:rgba(74,123,165,0.5)"></div>
+        <div class="si" style="background:rgba(74,123,165,0.25)"></div>
+      </div>
+      <h3 class="service-name">Email marketing</h3>
+      <p class="service-desc">Appointment reminders, seasonal offers, news. Your clients stay in touch without your daily effort.</p>
+      <span class="service-tag">Client loyalty</span>
+    </div>
+    <div class="service-card reveal reveal-delay-2">
+      <div class="service-num">03</div>
+      <div class="service-icon">
+        <div class="si" style="background:var(--sage)"></div>
+        <div class="si" style="background:rgba(106,153,112,0.5)"></div>
+        <div class="si" style="background:rgba(106,153,112,0.25)"></div>
+      </div>
+      <h3 class="service-name">Copy and content</h3>
+      <p class="service-desc">Writing that speaks to your clients, not in technical jargon but in their own language.</p>
+      <span class="service-tag">Your voice online</span>
+    </div>
+    <div class="service-card reveal reveal-delay-1">
+      <div class="service-num">04</div>
+      <div class="service-icon">
+        <div class="si" style="background:var(--terra)"></div>
+        <div class="si" style="background:var(--slate)"></div>
+        <div class="si" style="background:var(--sage)"></div>
+      </div>
+      <h3 class="service-name">Brand identity</h3>
+      <p class="service-desc">Logo, slogan, colours, story. The first thing a client sees before they even walk through the door. We make sure the impression is right.</p>
+      <span class="service-tag">Your image</span>
+    </div>
+    <div class="service-card reveal reveal-delay-2">
+      <div class="service-num">05</div>
+      <div class="service-icon">
+        <div class="si" style="background:rgba(74,123,165,0.4)"></div>
+        <div class="si" style="background:rgba(74,123,165,0.7)"></div>
+        <div class="si" style="background:var(--slate)"></div>
+      </div>
+      <h3 class="service-name">Everyday tools</h3>
+      <p class="service-desc">Simple additions that make work easier. Booking form, basic price list, simple calculators, overview of appointments or enquiries. Everything works independently, without touching your existing systems.</p>
+      <span class="service-tag">Practical solutions</span>
+    </div>
+    <div class="service-card reveal reveal-delay-3">
+      <div class="service-num">06</div>
+      <div class="service-icon">
+        <div class="si" style="background:var(--sage)"></div>
+        <div class="si" style="background:var(--terra)"></div>
+        <div class="si" style="background:var(--slate)"></div>
+      </div>
+      <h3 class="service-name">Simple automation</h3>
+      <p class="service-desc">Less administrative work, more time for clients. Automatic replies to common questions, basic chatbot on your website, appointment confirmations and reminders. Simple to set up, no technical complications.</p>
+      <span class="service-tag">Less manual work</span>
+    </div>
+  </div>
   <p style="margin-top:32px;font-size:12px;font-weight:300;color:rgba(245,245,243,0.52);text-align:center;letter-spacing:0.04em;">These tools are designed to support everyday tasks and do not replace existing business systems.</p>
 </section>
 
@@ -537,6 +620,78 @@ body.nav-open{overflow:hidden}
   </div>
   <p class="audiences-note reveal">Micro businesses, sole traders, practices. No unrealistic expectations.</p>
 </section>
+
+<!-- FAQ -->
+<section id="faq" aria-labelledby="faq-title">
+  <div class="section-label reveal">FAQ</div>
+  <h2 id="faq-title" class="section-title reveal" style="max-width:600px">
+    Before you write to us,<br><em style="color:var(--cream-60)">you probably want to know this.</em>
+  </h2>
+  <div class="faq-list reveal">
+    <details class="faq-item">
+      <summary>How much does web development cost?</summary>
+      <p>It depends on scope. After a short introductory call we prepare a written quote with a clear price, before anything starts.</p>
+    </details>
+    <details class="faq-item">
+      <summary>How long does it take to build a website?</summary>
+      <p>Typically 2 to 4 weeks, from the first call to a live site. One review round, two rounds of edits, and it's online.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Who are your services a good fit for?</summary>
+      <p>Small business owners, tradespeople, clinics and salons — from health and beauty to mechanics and workshops. If you look after clients, we look after your online presence.</p>
+    </details>
+    <details class="faq-item">
+      <summary>What do I get once the website is delivered?</summary>
+      <p>All access and logins, a short how-to guide, and our contact. We don't disappear the moment the site goes live.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Do you only build websites, or also email marketing and automation?</summary>
+      <p>Both. Alongside the website we set up email reminders, simple everyday tools (booking forms, price lists) and basic automation, like automatic replies or appointment reminders.</p>
+    </details>
+    <details class="faq-item">
+      <summary>I already have a website, but it isn't bringing in clients. What can you do?</summary>
+      <p>Describe the problem on our <a href="/en/prva-pomoc/" style="color:inherit">First aid</a> page — we read every message and reply personally with one concrete suggestion.</p>
+    </details>
+  </div>
+</section>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much does web development cost?",
+      "acceptedAnswer": { "@type": "Answer", "text": "It depends on scope. After a short introductory call we prepare a written quote with a clear price, before anything starts." }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does it take to build a website?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Typically 2 to 4 weeks, from the first call to a live site. One review round, two rounds of edits, and it's online." }
+    },
+    {
+      "@type": "Question",
+      "name": "Who are your services a good fit for?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Small business owners, tradespeople, clinics and salons — from health and beauty to mechanics and workshops." }
+    },
+    {
+      "@type": "Question",
+      "name": "What do I get once the website is delivered?",
+      "acceptedAnswer": { "@type": "Answer", "text": "All access and logins, a short how-to guide, and our contact." }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you only build websites, or also email marketing and automation?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Both. Alongside the website we set up email reminders, simple everyday tools, and basic automation." }
+    },
+    {
+      "@type": "Question",
+      "name": "I already have a website, but it isn't bringing in clients. What can you do?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Describe the problem on our First aid page — we read every message and reply personally with one concrete suggestion." }
+    }
+  ]
+}
+</script>
 
 <!-- VIDEO · WHO WE ARE -->
 <section id="o-nas" style="text-align:center;border-top:1px solid var(--border);">
@@ -681,6 +836,7 @@ const DELAYS = ['','reveal-delay-1','reveal-delay-2','reveal-delay-1','reveal-de
 
 const grid = document.getElementById('services-grid');
 if(grid){
+  grid.innerHTML = '';
   STORITVE_EN.forEach((s,i)=>{
     const barve = IKONE[s.barva]||IKONE['terra'];
     const num = String(i+1).padStart(2,'0');

@@ -6,9 +6,11 @@
 <!-- Open Graph za deljenje linkov -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://grafeio.si/">
-<meta property="og:title" content="GRAFEIO · Gradnik odličnosti">
-<meta property="og:description" content="Vse, kar vaše podjetje potrebuje online.">
+<meta property="og:title" content="Izdelava spletnih strani v Sloveniji · GRAFEIO">
+<meta property="og:description" content="Izdelava spletnih strani in vse, kar vaše podjetje potrebuje online.">
 <meta property="og:image" content="https://grafeio.si/og-image.png">
+<meta property="og:site_name" content="GRAFEIO">
+<meta property="og:locale" content="sl_SI">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://grafeio.si/og-image.png">
 <meta charset="UTF-8">
@@ -17,12 +19,12 @@
 <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32">
 <link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<meta name="description" content="Spletna prisotnost za obrtnike, ordinacije in salone. Stran, ki dela namesto vas.">
+<meta name="description" content="Izdelava spletnih strani za obrtnike, ordinacije in salone po Sloveniji. Stran, ki dela namesto vas.">
 <link rel="canonical" href="https://grafeio.si/">
 <link rel="alternate" hreflang="sl" href="https://grafeio.si/">
 <link rel="alternate" hreflang="en" href="https://grafeio.si/en/">
 <link rel="alternate" hreflang="x-default" href="https://grafeio.si/">
-<title>GRAFEIO · Gradnik odličnosti</title>
+<title>Izdelava spletnih strani v Sloveniji · GRAFEIO</title>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -31,12 +33,17 @@
   "url": "https://grafeio.si/",
   "logo": "https://grafeio.si/og-image.png",
   "image": "https://grafeio.si/og-image.png",
-  "description": "Spletna prisotnost za obrtnike, ordinacije in salone. Stran, ki dela namesto vas.",
+  "description": "Izdelava spletnih strani za obrtnike, ordinacije in salone po Sloveniji. Stran, ki dela namesto vas.",
   "email": "grafeio.creative@gmail.com",
+  "telephone": "+38651845307",
   "areaServed": {
     "@type": "Country",
     "name": "Slovenija"
-  }
+  },
+  "sameAs": [
+    "https://www.instagram.com/grafeio.creative/",
+    "https://www.tiktok.com/@grafeio.creative"
+  ]
 }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -238,6 +245,26 @@ section{padding:100px 48px}
   font-weight:300;
   line-height:1.15;
   margin-bottom:24px;
+}
+
+/* ── FAQ ── */
+#faq{background:var(--obsidian-soft);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.faq-list{max-width:760px;margin:0 auto}
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-item summary{
+  list-style:none;cursor:pointer;padding:24px 0;
+  display:flex;align-items:center;justify-content:space-between;gap:24px;
+  font-size:17px;font-weight:400;color:var(--cream);
+}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{
+  content:'+';font-size:20px;font-weight:300;color:var(--cream-20);
+  flex-shrink:0;transition:transform 0.25s;
+}
+.faq-item[open] summary::after{transform:rotate(45deg)}
+.faq-item p{
+  padding:0 0 24px;max-width:640px;
+  font-size:14px;line-height:1.7;color:var(--cream-60);
 }
 
 /* ── PROBLEM SECTION ── */
@@ -850,7 +877,73 @@ body.nav-open{overflow:hidden}
   </div>
 
   <div id="services-grid" class="services-grid">
-    <!-- Vsebina se naloži iz _data/vsebina.json -->
+    <!-- Statično prerenderirano (JS ob nalaganju osveži iz _data/vsebina.json) -->
+    <div class="service-card reveal">
+      <div class="service-num">01</div>
+      <div class="service-icon">
+        <div class="si" style="background:var(--terra)"></div>
+        <div class="si" style="background:rgba(196,82,26,0.5)"></div>
+        <div class="si" style="background:rgba(196,82,26,0.25)"></div>
+      </div>
+      <h3 class="service-name">Spletna stran</h3>
+      <p class="service-desc">Hitra, jasna, profesionalna. Odraža vas in prepriča novo stranko v 3 sekundah. Vključuje kontaktni obrazec, lokacijo in storitve.</p>
+      <span class="service-tag">Osnova vsega</span>
+    </div>
+    <div class="service-card reveal reveal-delay-1">
+      <div class="service-num">02</div>
+      <div class="service-icon">
+        <div class="si" style="background:var(--slate)"></div>
+        <div class="si" style="background:rgba(74,123,165,0.5)"></div>
+        <div class="si" style="background:rgba(74,123,165,0.25)"></div>
+      </div>
+      <h3 class="service-name">Email marketing</h3>
+      <p class="service-desc">Opomniki za termine, sezonske akcije, novosti. Vaše stranke ostanejo v stiku, brez vašega vsakodnevnega napora.</p>
+      <span class="service-tag">Zvestoba strank</span>
+    </div>
+    <div class="service-card reveal reveal-delay-2">
+      <div class="service-num">03</div>
+      <div class="service-icon">
+        <div class="si" style="background:var(--sage)"></div>
+        <div class="si" style="background:rgba(106,153,112,0.5)"></div>
+        <div class="si" style="background:rgba(106,153,112,0.25)"></div>
+      </div>
+      <h3 class="service-name">Besedila in vsebina</h3>
+      <p class="service-desc">Besedila, ki govorijo vašim strankam, ne v strokovnem žargonu, ampak v njihovem jeziku.</p>
+      <span class="service-tag">Vaš glas online</span>
+    </div>
+    <div class="service-card reveal reveal-delay-1">
+      <div class="service-num">04</div>
+      <div class="service-icon">
+        <div class="si" style="background:var(--terra)"></div>
+        <div class="si" style="background:var(--slate)"></div>
+        <div class="si" style="background:var(--sage)"></div>
+      </div>
+      <h3 class="service-name">Obraz podjetja</h3>
+      <p class="service-desc">Logo, slogan, barve, zgodba. Prva stvar, ki jo stranka vidi, preden sploh stopi skozi vrata. Uredimo, da bo vtis pravi.</p>
+      <span class="service-tag">Vaša podoba</span>
+    </div>
+    <div class="service-card reveal reveal-delay-2">
+      <div class="service-num">05</div>
+      <div class="service-icon">
+        <div class="si" style="background:rgba(74,123,165,0.4)"></div>
+        <div class="si" style="background:rgba(74,123,165,0.7)"></div>
+        <div class="si" style="background:var(--slate)"></div>
+      </div>
+      <h3 class="service-name">Majhna orodja za vsakdan</h3>
+      <p class="service-desc">Preprosti dodatki, ki olajšajo delo. Obrazec za naročanje, preprost cenik, osnovni kalkulatorji, pregled nad terminom ali povpraševanjem. Vse deluje samostojno, brez posega v obstoječe sisteme.</p>
+      <span class="service-tag">Praktične rešitve</span>
+    </div>
+    <div class="service-card reveal reveal-delay-3">
+      <div class="service-num">06</div>
+      <div class="service-icon">
+        <div class="si" style="background:var(--sage)"></div>
+        <div class="si" style="background:var(--terra)"></div>
+        <div class="si" style="background:var(--slate)"></div>
+      </div>
+      <h3 class="service-name">Enostavna avtomatizacija</h3>
+      <p class="service-desc">Manj administrativnega dela, več časa za stranke. Avtomatski odgovori na pogosta vprašanja, osnovni chatbot na spletni strani, potrditve in opomniki za termine. Preprosto nastavljeno, brez tehničnih zapletov.</p>
+      <span class="service-tag">Manj ročnega dela</span>
+    </div>
   </div>
   <p style="margin-top:32px;font-size:12px;font-weight:300;color:rgba(245,245,243,0.52);text-align:center;letter-spacing:0.04em;">Orodja so namenjena podpori vsakodnevnim opravilom in ne nadomeščajo obstoječih poslovnih sistemov.</p>
 </section>
@@ -995,6 +1088,78 @@ body.nav-open{overflow:hidden}
   </div>
   <p class="audiences-note reveal">Mali podjetniki, zasebniki, ordinacije. Brez megalomanskih pričakovanj.</p>
 </section>
+
+<!-- FAQ -->
+<section id="faq" aria-labelledby="faq-title">
+  <div class="section-label reveal">Pogosta vprašanja</div>
+  <h2 id="faq-title" class="section-title reveal" style="max-width:600px">
+    Preden nam napišete,<br><em style="color:var(--cream-60)">verjetno že veste to.</em>
+  </h2>
+  <div class="faq-list reveal">
+    <details class="faq-item">
+      <summary>Koliko stane izdelava spletne strani?</summary>
+      <p>Odvisno od obsega. Po kratkem spoznavnem pogovoru pripravimo pisan predlog z jasno ceno, še preden se karkoli začne.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Koliko časa traja izdelava spletne strani?</summary>
+      <p>Običajno od 2 do 4 tedne, od prvega pogovora do žive strani. En pregled, dva popravka, in stran je online.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Za koga so vaše storitve primerne?</summary>
+      <p>Za male podjetnike, obrtnike, ordinacije in salone — od zdravstva in lepote do avtomehanikov in delavnic. Če skrbite za stranke, mi skrbimo za vašo spletno prisotnost.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Kaj dobim ob predaji spletne strani?</summary>
+      <p>Vse dostope, kratko navodilo, kako kaj urediti, in naš kontakt. Nismo izginili takoj, ko je stran narejena.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Delate samo spletne strani, ali tudi email marketing in avtomatizacijo?</summary>
+      <p>Tudi to. Poleg spletne strani pripravimo email opomnike, preprosta orodja za vsakdan (obrazci, ceniki) in osnovno avtomatizacijo, kot so samodejni odgovori ali opomniki za termine.</p>
+    </details>
+    <details class="faq-item">
+      <summary>Imam že spletno stran, a ne prinaša strank. Kaj lahko naredite?</summary>
+      <p>Opišite zaplet na strani <a href="/prva-pomoc/" style="color:inherit">Prva pomoč</a> — vsako sporočilo preberemo in odgovorimo osebno z enim konkretnim predlogom.</p>
+    </details>
+  </div>
+</section>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Koliko stane izdelava spletne strani?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Odvisno od obsega. Po kratkem spoznavnem pogovoru pripravimo pisan predlog z jasno ceno, še preden se karkoli začne." }
+    },
+    {
+      "@type": "Question",
+      "name": "Koliko časa traja izdelava spletne strani?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Običajno od 2 do 4 tedne, od prvega pogovora do žive strani. En pregled, dva popravka, in stran je online." }
+    },
+    {
+      "@type": "Question",
+      "name": "Za koga so vaše storitve primerne?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Za male podjetnike, obrtnike, ordinacije in salone — od zdravstva in lepote do avtomehanikov in delavnic." }
+    },
+    {
+      "@type": "Question",
+      "name": "Kaj dobim ob predaji spletne strani?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Vse dostope, kratko navodilo, kako kaj urediti, in naš kontakt." }
+    },
+    {
+      "@type": "Question",
+      "name": "Delate samo spletne strani, ali tudi email marketing in avtomatizacijo?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Tudi to. Poleg spletne strani pripravimo email opomnike, preprosta orodja za vsakdan in osnovno avtomatizacijo." }
+    },
+    {
+      "@type": "Question",
+      "name": "Imam že spletno stran, a ne prinaša strank. Kaj lahko naredite?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Opišite zaplet na strani Prva pomoč — vsako sporočilo preberemo in odgovorimo osebno z enim konkretnim predlogom." }
+    }
+  ]
+}
+</script>
 
 <!-- VIDEO · KDO SMO -->
 <section id="o-nas" style="text-align:center;border-top:1px solid var(--border);">
