@@ -112,6 +112,11 @@ nav.scrolled{
   transition:background 0.2s,border-color 0.2s;
 }
 .nav-cta:hover{background:var(--cream-08);border-color:var(--cream-60)}
+.nav-badge{
+  font-size:9px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--sage);border:1px solid rgba(106,153,112,0.45);
+  padding:5px 10px;border-radius:20px;line-height:1;white-space:nowrap;
+}
 .inquiry-submit{display:inline-block;width:auto;padding:16px 32px;background:var(--cream);color:var(--obsidian);border:none;font-family:inherit;font-size:12px;font-weight:400;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:background 0.3s ease,color 0.3s ease,transform 0.3s ease;}
 .inquiry-submit:hover{background:var(--terra);color:var(--cream);transform:translateY(-2px)}
 .inquiry-submit:focus-visible{outline:2px solid var(--terra);outline-offset:4px}
@@ -813,17 +818,20 @@ body.nav-open{overflow:hidden}
 
 <!-- NAV -->
 <nav id="mainNav">
-  <a href="/" class="nav-logo">
-    <span class="nav-g">g</span>
-    <div>
-      <div class="nav-wordmark">RAFEIO</div>
-    </div>
-    <div class="squares" style="margin-left:8px">
-      <span class="sq sq-terra" style="width:7px;height:7px"></span>
-      <span class="sq sq-slate" style="width:7px;height:7px;margin-bottom:-2px"></span>
-      <span class="sq sq-sage" style="width:7px;height:7px;margin-bottom:2px"></span>
-    </div>
-  </a>
+  <div style="display:flex;align-items:center;gap:14px">
+    <a href="/" class="nav-logo">
+      <span class="nav-g">g</span>
+      <div>
+        <div class="nav-wordmark">RAFEIO</div>
+      </div>
+      <div class="squares" style="margin-left:8px">
+        <span class="sq sq-terra" style="width:7px;height:7px"></span>
+        <span class="sq sq-slate" style="width:7px;height:7px;margin-bottom:-2px"></span>
+        <span class="sq sq-sage" style="width:7px;height:7px;margin-bottom:2px"></span>
+      </div>
+    </a>
+    <span class="nav-badge">Pro bono</span>
+  </div>
   <div class="nav-links">
     <a href="/#services">Storitve</a>
     <a href="/#process">Pristop</a>
@@ -990,12 +998,12 @@ body.nav-open{overflow:hidden}
     &nbsp;·&nbsp;
     <span>© 2026 Grafeio</span>
   </div>
-  <div style="flex-basis:100%;text-align:center;font-size:11px;color:var(--cream-20);margin-top:4px">
-    <a href="/politika-zasebnosti/" style="color:inherit;text-decoration:none" onmouseover="this.style.color='var(--cream)'" onmouseout="this.style.color='var(--cream-20)'">Politika zasebnosti</a>
+  <div style="flex-basis:100%;text-align:right;font-size:10px;color:var(--cream-20);margin-top:4px">
+    <a href="/politika-zasebnosti/" rel="nofollow" style="color:inherit;text-decoration:none" onmouseover="this.style.color='var(--cream)'" onmouseout="this.style.color='var(--cream-20)'">Politika zasebnosti</a>
     &nbsp;·&nbsp;
-    <a href="/politika-piskotkov/" style="color:inherit;text-decoration:none" onmouseover="this.style.color='var(--cream)'" onmouseout="this.style.color='var(--cream-20)'">Politika piškotkov</a>
+    <a href="/politika-piskotkov/" rel="nofollow" style="color:inherit;text-decoration:none" onmouseover="this.style.color='var(--cream)'" onmouseout="this.style.color='var(--cream-20)'">Politika piškotkov</a>
     &nbsp;·&nbsp;
-    <a href="/splosni-pogoji/" style="color:inherit;text-decoration:none" onmouseover="this.style.color='var(--cream)'" onmouseout="this.style.color='var(--cream-20)'">Splošni pogoji</a>
+    <a href="/splosni-pogoji/" rel="nofollow" style="color:inherit;text-decoration:none" onmouseover="this.style.color='var(--cream)'" onmouseout="this.style.color='var(--cream-20)'">Splošni pogoji</a>
   </div>
 </footer>
 
