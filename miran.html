@@ -3,6 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<script>
+(function(){
+  try {
+    var ua = navigator.userAgent || '';
+    if (/FBAN|FBAV|FB_IAB|FBSV|Instagram|Line\/|MicroMessenger/i.test(ua)) {
+      document.documentElement.classList.add('iab');
+      if (!sessionStorage.getItem('iabRedirectTried')) {
+        sessionStorage.setItem('iabRedirectTried', '1');
+        var url = location.href.split('#')[0];
+        if (/Android/i.test(ua)) {
+          location.href = 'intent://' + url.replace(/^https?:\/\//, '') + '#Intent;scheme=https;package=com.android.chrome;end';
+        } else if (/iPhone|iPad|iPod/i.test(ua)) {
+          location.href = url.replace(/^https:\/\//, 'x-safari-https://');
+        }
+      }
+    }
+  } catch (e) {}
+})();
+</script>
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/favicon-32x32.png" type="image/png" sizes="32x32">
 <link rel="icon" href="/favicon-16x16.png" type="image/png" sizes="16x16">
@@ -61,9 +80,30 @@ body{font-family:'Helvetica Neue','Liberation Sans',Helvetica,Arial,sans-serif;b
 .btn-light{background:#fff;color:var(--obsidian);border:1px solid rgba(17,17,17,.12)}
 .btn svg{flex-shrink:0}
 .hint{margin-top:14px;font-size:11px;font-weight:300;color:rgba(17,17,17,.3);text-align:center}
+.iab-banner{display:none;position:fixed;top:0;left:0;right:0;z-index:999;background:var(--obsidian);color:var(--cream);padding:10px 16px;font-size:12.5px;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;text-align:center;line-height:1.4;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+html.iab .iab-banner{display:flex}
+html.iab body{padding-top:52px}
+.iab-banner span{opacity:.85}
+.iab-banner a{color:#fff;background:var(--terracotta);padding:6px 12px;border-radius:6px;text-decoration:none;font-weight:600;white-space:nowrap;flex-shrink:0}
 </style>
 </head>
 <body>
+<div class="iab-banner"><span>Za pravilen prikaz odpri v brskalniku.</span><a href="#" id="iabOpenLink">Odpri v brskalniku</a></div>
+<script>
+(function(){
+  var link = document.getElementById('iabOpenLink');
+  if (!link) return;
+  var ua = navigator.userAgent || '';
+  var url = location.href.split('#')[0];
+  var target = url;
+  if (/Android/i.test(ua)) {
+    target = 'intent://' + url.replace(/^https?:\/\//, '') + '#Intent;scheme=https;package=com.android.chrome;end';
+  } else if (/iPhone|iPad|iPod/i.test(ua)) {
+    target = url.replace(/^https:\/\//, 'x-safari-https://');
+  }
+  link.href = target;
+})();
+</script>
 <div class="card-wrapper" id="card" role="button" tabindex="0" aria-label="Obrni vizitko" onclick="this.classList.toggle('flipped')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();this.classList.toggle('flipped')}">
   <div class="card-inner">
     <div class="card-face front">
