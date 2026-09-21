@@ -31,29 +31,29 @@ html{scroll-behavior:smooth}
 body{
   font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
   background:var(--obsidian);color:var(--cream-60);
-  line-height:1.7;font-weight:300;font-size:16px;
+  line-height:1.55;font-weight:300;font-size:14px;
   -webkit-font-smoothing:antialiased;
 }
 a{color:var(--cream)}
 a:hover{color:#e26425}
 header{
   display:flex;align-items:center;justify-content:space-between;
-  padding:24px 48px;border-bottom:1px solid var(--border);
+  padding:18px 48px;border-bottom:1px solid var(--border);
 }
 .back{font-size:13px;letter-spacing:0.04em;text-decoration:none;color:var(--cream-60)}
 .back:hover{color:var(--cream)}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
 .logo .g{font-size:22px;color:var(--cream);line-height:1}
 .logo .word{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--cream-60)}
-main{max-width:720px;margin:0 auto;padding:72px 24px 96px}
+main{max-width:680px;margin:0 auto;padding:48px 24px 64px}
 .doc-label{font-size:11px;font-weight:400;letter-spacing:0.22em;text-transform:uppercase;color:#e26425;margin-bottom:20px}
-h1{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(36px,5vw,54px);color:var(--cream);line-height:1.1;margin-bottom:16px}
-.updated{font-size:13px;color:var(--cream-20);margin-bottom:56px}
-h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:26px;color:var(--cream);margin:48px 0 16px}
+h1{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(28px,4.5vw,40px);color:var(--cream);line-height:1.1;margin-bottom:10px}
+.updated{font-size:12px;color:var(--cream-20);margin-bottom:32px}
+h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:20px;color:var(--cream);margin:28px 0 8px}
 h2:first-of-type{margin-top:0}
-p{margin-bottom:16px}
-ul,ol{margin:0 0 16px 22px}
-li{margin-bottom:8px}
+p{margin-bottom:10px}
+ul,ol{margin:0 0 10px 20px}
+li{margin-bottom:4px}
 strong{color:var(--cream);font-weight:500}
 .todo{
   background:rgba(196,82,26,0.16);color:#e26425;
@@ -61,14 +61,14 @@ strong{color:var(--cream);font-weight:500}
   border:1px dashed rgba(196,82,26,0.55);white-space:normal;
 }
 .note{
-  border-left:2px solid var(--terra);padding:14px 18px;margin:24px 0;
-  background:rgba(196,82,26,0.06);font-size:14px;color:var(--cream-60);
+  border-left:2px solid var(--terra);padding:10px 14px;margin:16px 0;
+  background:rgba(196,82,26,0.06);font-size:13px;color:var(--cream-60);
 }
-footer{border-top:1px solid var(--border);padding:36px 48px;text-align:center;font-size:12px;color:var(--cream-20)}
+footer{border-top:1px solid var(--border);padding:24px 48px;text-align:center;font-size:11px;color:var(--cream-20)}
 footer a{color:inherit}
 @media(max-width:640px){
-  header{padding:20px 24px}
-  main{padding:56px 20px 72px}
+  header{padding:14px 20px}
+  main{padding:36px 16px 48px}
 }
 </style>
 </head>
@@ -85,11 +85,11 @@ footer a{color:inherit}
 <main>
   <div class="doc-label">Pravno</div>
   <h1>Splošni pogoji poslovanja</h1>
-  <p class="updated">Zadnja posodobitev: 17. 8. 2026</p>
+  <p class="updated">Zadnja posodobitev: 21. 9. 2026</p>
 
   <!--
   <div class="note">
-    Opomba za GRAFEIO: osnutek pogojev, prilagojen storitvam s te strani (izdelava spletnih strani in sorodne storitve) ter dejanskim plačilnim pogojem iz kalkulatorja ponudb (predujem 50 %, plačilo v 15 dneh). Mesta z VNESI: ... je treba dopolniti — priporočamo pregled odvetnika pred objavo, predvsem točke 7 (odstop od pogodbe) in 9 (omejitev odgovornosti), ker sta pravno najbolj občutljivi. Miran Vugrinski s.p. je registriran od 2. 9. 2026 — manjkata še matična in davčna številka (glej VNESI spodaj); do vnosa teh podatkov teh pogojev ne obravnavaj kot pravno dokončnih.
+    Opomba za GRAFEIO: osnutek pogojev, prilagojen storitvam s te strani (izdelava spletnih strani in sorodne storitve) ter dejanskim plačilnim pogojem iz kalkulatorja ponudb (predujem 50 %, plačilo v 15 dneh). Priporočamo pregled odvetnika pred objavo, predvsem točke 7 (odstop od pogodbe) in 9 (omejitev odgovornosti), ker sta pravno najbolj občutljivi.
   </div>
   -->
 
@@ -97,7 +97,7 @@ footer a{color:inherit}
   <p>
     Ti splošni pogoji urejajo razmerje med <strong>GRAFEIO</strong><br>
     (telefon <a href="tel:+38651845307">051 845 307</a>, e-pošta <a href="mailto:grafeio.creative@gmail.com">grafeio.creative@gmail.com</a>,
-    matična št. <span class="todo">VNESI</span>, davčna št. <span class="todo">VNESI</span>;
+    matična št. 7584474, davčna št. 83235256;
     v nadaljevanju »GRAFEIO« ali »izvajalec«) in naročnikom storitev, predstavljenih na strani grafeio.si (v nadaljevanju »naročnik«).
   </p>
   <p>Z oddajo povpraševanja, potrditvijo ponudbe ali naročilom katere koli storitve naročnik potrjuje, da je seznanjen s temi pogoji in se z njimi strinja.</p>
@@ -126,7 +126,7 @@ footer a{color:inherit}
 
   <h2>4. Cene in plačilni pogoji</h2>
   <ul>
-    <li>Cene so navedene v EUR. <span class="todo">VNESI: ali so cene z ali brez DDV (odvisno od tega, ali ste zavezanec za DDV)</span>.</li>
+    <li>Cene so navedene v EUR, brez DDV (GRAFEIO ni zavezanec za DDV).</li>
     <li>Predujem: 50 % dogovorjenega zneska ob potrditvi naročila, preostalih 50 % pred izročitvijo končnega izdelka.</li>
     <li>Plačilo zapade v roku 15 dni od prejema računa.</li>
     <li>Pri zamudi plačila si GRAFEIO pridržuje pravico do zaračunavanja zakonskih zamudnih obresti in začasne ustavitve del na projektu.</li>
@@ -140,24 +140,24 @@ footer a{color:inherit}
 
   <h2>7. Avtorske pravice</h2>
   <p>Vse avtorske pravice na izdelanem gradivu (dizajn, koda, besedila, grafike) preidejo na naročnika po celotnem poravnanem plačilu, razen če je v ponudbi izrecno dogovorjeno drugače. GRAFEIO si pridržuje pravico, da izdelano delo uporabi v svojem portfelju in promocijskih materialih, razen če naročnik to izrecno odkloni v pisni obliki.</p>
-  <p><span class="todo">VNESI: ali kupljene licence (npr. fonti, slikovno gradivo iz plačljivih bank slik) veljajo neomejeno ali morajo biti podaljšane s strani naročnika</span>.</p>
+  <p>Licence za kupljeno gradivo tretjih oseb (npr. fonti, slikovno gradivo iz plačljivih bank slik), ki je vključeno v naročilo, veljajo neomejeno, razen če je v ponudbi izrecno navedeno drugače (npr. naročniške ali časovno omejene licence, ki jih mora naročnik po poteku podaljšati sam).</p>
 
   <h2>8. Odstop od pogodbe</h2>
   <p>Če je naročnik potrošnik (fizična oseba, ki naroča storitev izven svoje pridobitne ali poklicne dejavnosti) in je pogodba sklenjena na daljavo (prek spleta ali telefona), ima v skladu z Zakonom o varstvu potrošnikov (ZVPot-1) pravico, da v 14 dneh od sklenitve pogodbe od nje odstopi brez navedbe razloga.</p>
   <div class="note">
-    Ta pravica <strong>ne velja</strong>, če se je z izrecnim soglasjem naročnika izvajanje storitve začelo pred potekom 14-dnevnega roka in je naročnik seznanjen, da s tem izgubi pravico do odstopa (čl. 61 ZVPot-1). <span class="todo">VNESI/POTRDI: ali to izjemo dejansko uporabljate — če da, jo je treba naročniku izrecno predstaviti ob potrditvi naročila, ne le tukaj.</span>
+    Ta pravica <strong>ne velja</strong>, če se je z izrecnim soglasjem naročnika izvajanje storitve začelo pred potekom 14-dnevnega roka in je naročnik seznanjen, da s tem izgubi pravico do odstopa (čl. 61 ZVPot-1). GRAFEIO to izjemo uporablja: naročnik ob potrditvi naročila izrecno potrdi, da se strinja z začetkom izvajanja pred potekom 14-dnevnega roka in da s tem izgubi pravico do odstopa.
   </div>
   <p>Naročnik lahko odpove naročilo tudi izven pravice do odstopa, s pisnim obvestilom GRAFEIO. V tem primeru je dolžan poravnati vrednost že opravljenega dela do trenutka odpovedi.</p>
 
   <h2>9. Omejitev odgovornosti</h2>
-  <p>GRAFEIO si prizadeva za skrbno in strokovno izvedbo naročenih storitev. GRAFEIO ne odgovarja za posredno škodo, izgubo dobička ali izpad poslovanja naročnika, ki bi nastala zaradi uporabe ali nedelovanja izdelane spletne strani ali drugih storitev, razen v primeru naklepa ali hude malomarnosti. <span class="todo">VNESI/PREVERI: ali želite dodati zgornjo mejo odškodninske odgovornosti (npr. omejeno na vrednost naročila) — to je pogosta praksa, a naj potrdi odvetnik.</span></p>
+  <p>GRAFEIO si prizadeva za skrbno in strokovno izvedbo naročenih storitev. GRAFEIO ne odgovarja za posredno škodo, izgubo dobička ali izpad poslovanja naročnika, ki bi nastala zaradi uporabe ali nedelovanja izdelane spletne strani ali drugih storitev, razen v primeru naklepa ali hude malomarnosti. Skupna odškodninska odgovornost GRAFEIO iz naslova posameznega naročila je v vsakem primeru omejena na višino zneska, ki ga je naročnik plačal za to naročilo.</p>
 
   <h2>10. Varstvo osebnih podatkov</h2>
   <p>Obdelava osebnih podatkov je opisana v <a href="/politika-zasebnosti/">politiki zasebnosti</a>.</p>
 
   <h2>11. Reševanje sporov</h2>
   <p>Pogodbeni stranki si bosta prizadevali morebitne spore rešiti sporazumno. Če to ni mogoče, je za reševanje spora pristojno stvarno pristojno sodišče v Mariboru, Republika Slovenija.</p>
-  <p>Skladno z Uredbo EU št. 524/2013 potrošnike obveščamo, da je za spletno reševanje potrošniških sporov na voljo platforma Evropske komisije: <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">ec.europa.eu/consumers/odr</a>. GRAFEIO <span class="todo">VNESI: ali priznavate pristojnost izvajalca izvensodnega reševanja potrošniških sporov (IRPS) v Sloveniji — da/ne, in kateri izvajalec</span>.</p>
+  <p>Skladno z Uredbo EU št. 524/2013 potrošnike obveščamo, da je za spletno reševanje potrošniških sporov na voljo platforma Evropske komisije: <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener">ec.europa.eu/consumers/odr</a>. GRAFEIO ne priznava pristojnosti nobenega izvajalca izvensodnega reševanja potrošniških sporov (IRPS).</p>
 
   <h2>12. Končne določbe</h2>
   <p>GRAFEIO si pridržuje pravico do spremembe teh pogojev. Za že sklenjena naročila veljajo pogoji, veljavni na dan potrditve ponudbe. Za vprašanja o teh pogojih smo dosegljivi na <a href="mailto:grafeio.creative@gmail.com">grafeio.creative@gmail.com</a> ali <a href="tel:+38651845307">051 845 307</a>.</p>

@@ -31,47 +31,47 @@ html{scroll-behavior:smooth}
 body{
   font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;
   background:var(--obsidian);color:var(--cream-60);
-  line-height:1.7;font-weight:300;font-size:16px;
+  line-height:1.55;font-weight:300;font-size:14px;
   -webkit-font-smoothing:antialiased;
 }
 a{color:var(--cream)}
 a:hover{color:#e26425}
 header{
   display:flex;align-items:center;justify-content:space-between;
-  padding:24px 48px;border-bottom:1px solid var(--border);
+  padding:18px 48px;border-bottom:1px solid var(--border);
 }
 .back{font-size:13px;letter-spacing:0.04em;text-decoration:none;color:var(--cream-60)}
 .back:hover{color:var(--cream)}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
 .logo .g{font-size:22px;color:var(--cream);line-height:1}
 .logo .word{font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--cream-60)}
-main{max-width:720px;margin:0 auto;padding:72px 24px 96px}
+main{max-width:680px;margin:0 auto;padding:48px 24px 64px}
 .doc-label{font-size:11px;font-weight:400;letter-spacing:0.22em;text-transform:uppercase;color:#e26425;margin-bottom:20px}
-h1{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(36px,5vw,54px);color:var(--cream);line-height:1.1;margin-bottom:16px}
-.updated{font-size:13px;color:var(--cream-20);margin-bottom:56px}
-h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:26px;color:var(--cream);margin:48px 0 16px}
+h1{font-family:'Cormorant Garamond',serif;font-weight:400;font-size:clamp(28px,4.5vw,40px);color:var(--cream);line-height:1.1;margin-bottom:10px}
+.updated{font-size:12px;color:var(--cream-20);margin-bottom:32px}
+h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:20px;color:var(--cream);margin:28px 0 8px}
 h2:first-of-type{margin-top:0}
-p{margin-bottom:16px}
-ul,ol{margin:0 0 16px 22px}
-li{margin-bottom:8px}
+p{margin-bottom:10px}
+ul,ol{margin:0 0 10px 20px}
+li{margin-bottom:4px}
 strong{color:var(--cream);font-weight:500}
-table{width:100%;border-collapse:collapse;margin:16px 0 24px;font-size:14px}
-th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--border);vertical-align:top}
-th{color:var(--cream);font-weight:500;font-size:12px;letter-spacing:0.04em;text-transform:uppercase}
+table{width:100%;border-collapse:collapse;margin:10px 0 16px;font-size:12px}
+th,td{text-align:left;padding:6px 10px;border-bottom:1px solid var(--border);vertical-align:top}
+th{color:var(--cream);font-weight:500;font-size:11px;letter-spacing:0.04em;text-transform:uppercase}
 .todo{
   background:rgba(196,82,26,0.16);color:#e26425;
   padding:1px 7px;border-radius:2px;font-weight:600;
   border:1px dashed rgba(196,82,26,0.55);white-space:normal;
 }
 .note{
-  border-left:2px solid var(--terra);padding:14px 18px;margin:24px 0;
-  background:rgba(196,82,26,0.06);font-size:14px;color:var(--cream-60);
+  border-left:2px solid var(--terra);padding:10px 14px;margin:16px 0;
+  background:rgba(196,82,26,0.06);font-size:13px;color:var(--cream-60);
 }
-footer{border-top:1px solid var(--border);padding:36px 48px;text-align:center;font-size:12px;color:var(--cream-20)}
+footer{border-top:1px solid var(--border);padding:24px 48px;text-align:center;font-size:11px;color:var(--cream-20)}
 footer a{color:inherit}
 @media(max-width:640px){
-  header{padding:20px 24px}
-  main{padding:56px 20px 72px}
+  header{padding:14px 20px}
+  main{padding:36px 16px 48px}
 }
 </style>
 </head>
@@ -88,11 +88,11 @@ footer a{color:inherit}
 <main>
   <div class="doc-label">Pravno</div>
   <h1>Politika zasebnosti</h1>
-  <p class="updated">Zadnja posodobitev: 23. 8. 2026</p>
+  <p class="updated">Zadnja posodobitev: 21. 9. 2026</p>
 
   <!--
   <div class="note">
-    Opomba za GRAFEIO: ta dokument je osnutek, pripravljen po zahtevah GDPR (Splošna uredba o varstvu podatkov), slovenskega ZVOP-2 in ZEPT. Vsa mesta, označena z VNESI: ..., potrebujejo dejanski podatek, preden je dokument pravno popoln. Priporočamo pregled odvetnika, preden gre dokument v končno uporabo. Miran Vugrinski s.p. je registriran od 2. 9. 2026 — manjkata še matična in davčna številka (glej VNESI zgoraj); do vnosa teh podatkov dokumenta ne obravnavaj kot pravno dokončnega.
+    Opomba za GRAFEIO: ta dokument je osnutek, pripravljen po zahtevah GDPR (Splošna uredba o varstvu podatkov), slovenskega ZVOP-2 in ZEPT. Priporočamo pregled odvetnika, preden gre dokument v končno uporabo.
   </div>
   -->
 
@@ -101,9 +101,9 @@ footer a{color:inherit}
     Upravljavec osebnih podatkov, obdelanih prek spletne strani grafeio.si, je <strong>GRAFEIO</strong>.<br>
     Telefon: <a href="tel:+38651845307">051 845 307</a><br>
     E-pošta: <a href="mailto:grafeio.creative@gmail.com">grafeio.creative@gmail.com</a><br>
-    Matična številka: <span class="todo">VNESI: matična številka</span><br>
-    Davčna številka: <span class="todo">VNESI: davčna številka</span><br>
-    <span class="todo">VNESI: ali ste zavezanec za DDV (da/ne)</span>
+    Matična številka: 7584474<br>
+    Davčna številka: 83235256<br>
+    GRAFEIO ni zavezanec za DDV.
   </p>
   <p>V nadaljevanju »GRAFEIO«, »mi« ali »nas«.</p>
   <p style="font-size:12px;color:var(--cream-20)">
@@ -142,7 +142,7 @@ footer a{color:inherit}
 
   <h2>5. Koliko časa hranimo podatke</h2>
   <ul>
-    <li><strong>Sporočila iz kontaktnega obrazca:</strong> <span class="todo">VNESI: koliko časa hranite e-pošto/sporočila strank (npr. "do zaključka posla + 1 leto" ali skladno z računovodskimi predpisi)</span>.</li>
+    <li><strong>Sporočila iz kontaktnega obrazca:</strong> do zaključka posla + 1 leto; če do posla ne pride, sporočilo izbrišemo najkasneje eno leto po zadnjem stiku.</li>
     <li><strong>Podatki za pošiljanje novic:</strong> dokler se ne odjavite ali prekličete privolitve. Po odjavi lahko hranimo najmanjši obseg podatkov, ki je potreben, da vam novic ne pošljemo več.</li>
     <li><strong>Odločitev o piškotkih:</strong> shranjena lokalno v vašem brskalniku (localStorage) 365 dni, nato se ponovno vpraša za soglasje.</li>
     <li><strong>Analitični podatki (Google Analytics):</strong> skladno z privzetimi nastavitvami Google Analytics 4 (praviloma do 14 mesecev).</li>
