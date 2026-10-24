@@ -3,6 +3,7 @@
 <head>
   <link rel="stylesheet" href="/cookie-consent.css">
 <script src="/cookie-consent.js"></script>
+<script src="/track-events.js" defer></script>
 <!-- Open Graph za deljenje linkov -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://grafeio.si/prva-pomoc/">
@@ -1160,7 +1161,10 @@ async function ppSubmit() {
       document.getElementById('pp-success').style.display = 'block';
       ['pp-problem', 'pp-email'].forEach(id => document.getElementById(id).value = '');
       document.getElementById('pp-consent-reply').checked = false;
-      if (typeof gtag === 'function') gtag('event', 'tezava_oddana');
+      if (window.trackEvent) {
+        trackEvent('tezava_oddana');
+        trackEvent('generate_lead', { form: 'prva_pomoc' });
+      }
     } else {
       throw new Error('server');
     }

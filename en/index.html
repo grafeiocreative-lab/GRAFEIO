@@ -3,6 +3,7 @@
 <head>
   <link rel="stylesheet" href="/cookie-consent.css">
 <script src="/cookie-consent.js"></script>
+<script src="/track-events.js" defer></script>
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://grafeio.si/en/">
 <meta property="og:title" content="Your customer is looking for you · GRAFEIO">
@@ -1131,6 +1132,7 @@ document.querySelectorAll('.nav-links a').forEach(function(a) {
 // ── VIDEO LIGHTBOX ───────────────────────────────────────────────
 const GRAFEIO_VIDEO_ID = 'mbe14iINj10';
 function openVideoLightbox() {
+  if (window.trackEvent) trackEvent('video_open', { video: 'kdo-smo' });
   document.getElementById('video-lb-iframe').src =
     'https://www.youtube.com/embed/' + GRAFEIO_VIDEO_ID + '?autoplay=1&playsinline=1&rel=0';
   document.getElementById('video-lightbox').classList.add('open');
@@ -1170,6 +1172,7 @@ async function submitForm(){
     if(res.ok){
       document.getElementById('f-submit').style.display='none';
       document.getElementById('f-success').style.display='block';
+      if(window.trackEvent) trackEvent('generate_lead',{form:'inquiry'});
       ['f-name','f-email','f-type','f-msg'].forEach(id=>document.getElementById(id).value='');
     }else{throw new Error('server');}
   }catch{
